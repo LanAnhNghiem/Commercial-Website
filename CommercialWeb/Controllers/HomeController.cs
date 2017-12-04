@@ -31,11 +31,11 @@ namespace CommercialWeb.Controllers
 
             //Danh sách laptop ở trang chủ
             var lstMayTinh = db.SanPhams.Where(n => n.MaLoaiSP == 2);
-            ViewBag.LisLaptop = lstMayTinh;
+            ViewBag.ListMayTinh = lstMayTinh;
 
             //Danh sách laptop ở trang chủ
             var lstLinhKien = db.SanPhams.Where(n => n.MaLoaiSP == 1);
-            ViewBag.LisLaptop = lstLinhKien;
+            ViewBag.ListLinhKien = lstLinhKien;
 
             return View();
         }
