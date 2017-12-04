@@ -37,5 +37,11 @@ namespace CommercialWeb.Controllers
         {
             return PartialView();
         }
+
+        [ChildActionOnly]
+        public ActionResult LinhKienPartial()
+        {
+            return PartialView();
+        }
     }
 }
