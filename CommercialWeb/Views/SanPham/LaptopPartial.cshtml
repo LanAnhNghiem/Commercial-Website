@@ -1,0 +1,53 @@
+﻿@using CommercialWeb.Models;
+@model IEnumerable<SanPham>
+
+<!-- popular-product start -->
+<div class="tab-pane active" id="popular-product">
+    <div class="row">
+        @foreach (var item in Model.Take(8))
+        {
+            <!-- product-item start -->
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="product-item">
+                    <div class="product-img">
+                        <a href="single-product.html">
+                            <img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
+                        </a>
+                    </div>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="single-product.html">@item.TenSP</a>
+                        </h6>
+                        <div class="pro-rating">
+                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                            <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                        </div>
+                        <h3 class="pro-price">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
+                        <ul class="action-button">
+                            <li>
+                                <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <!-- product-item end -->
+        }
+        
+        
+    </div>
+</div>
+<!-- popular-product end -->
+

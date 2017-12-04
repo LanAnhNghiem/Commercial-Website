@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CommercialWeb.Models;
 
 namespace CommercialWeb.Controllers
 {
@@ -16,7 +17,17 @@ namespace CommercialWeb.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult SanPhamLaptopPartial()
+        public ActionResult LaptopNoiBatPartial()
+        {
+            return PartialView();
+        }
+        [ChildActionOnly]
+        public ActionResult SanPhamKhuyenMaiPartial()
+        {
+            return PartialView();
+        }
+        [ChildActionOnly]
+        public ActionResult LaptopPartial()
         {
             return PartialView();
         }

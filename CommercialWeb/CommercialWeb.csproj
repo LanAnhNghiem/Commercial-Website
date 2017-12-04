@@ -689,7 +689,9 @@
     <Content Include="Views\Layout\HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SanPham\SanPhamMoiPartial.cshtml" />
-    <Content Include="Views\SanPham\SanPhamLaptopPartial.cshtml" />
+    <Content Include="Views\SanPham\LaptopNoiBatPartial.cshtml" />
+    <Content Include="Views\SanPham\SanPhamKhuyenMaiPartial.cshtml" />
+    <Content Include="Views\SanPham\LaptopPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
