@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,8 +198,57 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BinhLuan.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDonHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HinhThucGiaoHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhuyenMai.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaSanXuat.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThanhVien.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinhTrangDonHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -463,14 +514,157 @@
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\woocommerce.min.js" />
     <Content Include="Content\js\wp-embed.min.js" />
+    <Content Include="Content\ProductImages\10024353.jpg" />
+    <Content Include="Content\ProductImages\10028757.jpg" />
+    <Content Include="Content\ProductImages\10029257_1.jpg" />
+    <Content Include="Content\ProductImages\10029257_3.jpg" />
+    <Content Include="Content\ProductImages\10029257_4.jpg" />
+    <Content Include="Content\ProductImages\10029426.jpg" />
+    <Content Include="Content\ProductImages\10029639.jpg" />
+    <Content Include="Content\ProductImages\10030511_1.jpg" />
+    <Content Include="Content\ProductImages\10030511_2.jpg" />
+    <Content Include="Content\ProductImages\10030800.jpg" />
+    <Content Include="Content\ProductImages\10031033.jpg" />
+    <Content Include="Content\ProductImages\10031721_1.jpg" />
+    <Content Include="Content\ProductImages\10031721_2.jpg" />
+    <Content Include="Content\ProductImages\10031721_3.jpg" />
+    <Content Include="Content\ProductImages\10031945-02.jpg" />
+    <Content Include="Content\ProductImages\10031945-03.jpg" />
+    <Content Include="Content\ProductImages\10031945.jpg" />
+    <Content Include="Content\ProductImages\10032144_1.jpg" />
+    <Content Include="Content\ProductImages\10032144_2.jpg" />
+    <Content Include="Content\ProductImages\10032144_3.jpg" />
+    <Content Include="Content\ProductImages\10032473_1.jpg" />
+    <Content Include="Content\ProductImages\10032473_2.jpg" />
+    <Content Include="Content\ProductImages\10032473_3.jpg" />
+    <Content Include="Content\ProductImages\10032613-3.jpg" />
+    <Content Include="Content\ProductImages\10032613_1.jpg" />
+    <Content Include="Content\ProductImages\10032613_2.jpg" />
+    <Content Include="Content\ProductImages\10032801_1.jpg" />
+    <Content Include="Content\ProductImages\10033192_1.jpg" />
+    <Content Include="Content\ProductImages\10033192_2.jpg" />
+    <Content Include="Content\ProductImages\10033302_1.jpg" />
+    <Content Include="Content\ProductImages\1076.jpg" />
+    <Content Include="Content\ProductImages\1077.jpg" />
+    <Content Include="Content\ProductImages\1078.jpg" />
+    <Content Include="Content\ProductImages\510S-08IKL-90GB007MVN-01.jpg" />
+    <Content Include="Content\ProductImages\510S-08IKL-90GB007MVN-02.jpg" />
+    <Content Include="Content\ProductImages\510S-08IKL-90GB007MVN-04.jpg" />
+    <Content Include="Content\ProductImages\570-P012L-_Z8H70AA_-1.jpg" />
+    <Content Include="Content\ProductImages\570-P012L-_Z8H70AA_-2.jpg" />
+    <Content Include="Content\ProductImages\570-P012L-_Z8H70AA_-3.jpg" />
+    <Content Include="Content\ProductImages\ACER-ASPIRE-TC-780-1.jpg" />
+    <Content Include="Content\ProductImages\ACER-ASPIRE-TC-780-2.jpg" />
+    <Content Include="Content\ProductImages\ACER-ASPIRE-TC-780-3.jpg" />
+    <Content Include="Content\ProductImages\ACER-TC-780-PENTIUM-G4560-1.jpg" />
+    <Content Include="Content\ProductImages\ACER-TC-780-PENTIUM-G4560-2.jpg" />
+    <Content Include="Content\ProductImages\ACER-TC-780-PENTIUM-G4560-3.jpg" />
+    <Content Include="Content\ProductImages\cam-bien-am-thanh-ky-037.jpg" />
+    <Content Include="Content\ProductImages\cam-bien-do-am-dht21.jpg" />
+    <Content Include="Content\ProductImages\cam-bien-mua.jpg" />
+    <Content Include="Content\ProductImages\cam-bien-nhip-tim.jpg" />
+    <Content Include="Content\ProductImages\cam-bien-van-tay.jpg" />
+    <Content Include="Content\ProductImages\dau-laze-5v.jpg" />
+    <Content Include="Content\ProductImages\dell-14-3467-1.jpg" />
+    <Content Include="Content\ProductImages\dell-14-3467-3.jpg" />
+    <Content Include="Content\ProductImages\dell-14-3467-5.jpg" />
+    <Content Include="Content\ProductImages\dell-14-3468-1_xrye-i0.jpg" />
+    <Content Include="Content\ProductImages\dell-14-3468-2.jpg" />
+    <Content Include="Content\ProductImages\dell-14-3468-4.jpg" />
+    <Content Include="Content\ProductImages\DELL-3268-1.jpg" />
+    <Content Include="Content\ProductImages\DELL-3268-2.jpg" />
+    <Content Include="Content\ProductImages\DELL-3268-3.jpg" />
+    <Content Include="Content\ProductImages\DELL-3668-1.jpg" />
+    <Content Include="Content\ProductImages\DELL-3668-2.jpg" />
+    <Content Include="Content\ProductImages\DELL-3668-3.jpg" />
+    <Content Include="Content\ProductImages\DELL-INSPIRON-3668-02.jpg" />
+    <Content Include="Content\ProductImages\DELL-INSPIRON-3668-03.jpg" />
+    <Content Include="Content\ProductImages\DELL-INSPIRON-3668.jpg" />
+    <Content Include="Content\ProductImages\HP-570-1.jpg" />
+    <Content Include="Content\ProductImages\HP-570-2.jpg" />
+    <Content Include="Content\ProductImages\HP-570-5.jpg" />
+    <Content Include="Content\ProductImages\HP-Pavilion-14-AL115TU-04.jpg" />
+    <Content Include="Content\ProductImages\laptop-dell-15-n3567-p63f002-01.jpg" />
+    <Content Include="Content\ProductImages\laptop-dell-15-n3567-p63f002-02.jpg" />
+    <Content Include="Content\ProductImages\laptop-dell-15-n3567-p63f002-10032228.jpg" />
+    <Content Include="Content\ProductImages\led-thu-phat-fbd20f98-54b4-4902-a0c0-9eb12464e3bf.jpg" />
+    <Content Include="Content\ProductImages\Lenovo-90DQ006HVN-0.jpg" />
+    <Content Include="Content\ProductImages\Lenovo-90DQ006HVN-01.jpg" />
+    <Content Include="Content\ProductImages\Lenovo-90DQ006HVN-03.jpg" />
+    <Content Include="Content\ProductImages\lenovo-ip-310-15ikb-core-i5-ram-6gb-01.jpg" />
+    <Content Include="Content\ProductImages\lenovo-ip-310-15ikb-core-i5-ram-6gb-02.jpg" />
+    <Content Include="Content\ProductImages\lenovo-ip-310-15ikb-core-i5-ram-6gb.jpg" />
+    <Content Include="Content\ProductImages\Lenovo-YoGa510-15ISK-3.jpg" />
+    <Content Include="Content\ProductImages\Lenovo-YoGa510-15ISK-4.jpg" />
+    <Content Include="Content\ProductImages\mach-giam-ap-lm2596-co-hien-thi.jpg" />
+    <Content Include="Content\ProductImages\mach-nguon-xl6009.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-acer-aspire-atc-710-01.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-acer-aspire-atc-710-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-acer-aspire-atc-710-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-hp-22-b201d-i3-4-1-21.5t-w-z8f51aa-01.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-hp-22-b201d-i3-4-1-21.5t-w-z8f51aa-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-hp-22-b201d-i3-4-1-21.5t-w-z8f51aa.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-hp-pavilion-510-p006l-core-i3-6100t-10030815-01.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-hp-pavilion-510-p006l-core-i3-6100t-10030815-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-hp-pavilion-510-p006l-core-i3-6100t-10030815-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-lenovo-ideacentre-300s-11ibr-90dq006kvn-10029133-01.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-lenovo-ideacentre-300s-11ibr-90dq006kvn-10029133-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-lenovo-ideacentre-300s-11ibr-90dq006kvn-10029133-04.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-pc-dell-vos3268st-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-pc-dell-vos3268st-04.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-de-ban-pc-dell-vos3268st.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-acer-aspire-e5-575g-xam-02_nq3o-e1_whfw-w0.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-acer-aspire-e5-575g-xam-04_apuw-f3.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-acer-aspire-f5-573-bac-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-acer-aspire-f5-573-bac-04.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-acer-v3-372-59ab-core-i5-10029426.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-acer-v3-372-den-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-dell-inspiron-15-3559-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-notebook-15-den-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-notebook-15-den-04.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-pavilion-14-al103tu-core-i3-10031722.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-pavilion-14-al103tu-core-i3-2.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-pavilion-14-al103tu-core-i3-3.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-pavilion-x360-xanh-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-hp-pavilion-x360-xanh-04.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-lenovo-ideapad-310-14ikb-core-i5-80tu00c7vn-02.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-lenovo-ideapad-310-14ikb-core-i5-80tu00c7vn-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-lenovo-ideapad-310-15isk-bac-03.jpg" />
+    <Content Include="Content\ProductImages\may-tinh-xach-tay-lenovo-ideapad-310-15isk-bac-04.jpg" />
+    <Content Include="Content\ProductImages\module-lazer-5v.jpg" />
+    <Content Include="Content\ProductImages\nguon-ac-dc-12v-450mah.jpg" />
+    <Content Include="Content\ProductImages\nguon-testboard.jpg" />
+    <Content Include="Content\ProductImages\P019L-W2T07AA-1.jpg" />
+    <Content Include="Content\ProductImages\P019L-W2T07AA-2.jpg" />
+    <Content Include="Content\ProductImages\P019L-W2T07AA-3.jpg" />
+    <Content Include="Content\ProductImages\quang-tro-6e041f40-de12-45b2-8471-523d8d86dfe1.jpg" />
+    <Content Include="Content\ProductImages\test-pin-lipo.jpg" />
+    <Content Include="Content\ProductImages\trasistor-7b02b5b4-d6c9-426e-8816-dc9cf1d5b022.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\QuanLyBanHangModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanHangModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QuanLyBanHangModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanHangModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\QuanLyBanHangModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyBanHangModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyBanHangModel.edmx.diagram">
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -494,10 +688,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Layout\HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SanPham\SanPhamMoiPartial.cshtml" />
+    <Content Include="Views\SanPham\LaptopNoiBatPartial.cshtml" />
+    <Content Include="Views\SanPham\SanPhamKhuyenMaiPartial.cshtml" />
+    <Content Include="Views\SanPham\LaptopPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -506,6 +703,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
