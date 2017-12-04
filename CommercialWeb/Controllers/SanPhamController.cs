@@ -43,5 +43,11 @@ namespace CommercialWeb.Controllers
         {
             return PartialView();
         }
+
+        [ChildActionOnly]
+        public ActionResult SliderBannerPartial()
+        {
+            return PartialView();
+        }
     }
 }
