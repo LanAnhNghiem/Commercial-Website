@@ -7,6 +7,9 @@
 
 @{ 
     IEnumerable<SanPham> lstSanPhamMoi = ViewBag.ListSanPhamMoi as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstSanPhamLaptop = ViewBag.ListSanPhamLaptop as IEnumerable<SanPham>;
 }
 
 @Html.Partial("~/Views/SanPham/SanPhamMoiPartial.cshtml", lstSanPhamMoi)
+
+@Html.Partial("~/Views/SanPham/SanPhamLaptopPartial.cshtml", lstSanPhamLaptop)

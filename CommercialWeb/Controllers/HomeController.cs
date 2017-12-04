@@ -13,8 +13,14 @@ namespace CommercialWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var lstSanPhamMoi = db.SanPhams.Where(n => n.DonGia > 10000000);
+            //New products
+            var lstSanPhamMoi = db.SanPhams.Where(n => n.MaLoaiSP == 3);
             ViewBag.ListSanPhamMoi = lstSanPhamMoi;
+
+            //Laptop
+            var lstSanPhamLaptop = db.SanPhams.Where(n => n.MaLoaiSP == 3);
+            ViewBag.ListSanPhamLaptop = lstSanPhamLaptop;
+
             return View();
         }
     }

@@ -14,5 +14,11 @@ namespace CommercialWeb.Controllers
         {
             return PartialView();
         }
+
+        [ChildActionOnly]
+        public ActionResult SanPhamLaptopPartial()
+        {
+            return PartialView();
+        }
     }
 }
