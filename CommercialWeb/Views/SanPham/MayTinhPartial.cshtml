@@ -1,8 +1,8 @@
 ﻿@using CommercialWeb.Models;
-@model IEnumerable<SanPham>
 
-<!-- popular-product start -->
-<div class="tab-pane active" id="popular-product">
+@model IEnumerable<SanPham>
+<!-- new-arrival start -->
+<div class="tab-pane" id="new-arrival">
     <div class="row">
         @foreach (var item in Model.Take(8))
         {
@@ -11,7 +11,7 @@
                 <div class="product-item">
                     <div class="product-img">
                         <a href="single-product.html">
-                            <img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
+                            <img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.HinhAnh1">
                         </a>
                     </div>
                     <div class="product-info">
@@ -25,7 +25,7 @@
                             <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                             <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                         </div>
-                        <h3 class="pro-price">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
+                        <h3 class="pro-price">$@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
                         <ul class="action-button">
                             <li>
                                 <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
@@ -46,8 +46,6 @@
         <!-- product-item end -->
         }
         
-        
     </div>
 </div>
-<!-- popular-product end -->
-
+<!-- new-arrival end -->

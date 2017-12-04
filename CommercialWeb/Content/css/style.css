@@ -142,6 +142,7 @@
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
+  padding: 0px 5px;
 }
 .pro-rating {
   line-height: 1;
