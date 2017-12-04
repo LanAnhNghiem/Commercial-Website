@@ -9,9 +9,10 @@ namespace CommercialWeb.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
-        public ActionResult Index()
+        [ChildActionOnly]
+        public ActionResult SanPhamMoiPartial()
         {
-            return View();
+            return PartialView();
         }
     }
 }

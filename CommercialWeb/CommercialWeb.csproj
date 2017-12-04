@@ -688,10 +688,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Layout\HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SanPham\SanPhamMoiPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
-    <Folder Include="Views\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

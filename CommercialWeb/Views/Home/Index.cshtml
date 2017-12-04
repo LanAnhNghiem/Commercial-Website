@@ -1,9 +1,12 @@
-﻿
+﻿@using CommercialWeb.Models;
+@model IEnumerable<SanPham>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
-<h2>Home Content</h2>
+@{ 
+    IEnumerable<SanPham> lstSanPhamMoi = ViewBag.ListSanPhamMoi as IEnumerable<SanPham>;
+}
 
-
+@Html.Partial("~/Views/SanPham/SanPhamMoiPartial.cshtml", lstSanPhamMoi)
