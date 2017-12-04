@@ -15,50 +15,170 @@
     IEnumerable<SanPham> lstLinhKien = ViewBag.ListLinhKien as IEnumerable<SanPham>;
 }
 
-@*San pham moi*@
-@Html.Partial("~/Views/SanPham/SanPhamMoiPartial.cshtml", lstSanPhamMoi)
+@Html.Partial("~/Views/SanPham/SliderBannerPartial.cshtml", lstSanPhamMoi);
+<section id="page-content" class="page-wrapper">
+    @*San pham moi*@
+    @Html.Partial("~/Views/SanPham/SanPhamMoiPartial.cshtml", lstSanPhamMoi)
 
-@*San pham Laptop noi bat*@
-@Html.Partial("~/Views/SanPham/LaptopNoiBatPartial.cshtml", lstLaptopNoiBat)
+    @*San pham Laptop noi bat*@
+    @Html.Partial("~/Views/SanPham/LaptopNoiBatPartial.cshtml", lstLaptopNoiBat)
 
-@*San pham khuyen mai*@
-@Html.Partial("~/Views/SanPham/SanPhamKhuyenMaiPartial.cshtml", lstSanPhamKhuyenMai)
+    @*San pham khuyen mai*@
+    @Html.Partial("~/Views/SanPham/SanPhamKhuyenMaiPartial.cshtml", lstSanPhamKhuyenMai)
 
-@*Danh sach cac san pham*@
-<!-- PRODUCT TAB SECTION START -->
-<div class="product-tab-section mb-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="section-title text-left mb-40">
-                    <h2 class="uppercase">Danh sách sản phẩm</h2>
-                    <h6>Các sản phẩm hiển có của cửa hàng</h6>
+    @*Danh sach cac san pham*@
+    <!-- PRODUCT TAB SECTION START -->
+    <div class="product-tab-section mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="section-title text-left mb-40">
+                        <h2 class="uppercase">Danh sách sản phẩm</h2>
+                        <h6>Các sản phẩm hiển có của cửa hàng</h6>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="pro-tab-menu text-right">
+                        <!-- Nav tabs -->
+                        <ul class="">
+                            <li class="active"><a href="#popular-product" data-toggle="tab">Laptop </a></li>
+                            <li><a href="#new-arrival" data-toggle="tab">Máy tính bàn</a></li>
+                            <li><a href="#best-seller" data-toggle="tab">Linh kiện</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="pro-tab-menu text-right">
-                    <!-- Nav tabs -->
-                    <ul class="">
-                        <li class="active"><a href="#popular-product" data-toggle="tab">Laptop </a></li>
-                        <li><a href="#new-arrival" data-toggle="tab">Máy tính bàn</a></li>
-                        <li><a href="#best-seller" data-toggle="tab">Linh kiện</a></li>
-                    </ul>
+            <div class="product-tab">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @*-------------------------LAPTOP-------------------------*@
+                    @Html.Partial("~/Views/SanPham/LaptopPartial.cshtml", lstLaptop)
+
+                    @*--------------------------MAY-TINH-------------------------*@
+                    @Html.Partial("~/Views/SanPham/MayTinhPartial.cshtml", lstMayTinh)
+
+                    @*--------------------------LINH-KIEN-------------------------*@
+                    @Html.Partial("~/Views/SanPham/LinhKienPartial.cshtml", lstLinhKien)
                 </div>
-            </div>
-        </div>
-        <div class="product-tab">
-            <!-- Tab panes -->
-            <div class="tab-content">
-    @*-------------------------LAPTOP-------------------------*@
-    @Html.Partial("~/Views/SanPham/LaptopPartial.cshtml", lstLaptop)
-                
-    @*--------------------------MAY-TINH-------------------------*@
-    @Html.Partial("~/Views/SanPham/MayTinhPartial.cshtml", lstMayTinh)            
-                
-    @*--------------------------LINH-KIEN-------------------------*@
-    @Html.Partial("~/Views/SanPham/LinhKienPartial.cshtml", lstLinhKien)
             </div>
         </div>
     </div>
-</div>
-<!-- PRODUCT TAB SECTION END -->
+    <!-- PRODUCT TAB SECTION END -->
+    <div class="blog-section mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-left mb-40">
+                        <h2 class="uppercase">Latest blog</h2>
+                        <h6>There are many variations of passages of brands available,</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="blog">
+                <div class="row active-blog">
+                    <!-- blog-item start -->
+                    <div class="col-xs-12">
+                        <div class="blog-item">
+                            <img src="~/Content/images/1_7.jpg" alt="">
+                            <div class="blog-desc">
+                                <h5 class="blog-title"><a href="single-blog.html">dummy Blog name</a></h5>
+                                <p>There are many variations of passages of psum available, but the majority have suffered alterat on in some form, by injected humour, randomis words which don't look even slightly.</p>
+                                <div class="read-more">
+                                    <a href="single-blog.html">Read more</a>
+                                </div>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-favorite"></i>89 Like</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-comments"></i>59 Comments</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-share"></i>29 Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- blog-item end -->
+                    <!-- blog-item start -->
+                    <div class="col-xs-12">
+                        <div class="blog-item">
+                            <img src="~/Content/images/2_4.jpg" alt="">
+                            <div class="blog-desc">
+                                <h5 class="blog-title"><a href="single-blog.html">dummy Blog name</a></h5>
+                                <p>There are many variations of passages of psum available, but the majority have suffered alterat on in some form, by injected humour, randomis words which don't look even slightly.</p>
+                                <div class="read-more">
+                                    <a href="single-blog.html">Read more</a>
+                                </div>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-favorite"></i>89 Like</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-comments"></i>59 Comments</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-share"></i>29 Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- blog-item end -->
+                    <!-- blog-item start -->
+                    <div class="col-xs-12">
+                        <div class="blog-item">
+                            <img src="~/Content/images/3_3.jpg" alt="">
+                            <div class="blog-desc">
+                                <h5 class="blog-title"><a href="single-blog.html">dummy Blog name</a></h5>
+                                <p>There are many variations of passages of psum available, but the majority have suffered alterat on in some form, by injected humour, randomis words which don't look even slightly.</p>
+                                <div class="read-more">
+                                    <a href="single-blog.html">Read more</a>
+                                </div>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-favorite"></i>89 Like</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-comments"></i>59 Comments</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-share"></i>29 Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- blog-item end -->
+                    <!-- blog-item start -->
+                    <div class="col-xs-12">
+                        <div class="blog-item">
+                            <img src="~/Content/images/1_7.jpg" alt="">
+                            <div class="blog-desc">
+                                <h5 class="blog-title"><a href="single-blog.html">dummy Blog name</a></h5>
+                                <p>There are many variations of passages of psum available, but the majority have suffered alterat on in some form, by injected humour, randomis words which don't look even slightly.</p>
+                                <div class="read-more">
+                                    <a href="single-blog.html">Read more</a>
+                                </div>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-favorite"></i>89 Like</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-comments"></i>59 Comments</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="zmdi zmdi-share"></i>29 Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- blog-item end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BLOG SECTION END -->
+</section>
