@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -198,6 +200,54 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BinhLuan.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDonHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HinhThucGiaoHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhuyenMai.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaSanXuat.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThanhVien.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinhTrangDonHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -467,10 +517,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\QuanLyBanHangModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanHangModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QuanLyBanHangModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanHangModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\QuanLyBanHangModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyBanHangModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyBanHangModel.edmx.diagram">
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -497,7 +564,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -506,6 +572,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
