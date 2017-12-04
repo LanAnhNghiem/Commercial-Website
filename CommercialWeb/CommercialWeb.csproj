@@ -670,6 +670,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -694,6 +696,7 @@
     <Content Include="Views\SanPham\LaptopPartial.cshtml" />
     <Content Include="Views\SanPham\MayTinhPartial.cshtml" />
     <Content Include="Views\SanPham\LinhKienPartial.cshtml" />
+    <Content Include="Views\SanPham\SliderBannerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
