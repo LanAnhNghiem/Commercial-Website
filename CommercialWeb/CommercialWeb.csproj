@@ -697,6 +697,7 @@
     <Content Include="Views\SanPham\MayTinhPartial.cshtml" />
     <Content Include="Views\SanPham\LinhKienPartial.cshtml" />
     <Content Include="Views\SanPham\SliderBannerPartial.cshtml" />
+    <Content Include="Views\Home\MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

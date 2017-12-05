@@ -11,11 +11,11 @@
                 <div class="product-item">
                     <div class="product-img">
                         <a href="single-product.html">
-                            <img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
+                            <img data-image="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
                         </a>
                     </div>
                     <div class="product-info">
-                        <h6 class="product-title" title="@item.TenSP">
+                        <h6 class="product-title" title="@item.TenSP" data-ten-sp="@item.TenSP">
                             <a href="single-product.html">@item.TenSP</a>
                         </h6>
                         <div class="pro-rating">
@@ -25,7 +25,7 @@
                             <a href="#"><i class="zmdi zmdi-star-half"></i></a>
                             <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
                         </div>
-                        <h3 class="pro-price">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
+                        <h3 class="pro-price" data-don-gia="@String.Format("{0:n0}", item.DonGia) VNĐ">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
                         <ul class="action-button">
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
@@ -38,7 +38,6 @@
                 </div>
             </div>
         <!-- product-item end -->
-         
         }
     </div>
 </div>
