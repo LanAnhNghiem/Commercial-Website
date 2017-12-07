@@ -1,4 +1,4 @@
-a.meanmenu-reveal{display:none}
+﻿a.meanmenu-reveal{display:none}
 .mean-container .mean-bar {
   background: transparent none repeat scroll 0 0;
   float: left;
@@ -78,7 +78,7 @@ a.meanmenu-reveal{display:none}
 .mean-remove{display:none!important}
 .mean-container .mean-bar::after {
   color: #ffffff;
-  content: "MENU";
+  content: "DANH MỤC";
   font-size: 14px;
   left: 5%;
   position: absolute;
