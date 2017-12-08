@@ -179,7 +179,7 @@
   text-align: center;
   width: 30px;
 }
-.action-button > li > a i {
+.action-button > li > a {
   line-height: 28px;
 }
 .action-button > li:hover > a {
@@ -1258,7 +1258,7 @@ table {width: 100%}
   padding: 20px 30px;
 }
 .product-thumbnail {
-  width: 420px;
+  width: 400px;
 }
 .pro-thumbnail-img {
   float: left;
@@ -1279,7 +1279,7 @@ table {width: 100%}
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: uppercase;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
 }
 .pro-thumbnail-info > p {
   margin-bottom: 0;

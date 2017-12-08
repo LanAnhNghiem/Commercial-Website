@@ -24,12 +24,13 @@ namespace CommercialWeb.Controllers
             }
             return lstGioHang;
         }
-        //Add cart (normal)
-        public ActionResult ThemGioHang(int MaSP, string URL)
+        //Add cart
+
+        public ActionResult ThemGioHangAjax(int MaSP, string URL)
         {
             //check if a product exsited in Database or not
             SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
-            if(sp == null)
+            if (sp == null)
             {
                 //Show 404 error, invalid product's url
                 Response.StatusCode = 404;
@@ -39,27 +40,33 @@ namespace CommercialWeb.Controllers
             List<ItemGioHang> lstGioHang = LayGioHang();
             //If the product was inserted in Cart
             ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == MaSP);
-            if(spCheck != null)
+            if (spCheck != null)
             {
                 //Check number of product in database before the customers add more products in their cart
-                if(sp.SoLuongTon < spCheck.SoLuong)
+                if (sp.SoLuongTon < spCheck.SoLuong)
                 {
-                    return View("Notification");
+                    TempData["msg"] = "<script>alert('Change succesfully');</script>";
+                    //Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
+                    ViewBag.TongSoLuong = TinhTongSoLuong();
+                    return PartialView("GioHangPartial");
                 }
                 spCheck.SoLuong++;
                 spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
-                return Redirect(URL);
+                ViewBag.TongSoLuong = TinhTongSoLuong();
+                return PartialView("GioHangPartial");
             }
-            
+
             ItemGioHang itemGH = new ItemGioHang(MaSP);
             if (sp.SoLuongTon < itemGH.SoLuong)
             {
-                return View("Notification");
+                TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng!');</script>";
+                ViewBag.TongSoLuong = TinhTongSoLuong();
+                return PartialView("GioHangPartial");
             }
             lstGioHang.Add(itemGH);
-            return Redirect(URL);
+            ViewBag.TongSoLuong = TinhTongSoLuong();
+            return PartialView("GioHangPartial");
         }
-
         //Total number of product
         public double TinhTongSoLuong()
         {
@@ -98,5 +105,7 @@ namespace CommercialWeb.Controllers
 
             return PartialView();
         }
+        //update cart
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿@*Use ViewBag to show the number of product inserted*@
 <!-- total-cart -->
-<div class="total-cart f-left">
+@Html.Raw(TempData["msg"])
+<div id="giohang" class="total-cart f-left">
     <div class="total-cart-in">
         <div class="cart-toggler">
             <a href="@Url.Action("XemGioHang","GioHang")">

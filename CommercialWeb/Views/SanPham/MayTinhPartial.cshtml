@@ -31,7 +31,7 @@
                                 <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
                             </li>
                             <li>
-                                <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                <a href="@Url.Action("ThemGioHang", "GioHang", new { MaSP = item.MaSP, URL = Request.Url.ToString()})" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
                             </li>
                         </ul>
                     </div>
