@@ -1,9 +1,93 @@
 ﻿@using CommercialWeb.Models;
-@model IEnumerable<ItemGioHang>
+@model List<ItemGioHang>
 @{
     ViewBag.Title = "XemGioHang";
     Layout = "~/Views/Layout/CartLayout.cshtml";
 }
 
-<h2>XemGioHang</h2>
+@if(Model.Count == 0)
+{
+    <h1>Giỏ hàng rỗng</h1>
+}
+else
+{
+    <!-- shopping-cart start -->
+    <div class="tab-pane active" id="shopping-cart">
+        <div class="shopping-cart-content">
+            <form action="#">
+                <div class="table-content table-responsive mb-50">
+                    <table class="text-center">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">sản phẩm</th>
+                                <th class="product-price">đơn giá</th>
+                                <th class="product-quantity">số lượng</th>
+                                <th class="product-subtotal">tổng tiền</th>
+                                <th class="product-remove">xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- tr -->
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <div class="pro-thumbnail-img">
+                                            <img src="@Url.Content("~/Content/ProductImages"+ item.HinhAnh)" alt="Hình sản phẩm">
+                                        </div>
+                                        <div class="pro-thumbnail-info text-left">
+                                            <h6 class="product-title-2">
+                                                <a href="#">@item.TenSp</a>
+                                            </h6>
+                                        </div>
+                                    </td>
+                                    <td class="product-price">@item.DonGia.ToString("#,##") VND</td>
+                                    <td class="product-quantity">
+                                        <div class="cart-plus-minus f-left">
+                                            <div class="dec qtybutton">-</div>
+                                            <input type="text" value="@item.SoLuong" name="qtybutton" class="cart-plus-minus-box">
+                                            <div class="inc qtybutton">+</div>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">@item.ThanhTien.ToString("#,##") VND</td>
+                                    <td class="product-remove">
+                                        <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="float:right">
+                        <div class="payment-details box-shadow p-30 mb-50">
+                            <h6 class="widget-title border-left mb-20">thanh toán</h6>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="td-title-1">Tạm tính</td>
+                                        <td class="td-title-2">$155.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">Phí vận chuyển</td>
+                                        <td class="td-title-2">$15.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">VAT</td>
+                                        <td class="td-title-2">$00.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="order-total">Tổng thành tiền</td>
+                                        <td class="order-total-price">$170.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+                                <!-- shopping-cart end -->
+}
 

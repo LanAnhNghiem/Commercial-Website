@@ -21,8 +21,6 @@ namespace CommercialWeb.Controllers
                 // da sua
                 lstGioHang = new List<ItemGioHang>();
                 Session["GioHang"] = lstGioHang;
-                // khong gan lstGioHang? minh cung  hem bik nua
-                // code copy hay tu viet? thoi de coi lai video clip
             }
             return lstGioHang;
         }
@@ -49,6 +47,7 @@ namespace CommercialWeb.Controllers
                     return View("Notification");
                 }
                 spCheck.SoLuong++;
+                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
                 return Redirect(URL);
             }
             
@@ -85,7 +84,8 @@ namespace CommercialWeb.Controllers
         //}
         public ActionResult XemGioHang()
         {
-            return View();
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            return View(lstGioHang);
         }
         public ActionResult GioHangPartial()
         {
