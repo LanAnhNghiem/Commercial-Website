@@ -1,0 +1,774 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Subas || Shopping Cart</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/cart/images/favicon.png">
+
+    <!-- All CSS Files -->
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <!-- Nivo-slider css -->
+    <link rel="stylesheet" href="~/Content/css/nivo-slider.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="~/Content/css/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="~/Content/css/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="~/Content/css/custom.css">
+
+    <!-- Style customizer (Remove these two lines please) -->
+    <link rel="stylesheet" href="~/Content/css/style-customizer.css">
+    <link href="#" data-style="styles" rel="stylesheet">
+
+    <!-- Modernizr JS -->
+    <script src="~/Content/js/modernizr-2.8.3.min.js"></script>
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 17px;
+        }
+    </style>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- START HEADER AREA -->
+        <header class="header-area header-wrapper">
+            @Html.Partial("~/Views/Layout/HeaderPartial.cshtml")
+        </header>
+        <!-- END HEADER AREA -->
+        <!-- START MOBILE MENU AREA -->
+        <div class="mobile-menu-area hidden-lg hidden-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown" style="display: block;">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                        <ul>
+                                            <li>
+                                                <a href="index.html">Home Version 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-2.html">Home Version 2</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-3.html">Home Version 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-4.html">Home 4 Animated Text</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-5.html">Home 5 Animated Text Ovlerlay</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-6.html">Home 6 Background Video</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-7.html">Home 7 BG-Video Ovlerlay</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-8.html">Home 8 Boxed-1</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-9.html">Home 9 Gradient</a>
+                                            </li>
+                                            <li>
+                                                <a href="index-10.html">Home 10 Boxed-2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">Products</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Pages</a>
+                                        <ul>
+                                            <li>
+                                                <a href="shop.html">Shop</a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-left-sidebar.html">Shop Left Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-right-sidebar.html">Shop Right Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-list.html">Shop List</a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="single-product.html">Single Product</a>
+                                            </li>
+                                            <li>
+                                                <a href="single-product-left-sidebar.html">Single Product Left Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="single-product-no-sidebar.html">Single Product No Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="cart.html">Shopping Cart</a>
+                                            </li>
+                                            <li>
+                                                <a href="wishlist.html">Wishlist</a>
+                                            </li>
+                                            <li>
+                                                <a href="checkout.html">Checkout</a>
+                                            </li>
+                                            <li>
+                                                <a href="order.html">Order</a>
+                                            </li>
+                                            <li>
+                                                <a href="login.html">Login</a>
+                                            </li>
+                                            <li>
+                                                <a href="My-account.html">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="about.html">About us</a>
+                                            </li>
+                                            <li>
+                                                <a href="404.html">404</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                        <ul>
+                                            <li>
+                                                <a href="blog.html">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-right-sidebar.html">Blog Right Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-2.html">Blog style 2</a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-2-left-sidebar.html">Blog 2 Left Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-2-right-sidebar.html">Blog 2 Right Sidebar</a>
+                                            </li>
+                                            <li>
+                                                <a href="single-blog.html">Blog Details</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MOBILE MENU AREA -->
+        <!-- BREADCRUMBS SETCTION START -->
+        <div class="breadcrumbs-section plr-200 mb-80">
+            <div class="breadcrumbs overlay-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="breadcrumbs-inner">
+                                <h1 class="breadcrumbs-title">Giỏ Hàng</h1>
+                                <ul class="breadcrumb-list">
+                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li>Giỏ Hàng</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BREADCRUMBS SETCTION END -->
+        <!-- Start page content -->
+        <section id="page-content" class="page-wrapper">
+
+            <!-- SHOP SECTION START -->
+            <div class="shop-section mb-80">
+                @RenderBody()
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <ul class="cart-tab">
+                                <li>
+                                    <a class="active" href="#shopping-cart" data-toggle="tab">
+                                        <span>01</span>
+                                        Giỏ hàng
+                                    </a>
+                                </li>
+                                @*<li>
+                                    <a href="#wishlist" data-toggle="tab">
+                                        <span>02</span>
+                                        Wishlist
+                                    </a>
+                                </li>*@
+                                <li>
+                                    <a href="#checkout" data-toggle="tab">
+                                        <span>02</span>
+                                        Đặt hàng   
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#order-complete" data-toggle="tab">
+                                        <span>03</span>
+                                        Hoàn tất đặt hàng
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <!-- shopping-cart start -->
+                                <div class="tab-pane active" id="shopping-cart">
+                                    <div class="shopping-cart-content">
+                                        <form action="#">
+                                            <div class="table-content table-responsive mb-50">
+                                                <table class="text-center">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="product-thumbnail">sản phẩm</th>
+                                                            <th class="product-price">đơn giá</th>
+                                                            <th class="product-quantity">số lượng</th>
+                                                            <th class="product-subtotal">tổng tiền</th>
+                                                            <th class="product-remove">xóa</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- tr -->
+                                                        <tr>
+                                                            <td class="product-thumbnail">
+                                                                <div class="pro-thumbnail-img">
+                                                                    <img src="~/Content/cart/images/1_1.jpg" alt="">
+                                                                </div>
+                                                                <div class="pro-thumbnail-info text-left">
+                                                                    <h6 class="product-title-2">
+                                                                        <a href="#">dummy product name</a>
+                                                                    </h6>
+                                                                    <p>Brand: Brand Name</p>
+                                                                    <p>Model: Grand s2</p>
+                                                                    <p> Color: Black, White</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-price">$560.00</td>
+                                                            <td class="product-quantity">
+                                                                <div class="cart-plus-minus f-left">
+                                                                    <div class="dec qtybutton">-</div>
+                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                    <div class="inc qtybutton">+</div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-subtotal">$1020.00</td>
+                                                            <td class="product-remove">
+                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- tr -->
+                                                        <tr>
+                                                            <td class="product-thumbnail">
+                                                                <div class="pro-thumbnail-img">
+                                                                    <img src="~/Content/cart/images/2_1.jpg" alt="">
+                                                                </div>
+                                                                <div class="pro-thumbnail-info text-left">
+                                                                    <h6 class="product-title-2">
+                                                                        <a href="#">dummy product name</a>
+                                                                    </h6>
+                                                                    <p>Brand: Brand Name</p>
+                                                                    <p>Model: Grand s2</p>
+                                                                    <p> Color: Black, White</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-price">$560.00</td>
+                                                            <td class="product-quantity">
+                                                                <div class="cart-plus-minus f-left">
+                                                                    <div class="dec qtybutton">-</div>
+                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                    <div class="inc qtybutton">+</div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-subtotal">$1020.00</td>
+                                                            <td class="product-remove">
+                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- tr -->
+                                                        <tr>
+                                                            <td class="product-thumbnail">
+                                                                <div class="pro-thumbnail-img">
+                                                                    <img src="~/Content/cart/images/3.jpg" alt="">
+                                                                </div>
+                                                                <div class="pro-thumbnail-info text-left">
+                                                                    <h6 class="product-title-2">
+                                                                        <a href="#">dummy product name</a>
+                                                                    </h6>
+                                                                    <p>Brand: Brand Name</p>
+                                                                    <p>Model: Grand s2</p>
+                                                                    <p> Color: Black, White</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-price">$560.00</td>
+                                                            <td class="product-quantity">
+                                                                <div class="cart-plus-minus f-left">
+                                                                    <div class="dec qtybutton">-</div>
+                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                    <div class="inc qtybutton">+</div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product-subtotal">$1020.00</td>
+                                                            <td class="product-remove">
+                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row">
+                                                @*<div class="col-md-6">
+                                                    <div class="coupon-discount box-shadow p-30 mb-50">
+                                                        <h6 class="widget-title border-left mb-20">coupon discount</h6>
+                                                        <p>Enter your coupon code if you have one!</p>
+                                                        <input type="text" name="name" placeholder="Enter your code here.">
+                                                        <button class="submit-btn-1 black-bg btn-hover-2" type="submit">apply coupon</button>
+                                                    </div>
+                                                </div>*@
+                                                <div class="col-md-6" style="float:right">
+                                                    <div class="payment-details box-shadow p-30 mb-50">
+                                                        <h6 class="widget-title border-left mb-20">thanh toán</h6>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="td-title-1">Tạm tính</td>
+                                                                    <td class="td-title-2">$155.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="td-title-1">Phí vận chuyển</td>
+                                                                    <td class="td-title-2">$15.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="td-title-1">VAT</td>
+                                                                    <td class="td-title-2">$00.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="order-total">Tổng thành tiền</td>
+                                                                    <td class="order-total-price">$170.00</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- shopping-cart end -->
+                                <!-- wishlist start -->
+                               
+                                <!-- wishlist end -->
+                                <!-- checkout start -->
+                                <div class="tab-pane" id="checkout">
+                                    <div class="checkout-content box-shadow p-30">
+                                        <form action="#">
+                                            <div class="row">
+                                                <!-- billing details -->
+                                                <div class="col-md-6">
+                                                    <div class="billing-details pr-10">
+                                                        <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
+                                                        <input type="text" placeholder="Họ tên">
+                                                        <input type="text" placeholder="Địa chỉ">
+                                                        <input type="text" placeholder="Số điện thoại">
+                                                        <input type="text" placeholder="Email">
+                                                        <select class="custom-select">
+                                                            <option value="defalt">Hình thức thanh toán</option>
+                                                            <option value="c-1">Giao hàng tiêu chuẩn</option>
+                                                            <option value="c-2">Giao hàng nhanh</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <!-- our order -->
+                                                    <div class="payment-details pl-10 mb-50">
+                                                        <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="td-title-1">Dummy Product Name x 2</td>
+                                                                    <td class="td-title-2">$1855.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="td-title-1">Dummy Product Name</td>
+                                                                    <td class="td-title-2">$555.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="td-title-1">Tạm tính</td>
+                                                                    <td class="td-title-2">$2410.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="td-title-1">Phí vận chuyển</td>
+                                                                    <td class="td-title-2">$15.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="td-title-1">VAT</td>
+                                                                    <td class="td-title-2">$00.00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="order-total">Tổng thành tiền</td>
+                                                                    <td class="order-total-price">$2425.00</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- payment-method -->
+                                                    <div class="payment-method">
+                                                        <h6 class="widget-title border-left mb-20">Phương thức thanh toán</h6>
+                                                        <div id="accordion">
+                                                            <div class="panel">
+                                                                <h4 class="payment-title box-shadow">
+                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#bank-transfer">
+                                                                        giao hàng tiêu chuẩn
+                                                                    </a>
+                                                                </h4>
+                                                                <div id="bank-transfer" class="panel-collapse collapse in">
+                                                                    <div class="payment-content">
+                                                                        <p>Lorem Ipsum is simply in dummy text of the printing and type setting industry. Lorem Ipsum has been.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel">
+                                                                <h4 class="payment-title box-shadow">
+                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                                        giao hàng nhanh
+                                                                    </a>
+                                                                </h4>
+                                                                <div id="collapseTwo" class="panel-collapse collapse">
+                                                                    <div class="payment-content">
+                                                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- payment-method end -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- checkout end -->
+                                <!-- order-complete start -->
+                                <div class="tab-pane" id="order-complete">
+                                    <div class="order-complete-content box-shadow">
+                                        <div class="thank-you p-30 text-center">
+                                            <h6 class="text-black-5 mb-0">Đơn hàng của bạn đã được tiếp nhận.</h6>
+                                        </div>
+                                        <div class="order-info p-30 mb-10">
+                                            <ul class="order-info-list">
+                                                <li>
+                                                    <h6>Mã đơn hàng</h6>
+                                                    <p>m 2653257</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <!-- our order -->
+                                            <div class="col-md-6">
+                                                <div class="payment-details p-30">
+                                                    <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="td-title-1">Dummy Product Name x 2</td>
+                                                                <td class="td-title-2">$1855.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="td-title-1">Dummy Product Name</td>
+                                                                <td class="td-title-2">$555.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="td-title-1">Tạm tính</td>
+                                                                <td class="td-title-2">$2410.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="td-title-1">Phí vận chuyển</td>
+                                                                <td class="td-title-2">$15.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="td-title-1">VAT</td>
+                                                                <td class="td-title-2">$00.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="order-total">Tổng thành tiền</td>
+                                                                <td class="order-total-price">$2425.00</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="bill-details p-30">
+                                                    <h6 class="widget-title border-left mb-20">Địa chỉ giao hàng</h6>
+                                                    <ul class="bill-address">
+                                                        <li>
+                                                            <span>Address:</span>
+                                                            28 Green Tower, Street Name, New York City, USA
+                                                        </li>
+                                                        <li>
+                                                            <span>email:</span>
+                                                            info@companyname.com
+                                                        </li>
+                                                        <li>
+                                                            <span>phone : </span>
+                                                            (+880) 19453 821758
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- order-complete end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SHOP SECTION END -->
+
+        </section>
+        <!-- End page content -->
+        <!-- START FOOTER AREA -->
+        <footer id="footer" class="footer-area">
+            <div class="footer-top">
+                <div class="container-fluid">
+                    <div class="plr-185">
+                        <div class="footer-top-inner gray-bg">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5 col-sm-4">
+                                    <div class="single-footer footer-about">
+                                        <div class="footer-logo">
+                                            <img src="~/Content/cart/images/logo.png" alt="">
+                                        </div>
+                                        <div class="footer-brief">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the subas industry's standard dummy text ever since the 1500s,</p>
+                                            <p>When an unknown printer took a galley of type and If you are going to use a passage of Lorem Ipsum scrambled it to make.</p>
+                                        </div>
+                                        <ul class="footer-social">
+                                            <li>
+                                                <a class="facebook" href="" title="Facebook"><i class="zmdi zmdi-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a class="google-plus" href="" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a>
+                                            </li>
+                                            <li>
+                                                <a class="twitter" href="" title="Twitter"><i class="zmdi zmdi-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a class="rss" href="" title="RSS"><i class="zmdi zmdi-rss"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 hidden-md hidden-sm">
+                                    <div class="single-footer">
+                                        <h4 class="footer-title border-left">Shipping</h4>
+                                        <ul class="footer-menu">
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>New Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Discount Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Best Sell Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Popular Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Manufactirers</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Suppliers</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Special Products</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                    <div class="single-footer">
+                                        <h4 class="footer-title border-left">my account</h4>
+                                        <ul class="footer-menu">
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>My Account</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>My Wishlist</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>My Cart</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Sign In</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Registration</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Check out</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Oder Complete</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="single-footer">
+                                        <h4 class="footer-title border-left">Get in touch</h4>
+                                        <div class="footer-message">
+                                            <form action="#">
+                                                <input type="text" name="name" placeholder="Your name here...">
+                                                <input type="text" name="email" placeholder="Your email here...">
+                                                <textarea class="height-80" name="message" placeholder="Your messege here..."></textarea>
+                                                <button class="submit-btn-1 mt-20 btn-hover-1" type="submit">submit message</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom black-bg">
+                <div class="container-fluid">
+                    <div class="plr-185">
+                        <div class="copyright">
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="copyright-text">
+                                        <p>© <a href="#" target="_blank">DevItems</a> 2017. All Rights Reserved.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xs-12">
+                                    <ul class="footer-payment text-right">
+                                        <li>
+                                            <a href="#"><img src="~/Content/cart/images/1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/Content/cart/images/2.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/Content/cart/images/3_1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="~/Content/cart/images/4.jpg" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END FOOTER AREA -->
+        <!--style-customizer start -->
+        <div class="style-customizer closed">
+            <div class="buy-button">
+                <a href="index.html" class="customizer-logo"><img src="~/Content/cart/images/logo_1.png" alt="Theme Logo"></a>
+                <a class="opener" href="#"><i class="zmdi zmdi-settings"></i></a>
+            </div>
+            <div class="clearfix content-chooser">
+                <h3>Layout Options</h3>
+                <p>Which layout option you want to use?</p>
+                <ul class="layoutstyle clearfix">
+                    <li class="wide-layout" data-style="wide" title="wide"> Wide </li>
+                    <li class="boxed-layout" data-style="boxed" title="boxed"> Boxed </li>
+                </ul>
+                <h3>Color Schemes</h3>
+                <p>Which theme color you want to use? Select from here.</p>
+                <ul class="styleChange clearfix">
+                    <li class="skin-default" title="skin-default" data-style="skin-default"></li>
+                    <li class="skin-green" title="green" data-style="skin-green"></li>
+                    <li class="skin-purple" title="purple" data-style="skin-purple"></li>
+                    <li class="skin-blue" title="blue" data-style="skin-blue"></li>
+                    <li class="skin-cyan" title="cyan" data-style="skin-cyan"></li>
+                    <li class="skin-amber" title="amber" data-style="skin-amber"></li>
+                    <li class="skin-blue-grey" title="blue-grey" data-style="skin-blue-grey"></li>
+                    <li class="skin-teal" title="teal" data-style="skin-teal"></li>
+                </ul>
+                <h3>Background Patterns</h3>
+                <p>Which background pattern you want to use?</p>
+                <ul class="patternChange clearfix">
+                    <li class="pattern-1" data-style="pattern-1" title="pattern-1"></li>
+                    <li class="pattern-2" data-style="pattern-2" title="pattern-2"></li>
+                    <li class="pattern-3" data-style="pattern-3" title="pattern-3"></li>
+                    <li class="pattern-4" data-style="pattern-4" title="pattern-4"></li>
+                    <li class="pattern-5" data-style="pattern-5" title="pattern-5"></li>
+                    <li class="pattern-6" data-style="pattern-6" title="pattern-6"></li>
+                    <li class="pattern-7" data-style="pattern-7" title="pattern-7"></li>
+                    <li class="pattern-8" data-style="pattern-8" title="pattern-8"></li>
+                </ul>
+                <h3>Background Images</h3>
+                <p>Which background image you want to use?</p>
+                <ul class="patternChange main-bg-change clearfix">
+                    <li class="main-bg-1" data-style="main-bg-1" title="Background 1"> <img src="~/Content/cart/images/01.jpg" alt=""></li>
+                    <li class="main-bg-2" data-style="main-bg-2" title="Background 2"> <img src="~/Content/cart/images/02.jpg" alt=""></li>
+                    <li class="main-bg-3" data-style="main-bg-3" title="Background 3"> <img src="~/Content/cart/images/03.jpg" alt=""></li>
+                    <li class="main-bg-4" data-style="main-bg-4" title="Background 4"> <img src="~/Content/cart/images/04.jpg" alt=""></li>
+                    <li class="main-bg-5" data-style="main-bg-5" title="Background 5"> <img src="~/Content/cart/images/05.jpg" alt=""></li>
+                    <li class="main-bg-6" data-style="main-bg-6" title="Background 6"> <img src="~/Content/cart/images/06.jpg" alt=""></li>
+                    <li class="main-bg-7" data-style="main-bg-7" title="Background 7"> <img src="~/Content/cart/images/07.jpg" alt=""></li>
+                    <li class="main-bg-8" data-style="main-bg-8" title="Background 8"> <img src="~/Content/cart/images/08.jpg" alt=""></li>
+                </ul>
+                <ul class="resetAll">
+                    <li><a class="button button-border button-reset" href="#">Reset All</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--style-customizer end -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed JS at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- jquery.nivo.slider js -->
+    <script src="~/Content/js/jquery.nivo.slider.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="~/Content/js/plugins.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="~/Content/js/main.js"></script><a id="scrollUp" href="#top" style="display: none; position: fixed; z-index: 2147483647;"><i class="zmdi zmdi-chevron-up"></i></a>
+</body>
+</html>

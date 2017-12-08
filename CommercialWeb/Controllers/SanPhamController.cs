@@ -9,6 +9,7 @@ namespace CommercialWeb.Controllers
 {
     public class SanPhamController : Controller
     {
+        QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: SanPham
         [ChildActionOnly]
         public ActionResult SanPhamMoiPartial()
@@ -46,6 +47,12 @@ namespace CommercialWeb.Controllers
 
         [ChildActionOnly]
         public ActionResult SliderBannerPartial()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult HeaderPartial()
         {
             return PartialView();
         }

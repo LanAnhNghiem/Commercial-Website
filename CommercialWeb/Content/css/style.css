@@ -722,7 +722,7 @@ transform: scale(1);
 ------------------------------------- */
 .breadcrumbs-section {}
 .breadcrumbs {
-  background: #f6f6f6 url("../images/1_1.png") no-repeat scroll center center; 
+  background: #f6f6f6 url("../images/1_2.png") no-repeat scroll center center; 
 }
 .overlay-bg { 
   position: relative;
@@ -1161,6 +1161,13 @@ transform: scale(1);
 }
 .inc.qtybutton {
   float: right;
+  
+}
+.dec.qtybutton: hover{
+  cursor: pointer;
+}
+.inc.qtybutton: hover{
+  cursor: pointer;
 }
 input.cart-plus-minus-box {
   background: transparent none repeat scroll 0 0;
@@ -1238,9 +1245,9 @@ input.cart-plus-minus-box {
 table {width: 100%}
 .table-content table thead th {
   color: #666666;
-  font-family: raleway;
+  font-family: roboto;
   font-size: 13px;
-  font-weight: 600;
+/*  font-weight: 600;*/
   line-height: 1;
   padding: 18px 0;
   text-align: center;
