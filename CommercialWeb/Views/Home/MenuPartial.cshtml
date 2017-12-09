@@ -254,7 +254,9 @@
                         </div>
                         <!-- total-cart -->
                         <!--Insert partial view GioHangPartial into layout. Extract icon cart into a new partial view-->
-                        @Html.Action("GioHangPartial", "GioHang")
+                        <div id="giohang_partial_holder" class="total-cart f-left">
+                            @Html.Action("GioHangPartial", "GioHang")
+                        </div>
                     </div>
                 </div>
             </div>

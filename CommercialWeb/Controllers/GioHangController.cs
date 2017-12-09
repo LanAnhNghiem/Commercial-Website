@@ -13,40 +13,46 @@ namespace CommercialWeb.Controllers
         // GET: GioHang
         public List<ItemGioHang> LayGioHang()
         {
-            //Cart exsited
+            //Giỏ hàng đã tồn tại
             List<ItemGioHang> lstGioHang = Session["GioHang"] as List<ItemGioHang>;
-            //if Cart null
+            //Nếu giỏ hàng null
             if(lstGioHang == null)
             {
-                // da sua
                 lstGioHang = new List<ItemGioHang>();
                 Session["GioHang"] = lstGioHang;
             }
             return lstGioHang;
         }
-        //Add cart
-
+        public List<String> LayThanhToan()
+        {
+            List<String> lst = Session["ThanhToan"] as List<String>;
+            if(lst == null)
+            {
+                lst = new List<String>();
+                Session["ThanhToan"] = lst;
+            }
+            return lst;
+        }
         public ActionResult ThemGioHangAjax(int MaSP, string URL)
         {
-            //check if a product exsited in Database or not
+            //Kiểm tra nếu sp có trong giỏ hàng hay chưa
             SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
             if (sp == null)
             {
-                //Show 404 error, invalid product's url
+                //Hiện lỗi 404 khi đường dẫn ko hợp lệ
                 Response.StatusCode = 404;
                 return null;
             }
             //Get GioHang
             List<ItemGioHang> lstGioHang = LayGioHang();
-            //If the product was inserted in Cart
+            //Nếu sp đã có trong giỏ hàng
             ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == MaSP);
             if (spCheck != null)
             {
-                //Check number of product in database before the customers add more products in their cart
+                //Kiểm tra số lượng tồn trước khi thêm vào giỏ
                 if (sp.SoLuongTon < spCheck.SoLuong)
                 {
                     TempData["msg"] = "<script>alert('Change succesfully');</script>";
-                    //Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
                     ViewBag.TongSoLuong = TinhTongSoLuong();
                     return PartialView("GioHangPartial");
                 }
@@ -68,7 +74,6 @@ namespace CommercialWeb.Controllers
             return PartialView("GioHangPartial");
         }
         
-        //Total number of product
         public double TinhTongSoLuong()
         {
             //Get GioHang
@@ -79,7 +84,7 @@ namespace CommercialWeb.Controllers
             }
             return lstGioHang.Sum(n => n.SoLuong);
         }
-        //Total (price)
+       
         public decimal TinhTongTien()
         {
             //Get GioHang
@@ -106,52 +111,74 @@ namespace CommercialWeb.Controllers
 
             return PartialView();
         }
-        public ActionResult TinhItemThanhTien(decimal dongia, int soluong)
+        public ActionResult TinhItemThanhTien(int masp, decimal dongia, int soluong)
         {
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == masp);
+            //Lấy GioHang
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            //Nếu sp đã được thêm vào giỏ
+            ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == masp);
+            
+            if (spCheck != null)
+            {
+                int soLuongCu = spCheck.SoLuong;
+                spCheck.SoLuong = soluong;
+                //Kiểm tra số lượng tồn trước khi thêm vào giỏ
+                if (sp.SoLuongTon < spCheck.SoLuong)
+                {
+                    TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng, không thể đặt thêm!');</script>";
+                    spCheck.SoLuong = soLuongCu;
+                }
+                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
+            }
+            if(soluong == 0)
+            {
+                return Content("0 VND");
+            }
             return Content((dongia * soluong).ToString("#,##")+" VND");
         }
-        public ActionResult CapNhatGioHang(int MaSP, int SoLuong)
+        public ActionResult TamTinh()
         {
-            //check if a product exsited in Database or not
+            List<String> lstThanhToan = LayThanhToan();
+            String tamTinh = TinhTongTien().ToString("#,##") + " VND";
+            lstThanhToan.Add(tamTinh);
+            return Content(tamTinh);
+        }
+        public ActionResult TongThanhTien()
+        {
+            List<String> lstThanhToan = LayThanhToan();
+            String tongThanhTien = ((10 * TinhTongTien() / 100) + TinhTongTien()).ToString("#,##") + " VND";
+            lstThanhToan.Add(tongThanhTien);
+            return Content(tongThanhTien);
+        }
+        //Cập nhật lại số sp ở giỏ hàng trên menu của CartLayout
+        public ActionResult CapNhatGioHang()
+        {
+            ViewBag.TongSoLuong = TinhTongSoLuong();
+            return PartialView("GioHangPartial");
+        }
+        public ActionResult XoaGioHang(int MaSP)
+        {
+            //Kiểm tra nếu sp có trong giỏ hàng hay chưa
             SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
             if (sp == null)
             {
-                //Show 404 error, invalid product's url
+                //Hiện lỗi 404 khi đường dẫn ko hợp lệ
                 Response.StatusCode = 404;
                 return null;
             }
             //Get GioHang
             List<ItemGioHang> lstGioHang = LayGioHang();
-            //If the product was inserted in Cart
+            //Nếu sp đã có trong giỏ hàng
             ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == MaSP);
-            int soLuongCu = spCheck.SoLuong;
-            if (spCheck != null)
+            if(spCheck == null)
             {
-                spCheck.SoLuong = SoLuong;
-                //Check number of product in database before the customers add more products in their cart
-                if (sp.SoLuongTon < spCheck.SoLuong)
-                {
-                    TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng, không thể đặt thêm!');</script>";
-                    spCheck.SoLuong = soLuongCu;
-                    ViewBag.TongTien = TinhTongTien();
-                    ViewBag.ItemTongTien = spCheck.SoLuong * spCheck.DonGia;
-                    return PartialView("TongTienPartial");
-                }
-                spCheck.SoLuong = SoLuong;
-                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
-                ViewBag.TongTien = TinhTongTien();
-                ViewBag.ItemTongTien = spCheck.SoLuong * spCheck.DonGia;
+                return RedirectToAction("Index", "Home");
             }
-            return PartialView("TongTienPartial");
+            //Xóa sp
+            lstGioHang.Remove(spCheck);
+            return RedirectToAction("XemGioHang");
         }
-        //partial view của Tổng tiền
-        public ActionResult TongTienPartial()
-        {
-            
-            ViewBag.ItemTongTien = 0;
-            return PartialView();
-        }
-        //update cart
-
+        
     }
 }

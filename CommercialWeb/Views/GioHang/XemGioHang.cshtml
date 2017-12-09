@@ -37,15 +37,9 @@
                                 </td>
                                 <td class="product-price"></td>
                                 <td class="product-quantity">
-                                    <div class="cart-plus-minus f-left">
-                                        <div class="dec qtybutton">-</div>
-                                        <input type="text" value="" name="qtybutton" class="cart-plus-minus-box">
-                                        <div class="inc qtybutton">+</div>
-                                    </div>
                                 </td>
                                 <td class="product-subtotal"></td>
                                 <td class="product-remove">
-                                    <a href="#"><i class="zmdi zmdi-close"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -67,7 +61,7 @@
                                     </tr>
                                     <tr>
                                         <td class="td-title-1">VAT</td>
-                                        <td class="td-title-2">0 VND</td>
+                                        <td class="td-title-2">10%</td>
                                     </tr>
                                     <tr>
                                         <td class="order-total">Tổng thành tiền</td>
@@ -116,31 +110,19 @@ else
                                         </div>
                                     </td>
                                     <td class="product-price"  >@item.DonGia.ToString("#,##") VND</td>
+                                    <td id="masp" hidden="hidden">@item.MaSP</td>
                                     <td id="dongia" hidden="hidden">@item.DonGia</td>
-                                    @*<td class="product-quantity">
-                                        <div class="cart-plus-minus f-left">
-                                            @Ajax.ActionLink("Them", "CapNhatGioHang", "GioHang", new { MaSP = item.MaSP, SoLuong = item.SoLuong, URL = Request.Url.ToString() },
-                                           new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "thanhtien", InsertionMode = InsertionMode.Replace },
-                                           new { @class= "insert-cart"})
-                                            @*<div class="dec qtybutton">-</div>*@
-                                            @*<input type="text" value="@item.SoLuong" name="qtybutton" class="cart-plus-minus-box">*@
-                                            @*<div class="inc qtybutton">+</div>*@
-                                            @*Insert TongTienPartial view into XemGioHang view
-                                            
-                                        </div>
-                                    </td>*@
                                     <td class="product-quantity">
                                         <div class="cart-dec-inc">
                                             <div class="dec button" id="button">-</div>
-                                            <input type="text" value="@item.SoLuong" name="button" class="cart-plus-minus-box" id="soluong">
+                                            <input type="text" value="@item.SoLuong" name="button" class="cart-plus-minus-box" id="soluong" readonly="readonly">
                                             <div class="inc button" id="button">+</div>
                                         </div>
-                                        
                                     </td>
-                                    @*<td class="subtotal">@Html.Action("TongTienPartial", "GioHang")</td>*@
                                     <td class="product-subtotal" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
                                     <td class="product-remove">
-                                        <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                        @*<a href="" id="remove"><i class="zmdi zmdi-close"></i></a>*@
+                                        <p>@Html.ActionLink(" ", "XoaGioHang", new { @MaSP = item.MaSP }, new { @class = "zmdi zmdi-close" })</p>
                                     </td>
                                 </tr>
                             }
@@ -151,26 +133,28 @@ else
                     <div class="col-md-6" style="float:right">
                         <div class="payment-details box-shadow p-30 mb-50">
                             <h6 class="widget-title border-left mb-20">thanh toán</h6>
-                            <table>
+                            <table >
                                 <tbody>
                                     <tr>
-                                        <td class="td-title-1">Tạm tính</td>
-                                        <td class="td-title-2">0 VND</td>
+                                        <td class="td-title-1" >Tạm tính</td>
+                                        <td class="td-title-2" id="tamtinh">0 VND</td>
                                     </tr>
                                     <tr>
-                                        <td class="td-title-1">Phí vận chuyển</td>
+                                        <td class="td-title-1">Phí vận chuyển (chưa tính)</td>
                                         <td class="td-title-2">0 VND</td>
                                     </tr>
                                     <tr>
                                         <td class="td-title-1">VAT</td>
-                                        <td class="td-title-2">0 VND</td>
+                                        <td class="td-title-2">10%</td>
                                     </tr>
                                     <tr>
                                         <td class="order-total">Tổng thành tiền</td>
-                                        <td class="order-total-price">0 VND</td>
+                                        <td class="order-total-price" id="tongthanhtien">0 VND</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <button class="submit-btn-1 mt-20 btn-hover-1">Tiếp theo<a href="#checkout"></a></button>
+                            @*<a href="#checkout" class="submit-btn-1 mt-20 btn-hover-1" data-toggle="tab">Tiếp theo</a>*@
                         </div>
                     </div>
                 </div>
@@ -180,37 +164,25 @@ else
     <!-- shopping-cart end -->
 }
 <script type="text/javascript">
-    var time;
-    $(".cart-plus-minus-box").on("input", function(){
-        var soluong = $(this).val();
-        if ($(this).data("lastValue") != soluong) {
-            $(this).data("lastValue", soluong);
-            clearTimeout(time);
-            time = setTimeout(function () {
-                //change Thành tiền
-                
-                var donGia = Number($("#dongia").html());
-                var soLuong = Number($("#soluong").html());
-                alert(donGia);
-                
+    jQuery(function ($) {
+        $.ajax({
+            type: "POST",
+            data: {},
+            url: '@Url.Content("TamTinh")',
+            success: function (ketqua) {
+                $('#tamtinh').html(ketqua);
                 $.ajax({
-                    type: "GET",
-                    data: { dongia: donGia, soluong: soLuong },
-                    url: 'TinhItemThanhTien',
+                    type: "POST",
+                    data: {},
+                    url: '@Url.Content("TongThanhTien")',
                     success: function (ketqua) {
-                        $('#thanhtien').parent().val();
+                        $('#tongthanhtien').html(ketqua);
                     }
                 })
-            }, 300);
-        }
-    })
-    //$(function () {
-    //    $('.insert-cart').click(function () {
-    //        var SoLuong = $(".cart-plus-minus-box").val();
-    //        alert("Số lượng: " + SoLuong);
-    //    })
-    //})
-   
+            }
+        })
+    });
+   //Hàm tính thành tiền từng sp khi tăng số lượng, và thay đổi số lượng trên icon giỏ hàng
     $(".button").click( function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
@@ -229,18 +201,43 @@ else
                 }
             }
             $button.parent().find("input").val(newVal);
+            var maSP = $button.parent().parent().siblings("#masp").html();
             var donGia = $button.parent().parent().siblings("#dongia").html();
             var soLuong = $button.parent().find("input").val();
-
             $.ajax({
                 type: "GET",
-                data: { dongia: donGia, soluong: soLuong },
+                data: { masp: maSP, dongia: donGia, soluong: soLuong },
                 url: '@Url.Content("TinhItemThanhTien")',
                 success: function (ketqua) {
                     $button.parent().parent().siblings('#thanhtien').html(ketqua);
+                    $.ajax({
+                        type: "POST",
+                        data: {},
+                        UpdateTargetId:"giohang",
+                        url: '@Url.Content("CapNhatGioHang")',
+                        success: function (ketqua) {
+                            $('#giohang_partial_holder').html(ketqua);
+                            $.ajax({
+                                type: "POST",
+                                data: {},
+                                url: '@Url.Content("TamTinh")',
+                                success: function (ketqua) {
+                                    $('#tamtinh').html(ketqua);
+                                    $.ajax({
+                                        type: "POST",
+                                        data: {},
+                                        url: '@Url.Content("TongThanhTien")',
+                                        success: function (ketqua) {
+                                            $('#tongthanhtien').html(ketqua);
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
                 }
             })
-            @*$(".product-subtotal").replaceWith("@Html.Action("TongTienPartial", "GioHang"))*@
         }
     });
+
 </script>
