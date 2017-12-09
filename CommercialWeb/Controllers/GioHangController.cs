@@ -67,6 +67,47 @@ namespace CommercialWeb.Controllers
             ViewBag.TongSoLuong = TinhTongSoLuong();
             return PartialView("GioHangPartial");
         }
+        public ActionResult ThemGioHangAjax(int MaSP, int SoLuong string URL)
+        {
+            //check if a product exsited in Database or not
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
+            if (sp == null)
+            {
+                //Show 404 error, invalid product's url
+                Response.StatusCode = 404;
+                return null;
+            }
+            //Get GioHang
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            //If the product was inserted in Cart
+            ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == MaSP);
+            if (spCheck != null)
+            {
+                //Check number of product in database before the customers add more products in their cart
+                if (sp.SoLuongTon < spCheck.SoLuong)
+                {
+                    TempData["msg"] = "<script>alert('Change succesfully');</script>";
+                    //Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
+                    ViewBag.TongSoLuong = TinhTongSoLuong();
+                    return PartialView("GioHangPartial");
+                }
+                spCheck.SoLuong+= SoLuong;
+                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
+                ViewBag.TongSoLuong = TinhTongSoLuong();
+                return PartialView("GioHangPartial");
+            }
+
+            ItemGioHang itemGH = new ItemGioHang(MaSP);
+            if (sp.SoLuongTon < itemGH.SoLuong)
+            {
+                TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng!');</script>";
+                ViewBag.TongSoLuong = TinhTongSoLuong();
+                return PartialView("GioHangPartial");
+            }
+            lstGioHang.Add(itemGH);
+            ViewBag.TongSoLuong = TinhTongSoLuong();
+            return PartialView("GioHangPartial");
+        }
         //Total number of product
         public double TinhTongSoLuong()
         {

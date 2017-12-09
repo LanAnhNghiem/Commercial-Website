@@ -499,6 +499,7 @@
     <Content Include="Views\Layout\HeaderPartial.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\GioHang\Notification.cshtml" />
+    <Content Include="Views\Layout\QuickviewLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
