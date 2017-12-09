@@ -1,6 +1,6 @@
 ﻿@using CommercialWeb.Models
-
 @model IEnumerable<SanPham>
+
 <div class="featured-product-section mb-50">
     <div class="container">
         <div class="row">
@@ -15,7 +15,7 @@
             <div class="row active-featured-product slick-arrow-2">
                 @foreach (var item in Model)
                 {
- <!-- product-item start -->
+                    <!-- product-item start -->
                     <div class="col-xs-12">
                         <div class="product-item">
                             <div class="product-img">
@@ -36,6 +36,7 @@
                                 </div>
                                 <h3 class="pro-price">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
                                 <ul class="action-button">
+                                    
                                     <li>
                                         <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
                                     </li>
@@ -56,3 +57,5 @@
     </div>
 </div>
 <!-- FEATURED PRODUCT SECTION END -->
+
+

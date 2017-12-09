@@ -7,7 +7,81 @@
 
 @if(Model.Count == 0)
 {
-    <h1>Giỏ hàng rỗng</h1>
+    <!-- shopping-cart start -->
+    <div class="tab-pane active" id="shopping-cart">
+        <div class="shopping-cart-content">
+            <form action="#">
+                <div class="table-content table-responsive mb-50">
+                    <table class="text-center">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">sản phẩm</th>
+                                <th class="product-price">đơn giá</th>
+                                <th class="product-quantity">số lượng</th>
+                                <th class="product-subtotal">tổng tiền</th>
+                                <th class="product-remove">xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- tr -->
+                            <tr>
+                                <td class="product-thumbnail">
+                                    <div class="pro-thumbnail-img">
+
+                                    </div>
+                                    <div class="pro-thumbnail-info text-left">
+                                        <h6 class="product-title-2">
+                                            <a href="#"></a>
+                                        </h6>
+                                    </div>
+                                </td>
+                                <td class="product-price"></td>
+                                <td class="product-quantity">
+                                    <div class="cart-plus-minus f-left">
+                                        <div class="dec qtybutton">-</div>
+                                        <input type="text" value="" name="qtybutton" class="cart-plus-minus-box">
+                                        <div class="inc qtybutton">+</div>
+                                    </div>
+                                </td>
+                                <td class="product-subtotal"></td>
+                                <td class="product-remove">
+                                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="float:right">
+                        <div class="payment-details box-shadow p-30 mb-50">
+                            <h6 class="widget-title border-left mb-20">thanh toán</h6>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="td-title-1">Tạm tính</td>
+                                        <td class="td-title-2">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">Phí vận chuyển</td>
+                                        <td class="td-title-2">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">VAT</td>
+                                        <td class="td-title-2">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="order-total">Tổng thành tiền</td>
+                                        <td class="order-total-price">0 VND</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- shopping-cart end -->
 }
 else
 {
@@ -22,7 +96,7 @@ else
                                 <th class="product-thumbnail">sản phẩm</th>
                                 <th class="product-price">đơn giá</th>
                                 <th class="product-quantity">số lượng</th>
-                                <th class="product-subtotal">tổng tiền</th>
+                                <th class="product-subtotal">thành tiền</th>
                                 <th class="product-remove">xóa</th>
                             </tr>
                         </thead>
@@ -41,15 +115,30 @@ else
                                             </h6>
                                         </div>
                                     </td>
-                                    <td class="product-price">@item.DonGia.ToString("#,##") VND</td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus f-left">
-                                            <div class="dec qtybutton">-</div>
-                                            <input type="text" value="@item.SoLuong" name="qtybutton" class="cart-plus-minus-box">
-                                            <div class="inc qtybutton">+</div>
+                                    <td class="product-price"  >@item.DonGia.ToString("#,##")</td>
+                                    <td id="dongia" hidden="hidden">@item.DonGia</td>
+                                    @*<td class="product-quantity">
+                                        <div class="cart-plus-minus f-left" >
+                                            @Ajax.ActionLink("Them", "CapNhatGioHang", "GioHang", new { MaSP = item.MaSP, SoLuong = item.SoLuong, URL = Request.Url.ToString() },
+                                           new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "thanhtien", InsertionMode = InsertionMode.Replace },
+                                           new { @class= "insert-cart"})
+                                            @*<div class="dec qtybutton">-</div>*@
+                                            @*<input type="text" value="@item.SoLuong" name="qtybutton" class="cart-plus-minus-box">*@
+                                            @*<div class="inc qtybutton">+</div>*@
+                                            @*Insert TongTienPartial view into XemGioHang view
+                                            
                                         </div>
+                                    </td>*@
+                                    <td class="product-quantity">
+                                        <div class="cart-dec-inc">
+                                            <div class="dec button" id="button">-</div>
+                                            <input type="text" value="@item.SoLuong" name="button" class="cart-plus-minus-box" id="soluong">
+                                            <div class="inc button" id="button">+</div>
+                                        </div>
+                                        
                                     </td>
-                                    <td class="product-subtotal">@item.ThanhTien.ToString("#,##") VND</td>
+                                    @*<td class="subtotal">@Html.Action("TongTienPartial", "GioHang")</td>*@
+                                    <td class="product-subtotal" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
                                     <td class="product-remove">
                                         <a href="#"><i class="zmdi zmdi-close"></i></a>
                                     </td>
@@ -66,19 +155,19 @@ else
                                 <tbody>
                                     <tr>
                                         <td class="td-title-1">Tạm tính</td>
-                                        <td class="td-title-2">$155.00</td>
+                                        <td class="td-title-2">0 VND</td>
                                     </tr>
                                     <tr>
                                         <td class="td-title-1">Phí vận chuyển</td>
-                                        <td class="td-title-2">$15.00</td>
+                                        <td class="td-title-2">0 VND</td>
                                     </tr>
                                     <tr>
                                         <td class="td-title-1">VAT</td>
-                                        <td class="td-title-2">$00.00</td>
+                                        <td class="td-title-2">0 VND</td>
                                     </tr>
                                     <tr>
                                         <td class="order-total">Tổng thành tiền</td>
-                                        <td class="order-total-price">$170.00</td>
+                                        <td class="order-total-price">0 VND</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -90,4 +179,57 @@ else
     </div>
     <!-- shopping-cart end -->
 }
-
+<script type="text/javascript">
+    var time;
+    $(".cart-plus-minus-box").on("input", function(){
+        var soluong = $(this).val();
+        if ($(this).data("lastValue") != soluong) {
+            $(this).data("lastValue", soluong);
+            clearTimeout(time);
+            time = setTimeout(function () {
+                //change Thành tiền
+                
+                var donGia = Number($("#dongia").html());
+                var soLuong = Number($("#soluong").html());
+                alert(donGia);
+                
+                $.ajax({
+                    type: "GET",
+                    data: { dongia: donGia, soluong: soLuong },
+                    url: 'TinhItemThanhTien',
+                    success: function (ketqua) {
+                        $('#thanhtien').html(ketqua);
+                    }
+                })
+            }, 300);
+        }
+    })
+    //$(function () {
+    //    $('.insert-cart').click(function () {
+    //        var SoLuong = $(".cart-plus-minus-box").val();
+    //        alert("Số lượng: " + SoLuong);
+    //    })
+    //})
+   
+    $(".button").click( function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find("input").val();
+        //alert($.isNumeric(oldValue));
+        if ($.isNumeric(oldValue)) {
+            if ($button.text() == "+") {
+                var newVal = parseFloat(oldValue) + 1;
+            }
+            else {
+                // Don't allow decrementing below zero
+                if (oldValue > 0) {
+                    var newVal = parseFloat(oldValue) - 1;
+                }
+                else {
+                    newVal = 0;
+                }
+            }
+            $button.parent().find("input").val(newVal);
+            @*$(".product-subtotal").replaceWith("@Html.Action("TongTienPartial", "GioHang"))*@
+        }
+    });
+</script>

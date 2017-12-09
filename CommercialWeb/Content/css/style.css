@@ -1144,33 +1144,35 @@ transform: scale(1);
 /* -------------------------------------
     10.5 Product Cart plus minus
 ------------------------------------- */
-.cart-plus-minus {
+.cart-dec-inc {
   border: 1px solid #cccccc;
   height: 25px;
   text-align: center;
   width: 90px;
   color: #666666;
+
 }
-.qtybutton {
+.button {
   background: #cccccc none repeat scroll 0 0;
   height: 100%;
   width: 30%;
+
 }
-.dec.qtybutton {
+.dec.button {
   float: left;
 }
-.inc.qtybutton {
+.inc.button {
   float: right;
   
 }
-.dec.qtybutton: hover{
+.dec.button{
   cursor: pointer;
 }
-.inc.qtybutton: hover{
+.inc.button{
   cursor: pointer;
 }
 input.cart-plus-minus-box {
-  background: transparent none repeat scroll 0 0;
+  background: transparent;
   box-shadow: none;
   font-family: roboto;
   height: 100%;

@@ -52,7 +52,7 @@ namespace CommercialWeb.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult HeaderPartial()
+        public ActionResult QuickviewPartial()
         {
             return PartialView();
         }

@@ -67,47 +67,7 @@ namespace CommercialWeb.Controllers
             ViewBag.TongSoLuong = TinhTongSoLuong();
             return PartialView("GioHangPartial");
         }
-        public ActionResult ThemGioHangAjax(int MaSP, int SoLuong string URL)
-        {
-            //check if a product exsited in Database or not
-            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
-            if (sp == null)
-            {
-                //Show 404 error, invalid product's url
-                Response.StatusCode = 404;
-                return null;
-            }
-            //Get GioHang
-            List<ItemGioHang> lstGioHang = LayGioHang();
-            //If the product was inserted in Cart
-            ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == MaSP);
-            if (spCheck != null)
-            {
-                //Check number of product in database before the customers add more products in their cart
-                if (sp.SoLuongTon < spCheck.SoLuong)
-                {
-                    TempData["msg"] = "<script>alert('Change succesfully');</script>";
-                    //Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
-                    ViewBag.TongSoLuong = TinhTongSoLuong();
-                    return PartialView("GioHangPartial");
-                }
-                spCheck.SoLuong+= SoLuong;
-                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
-                ViewBag.TongSoLuong = TinhTongSoLuong();
-                return PartialView("GioHangPartial");
-            }
-
-            ItemGioHang itemGH = new ItemGioHang(MaSP);
-            if (sp.SoLuongTon < itemGH.SoLuong)
-            {
-                TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng!');</script>";
-                ViewBag.TongSoLuong = TinhTongSoLuong();
-                return PartialView("GioHangPartial");
-            }
-            lstGioHang.Add(itemGH);
-            ViewBag.TongSoLuong = TinhTongSoLuong();
-            return PartialView("GioHangPartial");
-        }
+        
         //Total number of product
         public double TinhTongSoLuong()
         {
@@ -120,16 +80,16 @@ namespace CommercialWeb.Controllers
             return lstGioHang.Sum(n => n.SoLuong);
         }
         //Total (price)
-        //public decimal TinhTongTien()
-        //{
-        //    //Get GioHang
-        //    List<ItemGioHang> lstGioHang = Session["GioHang"] as List<ItemGioHang>;
-        //    if (lstGioHang == null)
-        //    {
-        //        return 0;
-        //    }
-        //    return lstGioHang.Sum(n => n.ThanhTien);
-        //}
+        public decimal TinhTongTien()
+        {
+            //Get GioHang
+            List<ItemGioHang> lstGioHang = Session["GioHang"] as List<ItemGioHang>;
+            if (lstGioHang == null)
+            {
+                return 0;
+            }
+            return lstGioHang.Sum(n => n.ThanhTien);
+        }
         public ActionResult XemGioHang()
         {
             List<ItemGioHang> lstGioHang = LayGioHang();
@@ -144,6 +104,51 @@ namespace CommercialWeb.Controllers
             }
             ViewBag.TongSoLuong = TinhTongSoLuong();
 
+            return PartialView();
+        }
+        public ActionResult TinhItemThanhTien(decimal dongia, int soluong)
+        {
+            return Content((dongia * soluong).ToString("#,##")+" VND");
+        }
+        public ActionResult CapNhatGioHang(int MaSP, int SoLuong)
+        {
+            //check if a product exsited in Database or not
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
+            if (sp == null)
+            {
+                //Show 404 error, invalid product's url
+                Response.StatusCode = 404;
+                return null;
+            }
+            //Get GioHang
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            //If the product was inserted in Cart
+            ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == MaSP);
+            int soLuongCu = spCheck.SoLuong;
+            if (spCheck != null)
+            {
+                spCheck.SoLuong = SoLuong;
+                //Check number of product in database before the customers add more products in their cart
+                if (sp.SoLuongTon < spCheck.SoLuong)
+                {
+                    TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng, không thể đặt thêm!');</script>";
+                    spCheck.SoLuong = soLuongCu;
+                    ViewBag.TongTien = TinhTongTien();
+                    ViewBag.ItemTongTien = spCheck.SoLuong * spCheck.DonGia;
+                    return PartialView("TongTienPartial");
+                }
+                spCheck.SoLuong = SoLuong;
+                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
+                ViewBag.TongTien = TinhTongTien();
+                ViewBag.ItemTongTien = spCheck.SoLuong * spCheck.DonGia;
+            }
+            return PartialView("TongTienPartial");
+        }
+        //partial view của Tổng tiền
+        public ActionResult TongTienPartial()
+        {
+            
+            ViewBag.ItemTongTien = 0;
             return PartialView();
         }
         //update cart

@@ -40,6 +40,8 @@
     </style>
 </head>
 <body>
+    <!-- jquery latest version -->
+    <script src="~/Content/js/jquery-3.1.1.min.js"></script>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -47,7 +49,7 @@
     <div class="wrapper">
         <!-- START HEADER AREA -->
         <header class="header-area header-wrapper">
-            @Html.Partial("~/Views/Layout/HeaderPartial.cshtml")
+            @Html.Partial("~/Views/Home/MenuPartial.cshtml")
         </header>
         <!-- END HEADER AREA -->
         <!-- START MOBILE MENU AREA -->
@@ -433,7 +435,7 @@
                                 <div class="col-lg-4 col-md-5 col-sm-4">
                                     <div class="single-footer footer-about">
                                         <div class="footer-logo">
-                                            <img src="~/Content/cart/images/logo.png" alt="">
+                                            <img src="~/Content/images/home/logo.png" alt="">
                                         </div>
                                         <div class="footer-brief">
                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the subas industry's standard dummy text ever since the 1500s,</p>
@@ -565,7 +567,7 @@
         <!--style-customizer start -->
         <div class="style-customizer closed">
             <div class="buy-button">
-                <a href="index.html" class="customizer-logo"><img src="~/Content/cart/images/logo_1.png" alt="Theme Logo"></a>
+                <a href="index.html" class="customizer-logo"><img src="~/Content/images/home/logo.png" alt="Theme Logo"></a>
                 <a class="opener" href="#"><i class="zmdi zmdi-settings"></i></a>
             </div>
             <div class="clearfix content-chooser">
@@ -620,8 +622,7 @@
     </div>
     <!-- Body main wrapper end -->
     <!-- Placed JS at the end of the document so the pages load faster -->
-    <!-- jquery latest version -->
-    <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+    
     <!-- Bootstrap framework js -->
     <script src="~/Content/js/bootstrap.min.js"></script>
     <!-- jquery.nivo.slider js -->
@@ -631,6 +632,6 @@
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="~/Content/js/main.js"></script><a id="scrollUp" href="#top" style="display: none; position: fixed; z-index: 2147483647;"><i class="zmdi zmdi-chevron-up"></i></a>
     <!--Ajax-->
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 </body>
 </html>

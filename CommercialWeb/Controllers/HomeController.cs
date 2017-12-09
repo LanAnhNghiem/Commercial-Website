@@ -39,5 +39,10 @@ namespace CommercialWeb.Controllers
 
             return View();
         }
+        public ActionResult MenuPartial()
+        {
+            var lstSanPham = db.SanPhams;
+            return PartialView(lstSanPham);
+        }
     }
 }
