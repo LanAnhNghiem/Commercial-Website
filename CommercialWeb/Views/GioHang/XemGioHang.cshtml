@@ -115,10 +115,10 @@ else
                                             </h6>
                                         </div>
                                     </td>
-                                    <td class="product-price"  >@item.DonGia.ToString("#,##")</td>
+                                    <td class="product-price"  >@item.DonGia.ToString("#,##") VND</td>
                                     <td id="dongia" hidden="hidden">@item.DonGia</td>
                                     @*<td class="product-quantity">
-                                        <div class="cart-plus-minus f-left" >
+                                        <div class="cart-plus-minus f-left">
                                             @Ajax.ActionLink("Them", "CapNhatGioHang", "GioHang", new { MaSP = item.MaSP, SoLuong = item.SoLuong, URL = Request.Url.ToString() },
                                            new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "thanhtien", InsertionMode = InsertionMode.Replace },
                                            new { @class= "insert-cart"})
@@ -198,7 +198,7 @@ else
                     data: { dongia: donGia, soluong: soLuong },
                     url: 'TinhItemThanhTien',
                     success: function (ketqua) {
-                        $('#thanhtien').html(ketqua);
+                        $('#thanhtien').parent().val();
                     }
                 })
             }, 300);
@@ -229,6 +229,17 @@ else
                 }
             }
             $button.parent().find("input").val(newVal);
+            var donGia = $button.parent().parent().siblings("#dongia").html();
+            var soLuong = $button.parent().find("input").val();
+
+            $.ajax({
+                type: "GET",
+                data: { dongia: donGia, soluong: soLuong },
+                url: '@Url.Content("TinhItemThanhTien")',
+                success: function (ketqua) {
+                    $button.parent().parent().siblings('#thanhtien').html(ketqua);
+                }
+            })
             @*$(".product-subtotal").replaceWith("@Html.Action("TongTienPartial", "GioHang"))*@
         }
     });
