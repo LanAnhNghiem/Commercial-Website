@@ -1334,11 +1334,13 @@ table {width: 100%}
 }
 .td-title-1 {
   color: #999;
+  width:70%;
   font-size: 13px;
   text-align: left;
 }
 .td-title-2 {
   color: #999;
+  width:30%;
   font-family: roboto;
   font-weight: 500;
   text-align: right;

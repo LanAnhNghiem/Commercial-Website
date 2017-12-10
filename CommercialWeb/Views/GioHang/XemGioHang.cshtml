@@ -153,7 +153,7 @@ else
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="submit-btn-1 mt-20 btn-hover-1">Tiếp theo<a href="#checkout"></a></button>
+                            <button id="btnNext" class="submit-btn-1 mt-20 btn-hover-1">Tiếp theo</button>
                             @*<a href="#checkout" class="submit-btn-1 mt-20 btn-hover-1" data-toggle="tab">Tiếp theo</a>*@
                         </div>
                     </div>
@@ -162,8 +162,130 @@ else
         </div>
     </div>
     <!-- shopping-cart end -->
+    <!-- checkout start -->
+    <div class="tab-pane" id="checkout">
+        <div class="checkout-content box-shadow p-30">
+            <form action="#">
+                <div class="row">
+                    <!-- billing details -->
+                    <div class="col-md-6">
+                        <div class="billing-details pr-10">
+                            <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
+                            <input type="text" placeholder="Họ tên">
+                            <input type="text" placeholder="Địa chỉ">
+                            <input type="text" placeholder="Số điện thoại">
+                            <input type="text" placeholder="Email">
+                            <select class="custom-select">
+                                <option value="defalt">Hình thức thanh toán</option>
+                                <option value="c-1">Giao hàng tiêu chuẩn</option>
+                                <option value="c-2">Giao hàng nhanh</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- our order -->
+                        <div class="payment-details pl-10 mb-50">
+                            <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
+                            <table>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.SoLuong != 0)
+                                        {
+                                            <tr>
+                                                <td class="td-title-1">@item.TenSp x @item.SoLuong</td>
+                                                <td class="td-title-2" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tr>
+                                        <td class="td-title-1">Tạm tính</td>
+                                        <td class="td-title-2" id="tamtinh-checkout">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">Phí vận chuyển</td>
+                                        <td class="td-title-2">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">VAT</td>
+                                        <td class="td-title-2">10 %</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="order-total">Tổng thành tiền</td>
+                                        <td class="order-total-price"id="tongthanhtien-checkout">0 VND</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- payment-method -->
+                        <div class="payment-method">
+                            <h6 class="widget-title border-left mb-20">Phương thức thanh toán</h6>
+                            <div id="accordion">
+                                <div class="panel">
+                                    <h4 class="payment-title box-shadow">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#bank-transfer">
+                                            giao hàng tiêu chuẩn
+                                        </a>
+                                    </h4>
+                                    <div id="bank-transfer" class="panel-collapse collapse in">
+                                        <div class="payment-content">
+                                            <p>Lorem Ipsum is simply in dummy text of the printing and type setting industry. Lorem Ipsum has been.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <h4 class="payment-title box-shadow">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                            giao hàng nhanh
+                                        </a>
+                                    </h4>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="payment-content">
+                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- payment-method end -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   <!-- checkout end -->
 }
 <script type="text/javascript">
+    $("#btnNext").click(function () {
+        var banner = $(".breadcrumbs-inner").height();
+        var menu = $(".full-width-mega-dropdown").height();
+        var position = menu+banner-50;
+        //scroll tới chỗ bước 2
+        $("html, body").animate({ scrollTop: (position) + "px" }, "slow");
+        //đổi layout
+        $('a[href="#checkout"]').addClass("active");
+        $('.checkout-span').addClass("active");
+        //đổi sang trang đặt hàng
+        var href = $("#checkout-a").attr('href');
+        $("#checkout-a").trigger('click');
+
+        $.ajax({
+            type: "POST",
+            data: {},
+            url: '@Url.Content("TamTinh")',
+            success: function (ketqua) {
+                alert($('#tamtinh-checkout').html());
+                $.ajax({
+                    type: "POST",
+                    data: {},
+                    url: '@Url.Content("TongThanhTien")',
+                    success: function (ketqua) {
+                        $('#tongthanhtien-checkout').html(ketqua);
+                    }
+                })
+            }
+        })
+    })
     jQuery(function ($) {
         $.ajax({
             type: "POST",
@@ -186,13 +308,13 @@ else
     $(".button").click( function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
-        //alert($.isNumeric(oldValue));
+   
         if ($.isNumeric(oldValue)) {
             if ($button.text() == "+") {
                 var newVal = parseFloat(oldValue) + 1;
             }
             else {
-                // Don't allow decrementing below zero
+                // Không cho phép giảm số lượng dưới 0
                 if (oldValue > 0) {
                     var newVal = parseFloat(oldValue) - 1;
                 }

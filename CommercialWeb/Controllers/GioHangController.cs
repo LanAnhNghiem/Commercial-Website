@@ -179,6 +179,37 @@ namespace CommercialWeb.Controllers
             lstGioHang.Remove(spCheck);
             return RedirectToAction("XemGioHang");
         }
+
+        public ActionResult DatHang()
+        {
+            //Kiểm tra giỏ hàng tồn tại hay chưa
+            if(Session["GioHang"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            //Thêm đơn hàng
+            DonHang dh = new DonHang();
+            dh.NgayMua = DateTime.Now;
+            dh.MaTinhTrang = 1; // đã đặt hàng
+            dh.UuDai = 0;
+            db.DonHangs.Add(dh);
+            db.SaveChanges();
+            //Thêm chi tiết đơn hàng
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            foreach(var item in lstGioHang)
+            {
+                ChiTietDonHang ctdh = new ChiTietDonHang();
+                ctdh.MaDonHang = dh.MaDonHang;
+                ctdh.MaSP = item.MaSP;
+                ctdh.SoLuong = item.SoLuong;
+                ctdh.DonGia = item.DonGia;
+                ctdh.TenSP = item.TenSp;
+                db.ChiTietDonHangs.Add(ctdh);
+            }
+            db.SaveChanges();
+            Session["GioHang"] = null;
+            return RedirectToAction("XemGioHang");
+        }
         
     }
 }

@@ -17,9 +17,9 @@ namespace CommercialWeb.Models
         public int MaCTDH { get; set; }
         public Nullable<int> MaDonHang { get; set; }
         public Nullable<int> MaSP { get; set; }
+        public string TenSP { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<decimal> DonGia { get; set; }
-    
         public virtual DonHang DonHang { get; set; }
     }
 }

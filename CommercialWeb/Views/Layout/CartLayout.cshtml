@@ -232,8 +232,8 @@
                                     </a>
                                 </li>*@
                                 <li>
-                                    <a href="#checkout" data-toggle="tab">
-                                        <span>02</span>
+                                    <a href="#checkout" data-toggle="tab" id="checkout-a">
+                                        <span class="checkout-span">02</span>
                                         Đặt hàng   
                                     </a>
                                 </li>
@@ -255,94 +255,7 @@
                                
                                 <!-- wishlist end -->
                                 <!-- checkout start -->
-                                <div class="tab-pane" id="checkout">
-                                    <div class="checkout-content box-shadow p-30">
-                                        <form action="#">
-                                            <div class="row">
-                                                <!-- billing details -->
-                                                <div class="col-md-6">
-                                                    <div class="billing-details pr-10">
-                                                        <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
-                                                        <input type="text" placeholder="Họ tên">
-                                                        <input type="text" placeholder="Địa chỉ">
-                                                        <input type="text" placeholder="Số điện thoại">
-                                                        <input type="text" placeholder="Email">
-                                                        <select class="custom-select">
-                                                            <option value="defalt">Hình thức thanh toán</option>
-                                                            <option value="c-1">Giao hàng tiêu chuẩn</option>
-                                                            <option value="c-2">Giao hàng nhanh</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <!-- our order -->
-                                                    <div class="payment-details pl-10 mb-50">
-                                                        <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
-                                                        <table>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="td-title-1">Dummy Product Name x 2</td>
-                                                                    <td class="td-title-2">$1855.00</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="td-title-1">Dummy Product Name</td>
-                                                                    <td class="td-title-2">$555.00</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="td-title-1">Tạm tính</td>
-                                                                    <td class="td-title-2">$2410.00</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="td-title-1">Phí vận chuyển</td>
-                                                                    <td class="td-title-2">$15.00</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="td-title-1">VAT</td>
-                                                                    <td class="td-title-2">$00.00</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="order-total">Tổng thành tiền</td>
-                                                                    <td class="order-total-price">$2425.00</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <!-- payment-method -->
-                                                    <div class="payment-method">
-                                                        <h6 class="widget-title border-left mb-20">Phương thức thanh toán</h6>
-                                                        <div id="accordion">
-                                                            <div class="panel">
-                                                                <h4 class="payment-title box-shadow">
-                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#bank-transfer">
-                                                                        giao hàng tiêu chuẩn
-                                                                    </a>
-                                                                </h4>
-                                                                <div id="bank-transfer" class="panel-collapse collapse in">
-                                                                    <div class="payment-content">
-                                                                        <p>Lorem Ipsum is simply in dummy text of the printing and type setting industry. Lorem Ipsum has been.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel">
-                                                                <h4 class="payment-title box-shadow">
-                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                                        giao hàng nhanh
-                                                                    </a>
-                                                                </h4>
-                                                                <div id="collapseTwo" class="panel-collapse collapse">
-                                                                    <div class="payment-content">
-                                                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- payment-method end -->
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                
                                 <!-- checkout end -->
                                 <!-- order-complete start -->
                                 <div class="tab-pane" id="order-complete">
