@@ -1289,8 +1289,8 @@ textarea:focus {
 .footer-area .black-bg .footer-menu li a i {
   color: #fff;
 }
-.footer-area .theme-bg .submit-btn-1, 
-.footer-area .black-bg .submit-btn-1 {
+.footer-area .theme-bg .submit-btn, 
+.footer-area .black-bg .submit-btn {
   background: #fff none repeat scroll 0 0;
   color: #000;
 }

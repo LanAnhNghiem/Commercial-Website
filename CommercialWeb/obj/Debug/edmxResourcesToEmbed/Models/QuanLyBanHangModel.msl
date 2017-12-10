@@ -17,6 +17,7 @@
           <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="DonGia" ColumnName="DonGia" />
         </MappingFragment>
@@ -30,8 +31,12 @@
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
           <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
-          <ScalarProperty Name="MaTinhTrang" ColumnName="MaTinhTrang" />
+          <ScalarProperty Name="TinhTrangGiaoHang" ColumnName="TinhTrangGiaoHang" />
           <ScalarProperty Name="MaHinhThuc" ColumnName="MaHinhThuc" />
+          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
+          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
+          <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -40,6 +45,7 @@
         <MappingFragment StoreEntitySet="HinhThucGiaoHang">
           <ScalarProperty Name="MaHinhThuc" ColumnName="MaHinhThuc" />
           <ScalarProperty Name="TenHinhThuc" ColumnName="TenHinhThuc" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -97,14 +103,6 @@
           <ScalarProperty Name="SoLanMua" ColumnName="SoLanMua" />
           <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
           <ScalarProperty Name="ThoiHanBaoHanh" ColumnName="ThoiHanBaoHanh" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TinhTrangDonHangs">
-      <EntityTypeMapping TypeName="QuanLyBanHangModel.TinhTrangDonHang">
-        <MappingFragment StoreEntitySet="TinhTrangDonHang">
-          <ScalarProperty Name="MaTinhTrang" ColumnName="MaTinhTrang" />
-          <ScalarProperty Name="TenTinhTrang" ColumnName="TenTinhTrang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

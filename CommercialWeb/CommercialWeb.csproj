@@ -212,10 +212,10 @@
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ItemGioHang.cs" />
     <Compile Include="Models\HinhThucGiaoHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemGioHang.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
@@ -243,13 +243,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegexUtilities.cs" />
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThanhVien.cs">
-      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TinhTrangDonHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -500,6 +498,8 @@
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\GioHang\Notification.cshtml" />
     <Content Include="Views\SanPham\QuickviewPartial.cshtml" />
+    <Content Include="Views\GioHang\HinhThucGiaoPartial.cshtml" />
+    <Content Include="Views\GioHang\DonHangPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

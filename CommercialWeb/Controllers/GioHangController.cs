@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CommercialWeb.Models;
+using System.Text.RegularExpressions;
 
 namespace CommercialWeb.Controllers
 {
@@ -52,7 +53,7 @@ namespace CommercialWeb.Controllers
                 //Kiểm tra số lượng tồn trước khi thêm vào giỏ
                 if (sp.SoLuongTon < spCheck.SoLuong)
                 {
-                    TempData["msg"] = "<script>alert('Change succesfully');</script>";
+                    TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng!');</script>";
                     ViewBag.TongSoLuong = TinhTongSoLuong();
                     return PartialView("GioHangPartial");
                 }
@@ -73,7 +74,6 @@ namespace CommercialWeb.Controllers
             ViewBag.TongSoLuong = TinhTongSoLuong();
             return PartialView("GioHangPartial");
         }
-        
         public double TinhTongSoLuong()
         {
             //Get GioHang
@@ -84,7 +84,6 @@ namespace CommercialWeb.Controllers
             }
             return lstGioHang.Sum(n => n.SoLuong);
         }
-       
         public decimal TinhTongTien()
         {
             //Get GioHang
@@ -98,6 +97,9 @@ namespace CommercialWeb.Controllers
         public ActionResult XemGioHang()
         {
             List<ItemGioHang> lstGioHang = LayGioHang();
+            //lấy các sp có số lượng khác 0 lưu vào ViewBag.GioHang
+            var tmpLst = lstGioHang.Select(n => n.SoLuong != 0);
+            ViewBag.GioHang = tmpLst;
             return View(lstGioHang);
         }
         public ActionResult GioHangPartial()
@@ -126,15 +128,20 @@ namespace CommercialWeb.Controllers
                 //Kiểm tra số lượng tồn trước khi thêm vào giỏ
                 if (sp.SoLuongTon < spCheck.SoLuong)
                 {
-                    TempData["msg"] = "<script>alert('Sản phẩm đã hết hàng, không thể đặt thêm!');</script>";
+                    string strScript = "";
+                    strScript = "<script>alert('Sản phẩm đã hết hàng, không thể đặt thêm!'); window.location.reload();</script>";
+                    TempData["msg"] = strScript;
                     spCheck.SoLuong = soLuongCu;
+                }
+                if (soluong == 0)
+                {
+                    lstGioHang[lstGioHang.IndexOf(spCheck)].SoLuong = soluong;
+                    Session["GioHang"] = lstGioHang;
+                    return Content("0 VND");
                 }
                 spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
             }
-            if(soluong == 0)
-            {
-                return Content("0 VND");
-            }
+            
             return Content((dongia * soluong).ToString("#,##")+" VND");
         }
         public ActionResult TamTinh()
@@ -156,6 +163,14 @@ namespace CommercialWeb.Controllers
         {
             ViewBag.TongSoLuong = TinhTongSoLuong();
             return PartialView("GioHangPartial");
+        }
+        //Cập nhật lại khung Đơn hàng
+        public ActionResult DonHangPartial()
+        {
+            IEnumerable<ItemGioHang> lstGioHang = LayGioHang() as IEnumerable<ItemGioHang>;
+            //lấy các sp có số lượng khác 0 lưu vào ViewBag.GioHang
+            var tmpLst = lstGioHang.Where(n => n.SoLuong != 0).Select(n=>n);
+            return PartialView(tmpLst);
         }
         public ActionResult XoaGioHang(int MaSP)
         {
@@ -179,19 +194,65 @@ namespace CommercialWeb.Controllers
             lstGioHang.Remove(spCheck);
             return RedirectToAction("XemGioHang");
         }
-
-        public ActionResult DatHang()
+        //public ActionResult NhapThongTin(FormCollection form)
+        //{
+        //    string HoTen = form["txtHoTen"].ToString();
+        //    string DiaChi = form["txtDiaChi"].ToString();
+        //    string SDT = form["txtSDT"].ToString();
+        //    string Email = form["txtEmail"].ToString();
+        //    //Nếu là khách vãng lai
+        //    KhachHang kh = db.KhachHangs.SingleOrDefault(n=>(n.SoDienThoai == SDT || n.Email == Email) && n.ThanhVien == null);
+        //    if (kh == null)
+        //    {
+        //        kh = new KhachHang();
+        //    }
+        //    kh.HoTen = HoTen;
+        //    kh.DiaChi = DiaChi;
+        //    kh.SoDienThoai = SDT;
+        //    kh.Email = Email;
+        //    Session["KhachHang"] = kh;
+        //}
+        public ActionResult DatHang(string hoten, string diachi, string sdt, string email)
         {
+            //Kiểm tra nhập thông tin hợp lệ hay không
+            RegexUtilities regex = new RegexUtilities();
+            string errorMess = "";
+            if (!regex.IsValidEmail(email))
+            {
+                errorMess = "- Email không hợp lệ.";
+            }
+            if(sdt.Length > 12 || Regex.IsMatch(sdt, @"^[0-9]*$") == false)
+            {
+                errorMess = "<br>- Số điện thoại không hợp lệ.";
+            }
+            if(!regex.IsValidEmail(email) || sdt.Length > 12 || Regex.IsMatch(sdt, @"^[0-9]*$") == false)
+            {
+                return Content(errorMess);
+            }
             //Kiểm tra giỏ hàng tồn tại hay chưa
             if(Session["GioHang"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
+            //Lưu thông tin khách hàng
+            //Nhớ kiểm tra khách hàng là thành viên đăng nhập hay chưa (code sau)
+            //Đây là bước tạo mới 1 khách hàng vãng lai
+            KhachHang kh = new KhachHang();
+            kh.HoTen = hoten;
+            kh.Email = email;
+            kh.SoDienThoai = sdt;
+            kh.DiaChi = diachi;
+            db.KhachHangs.Add(kh);
+            db.SaveChanges();
             //Thêm đơn hàng
             DonHang dh = new DonHang();
+            dh.MaKH = kh.MaKH;
             dh.NgayMua = DateTime.Now;
-            dh.MaTinhTrang = 1; // đã đặt hàng
             dh.UuDai = 0;
+            dh.DaThanhToan = false;
+            dh.TinhTrangGiaoHang = false;
+            dh.DaHuy = false;
+            dh.DaXoa = false;
             db.DonHangs.Add(dh);
             db.SaveChanges();
             //Thêm chi tiết đơn hàng
@@ -210,6 +271,6 @@ namespace CommercialWeb.Controllers
             Session["GioHang"] = null;
             return RedirectToAction("XemGioHang");
         }
-        
+
     }
 }

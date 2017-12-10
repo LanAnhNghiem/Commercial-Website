@@ -4,7 +4,9 @@
     ViewBag.Title = "XemGioHang";
     Layout = "~/Views/Layout/CartLayout.cshtml";
 }
-
+@{ 
+    IEnumerable<ItemGioHang> lstGioHang = ViewBag.GioHang as IEnumerable<ItemGioHang>;
+}
 @if(Model.Count == 0)
 {
     <!-- shopping-cart start -->
@@ -153,7 +155,8 @@ else
                                     </tr>
                                 </tbody>
                             </table>
-                            <button id="btnNext" class="submit-btn-1 mt-20 btn-hover-1">Tiếp theo</button>
+                            <input type="button" id="btnNext" class="submit-btn-1 mt-20" value="Tiếp theo">
+                            @*@Ajax.ActionLink("Tiếp theo", "DonHangPartial", "GioHang", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "donhang", InsertionMode = InsertionMode.Replace },new { @class="update-donhang"})*@
                             @*<a href="#checkout" class="submit-btn-1 mt-20 btn-hover-1" data-toggle="tab">Tiếp theo</a>*@
                         </div>
                     </div>
@@ -169,57 +172,34 @@ else
                 <div class="row">
                     <!-- billing details -->
                     <div class="col-md-6">
-                        <div class="billing-details pr-10">
-                            <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
-                            <input type="text" placeholder="Họ tên">
-                            <input type="text" placeholder="Địa chỉ">
-                            <input type="text" placeholder="Số điện thoại">
-                            <input type="text" placeholder="Email">
-                            <select class="custom-select">
-                                <option value="defalt">Hình thức thanh toán</option>
-                                <option value="c-1">Giao hàng tiêu chuẩn</option>
-                                <option value="c-2">Giao hàng nhanh</option>
-                            </select>
-                        </div>
+                        @using (Ajax.BeginForm("DatHang", "GioHang",
+                        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+                        {
+                            <div class="billing-details pr-10">
+                                <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
+                                <input type="text" name="txtHoTen" placeholder="Họ tên" id="hoten" required>
+                                <input type="text" name="txtDiaChi" placeholder="Địa chỉ" id="diachi" required>
+                                <input type="text" name="txtSDT" placeholder="Số điện thoại" id="sdt" required>
+                                <input type="text" name="txtEmail" placeholder="Email" id="email" required>
+                                <h6 style="font-weight:bold; color: rgb(255, 127, 0)" id="ThongBao"></h6>
+                                <select class="custom-select">
+                                    <option value="defalt">Hình thức thanh toán</option>
+                                    <option value="c-1" id="option1">Giao hàng tiêu chuẩn</option>
+                                    <option value="c-2" id="option2">Giao hàng nhanh</option>
+                                </select>
+                            </div>
+                            <input type="button" id="btnDatHang" class="submit-btn-1 mt-20"
+                                   style="float:right; margin-right:10px" value="Đặt hàng">
+                        }
+                        
                     </div>
                     <div class="col-md-6">
                         <!-- our order -->
-                        <div class="payment-details pl-10 mb-50">
-                            <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
-                            <table>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        if (item.SoLuong != 0)
-                                        {
-                                            <tr>
-                                                <td class="td-title-1">@item.TenSp x @item.SoLuong</td>
-                                                <td class="td-title-2" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
-                                            </tr>
-                                        }
-                                    }
-                                    <tr>
-                                        <td class="td-title-1">Tạm tính</td>
-                                        <td class="td-title-2" id="tamtinh-checkout">0 VND</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-title-1">Phí vận chuyển</td>
-                                        <td class="td-title-2">0 VND</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-title-1">VAT</td>
-                                        <td class="td-title-2">10 %</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="order-total">Tổng thành tiền</td>
-                                        <td class="order-total-price"id="tongthanhtien-checkout">0 VND</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        @*@Html.Partial("~/Views/GioHang/DonHangPartial.cshtml", lstGioHang)*@
+                        <div id="donhang-partial"></div>
                         <!-- payment-method -->
                         <div class="payment-method">
-                            <h6 class="widget-title border-left mb-20">Phương thức thanh toán</h6>
+                            <h6 class="widget-title border-left mb-20">Hình thức giao hàng</h6>
                             <div id="accordion">
                                 <div class="panel">
                                     <h4 class="payment-title box-shadow">
@@ -229,7 +209,7 @@ else
                                     </h4>
                                     <div id="bank-transfer" class="panel-collapse collapse in">
                                         <div class="payment-content">
-                                            <p>Lorem Ipsum is simply in dummy text of the printing and type setting industry. Lorem Ipsum has been.</p>
+                                            <p class="tieuchuan">Giao hàng trong vòng từ 2 đến 3 ngày kể từ ngày đặt hàng</p>
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +221,7 @@ else
                                     </h4>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="payment-content">
-                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                            <p class="giaonhanh">Giao hàng trong vòng 24 giờ kể từ thời gian đặt</p>
                                         </div>
                                     </div>
                                 </div>
@@ -256,10 +236,33 @@ else
    <!-- checkout end -->
 }
 <script type="text/javascript">
+    $("#btnDatHang").click(function () {
+        var hoten = $("#hoten").val();
+        var diachi = $("#diachi").val();
+        var sdt = $("#sdt").val();
+        var email = $("#email").val();
+        if (hoten.length != 0 && diachi.length != 0 && sdt.length != 0 && email.length != 0) {
+            $.ajax({
+                type: "POST",
+                data: { hoten: hoten, diachi: diachi, sdt: sdt, email: email },
+                url: '@Url.Content("DatHang")',
+                success: function () {
+                    alert('Đã lưu');
+                }
+            })
+        }
+        
+    })
+    $(".custom-select").click(function () {
+        alert('ahihi');
+
+    })
+    var btnNextClicked = false
     $("#btnNext").click(function () {
+
         var banner = $(".breadcrumbs-inner").height();
         var menu = $(".full-width-mega-dropdown").height();
-        var position = menu+banner-50;
+        var position = menu + banner - 50;
         //scroll tới chỗ bước 2
         $("html, body").animate({ scrollTop: (position) + "px" }, "slow");
         //đổi layout
@@ -268,21 +271,14 @@ else
         //đổi sang trang đặt hàng
         var href = $("#checkout-a").attr('href');
         $("#checkout-a").trigger('click');
-
+        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
+        //$(".update-donhang").trigger('click');
         $.ajax({
             type: "POST",
-            data: {},
-            url: '@Url.Content("TamTinh")',
+            url: 'DonHangPartial',
             success: function (ketqua) {
-                alert($('#tamtinh-checkout').html());
-                $.ajax({
-                    type: "POST",
-                    data: {},
-                    url: '@Url.Content("TongThanhTien")',
-                    success: function (ketqua) {
-                        $('#tongthanhtien-checkout').html(ketqua);
-                    }
-                })
+                $('#donhang-partial').replaceWith(ketqua);
+                alert(ketqua);
             }
         })
     })
@@ -299,6 +295,23 @@ else
                     url: '@Url.Content("TongThanhTien")',
                     success: function (ketqua) {
                         $('#tongthanhtien').html(ketqua);
+                        $.ajax({
+                            type: "POST",
+                            data: {},
+                            url: '@Url.Content("TamTinh")',
+                            success: function (ketqua) {
+                                $('#tamtinh-checkout').html(ketqua);
+                                $.ajax({
+                                    type: "POST",
+                                    data: {},
+                                    url: '@Url.Content("TongThanhTien")',
+                                    success: function (ketqua) {
+                                        $('#tongthanhtien-checkout').html(ketqua);
+                                        
+                                    }
+                                })
+                            }
+                        })
                     }
                 })
             }
@@ -361,5 +374,4 @@ else
             })
         }
     });
-
 </script>

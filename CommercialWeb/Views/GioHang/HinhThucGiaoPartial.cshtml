@@ -1,0 +1,31 @@
+﻿<!-- payment-method -->
+<div class="payment-method">
+    <h6 class="widget-title border-left mb-20">Phương thức thanh toán</h6>
+    <div id="accordion">
+        <div class="panel">
+            <h4 class="payment-title box-shadow">
+                <a data-toggle="collapse" data-parent="#accordion" href="#bank-transfer">
+                    giao hàng tiêu chuẩn
+                </a>
+            </h4>
+            <div id="bank-transfer" class="panel-collapse collapse in">
+                <div class="payment-content">
+                    <p class="tieuchuan">@ViewBag.HinhThuc</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <h4 class="payment-title box-shadow">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    giao hàng nhanh
+                </a>
+            </h4>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="payment-content">
+                    <p class="giaonhanh">@ViewBag.HinhThuc</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- payment-method end -->

@@ -20,6 +20,7 @@ namespace CommercialWeb.Models
         public string TenSP { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<decimal> DonGia { get; set; }
+    
         public virtual DonHang DonHang { get; set; }
     }
 }
