@@ -27,7 +27,7 @@
                         <h3 class="pro-price">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
                         <ul class="action-button">
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                <a onclick="changeName('@item.TenSP', '@item.DonGia.Value.ToString("#,##") VNĐ','@item.HinhAnh1')" href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
                             </li>
                             <li>
                                 <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         <!-- product-item end -->
-        }
-        
+        } 
     </div>
 </div>
+

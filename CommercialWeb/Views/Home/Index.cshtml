@@ -52,6 +52,7 @@
             <div class="product-tab">
                 <!-- Tab panes -->
                 <div class="tab-content">
+
                     @*-------------------------LAPTOP-------------------------*@
                     @Html.Partial("~/Views/SanPham/LaptopPartial.cshtml", lstLaptop)
 
@@ -79,16 +80,15 @@
                         <div class="modal-product clearfix">
                             <div class="product-images">
                                 <div class="main-image images">
-                                    <img alt="" src="~/Content/ProductImages/10031721_3.jpg">
+                                    <img id="hinhAnh" alt="" src="~/Content/ProductImages/10031721_3.jpg">
                                 </div>
                             </div><!-- .product-images -->
 
                             <div class="product-info">
-                                <h1>Aenean eu tristique</h1>
+                                <h1 id="tenSP">Aenean eu tristique</h1>
                                 <div class="price-box-3">
                                     <div class="s-price-box">
-                                        <span class="new-price">£160.00</span>
-                                        <span class="old-price">£190.00</span>
+                                        <span id="giaSP" class="new-price">£160.00</span>
                                     </div>
                                 </div>
                                 <a href="single-product-left-sidebar.html" class="see-all">See all features</a>
@@ -145,3 +145,11 @@
     </div>
     <!-- END QUICKVIEW PRODUCT -->
 </section>
+<script>
+    function changeName(TenSP, GiaSP, HinhAnh)
+    {
+        $('#tenSP').html(TenSP);
+        $('#giaSP').html(GiaSP);
+        $('#hinhAnh').attr("src", "/Content/ProductImages/" + HinhAnh);
+    }
+</script>
