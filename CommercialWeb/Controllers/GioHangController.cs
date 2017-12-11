@@ -162,6 +162,7 @@ namespace CommercialWeb.Controllers
         {
             List<String> lstThanhToan = LayThanhToan();
             String tongThanhTien = ((10 * TinhTongTien() / 100) + TinhTongTien()).ToString("#,##") + " VND";
+            Session["TongThanhTien"] = ((10 * TinhTongTien() / 100) + TinhTongTien());
             lstThanhToan.Add(tongThanhTien);
             return Content(tongThanhTien);
         }
@@ -172,7 +173,7 @@ namespace CommercialWeb.Controllers
             return PartialView("GioHangPartial");
         }
         //Cập nhật lại khung Đơn hàng
-        public ActionResult DonHangPartial()
+        public ActionResult DSSPPartial()
         {
             IEnumerable<ItemGioHang> lstGioHang = LayGioHang() as IEnumerable<ItemGioHang>;
             //lấy các sp có số lượng khác 0 lưu vào ViewBag.GioHang
@@ -260,6 +261,8 @@ namespace CommercialWeb.Controllers
             dh.TinhTrangGiaoHang = false;
             dh.DaHuy = false;
             dh.DaXoa = false;
+            dh.TongTien = Int32.Parse(Session["TongThanhTien"].ToString());
+            dh.MaHinhThuc = Int32.Parse(Session["HinhThuc"].ToString());
             db.DonHangs.Add(dh);
             db.SaveChanges();
             //Thêm chi tiết đơn hàng
@@ -276,7 +279,7 @@ namespace CommercialWeb.Controllers
             }
             db.SaveChanges();
             Session["GioHang"] = null;
-            return RedirectToAction("XemGioHang");
+            return RedirectToAction("HoanTatDatHang","GioHang", new { MaDH = dh.MaDonHang,PhiVC = Session["CuocPhi"], TongTT = Session["TongThanhTien"]});
         }
         public ActionResult HinhThucPartial()
         {
@@ -285,6 +288,39 @@ namespace CommercialWeb.Controllers
         public ActionResult KhuVucPartial()
         {
             return PartialView();
+        }
+        public ActionResult PhiVanChuyenPartial(int cuockv, int cuocphi)
+        {
+            ViewBag.CuocPhi = cuockv + cuocphi;
+            Session["CuocPhi"] = cuockv + cuocphi;
+            if (cuocphi == 0)
+                Session["HinhThuc"] = 1;
+            else
+                Session["HinhThuc"] = 2;
+            Session["TongThanhTien"] = ((10 * TinhTongTien() / 100) + TinhTongTien()) + cuockv + cuocphi;
+            return PartialView();
+        }
+        public ActionResult TongThanhTienPartial()
+        {
+            ViewBag.TongThanhTien = Session["TongThanhTien"];
+            return PartialView();
+        }
+        public ActionResult DonHangPartial()
+        {
+            return PartialView();
+        }
+        public ActionResult HoanTatDatHang(int MaDH, decimal PhiVC, decimal TongTT)
+        {
+            ViewBag.DSSanPham = db.ChiTietDonHangs.Where(n => n.MaDonHang == MaDH);
+            ViewBag.TamTinh = TinhTongTien();
+            ViewBag.PhiVC = PhiVC;
+            ViewBag.TongTT = TongTT;
+            ViewBag.DiaChiGH = db.DonHangs.Where(n => n.MaDonHang == MaDH);
+            //Xóa session
+            Session["CuocPhi"] = null;
+            Session["HinhThuc"] = null;
+            Session["TongThanhTien"] = null;
+            return View(ViewBag.DSSanPham);
         }
     }
 }

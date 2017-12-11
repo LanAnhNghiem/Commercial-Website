@@ -5,7 +5,7 @@
     <option value="">Chọn khu vực</option>
     @foreach (var item in Model)
     {
-        <option>@item.TenKhuVuc</option>
+        <option value = @item.DonGia.ToString()>@item.TenKhuVuc</option>
     }
 </select>
 <!--Dropdown location end-->

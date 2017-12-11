@@ -136,7 +136,7 @@ else
                     <div class="col-md-6" style="float:right">
                         <div class="payment-details box-shadow p-30 mb-50">
                             <h6 class="widget-title border-left mb-20">thanh toán</h6>
-                            <table >
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td class="td-title-1" >Tạm tính</td>
@@ -157,7 +157,6 @@ else
                                 </tbody>
                             </table>
                             <input type="button" id="btnNext" class="submit-btn-1 mt-20" value="Tiếp theo">
-                            @*@Ajax.ActionLink("Tiếp theo", "DonHangPartial", "GioHang", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "donhang", InsertionMode = InsertionMode.Replace },new { @class="update-donhang"})*@
                             @*<a href="#checkout" class="submit-btn-1 mt-20 btn-hover-1" data-toggle="tab">Tiếp theo</a>*@
                         </div>
                     </div>
@@ -197,7 +196,6 @@ else
                     </div>
                     <div class="col-md-6">
                         <!-- our order -->
-                        @*@Html.Partial("~/Views/GioHang/DonHangPartial.cshtml", lstGioHang)*@
                         <div class="payment-details pl-10 mb-50" id="donhang">
                             <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
                             <table>
@@ -207,7 +205,7 @@ else
                                         <td class="td-title-1">Tạm tính</td>
                                         <td class="td-title-2" id="tamtinh-checkout">0 VND</td>
                                     </tr>
-                                    <tr>
+                                    <tr id="phivanchuyen-partial">
                                         <td class="td-title-1">Phí vận chuyển</td>
                                         <td class="td-title-2">0 VND</td>
                                     </tr>
@@ -215,7 +213,7 @@ else
                                         <td class="td-title-1">VAT</td>
                                         <td class="td-title-2">10 %</td>
                                     </tr>
-                                    <tr>
+                                    <tr id="tongthanhtien-partial">
                                         <td class="order-total">Tổng thành tiền</td>
                                         <td class="order-total-price" id="tongthanhtien-checkout">0 VND</td>
                                     </tr>
@@ -306,101 +304,128 @@ else
    <!-- checkout end -->
 }
 <script type="text/javascript">
+    //Dropdown- start
+    //cước phí theo khu vực
+    var cuockv = 0;
+    //cước phí giao hàng tùy theo hình thức
+    var cuocphi = 0
+    $("#dropdown-location").change(function () {
+       
+        cuockv = $("#dropdown-location").val();
+        alert(cuockv);
+        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
+        $.ajax({
+            type: "POST",
+            data: { cuockv: cuockv, cuocphi: cuocphi },
+            url: '@Url.Content("PhiVanChuyenPartial")',
+            success: function (ketqua) {
+                alert(ketqua);
+                $('#phivanchuyen-partial').replaceWith(ketqua);
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Content("TongThanhTienPartial")',
+                    success: function (ketqua) {
+                        $('#tongthanhtien-partial').replaceWith(ketqua);
+                    }
+                })
+            }
+        })
+    });
+    $("#dropdown-hinhthuc").change(function () {
+        alert("hinhthuc");
+        cuocphi = $("#dropdown-hinhthuc").val();
+        alert(cuocphi);
+        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
+        $.ajax({
+            type: "POST",
+            data: { cuockv: cuockv, cuocphi: cuocphi },
+            url: '@Url.Content("PhiVanChuyenPartial")',
+            success: function (ketqua) {
+                alert(ketqua);
+                $('#phivanchuyen-partial').replaceWith(ketqua);
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Content("TongThanhTienPartial")',
+                    success: function (ketqua) {
+                        $('#tongthanhtien-partial').replaceWith(ketqua);
+                    }
+                })
+            }
+        })
+    })
+    //Dropdown- end
+
+    //Nút đặt hàng - start
     $("#btnDatHang").click(function () {
         var hoten = $("#hoten").val();
         var diachi = $("#diachi").val();
         var sdt = $("#sdt").val();
         var email = $("#email").val();
+        alert(cuocphi+" "+cuockv);
         if (hoten.length != 0 && diachi.length != 0 && sdt.length != 0 && email.length != 0) {
             $.ajax({
                 type: "POST",
                 data: { hoten: hoten, diachi: diachi, sdt: sdt, email: email },
                 url: '@Url.Content("DatHang")',
                 success: function (ketqua) {
-                    alert(ketqua);
+                    var donhang = $("#donhang").html();
+                    alert(donhang);
+                    $("#show-donhang").replaceWith(donhang);
+                    //Đổi sang trang Hoàn tất đặt hàng
+                    var banner = $(".breadcrumbs-inner").height();
+                    var menu = $(".full-width-mega-dropdown").height();
+                    var position = menu + banner - 50;
+                    //enable lại trang hoàn tất đặt hàng
+                    $("#order-complete-a").prop("href", "#order-complete");
+                    //disable trang trước
+                    $("#checkout-a").prop("href", "#");
+                    //scroll tới chỗ bước 2
+                    $("html, body").animate({ scrollTop: (position) + "px" }, "slow");
+                    //đổi layout
+                    $('a[href="#order-complete"]').addClass("active");
+                    $('.order-complete-span').addClass("active");
+                    //đổi sang trang đặt hàng
+                    $("#order-complete-a").trigger('click');
+
                 }
             })
         }
-        
     })
-    $("#dropdown-location").change(function () {
-        var selected = $("#dropdown-location").val();
-        var makhuvuc = 0;
-        switch (selected) {
-            case "kv1":
-                alert('HCM');
-                break;
-            case "kv2":
-                alert('sdfsdf');
-                
-                break;
-            case "kv3":
-                alert('kv3');
-                break;
-            case "kv4":
-                alert('kv4');
-                break;
-            case "kv5":
-                alert('kv5');
-                break;     
-        }
-        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
-        $.ajax({
-            type: "POST",
-            url: 'DonHangPartial',
-            data: { cuocphi: cuocphi },
-            success: function (ketqua) {
-                $('#donhang-partial').replaceWith(ketqua);
-            }
-        })
-    })
-    $("#dropdown-hinhthuc").change(function () {
-        var selected = $("#dropdown-hinhthuc").val();
-        var cuocphi = 0;
-        switch (selected) {
-            case "hinhthuc1":
-                alert("hình thức 1");
-                cuocphi = 0;
-                break;
-            case "hinhthuc2":
-                alert("hình thức 2");
-                cuocphi = 29000;
-                break;
-        }
-        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
-        $.ajax({
-            type: "POST",
-            url: 'DonHangPartial',
-            data:{cuocphi: cuocphi},
-            success: function (ketqua) {
-                $('#donhang-partial').replaceWith(ketqua);
-            }
-        })
-    });
-    var btnNextClicked = false
-    $("#btnNext").click(function () {
+    //Nút đặt hàng - end
 
+    //Nút next - start
+    $("#btnNext").click(function () {
         var banner = $(".breadcrumbs-inner").height();
         var menu = $(".full-width-mega-dropdown").height();
         var position = menu + banner - 50;
+        //enable trang đặt hàng
+        $("#checkout-a").prop("href", "#checkout");
+        //disable 2 trang còn lại
+        $("#shopping-cart-a").prop("href", "#");
+        $("#order-complete-a").prop("href", "#");
         //scroll tới chỗ bước 2
         $("html, body").animate({ scrollTop: (position) + "px" }, "slow");
         //đổi layout
         $('a[href="#checkout"]').addClass("active");
         $('.checkout-span').addClass("active");
         //đổi sang trang đặt hàng
-        var href = $("#checkout-a").attr('href');
         $("#checkout-a").trigger('click');
+        //disable trang giỏ hàng và trang hoàn tất đặt hàng
+        //var href = $("#shopping-cart-a").attr('href');
+       
         //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
         //$(".update-donhang").trigger('click');
         $.ajax({
             type: "POST",
-            url: 'DonHangPartial',
+            url: 'DSSPPartial',
             success: function (ketqua) {
                 $('#donhang-partial').replaceWith(ketqua);
             }
         })
     })
+    //Nút next - end
+ 
+    //Hàm chạy khi reload lại trang - start
     jQuery(function ($) {
         $.ajax({
             type: "POST",
@@ -426,7 +451,7 @@ else
                                     url: '@Url.Content("TongThanhTien")',
                                     success: function (ketqua) {
                                         $('#tongthanhtien-checkout').html(ketqua);
-                                        
+
                                     }
                                 })
                             }
@@ -436,11 +461,13 @@ else
             }
         })
     });
-   //Hàm tính thành tiền từng sp khi tăng số lượng, và thay đổi số lượng trên icon giỏ hàng
+    //Hàm chạy khi reload lại trang - end
+
+    //Hàm tính thành tiền từng sp khi tăng số lượng, và thay đổi số lượng trên icon giỏ hàng
     $(".button").click( function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
-   
+
         if ($.isNumeric(oldValue)) {
             if ($button.text() == "+") {
                 var newVal = parseFloat(oldValue) + 1;
@@ -492,5 +519,6 @@ else
                 }
             })
         }
-    });
+    })
+
 </script>

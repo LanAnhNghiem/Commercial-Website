@@ -5,7 +5,7 @@
     <option value="">Hình thức thanh toán</option>
     @foreach (var item in Model)
     {
-        <option>@item.TenHinhThuc</option>
+        <option value= @item.CuocPhi.ToString()>@item.TenHinhThuc</option>
     }
 </select>
 <!--Dropdown hinh thuc end-->

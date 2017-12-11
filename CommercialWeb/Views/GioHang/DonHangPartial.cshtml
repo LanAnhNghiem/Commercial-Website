@@ -1,11 +1,1 @@
-﻿ @using CommercialWeb.Models
-@model IEnumerable<ItemGioHang>
-<!-- our order -->
-@foreach (var item in Model)
-            {
-    <tr>
-        <td class="td-title-1">@item.TenSp <span style="font-weight:bold;color:rgb(255, 127, 0)">x @item.SoLuong</span></td>
-        <td class="td-title-2" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
-    </tr>
-}
-
+﻿
