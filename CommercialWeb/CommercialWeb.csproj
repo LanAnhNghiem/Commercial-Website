@@ -199,7 +199,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
-    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -697,9 +696,8 @@
     <Content Include="Views\SanPham\LaptopPartial.cshtml" />
     <Content Include="Views\SanPham\MayTinhPartial.cshtml" />
     <Content Include="Views\SanPham\LinhKienPartial.cshtml" />
-    <Content Include="Views\TimKiem\SliderBannerPartial.cshtml" />
+    <Content Include="Views\SanPham\SliderBannerPartial.cshtml" />
     <Content Include="Views\Home\MenuPartial.cshtml" />
-    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
