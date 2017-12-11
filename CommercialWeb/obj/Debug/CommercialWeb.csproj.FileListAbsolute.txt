@@ -407,3 +407,4 @@ D:\[UIT]2013-2017\[SE100] OOAD\FinalProjects\Projects\Commercial-Website\Commerc
 D:\[UIT]2013-2017\[SE100] OOAD\FinalProjects\Projects\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 D:\[UIT]2013-2017\[SE100] OOAD\FinalProjects\Projects\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
 D:\[UIT]2013-2017\[SE100] OOAD\FinalProjects\Projects\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
