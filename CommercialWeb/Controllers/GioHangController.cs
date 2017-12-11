@@ -96,10 +96,17 @@ namespace CommercialWeb.Controllers
         }
         public ActionResult XemGioHang()
         {
+            //List<ItemGioHang> lstGioHang = LayGioHang();
+            ////lấy các sp có số lượng khác 0 lưu vào ViewBag.GioHang
+            //var tmpLst = lstGioHang.Select(n => n.SoLuong != 0);
+            //ViewBag.GioHang = tmpLst;
             List<ItemGioHang> lstGioHang = LayGioHang();
-            //lấy các sp có số lượng khác 0 lưu vào ViewBag.GioHang
-            var tmpLst = lstGioHang.Select(n => n.SoLuong != 0);
-            ViewBag.GioHang = tmpLst;
+            //Lấy cước phí theo khu vực
+            var lstCuocPhi = db.CuocPhis;
+            ViewBag.CuocPhi = lstCuocPhi;
+            //Lấy hình thức giao hàng
+            var lstHinhThuc = db.HinhThucGiaoHangs;
+            ViewBag.HinhThuc = lstHinhThuc;
             return View(lstGioHang);
         }
         public ActionResult GioHangPartial()
@@ -223,7 +230,7 @@ namespace CommercialWeb.Controllers
             }
             if(sdt.Length > 12 || Regex.IsMatch(sdt, @"^[0-9]*$") == false)
             {
-                errorMess = "<br>- Số điện thoại không hợp lệ.";
+                errorMess += "\r\n- Số điện thoại không hợp lệ.";
             }
             if(!regex.IsValidEmail(email) || sdt.Length > 12 || Regex.IsMatch(sdt, @"^[0-9]*$") == false)
             {
@@ -271,6 +278,13 @@ namespace CommercialWeb.Controllers
             Session["GioHang"] = null;
             return RedirectToAction("XemGioHang");
         }
-
+        public ActionResult HinhThucPartial()
+        {
+            return PartialView();
+        }
+        public ActionResult KhuVucPartial()
+        {
+            return PartialView();
+        }
     }
 }

@@ -1,0 +1,11 @@
+﻿@using CommercialWeb.Models
+@model IEnumerable<HinhThucGiaoHang>
+<!--Dropdown hinh thuc start-->
+<select id="dropdown-hinhthuc" class="custom-select" required>
+    <option value="">Hình thức thanh toán</option>
+    @foreach (var item in Model)
+    {
+        <option>@item.TenHinhThuc</option>
+    }
+</select>
+<!--Dropdown hinh thuc end-->

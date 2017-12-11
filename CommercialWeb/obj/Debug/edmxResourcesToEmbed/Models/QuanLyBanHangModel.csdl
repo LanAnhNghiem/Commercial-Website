@@ -23,6 +23,14 @@
     <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
   </EntityType>
+  <EntityType Name="CuocPhi">
+    <Key>
+      <PropertyRef Name="MaCuocPhi" />
+    </Key>
+    <Property Name="MaCuocPhi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKhuVuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
   <EntityType Name="DonHang">
     <Key>
       <PropertyRef Name="MaDonHang" />
@@ -49,6 +57,7 @@
     <Property Name="MaHinhThuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenHinhThuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CuocPhi" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="DonHangs" Relationship="Self.FK_DonHang_HinhThucGiaoHang" FromRole="HinhThucGiaoHang" ToRole="DonHang" />
   </EntityType>
   <EntityType Name="KhachHang">
@@ -222,6 +231,7 @@
   <EntityContainer Name="QuanLyBanHangEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
     <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
+    <EntitySet Name="CuocPhis" EntityType="Self.CuocPhi" />
     <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
     <EntitySet Name="HinhThucGiaoHangs" EntityType="Self.HinhThucGiaoHang" />
     <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />

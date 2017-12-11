@@ -209,6 +209,9 @@
     <Compile Include="Models\ChiTietDonHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CuocPhi.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
@@ -500,6 +503,8 @@
     <Content Include="Views\SanPham\QuickviewPartial.cshtml" />
     <Content Include="Views\GioHang\HinhThucGiaoPartial.cshtml" />
     <Content Include="Views\GioHang\DonHangPartial.cshtml" />
+    <Content Include="Views\GioHang\KhuVucPartial.cshtml" />
+    <Content Include="Views\GioHang\HinhThucPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

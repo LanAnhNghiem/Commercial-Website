@@ -1,0 +1,11 @@
+﻿@using CommercialWeb.Models
+@model IEnumerable<CuocPhi>
+<!--Dropdown location start-->
+<select id="dropdown-location" class="custom-select" required>
+    <option value="">Chọn khu vực</option>
+    @foreach (var item in Model)
+    {
+        <option>@item.TenKhuVuc</option>
+    }
+</select>
+<!--Dropdown location end-->

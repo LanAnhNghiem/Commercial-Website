@@ -1,33 +1,11 @@
 ﻿ @using CommercialWeb.Models
 @model IEnumerable<ItemGioHang>
 <!-- our order -->
-<div class="payment-details pl-10 mb-50" id="donhang">
-    <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
-    <table>
-        <tbody>
-            @foreach (var item in Model)
+@foreach (var item in Model)
             {
-                <tr>
-                    <td class="td-title-1">@item.TenSp <span style="font-weight:bold;color:rgb(255, 127, 0)">x @item.SoLuong</span></td>
-                    <td class="td-title-2" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
-                </tr>
-            }
-            <tr>
-                <td class="td-title-1">Tạm tính</td>
-                <td class="td-title-2" id="tamtinh-checkout">0 VND</td>
-            </tr>
-            <tr>
-                <td class="td-title-1">Phí vận chuyển</td>
-                <td class="td-title-2">0 VND</td>
-            </tr>
-            <tr>
-                <td class="td-title-1">VAT</td>
-                <td class="td-title-2">10 %</td>
-            </tr>
-            <tr>
-                <td class="order-total">Tổng thành tiền</td>
-                <td class="order-total-price" id="tongthanhtien-checkout">0 VND</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <tr>
+        <td class="td-title-1">@item.TenSp <span style="font-weight:bold;color:rgb(255, 127, 0)">x @item.SoLuong</span></td>
+        <td class="td-title-2" id="thanhtien">@item.ThanhTien.ToString("#,##") VND</td>
+    </tr>
+}
+

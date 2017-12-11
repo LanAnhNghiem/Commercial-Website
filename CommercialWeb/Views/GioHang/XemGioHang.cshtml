@@ -5,9 +5,10 @@
     Layout = "~/Views/Layout/CartLayout.cshtml";
 }
 @{ 
-    IEnumerable<ItemGioHang> lstGioHang = ViewBag.GioHang as IEnumerable<ItemGioHang>;
+    IEnumerable<CuocPhi> lstCuocPhi = ViewBag.CuocPhi as IEnumerable<CuocPhi>;
+    IEnumerable<HinhThucGiaoHang> lstHinhThuc = ViewBag.HinhThuc as IEnumerable<HinhThucGiaoHang>;
 }
-@if(Model.Count == 0)
+@if (Model.Count == 0)
 {
     <!-- shopping-cart start -->
     <div class="tab-pane active" id="shopping-cart">
@@ -111,7 +112,7 @@ else
                                             </h6>
                                         </div>
                                     </td>
-                                    <td class="product-price"  >@item.DonGia.ToString("#,##") VND</td>
+                                    <td class="product-price">@item.DonGia.ToString("#,##") VND</td>
                                     <td id="masp" hidden="hidden">@item.MaSP</td>
                                     <td id="dongia" hidden="hidden">@item.DonGia</td>
                                     <td class="product-quantity">
@@ -178,17 +179,18 @@ else
                             <div class="billing-details pr-10">
                                 <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
                                 <input type="text" name="txtHoTen" placeholder="Họ tên" id="hoten" required>
-                                <input type="text" name="txtDiaChi" placeholder="Địa chỉ" id="diachi" required>
+                                <input type="text" name="txtDiaChi" placeholder="Địa chỉ" id="diachi">
+                                <!--Dropdown location start-->
+                                @Html.Partial("~/Views/GioHang/KhuVucPartial.cshtml", lstCuocPhi)
+                                <!--Dropdown location end-->
                                 <input type="text" name="txtSDT" placeholder="Số điện thoại" id="sdt" required>
                                 <input type="text" name="txtEmail" placeholder="Email" id="email" required>
                                 <h6 style="font-weight:bold; color: rgb(255, 127, 0)" id="ThongBao"></h6>
-                                <select class="custom-select">
-                                    <option value="defalt">Hình thức thanh toán</option>
-                                    <option value="c-1" id="option1">Giao hàng tiêu chuẩn</option>
-                                    <option value="c-2" id="option2">Giao hàng nhanh</option>
-                                </select>
+                                <!--Dropdown hinh thuc start-->
+                                @Html.Partial("~/Views/GioHang/HinhThucPartial.cshtml", lstHinhThuc)
+                                <!--Dropdown hinh thuc end-->
                             </div>
-                            <input type="button" id="btnDatHang" class="submit-btn-1 mt-20"
+                            <input type="submit" id="btnDatHang" class="submit-btn-1 mt-20"
                                    style="float:right; margin-right:10px" value="Đặt hàng">
                         }
                         
@@ -196,7 +198,30 @@ else
                     <div class="col-md-6">
                         <!-- our order -->
                         @*@Html.Partial("~/Views/GioHang/DonHangPartial.cshtml", lstGioHang)*@
-                        <div id="donhang-partial"></div>
+                        <div class="payment-details pl-10 mb-50" id="donhang">
+                            <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
+                            <table>
+                                <tbody>
+                                    <tr id="donhang-partial"></tr>
+                                    <tr>
+                                        <td class="td-title-1">Tạm tính</td>
+                                        <td class="td-title-2" id="tamtinh-checkout">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">Phí vận chuyển</td>
+                                        <td class="td-title-2">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-title-1">VAT</td>
+                                        <td class="td-title-2">10 %</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="order-total">Tổng thành tiền</td>
+                                        <td class="order-total-price" id="tongthanhtien-checkout">0 VND</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- payment-method -->
                         <div class="payment-method">
                             <h6 class="widget-title border-left mb-20">Hình thức giao hàng</h6>
@@ -221,7 +246,7 @@ else
                                     </h4>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="payment-content">
-                                            <p class="giaonhanh">Giao hàng trong vòng 24 giờ kể từ thời gian đặt</p>
+                                            <p class="giaonhanh">Giao hàng trong vòng 24 giờ kể từ thời gian đặt. </p>
                                         </div>
                                     </div>
                                 </div>
@@ -230,7 +255,52 @@ else
                         <!-- payment-method end -->
                     </div>
                 </div>
-            </form>
+                <!--Cách tính cước start-->
+                <br />
+                <h6 class="widget-title border-left mb-20">Cách tính cước phí</h6>
+                <!--Bảng cước phí theo từng khu vực-->
+                <div class="table-content table-responsive mb-50">
+                    <table class="text-center">
+                        <thead>
+                            <tr>
+                                <th style="font-weight:bold">Khu vực</th>
+                                <th style="font-weight:bold">Cước phí</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hồ Chí Minh</td>
+                                <td>10,000 VND</td>
+                            </tr>
+                            <tr>
+                                <td>Đà Nẵng-Hà Nội</td>
+                                <td>14,000 VND</td>
+                            </tr>
+                            <tr>
+                                <td>Miền Nam</td>
+                                <td>13,000 VND</td>
+                            </tr>
+                            <tr>
+                                <td>Miền Trung</td>
+                                <td>16,000 VND</td>
+                            </tr>
+                            <tr>
+                                <td>Miền Bắc</td>
+                                <td>18,000 VND</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    
+                <h6 class="widget-title border-left mb-20">Các tỉnh thuộc khu vực trong bảng trên</h6>
+                <p>- Miền Nam: An Giang, Bình Dương, Bình Phước, Bà Rịa- Vũng Tàu, Bạc Liêu, Bến Tre, Bình Thuận, Cà Mau, Cần Thơ, Đồng Nai, Đồng Tháp, Hậu Giang, Kiên Giang, Long An, Lâm Đồng, Ninh Thuận, Sóc Trăng, Tây Ninh, Tiền Giang, Trà Vinh, Vĩnh Long, Khánh Hòa.</p>
+                <p>- Miền Trung: Đắk Lắk, Đắk Nông, Bình Định, Gia Lai, Huế, Kon Tum, Phú Yên, Quảng Trị, Quảng Nam, Quảng Ngãi. </p>
+                <p>- Miền Bắc: Đắk Lắk, Đắk Nông, Bình Định, Gia Lai, Huế, Kon Tum, Phú Yên, Quảng Trị, Quảng Nam, Quảng Ngãi, Nam Định, Nghệ An, Ninh Bình, Phú Thọ, Quảng Ninh, Sơn La, Thái Bình, Thái Nguyên, Thanh Hóa, Tuyên Quang, Vĩnh Phúc, Yên Bái.</p>
+                <p style="color:rgb(255, 127, 0)">Tiền giao hàng thường = Tổng thành tiền của đơn hàng + cước phí khu vực </p>
+                <p style="color:rgb(255, 127, 0)">Tiền giao hàng nhanh = Tổng thành tiền của đơn hàng + cước phí giao hàng nhanh + cước phí khu vực </p>
+                <p style="font-style:italic">*Cước phí giao hàng nhanh: 29,000 VND / đơn hàng</p>
+                <!--Cách tính cước end-->
+</form>
         </div>
     </div>
    <!-- checkout end -->
@@ -246,17 +316,67 @@ else
                 type: "POST",
                 data: { hoten: hoten, diachi: diachi, sdt: sdt, email: email },
                 url: '@Url.Content("DatHang")',
-                success: function () {
-                    alert('Đã lưu');
+                success: function (ketqua) {
+                    alert(ketqua);
                 }
             })
         }
         
     })
-    $(".custom-select").click(function () {
-        alert('ahihi');
-
+    $("#dropdown-location").change(function () {
+        var selected = $("#dropdown-location").val();
+        var makhuvuc = 0;
+        switch (selected) {
+            case "kv1":
+                alert('HCM');
+                break;
+            case "kv2":
+                alert('sdfsdf');
+                
+                break;
+            case "kv3":
+                alert('kv3');
+                break;
+            case "kv4":
+                alert('kv4');
+                break;
+            case "kv5":
+                alert('kv5');
+                break;     
+        }
+        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
+        $.ajax({
+            type: "POST",
+            url: 'DonHangPartial',
+            data: { cuocphi: cuocphi },
+            success: function (ketqua) {
+                $('#donhang-partial').replaceWith(ketqua);
+            }
+        })
     })
+    $("#dropdown-hinhthuc").change(function () {
+        var selected = $("#dropdown-hinhthuc").val();
+        var cuocphi = 0;
+        switch (selected) {
+            case "hinhthuc1":
+                alert("hình thức 1");
+                cuocphi = 0;
+                break;
+            case "hinhthuc2":
+                alert("hình thức 2");
+                cuocphi = 29000;
+                break;
+        }
+        //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
+        $.ajax({
+            type: "POST",
+            url: 'DonHangPartial',
+            data:{cuocphi: cuocphi},
+            success: function (ketqua) {
+                $('#donhang-partial').replaceWith(ketqua);
+            }
+        })
+    });
     var btnNextClicked = false
     $("#btnNext").click(function () {
 
@@ -278,7 +398,6 @@ else
             url: 'DonHangPartial',
             success: function (ketqua) {
                 $('#donhang-partial').replaceWith(ketqua);
-                alert(ketqua);
             }
         })
     })
@@ -328,11 +447,11 @@ else
             }
             else {
                 // Không cho phép giảm số lượng dưới 0
-                if (oldValue > 0) {
+                if (oldValue > 1) {
                     var newVal = parseFloat(oldValue) - 1;
                 }
                 else {
-                    newVal = 0;
+                    newVal = 1;
                 }
             }
             $button.parent().find("input").val(newVal);

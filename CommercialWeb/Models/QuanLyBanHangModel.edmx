@@ -25,6 +25,14 @@
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="CuocPhi">
+          <Key>
+            <PropertyRef Name="MaCuocPhi" />
+          </Key>
+          <Property Name="MaCuocPhi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKhuVuc" Type="nvarchar(max)" />
+          <Property Name="DonGia" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="DonHang">
           <Key>
             <PropertyRef Name="MaDonHang" />
@@ -48,6 +56,7 @@
           <Property Name="MaHinhThuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenHinhThuc" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="CuocPhi" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -211,6 +220,7 @@
         <EntityContainer Name="QuanLyBanHangModelStoreContainer">
           <EntitySet Name="BinhLuan" EntityType="Self.BinhLuan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuocPhi" EntityType="Self.CuocPhi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HinhThucGiaoHang" EntityType="Self.HinhThucGiaoHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
@@ -280,6 +290,14 @@
           <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
         </EntityType>
+        <EntityType Name="CuocPhi">
+          <Key>
+            <PropertyRef Name="MaCuocPhi" />
+          </Key>
+          <Property Name="MaCuocPhi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKhuVuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="DonHang">
           <Key>
             <PropertyRef Name="MaDonHang" />
@@ -306,6 +324,7 @@
           <Property Name="MaHinhThuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenHinhThuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CuocPhi" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="DonHangs" Relationship="Self.FK_DonHang_HinhThucGiaoHang" FromRole="HinhThucGiaoHang" ToRole="DonHang" />
         </EntityType>
         <EntityType Name="KhachHang">
@@ -479,6 +498,7 @@
         <EntityContainer Name="QuanLyBanHangEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
           <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
+          <EntitySet Name="CuocPhis" EntityType="Self.CuocPhi" />
           <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
           <EntitySet Name="HinhThucGiaoHangs" EntityType="Self.HinhThucGiaoHang" />
           <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
@@ -548,6 +568,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CuocPhis">
+            <EntityTypeMapping TypeName="QuanLyBanHangModel.CuocPhi">
+              <MappingFragment StoreEntitySet="CuocPhi">
+                <ScalarProperty Name="MaCuocPhi" ColumnName="MaCuocPhi" />
+                <ScalarProperty Name="TenKhuVuc" ColumnName="TenKhuVuc" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
@@ -571,6 +600,7 @@
                 <ScalarProperty Name="MaHinhThuc" ColumnName="MaHinhThuc" />
                 <ScalarProperty Name="TenHinhThuc" ColumnName="TenHinhThuc" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="CuocPhi" ColumnName="CuocPhi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -27,6 +27,7 @@ namespace CommercialWeb.Models
     
         public virtual DbSet<BinhLuan> BinhLuans { get; set; }
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual DbSet<CuocPhi> CuocPhis { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<HinhThucGiaoHang> HinhThucGiaoHangs { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }

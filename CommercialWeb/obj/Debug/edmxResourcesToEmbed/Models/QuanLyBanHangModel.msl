@@ -23,6 +23,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CuocPhis">
+      <EntityTypeMapping TypeName="QuanLyBanHangModel.CuocPhi">
+        <MappingFragment StoreEntitySet="CuocPhi">
+          <ScalarProperty Name="MaCuocPhi" ColumnName="MaCuocPhi" />
+          <ScalarProperty Name="TenKhuVuc" ColumnName="TenKhuVuc" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
@@ -46,6 +55,7 @@
           <ScalarProperty Name="MaHinhThuc" ColumnName="MaHinhThuc" />
           <ScalarProperty Name="TenHinhThuc" ColumnName="TenHinhThuc" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="CuocPhi" ColumnName="CuocPhi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
