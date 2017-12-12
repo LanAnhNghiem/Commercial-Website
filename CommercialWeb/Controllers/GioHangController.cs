@@ -96,17 +96,27 @@ namespace CommercialWeb.Controllers
         }
         public ActionResult XemGioHang()
         {
-            //List<ItemGioHang> lstGioHang = LayGioHang();
-            ////lấy các sp có số lượng khác 0 lưu vào ViewBag.GioHang
-            //var tmpLst = lstGioHang.Select(n => n.SoLuong != 0);
-            //ViewBag.GioHang = tmpLst;
+            //Lấy giỏ hàng
             List<ItemGioHang> lstGioHang = LayGioHang();
+            ViewBag.DSSP = LayGioHang();
             //Lấy cước phí theo khu vực
             var lstCuocPhi = db.CuocPhis;
             ViewBag.CuocPhi = lstCuocPhi;
             //Lấy hình thức giao hàng
             var lstHinhThuc = db.HinhThucGiaoHangs;
             ViewBag.HinhThuc = lstHinhThuc;
+            //nếu giỏ hàng rỗng
+            if(Session["CuocPhi"] != null)
+            {
+                //int MaDH = Int32.Parse(Session["MaDH"].ToString());
+                ViewBag.TamTinh = TongThanhTien();
+                int cuocphi = Int32.Parse(Session["CuocPhi"].ToString());
+                ViewBag.PhiVC = cuocphi.ToString("#,##");
+                ViewBag.TongTT = Session["TongThanhTien"].ToString();
+                ViewBag.DiaChi = Session["DiaChi"].ToString();
+                ViewBag.Email = Session["Email"].ToString();
+                ViewBag.SDT = Session["SDT"].ToString();
+            }
             return View(lstGioHang);
         }
         public ActionResult GioHangPartial()
@@ -220,11 +230,16 @@ namespace CommercialWeb.Controllers
         //    kh.Email = Email;
         //    Session["KhachHang"] = kh;
         //}
-        public ActionResult DatHang(string hoten, string diachi, string sdt, string email)
+        [HttpPost]   
+        public ActionResult DatHang(FormCollection f)
         {
             //Kiểm tra nhập thông tin hợp lệ hay không
             RegexUtilities regex = new RegexUtilities();
             string errorMess = "";
+            string email = f["txtEmail"].ToString();
+            string hoten = f["txtHoTen"].ToString();
+            string diachi = f["txtDiaChi"].ToString();
+            string sdt = f["txtSDT"].ToString();
             if (!regex.IsValidEmail(email))
             {
                 errorMess = "- Email không hợp lệ.";
@@ -237,11 +252,6 @@ namespace CommercialWeb.Controllers
             {
                 return Content(errorMess);
             }
-            //Kiểm tra giỏ hàng tồn tại hay chưa
-            if(Session["GioHang"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             //Lưu thông tin khách hàng
             //Nhớ kiểm tra khách hàng là thành viên đăng nhập hay chưa (code sau)
             //Đây là bước tạo mới 1 khách hàng vãng lai
@@ -252,6 +262,9 @@ namespace CommercialWeb.Controllers
             kh.DiaChi = diachi;
             db.KhachHangs.Add(kh);
             db.SaveChanges();
+            Session["DiaChi"] = diachi;
+            Session["Email"] = email;
+            Session["SDT"] = sdt;
             //Thêm đơn hàng
             DonHang dh = new DonHang();
             dh.MaKH = kh.MaKH;
@@ -274,12 +287,12 @@ namespace CommercialWeb.Controllers
                 ctdh.MaSP = item.MaSP;
                 ctdh.SoLuong = item.SoLuong;
                 ctdh.DonGia = item.DonGia;
-                ctdh.TenSP = item.TenSp;
+                ctdh.TenSP = item.TenSP;
                 db.ChiTietDonHangs.Add(ctdh);
             }
             db.SaveChanges();
-            Session["GioHang"] = null;
-            return RedirectToAction("HoanTatDatHang","GioHang", new { MaDH = dh.MaDonHang,PhiVC = Session["CuocPhi"], TongTT = Session["TongThanhTien"]});
+            //Session["GioHang"] = null;
+            return PartialView("DonHangPartial",LayGioHang());
         }
         public ActionResult HinhThucPartial()
         {
@@ -309,18 +322,6 @@ namespace CommercialWeb.Controllers
         {
             return PartialView();
         }
-        public ActionResult HoanTatDatHang(int MaDH, decimal PhiVC, decimal TongTT)
-        {
-            ViewBag.DSSanPham = db.ChiTietDonHangs.Where(n => n.MaDonHang == MaDH);
-            ViewBag.TamTinh = TinhTongTien();
-            ViewBag.PhiVC = PhiVC;
-            ViewBag.TongTT = TongTT;
-            ViewBag.DiaChiGH = db.DonHangs.Where(n => n.MaDonHang == MaDH);
-            //Xóa session
-            Session["CuocPhi"] = null;
-            Session["HinhThuc"] = null;
-            Session["TongThanhTien"] = null;
-            return View(ViewBag.DSSanPham);
-        }
+       
     }
 }

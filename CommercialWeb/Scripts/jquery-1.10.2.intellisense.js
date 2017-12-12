@@ -559,7 +559,9 @@ intellisense.annotate(_object, {
     ///   <summary>Utility method to filter and/or chain Deferreds.</summary>
     ///   <param name="doneFilter" type="Function">An optional function that is called when the Deferred is resolved.</param>
     ///   <param name="failFilter" type="Function">An optional function that is called when the Deferred is rejected.</param>
-    ///   <param name="progressFilter" type="Function">An optional function that is called when progress notifications are sent to the Deferred.</param>
+    ///   <param name="progressFilter" type="Function">An optional function that is called when progress 
+
+s are sent to the Deferred.</param>
     ///   <returns type="Promise" />
     /// </signature>
   },

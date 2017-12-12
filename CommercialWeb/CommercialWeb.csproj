@@ -499,17 +499,13 @@
     <Content Include="Views\GioHang\XemGioHang.cshtml" />
     <Content Include="Views\Home\MenuPartial.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
-    <Content Include="Views\GioHang\Notification.cshtml" />
     <Content Include="Views\SanPham\QuickviewPartial.cshtml" />
-    <Content Include="Views\GioHang\HinhThucGiaoPartial.cshtml" />
     <Content Include="Views\GioHang\DSSPPartial.cshtml" />
     <Content Include="Views\GioHang\KhuVucPartial.cshtml" />
     <Content Include="Views\GioHang\HinhThucPartial.cshtml" />
     <Content Include="Views\GioHang\PhiVanChuyenPartial.cshtml" />
     <Content Include="Views\GioHang\TongThanhTienPartial.cshtml" />
     <Content Include="Views\GioHang\DonHangPartial.cshtml" />
-    <Content Include="Views\GioHang\HoanTatDatHang.cshtml" />
-    <Content Include="Views\GioHang\DiaChiGHPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

@@ -323,6 +323,6 @@ D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Google.xml
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Twitter.xml
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache

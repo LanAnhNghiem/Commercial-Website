@@ -7,6 +7,7 @@
 @{ 
     IEnumerable<CuocPhi> lstCuocPhi = ViewBag.CuocPhi as IEnumerable<CuocPhi>;
     IEnumerable<HinhThucGiaoHang> lstHinhThuc = ViewBag.HinhThuc as IEnumerable<HinhThucGiaoHang>;
+    IEnumerable<ItemGioHang> lstDSSP = ViewBag.DSSP as IEnumerable<ItemGioHang>;
 }
 @if (Model.Count == 0)
 {
@@ -108,7 +109,7 @@ else
                                         </div>
                                         <div class="pro-thumbnail-info text-left">
                                             <h6 class="product-title-2">
-                                                <a href="#">@item.TenSp</a>
+                                                <a href="#">@item.TenSP</a>
                                             </h6>
                                         </div>
                                     </td>
@@ -168,12 +169,12 @@ else
     <!-- checkout start -->
     <div class="tab-pane" id="checkout">
         <div class="checkout-content box-shadow p-30">
-            <form action="#">
+            @*<form action="#">*@ @* Vì có cái form # này mà thằng Ajax.BeginForm bên dưới không generate ra form => buttom submit nó submit vào cái form # vô nghĩa này*@
                 <div class="row">
                     <!-- billing details -->
                     <div class="col-md-6">
-                        @using (Ajax.BeginForm("DatHang", "GioHang",
-                        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+                        @using (Ajax.BeginForm("DatHang",
+                        new AjaxOptions { HttpMethod= "Post",UpdateTargetId = "update-order", InsertionMode = InsertionMode.Replace }))
                         {
                             <div class="billing-details pr-10">
                                 <h6 class="widget-title border-left mb-20">thông tin khách hàng</h6>
@@ -184,7 +185,6 @@ else
                                 <!--Dropdown location end-->
                                 <input type="text" name="txtSDT" placeholder="Số điện thoại" id="sdt" required>
                                 <input type="text" name="txtEmail" placeholder="Email" id="email" required>
-                                <h6 style="font-weight:bold; color: rgb(255, 127, 0)" id="ThongBao"></h6>
                                 <!--Dropdown hinh thuc start-->
                                 @Html.Partial("~/Views/GioHang/HinhThucPartial.cshtml", lstHinhThuc)
                                 <!--Dropdown hinh thuc end-->
@@ -192,7 +192,7 @@ else
                             <input type="submit" id="btnDatHang" class="submit-btn-1 mt-20"
                                    style="float:right; margin-right:10px" value="Đặt hàng">
                         }
-                        
+                        <p id="ThongBao"></p>
                     </div>
                     <div class="col-md-6">
                         <!-- our order -->
@@ -298,11 +298,84 @@ else
                 <p style="color:rgb(255, 127, 0)">Tiền giao hàng nhanh = Tổng thành tiền của đơn hàng + cước phí giao hàng nhanh + cước phí khu vực </p>
                 <p style="font-style:italic">*Cước phí giao hàng nhanh: 29,000 VND / đơn hàng</p>
                 <!--Cách tính cước end-->
-</form>
+@*</form>*@
         </div>
     </div>
    <!-- checkout end -->
+    <!-- order-complete start -->
+    <div class="tab-pane" id="order-complete">
+        <div class="order-complete-content box-shadow">
+            <div class="thank-you p-30 text-center">
+                <h6 class="text-black-5 mb-0">Đơn hàng của bạn đã được tiếp nhận. Vui lòng check lại email.</h6>
+            </div>
+            @*<div class="order-info p-30 mb-10">
+                    <ul class="order-info-list">
+                        <li>
+                            <h6>Mã đơn hàng</h6>
+                            <p id="madh-bill">m 2653257</p>
+                        </li>
+                    </ul>
+                </div>*@
+            <div class="row">
+                <!-- our order -->
+                <div class="col-md-6">
+                    <div class="payment-details p-30">
+                        <h6 class="widget-title border-left mb-20">Đơn hàng</h6>
+                        <table>
+                            <tbody id="update-order"></tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="td-title-1">Tạm tính</td>
+                                    <td class="td-title-2" id="tamtinh-bill">0 VND</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title-1" >Phí vận chuyển</td>
+                                    <td class="td-title-2"  id="phivanchuyen-bill">0 VND</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-title-1">VAT</td>
+                                    <td class="td-title-2">10 %</td>
+                                </tr>
+                                <tr>
+                                    <td class="order-total" >Tổng thành tiền</td>
+                                    <td class="order-total-price" id="tongthanhtien-bill">0 VND</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bill-details p-30">
+                        <h6 class="widget-title border-left mb-20">Địa chỉ giao hàng</h6>
+                        <ul class="bill-address">
+                            <li>
+                                <span>Địa chỉ:</span>
+                                <div id="diachi-bill"></div>
+                            </li>
+                            <li>
+                                <span>Email:</span>
+                                <div id="email-bill"></div>
+                            </li>
+                            <li>
+                                <span>SDT: </span>
+                                <div id="sdt-bill"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- order-complete end -->
 }
+
+<!-- jquery latest version -->
+<script src="~/Content/js/jquery-3.1.1.min.js"></script>
+<!--Ajax-->
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
 <script type="text/javascript">
     //Dropdown- start
     //cước phí theo khu vực
@@ -312,14 +385,12 @@ else
     $("#dropdown-location").change(function () {
        
         cuockv = $("#dropdown-location").val();
-        alert(cuockv);
         //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
         $.ajax({
             type: "POST",
             data: { cuockv: cuockv, cuocphi: cuocphi },
             url: '@Url.Content("PhiVanChuyenPartial")',
             success: function (ketqua) {
-                alert(ketqua);
                 $('#phivanchuyen-partial').replaceWith(ketqua);
                 $.ajax({
                     type: "POST",
@@ -332,16 +403,13 @@ else
         })
     });
     $("#dropdown-hinhthuc").change(function () {
-        alert("hinhthuc");
         cuocphi = $("#dropdown-hinhthuc").val();
-        alert(cuocphi);
         //thay đổi thông tin trong mục đơn hàng ở phần Đặt hàng
         $.ajax({
             type: "POST",
             data: { cuockv: cuockv, cuocphi: cuocphi },
             url: '@Url.Content("PhiVanChuyenPartial")',
             success: function (ketqua) {
-                alert(ketqua);
                 $('#phivanchuyen-partial').replaceWith(ketqua);
                 $.ajax({
                     type: "POST",
@@ -361,34 +429,32 @@ else
         var diachi = $("#diachi").val();
         var sdt = $("#sdt").val();
         var email = $("#email").val();
-        alert(cuocphi+" "+cuockv);
-        if (hoten.length != 0 && diachi.length != 0 && sdt.length != 0 && email.length != 0) {
-            $.ajax({
-                type: "POST",
-                data: { hoten: hoten, diachi: diachi, sdt: sdt, email: email },
-                url: '@Url.Content("DatHang")',
-                success: function (ketqua) {
-                    var donhang = $("#donhang").html();
-                    alert(donhang);
-                    $("#show-donhang").replaceWith(donhang);
-                    //Đổi sang trang Hoàn tất đặt hàng
-                    var banner = $(".breadcrumbs-inner").height();
-                    var menu = $(".full-width-mega-dropdown").height();
-                    var position = menu + banner - 50;
-                    //enable lại trang hoàn tất đặt hàng
-                    $("#order-complete-a").prop("href", "#order-complete");
-                    //disable trang trước
-                    $("#checkout-a").prop("href", "#");
-                    //scroll tới chỗ bước 2
-                    $("html, body").animate({ scrollTop: (position) + "px" }, "slow");
-                    //đổi layout
-                    $('a[href="#order-complete"]').addClass("active");
-                    $('.order-complete-span').addClass("active");
-                    //đổi sang trang đặt hàng
-                    $("#order-complete-a").trigger('click');
-
-                }
-            })
+        //alert(cuocphi+" "+cuockv);
+        if ($("#hoten").val().length > 0 && $("#diachi").val().length > 0 && $("#sdt").val().length > 0 && $("#email").val().length > 0
+            && $("#dropdown-location").val() != "" && $("#dropdown-hinhthuc").val() != "") {
+            //Đổi sang trang Hoàn tất đặt hàng
+            var banner = $(".breadcrumbs-inner").height();
+            var menu = $(".full-width-mega-dropdown").height();
+            var position = menu + banner - 50;
+            //enable lại trang hoàn tất đặt hàng
+            $("#order-complete-a").prop("href", "#order-complete");
+            //disable trang trước
+            $("#checkout-a").prop("href", "#");
+            //scroll tới chỗ bước 2
+            $("html, body").animate({ scrollTop: (position) + "px" }, "slow");
+            //đổi layout
+            $('a[href="#order-complete"]').addClass("active");
+            $('.order-complete-span').addClass("active");
+            //đổi sang trang đặt hàng
+            $("#order-complete-a").trigger('click');
+            //Hiện địa chỉ giao hàng
+            $("#diachi-bill").replaceWith($("#diachi").val());
+            $("#email-bill").replaceWith($("#email").val());
+            $("#sdt-bill").replaceWith($("#sdt").val());
+            //Hiện thông tin đơn hàng
+            $("#tamtinh-bill").replaceWith($("#tamtinh-checkout"));
+            $("#phivanchuyen-bill").replaceWith($("#phivanchuyen-checkout"));
+            $("#tongthanhtien-bill").replaceWith($("#tongthanhtien-checkout"));
         }
     })
     //Nút đặt hàng - end

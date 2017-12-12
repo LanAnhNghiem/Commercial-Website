@@ -8,7 +8,7 @@ namespace CommercialWeb.Models
     public class ItemGioHang
     {
         public int MaSP { get; set; }
-        public string TenSp { get; set; }
+        public string TenSP { get; set; }
         public int SoLuong { get; set; }
         public decimal DonGia { get; set; }
         public decimal ThanhTien { get; set; }
@@ -19,7 +19,7 @@ namespace CommercialWeb.Models
             {
                 this.MaSP = masp;
                 SanPham sp = db.SanPhams.Single(n => n.MaSP == masp);
-                this.TenSp = sp.TenSP;
+                this.TenSP = sp.TenSP;
                 this.HinhAnh = sp.HinhAnh1;
                 this.DonGia = sp.DonGia.Value;
                 this.SoLuong = soluong;
@@ -32,7 +32,7 @@ namespace CommercialWeb.Models
             {
                 this.MaSP = masp;
                 SanPham sp = db.SanPhams.Single(n => n.MaSP == masp);
-                this.TenSp = sp.TenSP;
+                this.TenSP = sp.TenSP;
                 this.HinhAnh = sp.HinhAnh1;
                 this.SoLuong = 1;
                 this.DonGia = sp.DonGia.Value;

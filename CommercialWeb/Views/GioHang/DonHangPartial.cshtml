@@ -1,1 +1,13 @@
-﻿
+﻿@using CommercialWeb.Models
+@model IEnumerable<ItemGioHang>
+@foreach (var item in Model)
+{
+    var thanhtien = item.SoLuong * item.DonGia;
+    ViewBag.ThanhTien = thanhtien;
+    <tr>
+        <td class="td-title-1">@item.TenSP</td>
+        <td class="td-title-2">@ViewBag.ThanhTien.ToString("#,##") VND</td>
+    </tr>
+    
+}
+
