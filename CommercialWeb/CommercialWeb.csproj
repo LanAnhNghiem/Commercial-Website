@@ -77,6 +77,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -515,6 +523,7 @@
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\woocommerce.min.js" />
     <Content Include="Content\js\wp-embed.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\ProductImages\10024353.jpg" />
     <Content Include="Content\ProductImages\10028757.jpg" />
     <Content Include="Content\ProductImages\10029257_1.jpg" />
@@ -697,9 +706,12 @@
     <Content Include="Views\SanPham\LaptopPartial.cshtml" />
     <Content Include="Views\SanPham\MayTinhPartial.cshtml" />
     <Content Include="Views\SanPham\LinhKienPartial.cshtml" />
-    <Content Include="Views\TimKiem\SliderBannerPartial.cshtml" />
+    <Content Include="Views\SanPham\SliderBannerPartial.cshtml" />
     <Content Include="Views\Home\MenuPartial.cshtml" />
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
+    <Content Include="Views\Layout\SearchLayout.cshtml" />
+    <Content Include="Views\TimKiem\NhaSXPartial.cshtml" />
+    <Content Include="Views\TimKiem\DSSanPhamPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
@@ -736,8 +748,7 @@
           <IISUrl>http://localhost:64908/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:64908/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
