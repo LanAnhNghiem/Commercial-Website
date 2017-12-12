@@ -1,81 +1,32 @@
 ﻿@using CommercialWeb.Models
 @using PagedList.Mvc;
-@model IEnumerable<SanPham>
+@model PagedList.IPagedList<SanPham>
 
 @{
     ViewBag.Title = "KQTimKiem";
-    Layout = "~/Views/Layout/SearchLayout.cshtml";
-}
-@{ 
-    IEnumerable<NhaSanXuat> lstNSX = ViewBag.ListNSX as IEnumerable<NhaSanXuat>;
-    IEnumerable<SanPham> lstSP = ViewBag.ListSP as IEnumerable<SanPham>;
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
-@*<div class="col-md-12 SanPham">
+<div class="col-md-12 SanPham">
     <div class="bottom-SanPham">
         <!-- header-search -->
         @foreach (var item in Model.OrderBy(n => n.DonGia))
         {
-            <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-              <div class="SanPham-at">
-                <a href="sinle.html"
+            <div class="col-md-4 bottom-cd simpleCart_shelfItem"
+                <div class="SanPham-at">
+                    <a href="sinle.html"
                         <img class="img-responsive" src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
                         <div class="pro-grid">
-                           <span class="bye-in">Đặt mua</span>
-                        </div>
+                           <span class="bye-in">Đặt mua</span>                 
+                        </div>                 
+                    </a>
+                 </div>
+                 <p class="tun">@item.TenSP</p>
               </div>
-                <p class="tun">@item.TenSP</p>
-            </div>
         }
      </div>
 </div>
 <div class="="dlink">
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     @Html.PagedListPager(Model, Page => Url.Action("KQTimKiem",new object { page = Page, @sTuKhoa = ViewBag.TuKhoa}))
-</div>*@
-
-<div class="shop-section mb-80">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9 col-md-push-3 col-xs-12">
-                <!-- single-product-area start -->
-                @Html.Partial("~/Views/TimKiem/DSSanPhamPartial.cshtml", lstSP)
-                <!-- single-product-area end -->
-            </div>
-            <div class="col-md-3 col-md-pull-9 col-xs-12">
-                <!-- widget-categories -->
-                <aside class="widget widget-categories box-shadow mb-30">
-                    <h6 class="widget-title border-left mb-20">Danh mục</h6>
-                    <div id="cat-treeview" class="product-cat">
-                        <ul class="treeview">
-                            <li>
-                                <a href="#">Máy tính bàn</a>
-                            </li>
-                            <li><!--class="open collapsable"-->
-                                <a href="#">Laptop</a>
-                            </li>
-                            <li><!-- class="closed expandable"--> 
-                                <a href="#">Linh kiện</a>
-                            </li>
-                        </ul>
-                    </div>
-                </aside>
-                <!--Nhà sản xuất-->
-                @Html.Partial("~/Views/TimKiem/NhaSXPartial.cshtml", lstNSX)
-                <!-- muc-gia -->
-                <aside class="widget operating-system box-shadow mb-30">
-                    <h6 class="widget-title border-left mb-20">mức giá</h6>
-                    <p style="font-style:italic">(Đơn vị tính: VND)</p>
-                    <form action="action_page.php">
-                        <label><input type="radio" name="operating-1" value="phone-1">  0 ~ 1,000,000</label><br>
-                        <label><input type="radio" name="operating-1" value="phone-1">  1,000,000 ~ 5,000,000</label><br>
-                        <label><input type="radio" name="operating-1" value="phone-1">  5,000,000 ~ 10,000,000</label><br>
-                        <label><input type="radio" name="operating-1" value="phone-1">  10,000,000 ~ 20,000,000</label><br>
-                        <label><input type="radio" name="operating-1" value="phone-1">  trên 20,000,000</label><br>
-                    </form>
-                </aside>
-                <!-- widget-product -->
-            </div>
-        </div>
-    </div>
 </div>

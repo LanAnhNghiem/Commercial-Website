@@ -105,18 +105,14 @@
                                     <button class="search-toggle">
                                         <i class="zmdi zmdi-search"></i>
                                     </button>
-                                    
-                                        <div class="row">
-                                            @using (Html.BeginForm("KQTimKiem", "TimKiem"))
-                                            {
-                                                <div class="top-search-box">
-                                                    <input type="text" name="sTuKhoa" placeholder="Tìm kiếm sản phẩm ...">
-                                                    <button type="submit">
-                                                        <i class="zmdi zmdi-search"></i>
-                                                    </button>
-                                                </div>
-                                            } 
-                                    </div>
+                                    <form action="#">
+                                        <div class="top-search-box">
+                                            <input type="text" placeholder="Tim kiem san pham ...">
+                                            <button type="submit">
+                                                <i class="zmdi zmdi-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <!-- total-cart -->
