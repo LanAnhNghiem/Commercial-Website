@@ -6,7 +6,7 @@
     <form action="action_page.php">
         @foreach (var item in Model)
         {
-            <label><input type="checkbox" name="nsx" value=@item.MaNSX.ToString()>@item.TenNSX</label><br>
+            <label><input type="checkbox" name="nsx" value=@item.MaNSX.ToString() class="checkbox-brand">@item.TenNSX</label><br>
         }
         
     </form>

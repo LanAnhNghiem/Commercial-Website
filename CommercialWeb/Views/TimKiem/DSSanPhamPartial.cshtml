@@ -1,21 +1,30 @@
 ﻿@using CommercialWeb.Models
 @using PagedList.Mvc;
 @model IEnumerable<SanPham>
-
-@foreach (var item in Model.OrderBy(n => n.DonGia))
-{
-    <!-- single-brand-product start -->
-    <div class="col-xs-4">
-        <div class="single-brand-product">
-            <a href="single-product.html"><img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP"></a>
-        </div>
-        <h5 class="brand-title text-gray" style="text-align:center; margin-top:10px">
-            <a href="#">@item.TenSP</a>
-        </h5>
-    </div>
-    <!-- single-brand-product end -->
+@{ 
+    IEnumerable<SanPham> lstSP = ViewBag.ListSP as IEnumerable<SanPham>;
 }
-@*<div class="=" dlink">
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
-    @Html.PagedListPager(Model, Page => Url.Action("KQTimKiem", new object { page = Page, @sTuKhoa = ViewBag.TuKhoa }))
-</div>*@
+@if (lstSP != null)
+{
+    foreach (var item in lstSP.OrderBy(n => n.DonGia))
+    {
+    <!-- single-brand-product start -->
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="product-item">
+                <div class="product-img">
+                    <a href="single-product.html">
+                        <img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h6 class="product-title" title="@item.TenSP">
+                        <a href="single-product.html">@item.TenSP</a>
+                    </h6>
+                    <h3 class="pro-price">@String.Format("{0:n0}", item.DonGia) VNĐ</h3>
+                </div>
+            </div>
+        </div>
+    <!-- single-brand-product end -->
+    }
+}
+
