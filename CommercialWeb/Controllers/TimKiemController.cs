@@ -15,22 +15,37 @@ namespace CommercialWeb.Controllers
         [HttpGet]
         public ActionResult KQTimKiem(string sTuKhoa, int? page)
         {
-            if (Request.HttpMethod != "GET")
-            {
-                page = 1;
-            }
+            //Nhà sản xuất
+            var lstNSX = db.NhaSanXuats;
+            ViewBag.ListNSX = lstNSX;
+
+            //if (Request.HttpMethod != "GET")
+            //{
+            //    page = 1;
+            //}
             int pageSize = 10;
-            int pageNumber = (page ?? 1);
+            //int pageNumber = (page ?? 1);
             //Tim kiem theo ten san pham
             var listSP = db.SanPhams.Where(n => n.TenSP.Contains(sTuKhoa));
+            ViewBag.ListSP = listSP;
             ViewBag.TuKhoa = sTuKhoa;
-            return View(listSP.OrderBy(n => n.TenSP).ToPagedList(pageNumber, pageSize));
+            return View(listSP.OrderBy(n => n.TenSP));
+            //return View(listSP.OrderBy(n => n.TenSP).ToPagedList(pageNumber, pageSize));
         }
+
         [HttpPost]
-        public ActionResult LayTuKhoaTimKim(String sTuKhoa)
+        public ActionResult KQTimKiem(String sTuKhoa)
         {
             //Goi ve ham get tim kiem
-            return RedirectToAction("KQTimKiem", new object { @sTuKhoa = sTuKhoa });
+            return RedirectToAction("KQTimKiem", new { sTuKhoa = sTuKhoa });
+        }
+        public ActionResult NhaSXPartial()
+        {
+            return PartialView();
+        }
+        public ActionResult DSSanPhamPartial()
+        {
+            return PartialView();
         }
     }
 }

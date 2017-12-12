@@ -1,0 +1,13 @@
+﻿@using CommercialWeb.Models
+@model IEnumerable<NhaSanXuat>
+
+<aside class="widget operating-system box-shadow mb-30">
+    <h6 class="widget-title border-left mb-20">Hãng sản xuất</h6>
+    <form action="action_page.php">
+        @foreach (var item in Model)
+        {
+            <label><input type="checkbox" name="nsx" value=@item.MaNSX.ToString()>@item.TenNSX</label><br>
+        }
+        
+    </form>
+</aside>
