@@ -91,16 +91,16 @@
                                         <span id="giaSP" class="new-price">£160.00</span>
                                     </div>
                                 </div>
-                                <a href="single-product-left-sidebar.html" class="see-all">See all features</a>
+                                <a id="xemChiTiet" href="#" class="see-all">Xem chi tiết sản phẩm</a>
                                 <div class="quick-add-to-cart">
                                     <form method="post" class="cart">
                                         <div class="numbers-row">
                                             <input type="number" id="french-hens" value="3">
                                         </div>
-                                        <button class="single_add_to_cart_button" type="submit">Add to cart</button>
+                                        <button class="single_add_to_cart_button" type="submit">Thêm vào giỏ</button>
                                     </form>
                                 </div>
-                                <div class="quick-desc">
+                                <div id="mo-ta" class="quick-desc" style="display:none">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero.
                                 </div>
                                 <div class="social-sharing">
@@ -145,11 +145,29 @@
     </div>
     <!-- END QUICKVIEW PRODUCT -->
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    function changeName(TenSP, GiaSP, HinhAnh)
-    {
-        $('#tenSP').html(TenSP);
-        $('#giaSP').html(GiaSP);
-        $('#hinhAnh').attr("src", "/Content/ProductImages/" + HinhAnh);
-    }
+ $(document).ready(function(){
+     $('.btn-quick-view').on('click', function () {
+         var HinhAnh = $(this).attr('data-hinh');
+         var TenSP = $(this).attr('data-ten-sp');
+         var DonGia = $(this).attr('data-don-gia');
+         var MoTa = $(this).attr('data-mo-ta');
+         $('#productModal').find('img').attr('src', HinhAnh);
+         $('#productModal').find('#tenSP').text(TenSP);
+         $('#productModal').find('#giaSP').text(DonGia);
+         $('#productModal').find('#mo-ta').html(MoTa);
+     });
+
+     //var check = 1;
+     //$('#xemChiTiet').on('click', function () {
+     //    if (check == 1) {
+     //        $('#mo-ta').css('display', 'block');
+     //        check = 0;
+     //    } else {
+     //        $('#mo-ta').css('display', 'none');
+     //        check = 1;
+     //    }
+     //})
+});
 </script>
