@@ -197,7 +197,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuanLyDonDatHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,6 +260,40 @@
     <Content Include="App_Data\QuanLyBanHang_log.ldf">
       <DependentUpon>QuanLyBanHang.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\AdminLayout\css\bootstrap.css" />
+    <Content Include="Content\AdminLayout\css\clndr.css" />
+    <Content Include="Content\AdminLayout\css\jqvmap.css" />
+    <Content Include="Content\AdminLayout\css\nav.css" />
+    <Content Include="Content\AdminLayout\css\style.css" />
+    <Content Include="Content\AdminLayout\images\ar2.png" />
+    <Content Include="Content\AdminLayout\images\arrows.png" />
+    <Content Include="Content\AdminLayout\images\avatar.jpg" />
+    <Content Include="Content\AdminLayout\images\avatar1.jpg" />
+    <Content Include="Content\AdminLayout\images\avatar2.jpg" />
+    <Content Include="Content\AdminLayout\images\img-sprite.png" />
+    <Content Include="Content\AdminLayout\images\into.png" />
+    <Content Include="Content\AdminLayout\images\into1.png" />
+    <Content Include="Content\AdminLayout\images\logo.png" />
+    <Content Include="Content\AdminLayout\images\pp.jpg" />
+    <Content Include="Content\AdminLayout\images\pp0.jpg" />
+    <Content Include="Content\AdminLayout\images\pp01.jpg" />
+    <Content Include="Content\AdminLayout\images\settings.png" />
+    <Content Include="Content\AdminLayout\images\tick-mark.png" />
+    <Content Include="Content\AdminLayout\index.html" />
+    <Content Include="Content\AdminLayout\js\Chart1.js" />
+    <Content Include="Content\AdminLayout\js\clndr.js" />
+    <Content Include="Content\AdminLayout\js\easyResponsiveTabs.js" />
+    <Content Include="Content\AdminLayout\js\jquery.easydropdown.js" />
+    <Content Include="Content\AdminLayout\js\jquery.min.js" />
+    <Content Include="Content\AdminLayout\js\jquery.nicescroll.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.sampledata.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.world.js" />
+    <Content Include="Content\AdminLayout\js\main.js" />
+    <Content Include="Content\AdminLayout\js\moment-2.2.1.js" />
+    <Content Include="Content\AdminLayout\js\site.js" />
+    <Content Include="Content\AdminLayout\js\underscore-min.js" />
+    <Content Include="Content\AdminLayout\w3layouts-License.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\animate.css" />
@@ -698,6 +734,9 @@
     <Content Include="Views\SanPham\LinhKienPartial.cshtml" />
     <Content Include="Views\SanPham\SliderBannerPartial.cshtml" />
     <Content Include="Views\Home\MenuPartial.cshtml" />
+    <Content Include="Views\Layout\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\QuanLyDonDatHang\QuanLyDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />
