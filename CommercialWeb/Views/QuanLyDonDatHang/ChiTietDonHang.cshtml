@@ -43,19 +43,29 @@
         grid.Column("SanPham.DonGia", "Đơn giá", format: p => String.Format("{0:n0}", p.DonGia) + " VNĐ")
     )
 )
+    <div class="tong_tien">
+        <h3 style="font-size: 16px; font-weight:bold">Tổng tiền</h3>
+        <br />
+        <div>
+            <h3 style="color:red">@Model.TongTien.Value.ToString("#,##") VNĐ</h3>
+        </div>
+    </div>
+    
 </div>
 
 @*Css cho từng Style của table*@
 <style>
     .gridTable {
         width: 100%;
-        border: 1px solid #000;
+        /*border: 1px solid #000;*/
         padding: 1em;
+        border-bottom:none;
     }
 
         .gridTable td {
             border: 1px solid #000;
             padding: 1em;
+             border-bottom:none;
         }
 
     .gridHead {
@@ -78,6 +88,7 @@
         font-weight: bold;
         padding: 2px;
         border: 1px solid #999999;
+        border-bottom:none;     
     }
     .FooterAdmin {
         display: none;
@@ -98,6 +109,13 @@
 
     .main_contain{
         color: #1C445F;
+    }
+    .tong_tien{
+        border-top: none;
+        width: 100%;
+        border: 1px solid #000;
+        padding: 1em;
+        text-align:right;
     }
 </style>
 
