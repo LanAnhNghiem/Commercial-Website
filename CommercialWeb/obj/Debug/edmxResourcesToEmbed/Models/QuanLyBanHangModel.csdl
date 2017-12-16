@@ -21,6 +21,7 @@
     <Property Name="SoLuong" Type="Int32" />
     <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_ChiTietDonHang_ToTable" FromRole="ChiTietDonHang" ToRole="SanPham" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -104,6 +105,7 @@
     <NavigationProperty Name="BinhLuans" Relationship="Self.FK_BinhLuan_SanPham" FromRole="SanPham" ToRole="BinhLuan" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSanPham" FromRole="SanPham" ToRole="LoaiSanPham" />
     <NavigationProperty Name="NhaSanXuat" Relationship="Self.FK_SanPham_NhaSanXuat" FromRole="SanPham" ToRole="NhaSanXuat" />
+    <NavigationProperty Name="ChiTietDonHangs" Relationship="QuanLyBanHangModel.FK_ChiTietDonHang_ToTable" FromRole="SanPham" ToRole="ChiTietDonHang" />
   </EntityType>
   <EntityType Name="TinhTrangDonHang">
     <Key>
@@ -282,5 +284,21 @@
       <End Role="NhaSanXuat" EntitySet="NhaSanXuats" />
       <End Role="SanPham" EntitySet="SanPhams" />
     </AssociationSet>
+    <AssociationSet Name="FK_ChiTietDonHang_ToTable" Association="QuanLyBanHangModel.FK_ChiTietDonHang_ToTable">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_ChiTietDonHang_ToTable">
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.ChiTietDonHang" Role="ChiTietDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietDonHang">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

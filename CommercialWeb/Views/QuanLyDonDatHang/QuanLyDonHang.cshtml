@@ -6,6 +6,7 @@
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
 }
 <h1 style="margin: 1em; text-align:center">DANH SÁCH HÓA ĐƠN</h1>
+
 @grid.GetHtml(
     tableStyle: "gridTable",
     headerStyle: "gridHead",
@@ -16,7 +17,9 @@
         grid.Column("MaDonHang", "Mã đơn hàng"),
         grid.Column("KhachHang.HoTen", "Tên Khách Hàng"),
         grid.Column("TongTien", "Tổng tiền", format: p => String.Format("{0:n0}",p.TongTien) + " VNĐ"),
-        grid.Column("TinhTrangDonHang.TenTinhTrang", "Tình trạng đơn hàng")
+        grid.Column("TinhTrangDonHang.TenTinhTrang", "Tình trạng đơn hàng"),
+        grid.Column(format: p => @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { MaDonHang = p.MaDonHang })),
+        grid.Column(format: p => @Html.ActionLink("Xóa", "Xoa", new { MaDonHang = p.MaDonHang }))
     )
 )
 @*Css cho từng Style của table*@

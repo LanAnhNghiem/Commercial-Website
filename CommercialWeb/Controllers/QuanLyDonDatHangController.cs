@@ -21,5 +21,22 @@ namespace CommercialWeb.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult ChiTietDonHang(int? MaDonHang)
+        {
+            if(MaDonHang == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            DonHang DonHang = db.DonHangs.SingleOrDefault(n => n.MaDonHang == MaDonHang);
+            if (DonHang == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ChiTietDonHang = DonHang.ChiTietDonHangs;
+            return View(DonHang);
+        }
     }
 }

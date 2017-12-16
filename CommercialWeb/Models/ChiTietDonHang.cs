@@ -21,5 +21,6 @@ namespace CommercialWeb.Models
         public Nullable<decimal> DonGia { get; set; }
     
         public virtual DonHang DonHang { get; set; }
+        public virtual SanPham SanPham { get; set; }
     }
 }

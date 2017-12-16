@@ -25,6 +25,7 @@
         <AssociationConnector Association="QuanLyBanHangModel.FK_KhachHang_ThanhVien" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanHangModel.FK_SanPham_LoaiSanPham" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanHangModel.FK_SanPham_NhaSanXuat" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK_ChiTietDonHang_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
