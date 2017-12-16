@@ -15,5 +15,11 @@ namespace CommercialWeb.Controllers
         {
             return View(db.DonHangs.Where(n=>n.MaTinhTrang == 1));
         }
+
+        [HttpGet]
+        public ActionResult TaoMoiDonhang()
+        {
+            return View();
+        }
     }
 }

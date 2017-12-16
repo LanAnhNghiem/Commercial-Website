@@ -298,7 +298,6 @@ a {
 a:hover,
 a:focus {
   color: #fff;
-  background-color: green;
 }
 a:focus {
   outline: thin dotted;

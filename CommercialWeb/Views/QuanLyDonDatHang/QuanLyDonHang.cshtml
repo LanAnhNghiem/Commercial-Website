@@ -5,7 +5,7 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
 }
-
+<h1 style="margin: 1em; text-align:center">DANH SÁCH HÓA ĐƠN</h1>
 @grid.GetHtml(
     tableStyle: "gridTable",
     headerStyle: "gridHead",
@@ -23,23 +23,28 @@
 <style>
     .gridTable {
         width: 100%;
-        border: 1px solid #999999;
+        border: 1px solid #000;
         padding: 1em;
     }
 
         .gridTable td {
-            border: 1px solid #999999;
+            border: 1px solid #000;
             padding: 1em;
         }
 
     .gridHead {
-        background-color: Green;
+        background-color: #27ae60;
         padding: 1em;
     }
 
-        .gridHead > th > a {
+        .gridHead > th {
+            border: 1px solid #000;
             color: #fff;
             padding: 1em;
+        }
+        .gridHead > th:hover {
+            color: #fff;
+            background-color: #22d425;
         }
 
     .gridFooter a {
