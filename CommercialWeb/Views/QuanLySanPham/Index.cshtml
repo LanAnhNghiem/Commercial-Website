@@ -1,0 +1,51 @@
+﻿@using CommercialWeb.Models;
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+@*Thể hiện dữ liệu thông qua control webGrid*@
+@grid.GetHtml(
+    tableStyle: "divTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+    grid.Column("MaSP", "Mã sản phẩm"),
+    grid.Column("TenSP", "Tên SP")//,
+    //grid.Column("HinhAnh1", "Hình ảnh", format: p => @Html.Raw("<img width=\"150\" height=\"50\" src=\"../Content/ProductImage/" + p.HinhAnh1 + "\">"))
+    ))
+
+
+@*Css cho từng Style của table*@
+<style>
+    .divTable {
+        border: 1px solid #999999;
+    }
+
+    .gridHead {
+        background-color: Green;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+
+    .gridRow {
+        color: #fff;
+        background-color: blueviolet;
+    }
+
+    .gridAltRow {
+        color: #fff;
+        background-color: darkorange;
+    }
+</style>

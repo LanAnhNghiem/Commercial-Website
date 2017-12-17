@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\Models\QuanLyBanHangModel.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\UNIVERSITY\Sv_Nam_4\OOAD\WebCuoiKi\Commercial-Website\CommercialWeb\Models\QuanLyBanHangModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
