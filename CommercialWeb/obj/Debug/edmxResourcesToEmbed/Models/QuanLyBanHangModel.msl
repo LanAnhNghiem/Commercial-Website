@@ -14,6 +14,7 @@
     <EntitySetMapping Name="ChiTietDonHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.ChiTietDonHang">
         <MappingFragment StoreEntitySet="ChiTietDonHang">
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
           <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
@@ -25,6 +26,7 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />

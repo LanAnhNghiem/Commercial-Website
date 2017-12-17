@@ -13,7 +13,7 @@ namespace CommercialWeb.Controllers
         // GET: QuanLyDonDatHang
         public ActionResult QuanLyDonHang()
         {
-            return View(db.DonHangs.Where(n=>n.MaTinhTrang == 1));
+            return View(db.DonHangs.Where(n=>n.MaTinhTrang == 1 && n.DaXoa == false));
         }
 
         [HttpGet]
@@ -26,6 +26,41 @@ namespace CommercialWeb.Controllers
         public ActionResult ChiTietDonHang(int? MaDonHang)
         {
             if(MaDonHang == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            DonHang DonHang = db.DonHangs.SingleOrDefault(n => n.MaDonHang == MaDonHang);
+            if (DonHang == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ChiTietDonHang = DonHang.ChiTietDonHangs;
+            return View(DonHang);
+        }
+        [HttpPost]
+        public ActionResult XoaDonHang(int? MaDonHang)
+        {
+            if (MaDonHang == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            DonHang DonHang = db.DonHangs.SingleOrDefault(n => n.MaDonHang == MaDonHang);
+            if (DonHang == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ChiTietDonHang = DonHang.ChiTietDonHangs;
+            DonHang.DaXoa = true;
+            db.SaveChanges();
+            return View("QuanLyDonHang", "QuanLyDonDatHang");
+        }
+
+        [HttpGet]
+        public ActionResult XoaDonHang(int? MaDonHang, FormCollection form)
+        {
+            if (MaDonHang == null)
             {
                 Response.StatusCode = 404;
                 return null;

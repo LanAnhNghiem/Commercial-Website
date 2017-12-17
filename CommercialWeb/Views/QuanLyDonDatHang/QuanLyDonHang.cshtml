@@ -19,7 +19,7 @@
         grid.Column("TongTien", "Tổng tiền", format: p => String.Format("{0:n0}",p.TongTien) + " VNĐ"),
         grid.Column("TinhTrangDonHang.TenTinhTrang", "Tình trạng đơn hàng"),
         grid.Column(format: p => @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { MaDonHang = p.MaDonHang })),
-        grid.Column(format: p => @Html.ActionLink("Xóa", "Xoa", new { MaDonHang = p.MaDonHang }))
+        grid.Column(format: p => @Html.ActionLink("Xóa", "XoaDonHang", new { MaDonHang = p.MaDonHang }))
     )
 )
 @*Css cho từng Style của table*@

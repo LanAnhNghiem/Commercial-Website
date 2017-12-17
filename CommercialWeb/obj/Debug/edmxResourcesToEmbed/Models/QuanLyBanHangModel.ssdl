@@ -18,6 +18,7 @@
     <Property Name="MaSP" Type="int" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="DonGia" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DaXoa" Type="bit" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -30,6 +31,7 @@
     <Property Name="TongTien" Type="decimal" Precision="18" Scale="0" />
     <Property Name="MaTinhTrang" Type="int" />
     <Property Name="MaHinhThuc" Type="int" />
+    <Property Name="DaXoa" Type="bit" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>

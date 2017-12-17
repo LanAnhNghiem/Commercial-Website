@@ -739,6 +739,7 @@
     <Content Include="Views\QuanLyDonDatHang\QuanLyDonHang.cshtml" />
     <Content Include="Views\QuanLyDonDatHang\TaoMoiDonhang.cshtml" />
     <Content Include="Views\QuanLyDonDatHang\ChiTietDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonDatHang\XoaDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

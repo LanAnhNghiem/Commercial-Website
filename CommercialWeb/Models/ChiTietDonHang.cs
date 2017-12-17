@@ -19,6 +19,7 @@ namespace CommercialWeb.Models
         public Nullable<int> MaSP { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<decimal> DonGia { get; set; }
+        public Nullable<bool> DaXoa { get; set; }
     
         public virtual DonHang DonHang { get; set; }
         public virtual SanPham SanPham { get; set; }

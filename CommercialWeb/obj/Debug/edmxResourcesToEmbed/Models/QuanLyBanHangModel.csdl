@@ -22,6 +22,7 @@
     <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
     <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_ChiTietDonHang_ToTable" FromRole="ChiTietDonHang" ToRole="SanPham" />
+    <Property Name="DaXoa" Type="Boolean" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -38,6 +39,7 @@
     <NavigationProperty Name="HinhThucGiaoHang" Relationship="Self.FK_DonHang_HinhThucGiaoHang" FromRole="DonHang" ToRole="HinhThucGiaoHang" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
     <NavigationProperty Name="TinhTrangDonHang" Relationship="Self.FK_DonHang_TrangThai" FromRole="DonHang" ToRole="TinhTrangDonHang" />
+    <Property Name="DaXoa" Type="Boolean" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>

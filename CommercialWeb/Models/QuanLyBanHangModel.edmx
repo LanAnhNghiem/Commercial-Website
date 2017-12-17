@@ -23,6 +23,7 @@
           <Property Name="MaSP" Type="int" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DaXoa" Type="bit" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -35,6 +36,7 @@
           <Property Name="TongTien" Type="decimal" Precision="18" Scale="0" />
           <Property Name="MaTinhTrang" Type="int" />
           <Property Name="MaHinhThuc" Type="int" />
+          <Property Name="DaXoa" Type="bit" />
         </EntityType>
         <EntityType Name="HinhThucGiaoHang">
           <Key>
@@ -312,6 +314,7 @@
           <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
           <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_ChiTietDonHang_ToTable" FromRole="ChiTietDonHang" ToRole="SanPham" />
+          <Property Name="DaXoa" Type="Boolean" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -328,6 +331,7 @@
           <NavigationProperty Name="HinhThucGiaoHang" Relationship="Self.FK_DonHang_HinhThucGiaoHang" FromRole="DonHang" ToRole="HinhThucGiaoHang" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
           <NavigationProperty Name="TinhTrangDonHang" Relationship="Self.FK_DonHang_TrangThai" FromRole="DonHang" ToRole="TinhTrangDonHang" />
+          <Property Name="DaXoa" Type="Boolean" />
         </EntityType>
         <EntityType Name="HinhThucGiaoHang">
           <Key>
@@ -610,6 +614,7 @@
           <EntitySetMapping Name="ChiTietDonHangs">
             <EntityTypeMapping TypeName="QuanLyBanHangModel.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
+                <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
                 <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
                 <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
@@ -621,6 +626,7 @@
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
                 <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
