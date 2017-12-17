@@ -322,6 +322,6 @@ D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Micr
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Google.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
-D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache

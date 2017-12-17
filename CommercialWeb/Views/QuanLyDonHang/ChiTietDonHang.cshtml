@@ -1,0 +1,123 @@
+﻿@using CommercialWeb.Models;
+@model DonHang
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    IEnumerable<ChiTietDonHang> lstChiTietDonHang = ViewBag.ChiTietDonHang as IEnumerable<ChiTietDonHang>;
+    WebGrid grid = new WebGrid(source: lstChiTietDonHang, rowsPerPage: 20);
+}
+<div class="main_contain">
+    <h2 style="text-align:center">ĐƠN HÀNG SỐ @Model.MaDonHang</h2>
+    <table class="thong_tin_kh">
+        <tr>
+            <td class="thong_tin">Họ tên khách hàng:</td>
+            <td>@Model.KhachHang.HoTen</td>
+            <td class="thong_tin">Trạng thái:</td>
+            <td>@Model.TinhTrangDonHang.TenTinhTrang</td>
+        </tr>
+        <tr>
+            <td class="thong_tin">Số điện thoại:</td>
+            <td>@Model.KhachHang.SoDienThoai</td>
+            <td class="thong_tin">Hình thức giao hàng:</td>
+            <td>@Model.HinhThucGiaoHang.TenHinhThuc</td>
+        </tr>
+        <tr>
+            <td class="thong_tin">Email:</td>
+            <td>@Model.KhachHang.Email</td>
+        </tr>
+        <tr>
+            <td class="thong_tin">Địa chỉ:</td>
+            <td>@Model.KhachHang.DiaChi</td>
+        </tr>
+    </table>
+    @grid.GetHtml(
+    tableStyle: "gridTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("MaSP", "Mã sản phẩm"),
+        grid.Column("SanPham.TenSP", "Tên sản phẩm"),
+        grid.Column("SoLuong", "Số lượng"),
+        grid.Column("SanPham.DonGia", "Đơn giá", format: p => String.Format("{0:n0}", p.DonGia) + " VNĐ")
+    )
+)
+    <div class="tong_tien">
+        <h3 style="font-size: 16px; font-weight:bold">Tổng tiền</h3>
+        <br />
+        <div>
+            <h3 style="color:red">@Model.TongTien.Value.ToString("#,##") VNĐ</h3>
+        </div>
+    </div>
+    
+</div>
+
+@*Css cho từng Style của table*@
+<style>
+    .gridTable {
+        width: 100%;
+        /*border: 1px solid #000;*/
+        padding: 1em;
+        border-bottom:none;
+    }
+
+        .gridTable td {
+            border: 1px solid #000;
+            padding: 1em;
+             border-bottom:none;
+        }
+
+    .gridHead {
+        background-color: #27ae60;
+        padding: 1em;
+    }
+
+        .gridHead > th {
+            border: 1px solid #000;
+            color: #fff;
+            padding: 1em;
+        }
+
+            .gridHead > th:hover {
+                color: #fff;
+                background-color: #22d425;
+            }
+
+    .gridFooter a {
+        font-weight: bold;
+        padding: 2px;
+        border: 1px solid #999999;
+        border-bottom:none;     
+    }
+    .FooterAdmin {
+        display: none;
+    }
+
+    .thong_tin_kh {
+        margin-top: 2em;
+    }
+
+        .thong_tin_kh td {
+            padding: 1em;
+        }
+
+    .thong_tin {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .main_contain{
+        color: #1C445F;
+    }
+    .tong_tien{
+        border-top: none;
+        width: 100%;
+        border: 1px solid #000;
+        padding: 1em;
+        text-align:right;
+    }
+</style>
+
+
+

@@ -37,6 +37,8 @@
           <Property Name="MaTinhTrang" Type="int" />
           <Property Name="MaHinhThuc" Type="int" />
           <Property Name="DaXoa" Type="bit" />
+          <Property Name="DaThanhToan" Type="bit" />
+          <Property Name="DaHuy" Type="bit" />
         </EntityType>
         <EntityType Name="HinhThucGiaoHang">
           <Key>
@@ -332,6 +334,8 @@
           <NavigationProperty Name="KhachHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
           <NavigationProperty Name="TinhTrangDonHang" Relationship="Self.FK_DonHang_TrangThai" FromRole="DonHang" ToRole="TinhTrangDonHang" />
           <Property Name="DaXoa" Type="Boolean" />
+          <Property Name="DaThanhToan" Type="Boolean" />
+          <Property Name="DaHuy" Type="Boolean" />
         </EntityType>
         <EntityType Name="HinhThucGiaoHang">
           <Key>
@@ -626,6 +630,8 @@
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
+                <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
                 <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
                 <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />

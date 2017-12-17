@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<CommercialWeb.Models.DonHang>
+
+@{
+    ViewBag.Title = "ChuaGiao";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+<h2>Quản lý đơn hàng (Danh sách đơn hàng chưa giao đã thanh toán)</h2>  <br />
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
+    <li role="presentation" class="active"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & Đã thanh toán</a></li>
+    <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao & Đã thanh toán</a></li>
+</ul>
+
+<br /><br />
+
+@grid.GetHtml(
+    tableStyle: "gridTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+    grid.Column("MaDonHang", header: "Mã đơn hàng"),
+            grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""),  
+        grid.Column("NgayMua", header: "Ngày đặt"),
+        grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
+        grid.Column("NgayGiao", header: "Ngày giao"),
+        grid.Column("DaThanhToan", header: "Đã thanh toán"),
+        grid.Column("DaHuy", header: "Đã hủy"),
+        grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
+
+        ))
+<style>
+    .nav > li {
+        background: #1C445F;
+    }
+
+    .gridTable {
+        font-size: 13px;
+        width: 100%;
+        border: 1px solid #000;
+        padding: 0.5em;
+    }
+
+        .gridTable td {
+            border: 1px solid #000;
+            padding: 0.5em;
+        }
+
+    .gridHead {
+        background-color: #27ae60;
+        padding: 0.5em;
+        text-decoration: underline;
+    }
+
+        .gridHead > th {
+            border: 1px solid #000;
+            color: #fff;
+            padding: 0.5em;
+        }
+
+            .gridHead > th:hover {
+                color: #fff;
+                background-color: #22d425;
+            }
+
+    .gridFooter a {
+        font-weight: bold;
+        padding: 2px;
+        border: 1px solid #999999;
+    }
+</style>

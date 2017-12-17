@@ -32,6 +32,8 @@
     <Property Name="MaTinhTrang" Type="int" />
     <Property Name="MaHinhThuc" Type="int" />
     <Property Name="DaXoa" Type="bit" />
+    <Property Name="DaThanhToan" Type="bit" />
+    <Property Name="DaHuy" Type="bit" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>

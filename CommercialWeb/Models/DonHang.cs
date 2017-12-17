@@ -28,6 +28,8 @@ namespace CommercialWeb.Models
         public Nullable<int> MaTinhTrang { get; set; }
         public Nullable<int> MaHinhThuc { get; set; }
         public Nullable<bool> DaXoa { get; set; }
+        public Nullable<bool> DaThanhToan { get; set; }
+        public Nullable<bool> DaHuy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }

@@ -199,7 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\QuanLyDonDatHangController.cs" />
+    <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -736,10 +736,14 @@
     <Content Include="Views\Home\MenuPartial.cshtml" />
     <Content Include="Views\Layout\AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\QuanLyDonDatHang\QuanLyDonHang.cshtml" />
-    <Content Include="Views\QuanLyDonDatHang\TaoMoiDonhang.cshtml" />
-    <Content Include="Views\QuanLyDonDatHang\ChiTietDonHang.cshtml" />
-    <Content Include="Views\QuanLyDonDatHang\XoaDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\QuanLyDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\TaoMoiDonhang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChiTietDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\XoaDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChuaThanhToan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChuaGiao.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DaGiaoDaThanhToan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DuyetDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

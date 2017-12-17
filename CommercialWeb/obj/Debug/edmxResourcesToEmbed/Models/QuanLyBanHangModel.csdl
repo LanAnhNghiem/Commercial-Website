@@ -40,6 +40,8 @@
     <NavigationProperty Name="KhachHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
     <NavigationProperty Name="TinhTrangDonHang" Relationship="Self.FK_DonHang_TrangThai" FromRole="DonHang" ToRole="TinhTrangDonHang" />
     <Property Name="DaXoa" Type="Boolean" />
+    <Property Name="DaThanhToan" Type="Boolean" />
+    <Property Name="DaHuy" Type="Boolean" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>
