@@ -10,6 +10,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="main_contain">
+        @Html.Hidden("MaDonHang", Model.MaDonHang);
         <h2 style="text-align:center">BẠN CÓ CHẮC CHẮN MUỐN XÓA ĐƠN HÀNG SỐ @Model.MaDonHang KHÔNG?</h2>
         <div style="text-align:center; margin: 1em">
             <a href="@Url.Action("QuanLyDonHang", "QuanLyDonDatHang")">

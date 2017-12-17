@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CommercialWeb.Models;
+using System.Net;
 
 namespace CommercialWeb.Controllers
 {
@@ -43,8 +44,7 @@ namespace CommercialWeb.Controllers
         {
             if (MaDonHang == null)
             {
-                Response.StatusCode = 404;
-                return null;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DonHang DonHang = db.DonHangs.SingleOrDefault(n => n.MaDonHang == MaDonHang);
             if (DonHang == null)
@@ -54,7 +54,7 @@ namespace CommercialWeb.Controllers
             ViewBag.ChiTietDonHang = DonHang.ChiTietDonHangs;
             DonHang.DaXoa = true;
             db.SaveChanges();
-            return View("QuanLyDonHang", "QuanLyDonDatHang");
+            return RedirectToAction("QuanLyDonHang", "QuanLyDonDatHang");
         }
 
         [HttpGet]
