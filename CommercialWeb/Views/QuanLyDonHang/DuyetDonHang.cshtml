@@ -22,22 +22,15 @@
                             <td>Mã đơn hàng: <b style="color:red;"> @Model.MaDonHang @Html.Hidden("MaDonHang", @Model.MaDonHang)</b></td>
                             <td>Mã khách hàng: <b style="color:red;"> @Model.KhachHang.MaKH</b></td>
                             <td>Tên khách hàng: <b style="color:red;"> @Model.KhachHang.HoTen</b></td>
-                            <td>Ngày đặt: @Model.NgayMua.Value.ToString("dd/MM/yyyy")</td>
-                        </tr>
-
-                    </table>
-                    <table>
-                        <tr>
-                            <td>Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan)</td>
-                            <td>Đã giao: @Html.EditorFor(model => model.TinhTrangDonHang.TenTinhTrang)</td>
+                            <td>Ngày đặt: @Model.NgayMua.ToString("dd/MM/yyyy")</td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
-
-
-
+            <tr >
+                <td>Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan)</td>
+                <td>Đã giao: @Html.DropDownList("MaTinhTrang", null, new { @class = "abc"})</td>
+            </tr>
             @*Thông tin chi tiết đơn hàng*@
 
 
@@ -50,16 +43,14 @@
 
             @foreach (var item in lstChiTietDH)
             {
-                {
-                    decimal? tong = item.SoLuong * item.DonGia;
+                decimal? tong = item.SoLuong * item.DonGia;
                 <tr>
                     <td>@item.SanPham.TenSP</td>
                     <td>@item.SoLuong</td>
                     <td>@item.DonGia</td>
                     <td>@tong</td>
-                    
-              </tr>
-                }
+
+                </tr>
             }
             <tr>
                 <td align="right" colspan="4">Tổng số lượng: @Model.ChiTietDonHangs.Sum(n => n.SoLuong) sản phẩm</td>
@@ -77,13 +68,12 @@
 <script>
 
     $("#btnInDonHang").click(function () {
-        var content = "<table>"+ $("#table").html() +"</table>";
+        var content = "<table>" + $("#table").html() + "</table>";
         InDonHang(content);
     });
 
     //Phương thức in
-    function InDonHang(content)
-    {
+    function InDonHang(content) {
         var printWindow = window.open('', '', 'height=400,width=800');
         printWindow.document.write('<html><head><title>DIV Contents</title>');
         printWindow.document.write('</head><body >');

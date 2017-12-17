@@ -25,15 +25,15 @@
       <PropertyRef Name="MaDonHang" />
     </Key>
     <Property Name="MaDonHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaKH" Type="int" />
-    <Property Name="NgayMua" Type="datetime" />
-    <Property Name="NgayGiao" Type="datetime" />
-    <Property Name="TongTien" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="MaTinhTrang" Type="int" />
-    <Property Name="MaHinhThuc" Type="int" />
-    <Property Name="DaXoa" Type="bit" />
-    <Property Name="DaThanhToan" Type="bit" />
-    <Property Name="DaHuy" Type="bit" />
+    <Property Name="MaKH" Type="int" Nullable="false" />
+    <Property Name="NgayMua" Type="datetime" Nullable="false" />
+    <Property Name="NgayGiao" Type="datetime" Nullable="false" />
+    <Property Name="TongTien" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MaTinhTrang" Type="int" Nullable="false" />
+    <Property Name="MaHinhThuc" Type="int" Nullable="false" />
+    <Property Name="DaXoa" Type="bit" Nullable="false" />
+    <Property Name="DaThanhToan" Type="bit" Nullable="false" />
+    <Property Name="DaHuy" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>
@@ -161,7 +161,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DonHang_HinhThucGiaoHang">
-    <End Role="HinhThucGiaoHang" Type="Self.HinhThucGiaoHang" Multiplicity="0..1" />
+    <End Role="HinhThucGiaoHang" Type="Self.HinhThucGiaoHang" Multiplicity="1" />
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HinhThucGiaoHang">
@@ -173,7 +173,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DonHang_KhachHang">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KhachHang">
@@ -185,7 +185,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DonHang_TrangThai">
-    <End Role="TinhTrangDonHang" Type="Self.TinhTrangDonHang" Multiplicity="0..1" />
+    <End Role="TinhTrangDonHang" Type="Self.TinhTrangDonHang" Multiplicity="1" />
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TinhTrangDonHang">

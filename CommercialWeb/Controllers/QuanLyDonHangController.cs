@@ -115,6 +115,7 @@ namespace CommercialWeb.Controllers
             //Lấy danh sách chi tiết đơn hàng để hiển thị cho người dùng thấy
             var lstChiTietDH = db.ChiTietDonHangs.Where(n => n.MaDonHang == id);
             ViewBag.ListChiTietDH = lstChiTietDH;
+            ViewBag.MaTinhTrang = new SelectList(db.TinhTrangDonHangs.OrderBy(n => n.TenTinhTrang), "MaTinhTrang", "TenTinhTrang", model.TinhTrangDonHang.TenTinhTrang);
             return View(model);
         }
         [HttpPost]
@@ -129,8 +130,9 @@ namespace CommercialWeb.Controllers
             //Lấy danh sách chi tiết đơn hàng để hiển thị cho người dùng thấy
             var lstChiTietDH = db.ChiTietDonHangs.Where(n => n.MaDonHang == ddh.MaDonHang);
             ViewBag.ListChiTietDH = lstChiTietDH;
+            
             //Gửi khách hàng 1 mail để xác nhận việc thanh toán 
-            GuiEmail("Xác đơn hàng" + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "kaitokido14120@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", "Đơn hàng của bạn đã được đặt thành công!");
+            GuiEmail("Xác đơn hàng mã số " + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "moonprince9x@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", "Đơn hàng của bạn đã được đặt thành công!");
             return View(ddhUpdate);
         }
         public void GuiEmail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)

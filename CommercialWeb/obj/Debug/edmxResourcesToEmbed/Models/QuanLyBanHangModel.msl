@@ -14,21 +14,18 @@
     <EntitySetMapping Name="ChiTietDonHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.ChiTietDonHang">
         <MappingFragment StoreEntitySet="ChiTietDonHang">
-          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
           <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
-          <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
-          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
-          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
@@ -36,6 +33,9 @@
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="MaTinhTrang" ColumnName="MaTinhTrang" />
           <ScalarProperty Name="MaHinhThuc" ColumnName="MaHinhThuc" />
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
+          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
+          <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

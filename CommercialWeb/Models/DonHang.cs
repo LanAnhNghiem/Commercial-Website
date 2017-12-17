@@ -21,15 +21,15 @@ namespace CommercialWeb.Models
         }
     
         public int MaDonHang { get; set; }
-        public Nullable<int> MaKH { get; set; }
-        public Nullable<System.DateTime> NgayMua { get; set; }
-        public Nullable<System.DateTime> NgayGiao { get; set; }
-        public Nullable<decimal> TongTien { get; set; }
-        public Nullable<int> MaTinhTrang { get; set; }
-        public Nullable<int> MaHinhThuc { get; set; }
-        public Nullable<bool> DaXoa { get; set; }
-        public Nullable<bool> DaThanhToan { get; set; }
-        public Nullable<bool> DaHuy { get; set; }
+        public int MaKH { get; set; }
+        public System.DateTime NgayMua { get; set; }
+        public System.DateTime NgayGiao { get; set; }
+        public decimal TongTien { get; set; }
+        public int MaTinhTrang { get; set; }
+        public int MaHinhThuc { get; set; }
+        public bool DaXoa { get; set; }
+        public bool DaThanhToan { get; set; }
+        public bool DaHuy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
