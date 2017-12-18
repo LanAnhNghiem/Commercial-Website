@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CommercialWeb.BundleConfig" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.FilterConfig" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.EmailService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CommercialWeb.SmsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CommercialWeb.RouteConfig" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Startup" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.MvcApplication" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Controllers.AdminController" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Controllers.HomeController" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Controllers.QuanLyDonHangController" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAARACASAAIAAAAAQAgAIQBAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Controllers\QuanLyDonHangController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Controllers.SanPhamController" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAQAAAAAAEAAAAAAYQAAAAQAAAAAA=</HashCode>
+      <FileName>Controllers\SanPhamController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.QuanLyBanHangEntities" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAYAAAAAQAABIEAAAAAAAAEAAAAEAIAAQAAAAEAAA=</HashCode>
+      <FileName>Models\QuanLyBanHangModel.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.BinhLuan" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAQAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAgAAQAA=</HashCode>
+      <FileName>Models\BinhLuan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.ChiTietDonHang" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gBAAAAAAAAAQAAAAQAAAAAAAAAAACAAIAAAAAggAAAA=</HashCode>
+      <FileName>Models\ChiTietDonHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.DonHang" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAgAAEABAAIASAAACAgAAAAgAAAAAAAAAAAEMAA=</HashCode>
+      <FileName>Models\DonHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.HinhThucGiaoHang" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAEAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HinhThucGiaoHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.KhachHang" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAUAAABAAQEAAAAAAAAAAAAAAAAUAA=</HashCode>
+      <FileName>Models\KhachHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.KhuyenMai" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAgAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\KhuyenMai.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.LoaiSanPham" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoaiSanPham.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.NhaSanXuat" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAYAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NhaSanXuat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.SanPham" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAAIAAAAIoIABIBAgAAAgCAAABACAAAIAAAAABAAAA=</HashCode>
+      <FileName>Models\SanPham.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.TinhTrangDonHang" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEIAA=</HashCode>
+      <FileName>Models\TinhTrangDonHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.ThanhVien">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAACAAABAQAAABAAQEAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\ThanhVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

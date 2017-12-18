@@ -95,7 +95,7 @@ namespace CommercialWeb.Controllers
         public ActionResult DaGiaoDaThanhToan()
         {
             //Lấy danh sách đơn hàng chưa giao 
-            var lstDSDHCG = db.DonHangs.Where(n => n.MaTinhTrang == 2 && n.DaThanhToan == true);
+            var lstDSDHCG = db.DonHangs.Where(n => n.MaTinhTrang == 1 && n.DaThanhToan == true);
             return View(lstDSDHCG);
         }
         [HttpGet]
@@ -115,24 +115,33 @@ namespace CommercialWeb.Controllers
             //Lấy danh sách chi tiết đơn hàng để hiển thị cho người dùng thấy
             var lstChiTietDH = db.ChiTietDonHangs.Where(n => n.MaDonHang == id);
             ViewBag.ListChiTietDH = lstChiTietDH;
-            ViewBag.MaTinhTrang = new SelectList(db.TinhTrangDonHangs.OrderBy(n => n.TenTinhTrang), "MaTinhTrang", "TenTinhTrang", model.TinhTrangDonHang.TenTinhTrang);
+            ViewBag.MaTinhTrang = new SelectList(db.TinhTrangDonHangs.OrderBy(n => n.MaTinhTrang), "MaTinhTrang", "TenTinhTrang", model.TinhTrangDonHang.TenTinhTrang);
             return View(model);
         }
         [HttpPost]
         public ActionResult DuyetDonHang(DonHang ddh)
         {
+            if(ddh.MaTinhTrang == 0)
+            {
+                ddh.MaTinhTrang = 2;
+            }
             //Truy vấn lấy ra dữ liệu của đơn hàn đó 
             DonHang ddhUpdate = db.DonHangs.Single(n => n.MaDonHang == ddh.MaDonHang);
             ddhUpdate.DaThanhToan = ddh.DaThanhToan;
             ddhUpdate.MaTinhTrang = ddh.MaTinhTrang;
+            ddhUpdate.DaHuy = ddh.DaHuy;
             db.SaveChanges();
 
             //Lấy danh sách chi tiết đơn hàng để hiển thị cho người dùng thấy
             var lstChiTietDH = db.ChiTietDonHangs.Where(n => n.MaDonHang == ddh.MaDonHang);
             ViewBag.ListChiTietDH = lstChiTietDH;
-            
+            ViewBag.MaTinhTrang = new SelectList(db.TinhTrangDonHangs.OrderBy(n => n.MaTinhTrang), "MaTinhTrang", "TenTinhTrang", ddhUpdate.TinhTrangDonHang.TenTinhTrang);
+
             //Gửi khách hàng 1 mail để xác nhận việc thanh toán 
-            GuiEmail("Xác đơn hàng mã số " + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "moonprince9x@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", "Đơn hàng của bạn đã được đặt thành công!");
+            string tinhTrangThanhToan = ddhUpdate.DaThanhToan ? "Đã thanh toán" : "Chưa thanh toán";
+           
+            string NoiDungMail = ddhUpdate.DaHuy? "<h2>Xin chào, " + ddhUpdate.KhachHang.HoTen + " </h2><h3>Đơn hàng của mã số " + ddhUpdate.MaDonHang + " bạn đã được hủy.</h3><h3>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</h3>" : "<h2>Xin chào, " + ddhUpdate.KhachHang.HoTen + " </h2><h3>Đơn hàng của mã số "+ddhUpdate.MaDonHang+" bạn đang được xử lý.</h3><p>Tình trạng thanh toán: "+ tinhTrangThanhToan + "</p><p>Tình trạng giao hàng: "+ ddhUpdate.TinhTrangDonHang.TenTinhTrang + "</p><h3>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</h3>";
+            GuiEmail("Xác đơn hàng mã số " + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "moonprince9x@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", NoiDungMail);
             return View(ddhUpdate);
         }
         public void GuiEmail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)

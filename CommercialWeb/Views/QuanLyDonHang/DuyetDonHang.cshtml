@@ -28,8 +28,9 @@
                 </td>
             </tr>
             <tr >
-                <td>Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan)</td>
-                <td>Đã giao: @Html.DropDownList("MaTinhTrang", null, new { @class = "abc"})</td>
+                <td class="DaGiao">Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan)</td>
+                <td class="DaGiao">Đã giao: @Html.DropDownList("MaTinhTrang")</td>
+                <td>Đã hủy: @Html.EditorFor(model => model.DaHuy)</td>
             </tr>
             @*Thông tin chi tiết đơn hàng*@
 
@@ -75,11 +76,28 @@
     //Phương thức in
     function InDonHang(content) {
         var printWindow = window.open('', '', 'height=400,width=800');
-        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('<html><head><title>Đơn hàng số @Model.MaDonHang</title>');
         printWindow.document.write('</head><body >');
         printWindow.document.write(content);
         printWindow.document.write('</body></html>');
         printWindow.document.close();
         printWindow.print();
     }
+
+    $('#DaHuy').change(function () {
+        if ($(this).is(':checked'))
+        {
+            $('#MaTinhTrang').attr('disabled', true);
+            $('#DaThanhToan').attr('disabled', true);
+            $('#MaTinhTrang').css("color", "rgb(169, 169, 169)");
+            $('.DaGiao').css("color", 'rgb(169, 169, 169)');
+        }
+        else
+        {
+            $('#MaTinhTrang').attr('disabled', false);
+            $('#DaThanhToan').attr('disabled', false);
+            $('#MaTinhTrang').css("color", "rgb(0, 0, 0)");
+            $('.DaGiao').css("color", 'rgb(0, 0, 0)')
+        }
+    })
 </script>
