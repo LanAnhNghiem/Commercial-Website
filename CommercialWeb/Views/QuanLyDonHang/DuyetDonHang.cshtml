@@ -100,23 +100,20 @@
         $('#DaHuy').change(function () {
             if ($(this).is(':checked')) {
                 LockChange();
-                if ('#DaThanhToan:not(:checked)') {
-                    $('#MaTinhTrang').val('2');
-                }
+                DaThanhToanTrigger();
             }
             else {
                 UnLockChange();
                 //Nếu chưa thanh toán thì chuyển sang chưa giao hàng
-                if ('#DaThanhToan:not(:checked)') {
-                    $('#MaTinhTrang').val('2');
-                }
+                DaThanhToanTrigger();
             }
         })
 
         $('#MaTinhTrang').change(function(){
-            if ($(this).val() == 1 && ('#DaThanhToan:not(:checked)')) {
-                alert('Không thể giao khi chưa thanh toán');
-                $(this).val('2');
+            if ($('#DaThanhToan').is(':checked')) {
+            }
+            else {
+                DaThanhToanTrigger();
             }
         })
 
@@ -134,5 +131,10 @@
             $('.DaGiao').css("color", 'rgb(0, 0, 0)');
         }
 
+        function DaThanhToanTrigger() {
+            if ('#DaThanhToan:not(:checked)') {
+                $('#MaTinhTrang').val('2');
+            }
+        }
     });
 </script>
