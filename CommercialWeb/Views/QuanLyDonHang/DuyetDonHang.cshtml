@@ -83,21 +83,56 @@
         printWindow.document.close();
         printWindow.print();
     }
+    $(document).ready(function () {
 
-    $('#DaHuy').change(function () {
-        if ($(this).is(':checked'))
-        {
+        //Nếu đơn hàng đã hủy thì disable Tình trạng giao hàng và tình trạng thanh toán
+        if ($('#DaHuy').is(':checked')){
+            LockChange()
+        }
+
+        //Nếu chưa thanh toán thì chuyển sang chưa giao hàng
+        $('#DaThanhToan').change(function () {
+            if ('#DaThanhToan:not(:checked)') {
+                $('#MaTinhTrang').val('2');
+            }
+        })
+
+        $('#DaHuy').change(function () {
+            if ($(this).is(':checked')) {
+                LockChange();
+                if ('#DaThanhToan:not(:checked)') {
+                    $('#MaTinhTrang').val('2');
+                }
+            }
+            else {
+                UnLockChange();
+                //Nếu chưa thanh toán thì chuyển sang chưa giao hàng
+                if ('#DaThanhToan:not(:checked)') {
+                    $('#MaTinhTrang').val('2');
+                }
+            }
+        })
+
+        $('#MaTinhTrang').change(function(){
+            if ($(this).val() == 1 && ('#DaThanhToan:not(:checked)')) {
+                alert('Không thể giao khi chưa thanh toán');
+                $(this).val('2');
+            }
+        })
+
+        function LockChange() {
             $('#MaTinhTrang').attr('disabled', true);
             $('#DaThanhToan').attr('disabled', true);
             $('#MaTinhTrang').css("color", "rgb(169, 169, 169)");
             $('.DaGiao').css("color", 'rgb(169, 169, 169)');
         }
-        else
-        {
+
+        function UnLockChange() {
             $('#MaTinhTrang').attr('disabled', false);
             $('#DaThanhToan').attr('disabled', false);
             $('#MaTinhTrang').css("color", "rgb(0, 0, 0)");
-            $('.DaGiao').css("color", 'rgb(0, 0, 0)')
+            $('.DaGiao').css("color", 'rgb(0, 0, 0)');
         }
-    })
+
+    });
 </script>
