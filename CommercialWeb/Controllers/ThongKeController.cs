@@ -18,12 +18,20 @@ namespace CommercialWeb.Controllers
             return View();
         }
 
-        public string ThongKeDoanhThu()
+        //Thống kê tổng doanh thu
+        public decimal ThongKeTongDoanhThu()
         {
             //Thong ke theo tat ca doanh thu
             decimal TongDoanhThu = db.DonHangs.Sum(n => n.TongTien);
+            return TongDoanhThu;
         }
 
+        //Thống kê doanh thu theo tháng
+        public decimal ThongKeDoanhThuTheoThang(int Thang, int Nam)
+        {
+            decimal DoanhThuTheoThang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam).Sum(n => n.TongTien);
+            return DoanhThuTheoThang;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
