@@ -39,7 +39,7 @@ label{
 }
 /*-----start-header----*/
 .side-bar {
-	background:#1C445F;
+	background:#27ae60;
 	padding:0;
 	min-height: 2500px;
 	width:22%;
@@ -54,11 +54,11 @@ label{
 }
 .logo {
     padding:3em 0;
-	background:#2F5671;
+	background:#1f904f;
 	margin-bottom:5em;
 }
 .navigation h3 {
-	background:#2F5671;
+	background:#1f904f;
 	padding:0.7em 0;
 	color:#fff;
 	font-size:1.35em;

@@ -5,7 +5,7 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
 }
-<h2>Quản lý đơn hàng (Danh sách đơn hàng dã hủy)</h2>  <br />
+<h2>Quản lý đơn hàng (Danh sách đơn hàng đã hủy)</h2>  <br />
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
     <li role="presentation"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & Đã thanh toán</a></li>

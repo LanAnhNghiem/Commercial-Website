@@ -84,7 +84,9 @@
         printWindow.print();
     }
     $(document).ready(function () {
-
+        if ('#DaThanhToan:not(:checked)') {
+            $('#MaTinhTrang').val('2');
+        }
         //Nếu đơn hàng đã hủy thì disable Tình trạng giao hàng và tình trạng thanh toán
         if ($('#DaHuy').is(':checked')){
             LockChange()
