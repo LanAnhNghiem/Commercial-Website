@@ -280,6 +280,7 @@
     <Content Include="Content\AdminLayout\images\pp01.jpg" />
     <Content Include="Content\AdminLayout\images\settings.png" />
     <Content Include="Content\AdminLayout\images\tick-mark.png" />
+    <Content Include="Content\AdminLayout\images\xicon.png" />
     <Content Include="Content\AdminLayout\index.html" />
     <Content Include="Content\AdminLayout\js\Chart1.js" />
     <Content Include="Content\AdminLayout\js\clndr.js" />
