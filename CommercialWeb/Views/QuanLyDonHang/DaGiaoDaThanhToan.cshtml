@@ -32,13 +32,8 @@
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
     grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
     ))
-<br />
 <h4>Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã giao.</h4>
 <style>
-    .nav > li {
-        background: #1C445F;
-    }
-
     .gridTable {
         font-size: 13px;
         width: 100%;

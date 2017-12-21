@@ -14,9 +14,7 @@
     <li role="presentation" class="active"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
     <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao hàng</a></li>
     <li role="presentation"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
-</ul>      
-<br />
-
+</ul>  
 @grid.GetHtml(
     tableStyle: "gridTable",
     headerStyle: "gridHead",
@@ -36,10 +34,6 @@
 <h4>Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng chưa thanh toán.</h4>
 @*Css cho controller*@
 <style>
-    .nav > li {
-        background: #1C445F;
-    }
-
     .gridTable {
         font-size: 13px;
         width: 100%;

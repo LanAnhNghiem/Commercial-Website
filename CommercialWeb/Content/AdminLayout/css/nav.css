@@ -28,7 +28,7 @@ ul.nav li{
 .nav > li > a {
 	padding:7px 27px ;
 	display: block;
-	color:#fff;
+	color:#1f904f;
 	font-size:1.5em;
 	font-weight:700;
 	text-transform:uppercase;
@@ -88,7 +88,7 @@ ul.nav li{
 
 .nav > li > ul  li:hover {
 	color:#FFF;
-	background:#f78f1d;
+	background:#1f904f;
 	-moz-transition: all 0.5s linear;
 	-webkit-transition: all 0.5s linear;
 	-o-transition: all 0.5s linear;
@@ -236,8 +236,8 @@ input#mobile_menu { display: none; }
 	width: 493px;
 }
 .nav > li:hover > a{
-	color: #000;
-	background:#fff;
+	color: #fff;
+	background:#1f904f;
 }
 .nav li > ul li a:hover{
 	text-decoration:none;
