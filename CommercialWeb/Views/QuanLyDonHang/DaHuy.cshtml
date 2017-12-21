@@ -1,21 +1,20 @@
-﻿@model IEnumerable<CommercialWeb.Models.DonHang>
-
+﻿@using CommercialWeb.Models;
+@model IEnumerable<DonHang>
 @{
-    ViewBag.Title = "DaGiaoDaThanhToan";
+    ViewBag.Title = "DaHuy";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
-    
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
 }
-
-<h2>Quản lý đơn hàng (Danh sách đơn hàng đã giao và thanh toán)</h2>      
-<br />
+<h2>Quản lý đơn hàng (Danh sách đơn hàng dã hủy)</h2>  <br />
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
-    <li role="presentation"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & Đã thanh toán </a></li>
-    <li role="presentation" class="active"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao hàng</a></li>
-    <li role="presentation"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
+    <li role="presentation"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & Đã thanh toán</a></li>
+    <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao hàng</a></li>
+    <li role="presentation" class="active"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
 </ul>
+
 <br />
+
 @grid.GetHtml(
     tableStyle: "gridTable",
     headerStyle: "gridHead",
@@ -24,15 +23,17 @@
     alternatingRowStyle: "gridAltRow",
     columns: grid.Columns(
     grid.Column("MaDonHang", header: "Mã đơn hàng"),
-            grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""), 
-        grid.Column("NgayMua", header: "Ngày đặt"),
+        grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""),
+        grid.Column("NgayMua", header: "Ngày mua"),
         grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
         grid.Column("NgayGiao", header: "Ngày giao"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
-        grid.Column("DaHuy", header: "Đã hủy"),
-    grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
+        grid.Column("DaHuy", header: "Đã hủy")
     ))
 
+<br />
+<h4>Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã bị hủy.</h4>
+@*Css cho controller*@
 <style>
     .nav > li {
         background: #1C445F;

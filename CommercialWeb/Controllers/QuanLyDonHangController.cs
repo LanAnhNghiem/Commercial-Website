@@ -118,6 +118,12 @@ namespace CommercialWeb.Controllers
             ViewBag.MaTinhTrang = new SelectList(db.TinhTrangDonHangs.OrderBy(n => n.MaTinhTrang), "MaTinhTrang", "TenTinhTrang", model.TinhTrangDonHang.TenTinhTrang);
             return View(model);
         }
+        [HttpGet]
+        public ActionResult DaHuy()
+        {
+            var lstDaHuy = db.DonHangs.Where(n => n.DaHuy == true);
+            return View(lstDaHuy);
+        }
         [HttpPost]
         public ActionResult DuyetDonHang(DonHang ddh)
         {
