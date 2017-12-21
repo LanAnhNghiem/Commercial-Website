@@ -67,7 +67,7 @@ label{
 	margin-bottom:1em;
 }
 .navigation ul {
-	padding-left:4em;
+	padding-left:3em;
 	padding-bottom:0.25em;
 	padding-top:0em;
 	cursor: pointer;
@@ -94,9 +94,14 @@ label{
 .navigation ul li a:hover {
 	color: #90ff00;
 }
-.navigation {
+.navigation{
 	padding-bottom: 2em;
 }
+
+.account{
+	padding-bottom: 0;
+}
+
 i.dash {
 	width:35px;
 	height:35px;
@@ -1283,7 +1288,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 }
 .footer {
 	padding:2em 0;
-	background:#2F5671;
+	background: #1f904f;
 }
 .copyright p {
 	color: #fff;
@@ -1358,7 +1363,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 	}
 	.logo {
 		padding: 2.8em 0;	
-		margin-bottom: 4em;
+		margin-bottom: 0em;
 	}
 	span.red {
 		top: -10px;

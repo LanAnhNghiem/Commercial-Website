@@ -32,4 +32,4 @@
     grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
     ))
 <br />
-<h4>Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã giao.</h4>
+<h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã giao.</h4>
