@@ -29,7 +29,6 @@
         grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
         grid.Column("NgayGiao", header: "Ngày giao"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
-        grid.Column("DaHuy", header: "Đã hủy"),
         grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
 
         ))
