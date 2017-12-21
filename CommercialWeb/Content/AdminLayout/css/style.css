@@ -41,7 +41,7 @@ label{
 .side-bar {
 	background:#27ae60;
 	padding:0;
-	min-height: 2500px;
+	min-height: 1000px;
 	width:22%;
 	margin-right:2%;
 }
@@ -659,7 +659,7 @@ p.home a {
 	text-decoration: none;
 	margin-top: -1px;
 	display: block;
-	width: 5.5%;
+	width: 8%;
 	float: left;
 }
 .list_of_members {
@@ -1301,7 +1301,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 		padding: 2.7em 1.55em 0;
 	}
 	p.home {
-		padding: 0.7em 0.5em;
+		padding: 1em 1em;
 	}
 	button#focus-single, button#focus-multiple, button#focus-coords, button#focus-init {
 		padding: 5px 4px;

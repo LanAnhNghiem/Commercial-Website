@@ -6,10 +6,13 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
 }
-<h2>Quản lý đơn hàng (Danh sách đơn hàng chưa giao đã thanh toán)</h2>  <br />
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Chưa giao</strong></p>
+<br />
+<h1 style="font-weight:bold; margin:5px; text-align:center">QUẢN LÝ ĐƠN HÀNG</h1>
+<br />
 <ul class="nav nav-tabs">
-    <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
     <li role="presentation" class="active"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & Đã thanh toán</a></li>
+    <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
     <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao hàng</a></li>
     <li role="presentation"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
 </ul>
@@ -42,23 +45,24 @@
     .gridTable {
         font-size: 13px;
         width: 100%;
-        border: 1px solid #000;
+        /*border: 1px solid #000;*/
         padding: 0.5em;
     }
 
         .gridTable td {
-            border: 1px solid #000;
+            /*border: 1px solid #000;*/
             padding: 0.5em;
+            background-color:rgba(215, 229, 227, 1);
         }
 
     .gridHead {
         background-color: #27ae60;
         padding: 0.5em;
-        text-decoration: underline;
+        /*text-decoration: underline;*/
     }
 
         .gridHead > th {
-            border: 1px solid #000;
+            /*border: 1px solid #000;*/
             color: #fff;
             padding: 0.5em;
         }

@@ -26,7 +26,7 @@ ul.nav li{
 }
 /* Link Style */
 .nav > li > a {
-	padding:7px 20px ;
+	padding:7px 27px ;
 	display: block;
 	color:#fff;
 	font-size:1.5em;
@@ -59,7 +59,7 @@ ul.nav li{
 	position: relative;
  }
  ul.nav li.active a{
-	color:#f65e84;
+	color:#1f904f;
 }
 .nav li > ul li a{
 	color:#fff;

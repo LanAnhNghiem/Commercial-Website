@@ -5,9 +5,10 @@
     ViewBag.Title = "DuyetDonHang";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
-
-<h2>Thông tin đơn hàng <font color="#f65e84">@Model.KhachHang.HoTen</font></h2>
-<br /><br />
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Duyệt đơn hàng</strong></p>
+<br />
+<h2>Thông tin đơn hàng của khách hàng <font color="#f65e84">@Model.KhachHang.HoTen</font></h2>
+<br />
 
 @using (Html.BeginForm())
 {

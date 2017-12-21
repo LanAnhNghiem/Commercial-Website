@@ -163,7 +163,7 @@ $(document).ready(function(c) {
     <div class="total-content">
         <div class="col-md-3 side-bar">
             <div class="logo text-center">
-                <a href="#"><img src="~/Content/AdminLayout/images/logo.png" alt="" /></a>
+                <a href="@Url.Action("ChuaGiao", "QuanLyDonHang")"><img src="~/Content/AdminLayout/images/logo.png" alt="" /></a>
             </div>
             <div class="navigation">
                 <h3>Featured</h3>
@@ -228,7 +228,7 @@ $(document).ready(function(c) {
             </div>
         </div>
         <div class="col-md-9 content">
-            <div class="home-strip">
+            @*<div class="home-strip">
                 <div class="view">
                     <ul>
                         <li><a href="index.html"><i class="refresh"></i></a></li>
@@ -428,10 +428,10 @@ $(document).ready(function(c) {
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-            <p class="home"><a href="#">Home</a> > <strong> Dashboard</strong></p>
-            <div style="margin: 2em 0px">
+            </div>*@
+            @*<div class="clearfix"></div>*@
+            @*<p class="home"><a href="#">Home</a> > <strong> Dashboard</strong></p>*@
+            <div style="margin: 0em 0px">
                 @RenderBody()
             </div>
 
