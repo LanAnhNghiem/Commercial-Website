@@ -16,7 +16,6 @@
     <li role="presentation" class="active"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao hàng</a></li>
     <li role="presentation"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
 </ul>
-<br />
 @grid.GetHtml(
     tableStyle: "gridTable",
     headerStyle: "gridHead",
@@ -32,41 +31,5 @@
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
     grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
     ))
+<br />
 <h4>Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã giao.</h4>
-<style>
-    .gridTable {
-        font-size: 13px;
-        width: 100%;
-        /*border: 1px solid #000;*/
-        padding: 0.5em;
-    }
-
-        .gridTable td {
-            /*border: 1px solid #000;*/
-            padding: 0.5em;
-            background-color: rgba(215, 229, 227, 1);
-        }
-
-    .gridHead {
-        background-color: #27ae60;
-        padding: 0.5em;
-        /*text-decoration: underline;*/
-    }
-
-        .gridHead > th {
-            /*border: 1px solid #000;*/
-            color: #fff;
-            padding: 0.5em;
-        }
-
-            .gridHead > th:hover {
-                color: #fff;
-                background-color: #22d425;
-            }
-
-    .gridFooter a {
-        font-weight: bold;
-        padding: 2px;
-        border: 1px solid #999999;
-    }
-</style>
