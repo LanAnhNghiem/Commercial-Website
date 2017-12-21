@@ -15,7 +15,16 @@ namespace CommercialWeb.Controllers
         {
             ViewBag.SoLuongTruyCap = HttpContext.Application["SoLuongTruyCap"].ToString();
             ViewBag.Online = HttpContext.Application["Online"].ToString();
+            ViewBag.TongDoanhThu = ThongKeTongDoanhThu();
+            ViewBag.TongDonHang = ThongKeDonHang();
+
             return View();
+        }
+        //Thống kê đơn hàng
+        public double ThongKeDonHang()
+        {
+            double SoLuongDonHang = db.DonHangs.Count();
+            return SoLuongDonHang; 
         }
 
         //Thống kê tổng doanh thu
@@ -29,6 +38,14 @@ namespace CommercialWeb.Controllers
         //Thống kê doanh thu theo tháng
         public decimal ThongKeDoanhThuTheoThang(int Thang, int Nam)
         {
+
+            //var lstDonHang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam);
+            //decimal DoanhThuTheoThang = 0;
+            //foreach (var item in lstDonHang)
+            //{
+            //    DoanhThuTheoThang += item.TongTien;
+            //}
+
             decimal DoanhThuTheoThang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam).Sum(n => n.TongTien);
             return DoanhThuTheoThang;
         }
