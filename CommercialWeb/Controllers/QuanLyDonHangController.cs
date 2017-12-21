@@ -169,7 +169,6 @@ namespace CommercialWeb.Controllers
             smtp.Send(mail);   //Gửi mail đi
         }
 
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

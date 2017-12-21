@@ -26,10 +26,9 @@
     grid.Column("MaDonHang", header: "Mã đơn hàng"),
             grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""), 
         grid.Column("NgayMua", header: "Ngày đặt"),
-        grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
         grid.Column("NgayGiao", header: "Ngày giao"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
-    grid.Column(format: p => @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDonHang }, new { @target = "_blank" }))
+    grid.Column(format: p => @Html.ActionLink("Xem chi tiết", "ChiTietDonHang", new { @MaDonHang = p.MaDonHang }, new {@class="btn btn-info", @target = "_blank" }))
     ))
 <br />
 <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã giao.</h4>

@@ -21,8 +21,8 @@
                     <table style="width:100%;">
                         <tr>
                             <td>Mã đơn hàng: <b style="color:red;"> @Model.MaDonHang @Html.Hidden("MaDonHang", @Model.MaDonHang)</b></td>
-                            <td>Mã khách hàng: <b style="color:red;"> @Model.KhachHang.MaKH</b></td>
                             <td>Tên khách hàng: <b style="color:red;"> @Model.KhachHang.HoTen</b></td>
+                            <td>Số điện thoại: <b style="color:red;"> @Model.KhachHang.SoDienThoai</b></td>
                             <td>Ngày đặt: @Model.NgayMua.ToString("dd/MM/yyyy")</td>
                         </tr>
                     </table>
@@ -31,7 +31,6 @@
             <tr >
                 <td class="DaGiao">Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan)</td>
                 <td class="DaGiao">Đã giao: @Html.DropDownList("MaTinhTrang")</td>
-                <td>Đã hủy: @Html.EditorFor(model => model.DaHuy)</td>
             </tr>
             @*Thông tin chi tiết đơn hàng*@
 
@@ -62,6 +61,7 @@
             </tr>
         </table>
         <br /><br />
+        <a class="btn btn-primary " href="@Url.Action("ChuaThanhToan", "QuanLyDonHang")">Back List</a>
         <input class="btn btn-success" type="button" value="In đơn hàng" id="btnInDonHang" />
         <input class="btn btn-info" type="submit" value="Lưu đơn hàng" id="btnInDonHang" />
     </div>

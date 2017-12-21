@@ -9,23 +9,23 @@ label.mobile_menu span {
 .gridTable {
     font-size: 13px;
     width: 100%;
-    /*border: 1px solid #000;*/
+    border: 1px solid #ddd;
     padding: 0.5em;
 }
 
     .gridTable td {
-        /*border: 1px solid #000;*/
+        border: 1px solid #ddd;
         padding: 0.5em;
     }
 
 .gridHead {
     background-color: #27ae60;
     padding: 0.5em;
-    /*text-decoration: underline;*/
+    text-decoration: underline;
 }
 
     .gridHead > th {
-        /*border: 1px solid #000;*/
+        border: 1px solid #ddd;
         color: #fff;
         padding: 0.5em;
     }
