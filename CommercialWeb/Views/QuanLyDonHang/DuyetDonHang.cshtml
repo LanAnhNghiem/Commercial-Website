@@ -57,7 +57,7 @@
                 <td align="right" colspan="4">Tổng số lượng: @Model.ChiTietDonHangs.Sum(n => n.SoLuong) sản phẩm</td>
             </tr>
             <tr>
-                <td align="right" colspan="4">Tổng tiền: @Model.ChiTietDonHangs.Sum(n => n.SanPham.DonGia).Value.ToString("#,##") đồng</td>
+                <td align="right" colspan="4">Tổng tiền: <span style="color:red; font-weight:bold">@Model.ChiTietDonHangs.Sum(n => n.SanPham.DonGia).Value.ToString("#,##")</span>  đồng</td>
             </tr>
         </table>
         <br /><br />
