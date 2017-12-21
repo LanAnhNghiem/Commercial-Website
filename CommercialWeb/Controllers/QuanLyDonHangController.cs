@@ -83,19 +83,19 @@ namespace CommercialWeb.Controllers
         public ActionResult ChuaThanhToan()
         {
             //Lấy danh sách các đơn hàng Chưa duyệt
-            var lst = db.DonHangs.Where(n => n.DaThanhToan == false).OrderBy(n => n.NgayMua);
+            var lst = db.DonHangs.Where(n => n.DaThanhToan == false && n.DaHuy == false).OrderBy(n => n.NgayMua);
             return View(lst);
         }
         public ActionResult ChuaGiao()
         {
             //Lấy danh sách đơn hàng chưa giao 
-            var lstDSDHCG = db.DonHangs.Where(n => n.MaTinhTrang == 2 && n.DaThanhToan == true).OrderBy(n => n.NgayGiao);
+            var lstDSDHCG = db.DonHangs.Where(n => n.MaTinhTrang == 2 && n.DaThanhToan == true && n.DaHuy == false).OrderBy(n => n.NgayGiao);
             return View(lstDSDHCG);
         }
         public ActionResult DaGiaoDaThanhToan()
         {
             //Lấy danh sách đơn hàng chưa giao 
-            var lstDSDHCG = db.DonHangs.Where(n => n.MaTinhTrang == 1 && n.DaThanhToan == true);
+            var lstDSDHCG = db.DonHangs.Where(n => n.MaTinhTrang == 1 && n.DaThanhToan == true && n.DaHuy == false);
             return View(lstDSDHCG);
         }
         [HttpGet]
