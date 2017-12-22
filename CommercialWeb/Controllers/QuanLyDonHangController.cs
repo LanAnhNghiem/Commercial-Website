@@ -148,6 +148,9 @@ namespace CommercialWeb.Controllers
            
             string NoiDungMail = ddhUpdate.DaHuy? "<h2>Xin chào, " + ddhUpdate.KhachHang.HoTen + " </h2><h3>Đơn hàng của mã số " + ddhUpdate.MaDonHang + " bạn đã được hủy.</h3><h3>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</h3>" : "<h2>Xin chào, " + ddhUpdate.KhachHang.HoTen + " </h2><h3>Đơn hàng của mã số "+ddhUpdate.MaDonHang+" bạn đang được xử lý.</h3><p>Tình trạng thanh toán: "+ tinhTrangThanhToan + "</p><p>Tình trạng giao hàng: "+ ddhUpdate.TinhTrangDonHang.TenTinhTrang + "</p><h3>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</h3>";
             GuiEmail("Xác đơn hàng mã số " + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "moonprince9x@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", NoiDungMail);
+
+            ViewBag.Message = "Lưu thành công";
+
             return View(ddhUpdate);
         }
         public void GuiEmail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)

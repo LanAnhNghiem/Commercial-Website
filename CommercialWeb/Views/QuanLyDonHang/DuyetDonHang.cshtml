@@ -5,11 +5,18 @@
     ViewBag.Title = "DuyetDonHang";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
+
 <p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Duyệt đơn hàng</strong></p>
 <br />
 <h2>Thông tin đơn hàng của khách hàng <font color="#f65e84">@Model.KhachHang.HoTen</font></h2>
 <br />
-
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Thành công!</strong> Thông tin đơn hàng đã được cập nhật.
+    </div>
+}
 @using (Html.BeginForm())
 {
     <div class="ChiTietDonHang table">
@@ -63,9 +70,11 @@
         <br /><br />
         <a class="btn btn-primary " href="@Url.Action("ChuaThanhToan", "QuanLyDonHang")">Back List</a>
         <input class="btn btn-success" type="button" value="In đơn hàng" id="btnInDonHang" />
-        <input class="btn btn-info" type="submit" value="Lưu đơn hàng" id="btnInDonHang" />
+        <input class="btn btn-info" type="submit" value="Cập nhật" />
     </div>
             }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
 
