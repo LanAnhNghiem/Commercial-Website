@@ -20,6 +20,25 @@ namespace CommercialWeb.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult ThongKeTheoThang()
+        {
+            var thang = DateTime.Now.Month;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == 12 && n.NgayGiao.Year == 2016).Sum(n => n.TongTien);
+
+            if(ViewBag.TongTien == null)
+            {
+
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ThongKeTheoThang(int thang, int nam)
+        {
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam).Sum(n => n.TongTien);
+            return View();
+        }
         //Thống kê đơn hàng
         public double ThongKeDonHang()
         {
@@ -49,6 +68,8 @@ namespace CommercialWeb.Controllers
             decimal DoanhThuTheoThang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam).Sum(n => n.TongTien);
             return DoanhThuTheoThang;
         }
+
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

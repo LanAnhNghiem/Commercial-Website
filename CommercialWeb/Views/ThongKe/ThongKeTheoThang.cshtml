@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ThongKeTheoThang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    decimal TongTien = decimal.Parse(ViewBag.TongTien.ToString());
+}
+
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Thống kê</strong></p>
+<br />
+<h1 style="font-weight:bold; margin:5px; text-align:center">THỐNG KÊ BÁN HÀNG</h1>
+<br />
+<ul class="nav nav-tabs" style="">
+    <li role="presentation" class="active"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Thống kê theo tháng </a></li>
+    <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Thống kê theo quý</a></li>
+    <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Thống kê theo năm</a></li>
+</ul>
+
+<style>
+    .nav > li > a{
+        padding: 7px 46.9px;
+    }
+</style>
