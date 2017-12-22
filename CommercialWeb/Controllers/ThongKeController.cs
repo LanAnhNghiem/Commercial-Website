@@ -25,12 +25,6 @@ namespace CommercialWeb.Controllers
         public ActionResult ThongKeTheoThang()
         {
             var thang = DateTime.Now.Month;
-            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == 12 && n.NgayGiao.Year == 2016).Sum(n => n.TongTien);
-
-            if(ViewBag.TongTien == null)
-            {
-
-            }
             return View();
         }
         [HttpPost]

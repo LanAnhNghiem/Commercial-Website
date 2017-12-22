@@ -49,10 +49,6 @@ label.mobile_menu span {
 }
 
 .gridRow {
-    background-color: #f0f7f5;
-}
-
-.gridRow {
     background-color: rgba(219, 229, 226 , 0.3);
 }
 .gridAltRow {

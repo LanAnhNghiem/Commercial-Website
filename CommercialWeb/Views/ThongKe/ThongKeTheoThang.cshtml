@@ -2,7 +2,14 @@
 @{
     ViewBag.Title = "ThongKeTheoThang";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
-    decimal TongTien = decimal.Parse(ViewBag.TongTien.ToString());
+}
+
+@{
+    decimal TongTien = 0;
+    if(ViewBag.TongTien != null)
+    {
+        TongTien = decimal.Parse(ViewBag.TongTien.ToString());
+    }
 }
 
 <p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Thống kê</strong></p>
@@ -14,8 +21,47 @@
     <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Thống kê theo quý</a></li>
     <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Thống kê theo năm</a></li>
 </ul>
+@using (Html.BeginForm("ThongKeTheoThang", "ThongKe", new { @thang = 12, @nam = 2016 }, FormMethod.Post))
+{
+    <div class="option-item">
+            <select class="form-control" style="overflow:auto; display:inline; width: 100px; margin:1em">
+                <option>Tháng 1</option>
+                <option>Tháng 2</option>
+                <option>Tháng 3</option>
+                <option>Tháng 4</option>
+                <option>Tháng 5</option>
+                <option>Tháng 6</option>
+                <option>Tháng 7</option>
+                <option>Tháng 8</option>
+                <option>Tháng 9</option>
+                <option>Tháng 10</option>
+                <option>Tháng 11</option>
+                <option>Tháng 12</option>
+            </select>        
+        <select class="form-control" style="display:inline; width: 100px; margin:1em">
+            <option>Tháng 1</option>
+            <option>Tháng 2</option>
+            <option>Tháng 3</option>
+            <option>Tháng 4</option>
+            <option>Tháng 5</option>
+            <option>Tháng 6</option>
+            <option>Tháng 7</option>
+            <option>Tháng 8</option>
+            <option>Tháng 9</option>
+            <option>Tháng 10</option>
+            <option>Tháng 11</option>
+            <option>Tháng 12</option>
+        </select>
+        <input type="submit" class="btn btn-info" value="Xem thống kê" style="display:inline; margin:1em">
+    </div>
+    <h3 style="padding: 1em; background-color:white">Tổng doanh thu tháng: <span style="color:red; font-weight:bold">@String.Format("{0:n0}", TongTien) VNĐ</span></h3>
+
+}
 
 <style>
+    .option-item {
+        padding: 1em;
+    }
     .nav > li > a{
         padding: 7px 46.9px;
     }
