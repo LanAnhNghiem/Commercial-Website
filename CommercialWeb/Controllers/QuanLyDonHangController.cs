@@ -135,6 +135,7 @@ namespace CommercialWeb.Controllers
             DonHang ddhUpdate = db.DonHangs.Single(n => n.MaDonHang == ddh.MaDonHang);
             ddhUpdate.DaThanhToan = ddh.DaThanhToan;
             ddhUpdate.MaTinhTrang = ddh.MaTinhTrang;
+            ddhUpdate.NgayGiao = DateTime.Now;
             ddhUpdate.DaHuy = ddh.DaHuy;
             db.SaveChanges();
 

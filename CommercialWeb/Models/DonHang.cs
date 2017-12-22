@@ -24,7 +24,7 @@ namespace CommercialWeb.Models
         public int MaKH { get; set; }
         public System.DateTime NgayMua { get; set; }
         public System.DateTime NgayGiao { get; set; }
-        public decimal TongTien { get; set; }
+        public decimal? TongTien { get; set; }
         public int MaTinhTrang { get; set; }
         public int MaHinhThuc { get; set; }
         public bool DaXoa { get; set; }

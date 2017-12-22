@@ -750,6 +750,8 @@
     <Content Include="Views\ThongKe\ThongKe.cshtml" />
     <Content Include="Views\QuanLyDonHang\DaHuy.cshtml" />
     <Content Include="Views\ThongKe\ThongKeTheoThang.cshtml" />
+    <Content Include="Views\ThongKe\ThongKeTheoNam.cshtml" />
+    <Content Include="Views\ThongKe\ThongKeTheoQuy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

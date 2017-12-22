@@ -24,7 +24,7 @@
     alternatingRowStyle: "gridAltRow",
     columns: grid.Columns(
     grid.Column("MaDonHang", header: "Mã đơn hàng"),
-            grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""),  
+        grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""),
         grid.Column("NgayMua", header: "Ngày đặt"),
         grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),

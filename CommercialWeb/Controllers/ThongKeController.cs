@@ -24,13 +24,19 @@ namespace CommercialWeb.Controllers
         [HttpGet]
         public ActionResult ThongKeTheoThang()
         {
-            var thang = DateTime.Now.Month;
+            ViewBag.TongTien = 0;
+            ViewBag.TongSanPham = 0;
+            ViewBag.Thang = "__";
+            ViewBag.Nam = "__";
             return View();
         }
         [HttpPost]
         public ActionResult ThongKeTheoThang(int thang, int nam)
         {
-            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam).Sum(n => n.TongTien);
+            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n=>n.ChiTietDonHangs.Sum(q=>(int?)q.SoLuong)) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.TongTien) ?? 0;
+            ViewBag.Thang = thang;
+            ViewBag.Nam = nam;
             return View();
         }
         //Thống kê đơn hàng
@@ -41,15 +47,15 @@ namespace CommercialWeb.Controllers
         }
 
         //Thống kê tổng doanh thu
-        public decimal ThongKeTongDoanhThu()
+        public decimal? ThongKeTongDoanhThu()
         {
             //Thong ke theo tat ca doanh thu
-            decimal TongDoanhThu = db.DonHangs.Sum(n => n.TongTien);
+            decimal? TongDoanhThu = db.DonHangs.Sum(n => n.TongTien);
             return TongDoanhThu;
         }
 
         //Thống kê doanh thu theo tháng
-        public decimal ThongKeDoanhThuTheoThang(int Thang, int Nam)
+        public decimal? ThongKeDoanhThuTheoThang(int Thang, int Nam)
         {
 
             //var lstDonHang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam);
@@ -59,11 +65,52 @@ namespace CommercialWeb.Controllers
             //    DoanhThuTheoThang += item.TongTien;
             //}
 
-            decimal DoanhThuTheoThang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam).Sum(n => n.TongTien);
+            decimal? DoanhThuTheoThang = db.DonHangs.Where(n => n.NgayGiao.Month == Thang && n.NgayGiao.Year == Nam).Sum(n => n.TongTien);
             return DoanhThuTheoThang;
         }
 
-        
+        [HttpGet]
+        public ActionResult ThongKeTheoNam()
+        {
+            ViewBag.TongTien = 0;
+            ViewBag.TongSanPham = 0;
+            ViewBag.Nam = "__";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThongKeTheoNam(int nam)
+        {
+            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.TongTien) ?? 0;
+            ViewBag.Nam = nam;
+
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ThongKeTheoQuy()
+        {
+            ViewBag.TongSanPham = 0;
+            ViewBag.TongTien = 0;
+            ViewBag.Nam = "__";
+            ViewBag.Quy = "__";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThongKeTheoQuy(int quy, int nam)
+        {
+            //quý n có min = (n - 1) * 3 + 1;
+            var minMonth = (quy - 1) * 3 + 1;
+            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.TongTien) ?? 0;
+            ViewBag.Nam = nam;
+            ViewBag.Quy = quy;
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -33,15 +33,17 @@ label.mobile_menu span {
         .gridHead > th:hover {
             color: #fff;
             background-color: #1f904f;
-            cursor: pointer
+            cursor: pointer;
         }
 
         .gridHead > th > a:hover {
             color: #27aea3;
         }
+
         .gridHead > th > a {
             color: #fff;
         }
+
 .gridFooter a {
     font-weight: bold;
     padding: 2px;
@@ -49,8 +51,9 @@ label.mobile_menu span {
 }
 
 .gridRow {
-    background-color: rgba(219, 229, 226 , 0.3);
+    background-color: rgba(219, 229, 226, 0.3);
 }
+
 .gridAltRow {
     background-color: rgb(219, 229, 226);
 }
