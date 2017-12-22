@@ -38,5 +38,7 @@ namespace CommercialWeb.Models
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
         public virtual LoaiSanPham LoaiSanPham { get; set; }
         public virtual NhaSanXuat NhaSanXuat { get; set; }
+
+        public string HinhAnh { get; set; }
     }
 }

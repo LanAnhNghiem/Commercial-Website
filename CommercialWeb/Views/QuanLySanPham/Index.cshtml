@@ -4,8 +4,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
-    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+    //khởi tạo control webgrid
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 15);
 }
+
+@Html.ActionLink("Thêm sản phẩm", "TaoMoi", null, new { @class = "btn btn-success" })
+<br /><br />
 
 @*Thể hiện dữ liệu thông qua control webGrid*@
 @grid.GetHtml(
@@ -16,36 +20,67 @@
     alternatingRowStyle: "gridAltRow",
     columns: grid.Columns(
     grid.Column("MaSP", "Mã sản phẩm"),
-    grid.Column("TenSP", "Tên SP")//,
+    grid.Column("TenSP", "Tên SP"),
+    grid.Column("SoLuongTon", "Số lượng tồn"),
+    grid.Column("DonGia", "Đơn giá"),
+    grid.Column(format:p => @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaSP })),
+    grid.Column(format: p => @Html.ActionLink("Xóa", "Xoa", new { id = p.MaSP }))
     //grid.Column("HinhAnh1", "Hình ảnh", format: p => @Html.Raw("<img width=\"150\" height=\"50\" src=\"../Content/ProductImage/" + p.HinhAnh1 + "\">"))
     ))
 
 
 @*Css cho từng Style của table*@
 <style>
-    .divTable {
-        border: 1px solid #999999;
+   .divTable {
+    font-size: 13px;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+}
+
+    .gridTable td {
+        border: 1px solid #ddd;
+        padding: 0.5em;
     }
 
-    .gridHead {
-        background-color: Green;
+.gridHead {
+    background-color: #27ae60;
+    padding: 0.5em;
+    text-decoration: underline;
+}
+
+    .gridHead > th {
+        border: 1px solid #ddd;
+        color: #fff;
+        padding: 0.5em;
     }
 
+        .gridHead > th:hover {
+            color: #fff;
+            background-color: #1f904f;
+            cursor: pointer
+        }
+
+        .gridHead > th > a:hover {
+            color: #27aea3;
+        }
         .gridHead > th > a {
             color: #fff;
         }
+.gridFooter a {
+    font-weight: bold;
+    padding: 2px;
+    border: 1px solid #999999;
+}
 
-    .gridFooter {
-        font-weight: bold;
-    }
+.gridRow {
+    background-color: #f0f7f5;
+}
 
-    .gridRow {
-        color: #fff;
-        background-color: blueviolet;
-    }
-
-    .gridAltRow {
-        color: #fff;
-        background-color: darkorange;
-    }
+.gridRow {
+    background-color: rgba(219, 229, 226 , 0.3);
+}
+.gridAltRow {
+    background-color: rgb(219, 229, 226);
+}
 </style>

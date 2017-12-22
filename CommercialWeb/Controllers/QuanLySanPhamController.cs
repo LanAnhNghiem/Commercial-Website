@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CommercialWeb.Models;
 using System.IO;
+using System.Net;
 
 namespace CommercialWeb.Controllers
 {
@@ -54,9 +55,9 @@ namespace CommercialWeb.Controllers
                             //Kiểm tra hình ảnh tồn tại
 
                             //Lấy tên hình ảnh
-                            var fileName = Path.GetFileName(HinhAnh[0].FileName);
+                            var fileName = Path.GetFileName(HinhAnh[i].FileName);
                             //Lấy hình ảnh chuyển vào thư mục hình ảnh 
-                            var path = Path.Combine(Server.MapPath("~/Content/HinhAnhSP"), fileName);
+                            var path = Path.Combine(Server.MapPath("~/Content/ProductImages"), fileName);
                             //Nếu thư mục chứa hình ảnh đó rồi thì xuất ra thông báo
                             if (System.IO.File.Exists(path))
                             {
@@ -74,9 +75,9 @@ namespace CommercialWeb.Controllers
             {
                 return View(sp);
             }
-            sp.HinhAnh1 = HinhAnh[0].FileName;
-            sp.HinhAnh2 = HinhAnh[1].FileName;
-            sp.HinhAnh3 = HinhAnh[2].FileName; 
+            sp.HinhAnh = HinhAnh[0].FileName;
+            sp.HinhAnh = HinhAnh[1].FileName;
+            sp.HinhAnh = HinhAnh[2].FileName; 
             db.SanPhams.Add(sp);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -115,5 +116,54 @@ namespace CommercialWeb.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Xoa(int? id)
+        {
+
+            //Lấy sản phẩm cần chỉnh sửa dựa vào id
+            if (id == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == id);
+            if (sp == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
+            ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPhams.OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP");
+            return View(sp);
+        }
+
+        [HttpPost]
+        public ActionResult Xoa(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SanPham model = db.SanPhams.SingleOrDefault(n => n.MaSP == id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            db.SanPhams.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (db != null)
+                    db.Dispose();
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

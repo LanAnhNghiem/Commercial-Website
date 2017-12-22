@@ -1,0 +1,167 @@
+﻿@using CommercialWeb.Models
+@model SanPham
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class="single-product-area mb-80">
+    <div class="row">
+        <!-- imgs-zoom-area start -->
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            <div class="imgs-zoom-area">
+                <img id="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)" alt="">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="gallery_01" class="carousel-btn slick-arrow-3 mt-30">
+                            <div class="p-c">
+                                <a href="#" data-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh2)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh2)">
+                                    <img class="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh2)" alt="">
+                                </a>
+                            </div>
+                            <div class="p-c">
+                                <a href="#" data-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh3)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh3)">
+                                    <img class="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh3)" alt="">
+                                </a>
+                            </div>
+                            <div class="p-c">
+                                <a href="#" data-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)">
+                                    <img class="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)" alt="">
+                                </a>
+                            </div>
+                            <div class="p-c">
+                                <a href="#" data-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh2)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh2)">
+                                    <img class="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh2)" alt="">
+                                </a>
+                            </div>
+                            <div class="p-c">
+                                <a href="#" data-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh3)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh3)">
+                                    <img class="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh3)" alt="">
+                                </a>
+                            </div>
+                            <div class="p-c">
+                                <a href="#" data-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)" data-zoom-image="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)">
+                                    <img class="zoom_03" src="@Url.Content("~/Content/ProductImages/"+Model.HinhAnh1)" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- imgs-zoom-area end -->
+        <!-- single-product-info start -->
+        <div class="col-md-7 col-sm-7 col-xs-12">
+            <div class="single-product-info">
+                <h3 class="text-black-1">@Model.TenSP</h3>
+                <h6 class="brand-name-2">Bảo hành: @Model.ThoiHanBaoHanh tháng</h6>
+                <!-- hr -->
+                <hr>
+                <!-- single-product-tab -->
+                <div class="single-product-tab">
+                    <ul class="reviews-tab mb-20">
+
+                        <li><a href="#information" data-toggle="tab">Thông tin sản phẩm</a></li>
+                        <li><a href="#reviews" data-toggle="tab">reviews</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane" id="information">
+                            <p>@Html.Raw(Model.MoTa)</p>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="reviews">
+                            <!-- reviews-tab-desc -->
+                            <div class="reviews-tab-desc">
+                                <!-- single comments -->
+                                <div class="media mt-30">
+                                    <div class="media-left">
+                                        <a href="#"><img class="media-object" src="~/Content/images/1_8.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="clearfix">
+                                            <div class="name-commenter pull-left">
+                                                <h6 class="media-heading"><a href="#">cristiano ronaldo</a></h6>
+                                                <p class="mb-10">27 Jun, 2017 at 2:30pm</p>
+                                            </div>
+                                            <div class="pull-right">
+                                                <ul class="reply-delate">
+                                                    <li><a href="#">Reply</a></li>
+                                                    <li>/</li>
+                                                    <li><a href="#">Delate</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0">review chỉ mang tính chất minh họa cho trang web</p>
+                                    </div>
+                                </div>
+                                <!-- single comments -->
+                                <div class="media mt-30">
+                                    <div class="media-left">
+                                        <a href="#"><img class="media-object" src="~/Content/images/2_5.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="clearfix">
+                                            <div class="name-commenter pull-left">
+                                                <h6 class="media-heading"><a href="#">Buu Hoang Le</a></h6>
+                                                <p class="mb-10">27 Jun, 2017 at 2:30pm</p>
+                                            </div>
+                                            <div class="pull-right">
+                                                <ul class="reply-delate">
+                                                    <li><a href="#">Reply</a></li>
+                                                    <li>/</li>
+                                                    <li><a href="#">Delate</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0">Đây là review thứ hai .</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  hr -->
+                <hr>
+
+
+                <div class="pro-rating sin-pro-rating f-right">
+                    <a href="#" tabindex="0"><i class="zmdi zmdi-star"></i></a>
+                    <a href="#" tabindex="0"><i class="zmdi zmdi-star"></i></a>
+                    <a href="#" tabindex="0"><i class="zmdi zmdi-star"></i></a>
+                    <a href="#" tabindex="0"><i class="zmdi zmdi-star-half"></i></a>
+                    <a href="#" tabindex="0"><i class="zmdi zmdi-star-outline"></i></a>
+                    <span class="text-black-5">( 27 Rating )</span>
+                </div>
+            </div>
+            <!-- hr -->
+            <hr>
+            <!-- plus-minus-pro-action -->
+            <div class="plus-minus-pro-action">
+                <div class="sin-plus-minus f-left clearfix">
+                    <p class="color-title f-left">Qty</p>
+                    <div class="cart-plus-minus f-left">
+                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                    </div>
+                </div>
+                <div class="sin-pro-action f-right">
+                    <ul class="action-button">
+                        <li>
+                            <a href="#" title="Wishlist" tabindex="0"><i class="zmdi zmdi-favorite"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview" tabindex="0"><i class="zmdi zmdi-zoom-in"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Compare" tabindex="0"><i class="zmdi zmdi-refresh"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Add to cart" tabindex="0"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- single-product-info end -->
+</div>
+</div>
