@@ -27,10 +27,13 @@ namespace CommercialWeb.Models
         public string MatKhau { get; set; }
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
+        public Nullable<int> MaLoaiTV { get; set; }
+        public Nullable<bool> DaXoa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual LoaiThanhVien LoaiThanhVien { get; set; }
     }
 }

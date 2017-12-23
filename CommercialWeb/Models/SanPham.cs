@@ -34,6 +34,8 @@ namespace CommercialWeb.Models
         public Nullable<int> SoLanMua { get; set; }
         public Nullable<int> SoLuongTon { get; set; }
         public string ThoiHanBaoHanh { get; set; }
+        public Nullable<int> MaKhuyenMai { get; set; }
+        public Nullable<decimal> GiaBan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
@@ -41,5 +43,6 @@ namespace CommercialWeb.Models
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual LoaiSanPham LoaiSanPham { get; set; }
         public virtual NhaSanXuat NhaSanXuat { get; set; }
+        public virtual KhuyenMai KhuyenMai { get; set; }
     }
 }

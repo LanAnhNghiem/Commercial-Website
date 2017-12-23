@@ -14,8 +14,17 @@ namespace CommercialWeb.Models
     
     public partial class KhuyenMai
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KhuyenMai()
+        {
+            this.SanPhams = new HashSet<SanPham>();
+        }
+    
         public int MaKhuyenMai { get; set; }
         public string TenKhuyenMai { get; set; }
         public Nullable<int> MoTa { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

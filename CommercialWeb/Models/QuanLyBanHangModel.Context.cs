@@ -36,5 +36,9 @@ namespace CommercialWeb.Models
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
         public virtual DbSet<ThanhVien> ThanhViens { get; set; }
+        public virtual DbSet<LoaiThanhVien> LoaiThanhViens { get; set; }
+        public virtual DbSet<Quyen> Quyens { get; set; }
+        public virtual DbSet<LoaiThanhVien_Quyen> LoaiThanhVien_Quyen { get; set; }
+        public virtual DbSet<Table> Tables { get; set; }
     }
 }
