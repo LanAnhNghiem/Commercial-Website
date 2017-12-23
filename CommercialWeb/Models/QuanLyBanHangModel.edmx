@@ -124,12 +124,6 @@
           <Property Name="MaKhuyenMai" Type="int" />
           <Property Name="GiaBan" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="TinhTrangDonHang">
           <Key>
             <PropertyRef Name="MaTinhTrang" />
@@ -331,7 +325,6 @@
           <EntitySet Name="NhaSanXuat" EntityType="Self.NhaSanXuat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TinhTrangDonHang" EntityType="Self.TinhTrangDonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThanhVien" EntityType="Self.ThanhVien" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BinhLuan_SanPham" Association="Self.FK_BinhLuan_SanPham">
@@ -717,7 +710,6 @@
           </AssociationSet>
           <EntitySet Name="Quyens" EntityType="QuanLyBanHangModel.Quyen" />
           <EntitySet Name="LoaiThanhVien_Quyen" EntityType="QuanLyBanHangModel.LoaiThanhVien_Quyen" />
-          <EntitySet Name="Tables" EntityType="QuanLyBanHangModel.Table" />
           <AssociationSet Name="FK_LoaiThanhVien_Quyen_LoaiThanhVien" Association="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_LoaiThanhVien">
             <End Role="LoaiThanhVien" EntitySet="LoaiThanhViens" />
             <End Role="LoaiThanhVien_Quyen" EntitySet="LoaiThanhVien_Quyen" />
@@ -778,12 +770,6 @@
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="LoaiThanhVien" Relationship="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_LoaiThanhVien" FromRole="LoaiThanhVien_Quyen" ToRole="LoaiThanhVien" />
           <NavigationProperty Name="Quyen" Relationship="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_Quyen" FromRole="LoaiThanhVien_Quyen" ToRole="Quyen" />
-        </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_LoaiThanhVien_Quyen_LoaiThanhVien">
           <End Type="QuanLyBanHangModel.LoaiThanhVien" Role="LoaiThanhVien" Multiplicity="1" />
@@ -964,13 +950,6 @@
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
                 <ScalarProperty Name="MaLoaiTV" ColumnName="MaLoaiTV" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tables">
-            <EntityTypeMapping TypeName="QuanLyBanHangModel.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

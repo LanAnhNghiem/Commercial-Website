@@ -256,9 +256,6 @@
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Table.cs">
-      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ThanhVien.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>

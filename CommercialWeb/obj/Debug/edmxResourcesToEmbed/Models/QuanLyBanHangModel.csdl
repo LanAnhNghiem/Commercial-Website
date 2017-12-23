@@ -322,7 +322,6 @@
     </AssociationSet>
     <EntitySet Name="Quyens" EntityType="QuanLyBanHangModel.Quyen" />
     <EntitySet Name="LoaiThanhVien_Quyen" EntityType="QuanLyBanHangModel.LoaiThanhVien_Quyen" />
-    <EntitySet Name="Tables" EntityType="QuanLyBanHangModel.Table" />
     <AssociationSet Name="FK_LoaiThanhVien_Quyen_LoaiThanhVien" Association="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_LoaiThanhVien">
       <End Role="LoaiThanhVien" EntitySet="LoaiThanhViens" />
       <End Role="LoaiThanhVien_Quyen" EntitySet="LoaiThanhVien_Quyen" />
@@ -383,12 +382,6 @@
     <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="LoaiThanhVien" Relationship="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_LoaiThanhVien" FromRole="LoaiThanhVien_Quyen" ToRole="LoaiThanhVien" />
     <NavigationProperty Name="Quyen" Relationship="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_Quyen" FromRole="LoaiThanhVien_Quyen" ToRole="Quyen" />
-  </EntityType>
-  <EntityType Name="Table">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_LoaiThanhVien_Quyen_LoaiThanhVien">
     <End Type="QuanLyBanHangModel.LoaiThanhVien" Role="LoaiThanhVien" Multiplicity="1" />
