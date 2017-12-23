@@ -16,7 +16,6 @@ namespace CommercialWeb.Controllers
         {
             var lstKhuyenMai = db.KhuyenMais.Where(p=>p.MaKhuyenMai != 1 && p.DaHuy == false);
             ViewBag.ThongBao = (lstKhuyenMai == null) ? "Không có chương trình khuyến mãi nào" : null;
-            var s = db.KhuyenMais.SingleOrDefault(p => p.MaKhuyenMai == 3).SanPhams.Count;
             return View(lstKhuyenMai); 
         }
 
@@ -33,14 +32,41 @@ namespace CommercialWeb.Controllers
             return View(lstKMDaHuy);
         }
 
-        public ActionResult ChinhSuaKhuyenMai(int MaKhuyenMai)
+        [HttpGet]
+        public ActionResult ChinhSuaKhuyenMai(int? MaKhuyenMai)
         {
+            KhuyenMai km = db.KhuyenMais.SingleOrDefault(p => p.MaKhuyenMai == MaKhuyenMai);
+            return View(km);
+        }
+
+        [HttpPost]
+        public ActionResult ChinhSuaKhuyenMai(KhuyenMai khuyenmai)
+        { 
             return View();
         }
 
-        public ActionResult HuyKhuyenMai(int MaKhuyenMai)
+        public ActionResult HuyKhuyenMai(int? MaKhuyenMai)
         {
-            return View();
+            KhuyenMai khupdate = db.KhuyenMais.SingleOrDefault(p => p.MaKhuyenMai == MaKhuyenMai);
+            khupdate.DaHuy = true;
+            db.SaveChanges();
+            return RedirectToAction("DanhSachKhuyenMai");
+        }
+
+        public ActionResult HuyKhuyenMaiSP(int? MaSP)
+        {
+            SanPham spUpdate = db.SanPhams.SingleOrDefault(p => p.MaSP == MaSP);
+            spUpdate.MaKhuyenMai = 1;
+            db.SaveChanges();
+            return RedirectToAction("CacSanPhamKhuyenMai");
+        }
+
+        public ActionResult HoanTacKhuyenmai(int? MaKhuyenMai)
+        {
+            KhuyenMai khupdate = db.KhuyenMais.SingleOrDefault(p => p.MaKhuyenMai == MaKhuyenMai);
+            khupdate.DaHuy = false;
+            db.SaveChanges();
+            return RedirectToAction("KhuyenMaiDaHuy");
         }
     }
 }

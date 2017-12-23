@@ -28,7 +28,7 @@
         grid.Column("NgayMua", header: "Ngày đặt"),
         grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
-        grid.Column(format: p => @Html.ActionLink("Cập nhật", "DuyetDonHang", new { id = p.MaDonHang }, new { @class = "btn btn-info", @target = "_blank" })),
+        grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "DuyetDonHang", new { id = p.MaDonHang }, new { @class = "btn btn-info", @target = "_blank" })),
         grid.Column(format: p => @Html.ActionLink("Hủy", "HuyDonHang", new { id = p.MaDonHang }, new { @class = "btn btn-danger" }))
         ))
 <br />

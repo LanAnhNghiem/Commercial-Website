@@ -28,7 +28,8 @@
         grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
         grid.Column("NgayGiao", header: "Ngày giao"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
-        grid.Column("DaHuy", header: "Đã hủy")
+        grid.Column(format: p => @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { MaDonHang = p.MaDonHang }, new { @class = "btn btn-info" })),
+        grid.Column(format: p => @Html.ActionLink("Hoàn tác", "HoanTacDonHang", new { id = p.MaDonHang }, new { @class = "btn btn-info" }))
     ))
 <br />
 <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã bị hủy.</h4>

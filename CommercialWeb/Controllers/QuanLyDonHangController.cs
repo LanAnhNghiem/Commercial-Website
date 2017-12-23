@@ -131,7 +131,7 @@ namespace CommercialWeb.Controllers
             {
                 ddh.MaTinhTrang = 2;
             }
-            //Truy vấn lấy ra dữ liệu của đơn hàn đó 
+            //Truy vấn lấy ra dữ liệu của đơn hàng đó 
             DonHang ddhUpdate = db.DonHangs.Single(n => n.MaDonHang == ddh.MaDonHang);
             ddhUpdate.DaThanhToan = ddh.DaThanhToan;
             ddhUpdate.MaTinhTrang = ddh.MaTinhTrang;
@@ -153,6 +153,22 @@ namespace CommercialWeb.Controllers
             ViewBag.Message = "Lưu thành công";
 
             return View(ddhUpdate);
+        }
+
+        public ActionResult HuyDonHang(int? id)
+        {
+            DonHang dhHuy = db.DonHangs.SingleOrDefault(p => p.MaDonHang == id);
+            dhHuy.DaHuy = true;
+            db.SaveChanges();
+            return RedirectToAction("ChuaGiao");
+        }
+
+        public ActionResult HoanTacDonHang(int? id)
+        {
+            DonHang dhHuy = db.DonHangs.SingleOrDefault(p => p.MaDonHang == id);
+            dhHuy.DaHuy = false;
+            db.SaveChanges();
+            return RedirectToAction("DaHuy", "QuanLyDonHang");
         }
         public void GuiEmail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)
         {

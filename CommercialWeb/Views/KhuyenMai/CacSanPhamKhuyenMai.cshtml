@@ -37,7 +37,7 @@
         grid.Column("KhuyenMai.MoTa", "Giảm (%)"),
         grid.Column("DonGia", "Giá gốc", format: p => p.DonGia.ToString("#,##")),
         grid.Column("GiaBan", "Giá bán", format: p => (p.DonGia * (1 - Decimal.Parse(p.KhuyenMai.MoTa.ToString()) / 100)).ToString("#,##")),
-        grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMai", new { MaSP = p.MaSP }, new { @class = "btn btn-danger"}))
+        grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMaiSP", new { MaSP = p.MaSP }, new { @class = "btn btn-danger"}))
     )
 )
 </div>

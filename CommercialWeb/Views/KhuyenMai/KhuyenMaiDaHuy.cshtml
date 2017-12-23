@@ -33,7 +33,7 @@
         grid.Column("MaKhuyenMai", "Mã khuyến mãi"),
         grid.Column("TenKhuyenMai", "Tên khuyến mãi"),
         grid.Column("MoTa", "Mức giảm giá (%)", format: p => p.MoTa + " %"),
-        grid.Column(format: p => @Html.ActionLink("Tiếp tục áp dụng", "ChinhSuaKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-success" }))
+        grid.Column(format: p => @Html.ActionLink("Tiếp tục áp dụng", "HoanTacKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-info" }))
     )
 )
 </div>
