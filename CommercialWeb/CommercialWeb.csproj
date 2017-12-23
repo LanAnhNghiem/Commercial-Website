@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
@@ -763,6 +764,8 @@
     <Content Include="Views\ThongKe\ThongKeTheoThang.cshtml" />
     <Content Include="Views\ThongKe\ThongKeTheoNam.cshtml" />
     <Content Include="Views\ThongKe\ThongKeTheoQuy.cshtml" />
+    <Content Include="Views\KhuyenMai\DanhSachKhuyenMai.cshtml" />
+    <Content Include="Views\KhuyenMai\CacSanPhamKhuyenMai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

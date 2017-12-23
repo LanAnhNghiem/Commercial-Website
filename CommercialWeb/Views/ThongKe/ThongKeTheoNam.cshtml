@@ -4,16 +4,21 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
-
+@*-----------------Address Link------------------------*@
 <p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Thống kê</strong></p>
 <br />
+@*-------------------------Page Name--------------------*@
 <h1 style="font-weight:bold; margin:5px; text-align:center">THỐNG KÊ BÁN HÀNG</h1>
 <br />
+
+@*----------------------------Page Navigation bar-----------------*@
 <ul class="nav nav-tabs" style="">
     <li role="presentation"><a href="@Url.Action("ThongKeTheoThang", "ThongKe")">Thống kê theo tháng </a></li>
     <li role="presentation"><a href="@Url.Action("ThongKeTheoQuy","ThongKe")">Thống kê theo quý</a></li>
     <li role="presentation" class="active"><a href="@Url.Action("ThongKeTheoNam", "ThongKe")">Thống kê theo năm</a></li>
 </ul>
+
+@*---------------------------Page Content-------------------------*@
 @using (Html.BeginForm("ThongKeTheoNam", "ThongKe", FormMethod.Post))
 {
     <div class="option-item">

@@ -23,6 +23,7 @@ namespace CommercialWeb.Models
         public int MaKhuyenMai { get; set; }
         public string TenKhuyenMai { get; set; }
         public Nullable<int> MoTa { get; set; }
+        public Nullable<bool> DaHuy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SanPham> SanPhams { get; set; }

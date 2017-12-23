@@ -60,6 +60,7 @@
     <Property Name="MaKhuyenMai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenKhuyenMai" Type="nvarchar(max)" />
     <Property Name="MoTa" Type="int" />
+    <Property Name="DaHuy" Type="bit" />
   </EntityType>
   <EntityType Name="LoaiSanPham">
     <Key>

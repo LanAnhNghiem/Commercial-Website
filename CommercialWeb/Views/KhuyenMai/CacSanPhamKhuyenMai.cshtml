@@ -1,0 +1,47 @@
+﻿@using CommercialWeb.Models
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "CacSanPhamKhuyenMai";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+
+
+@*-----------------Address Link------------------------*@
+<p class="home"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Trang chủ</a> > <strong> Thống kê</strong></p>
+<br />
+@*-------------------------Page Name--------------------*@
+<h1 style="font-weight:bold; margin:5px; text-align:center">QUẢN LÝ CHƯƠNG TRÌNH KHUYẾN MÃI</h1>
+<br />
+@*----------------------------Page Navigation bar-----------------*@
+<ul class="nav nav-tabs" style="align-content:center">
+    <li role="presentation"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Đang áp dụng</a></li>
+    <li role="presentation" class="active"><a href="@Url.Action("CacSanPhamKhuyenMai", "KhuyenMai")">Danh sách sản phẩm khuyến mãi</a></li>
+    <li role="presentation"><a href="@Url.Action("KhuyenMaiDaHuy", "KhuyenMai")">Đã hủy</a></li>
+</ul>
+
+@*-----------------------Page cotent----------------------*@
+<div>
+    <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách chương trình khuyến mãi</h3>
+    <h3>@ViewBag.ThongBao</h3>
+    @grid.GetHtml(
+    tableStyle: "gridTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("MaSP", "Mã SP"),
+        grid.Column("TenSP", "Tên sản phẩm"),
+        grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "ChinhSuaKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-success" })),
+        grid.Column(format: p => @Html.ActionLink("Hủy khuyến mãi", "HuyKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-danger"}))
+    )
+)
+</div>
+
+
+<style>
+    .nav > li > a {
+        padding: 7px 60px;
+    }
+</style>

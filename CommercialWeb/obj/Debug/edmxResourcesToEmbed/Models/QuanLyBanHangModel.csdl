@@ -72,6 +72,7 @@
     <Property Name="TenKhuyenMai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="Int32" />
     <NavigationProperty Name="SanPhams" Relationship="QuanLyBanHangModel.FK_SanPham_KhuyenMai" FromRole="KhuyenMai" ToRole="SanPham" />
+    <Property Name="DaHuy" Type="Boolean" />
   </EntityType>
   <EntityType Name="LoaiSanPham">
     <Key>

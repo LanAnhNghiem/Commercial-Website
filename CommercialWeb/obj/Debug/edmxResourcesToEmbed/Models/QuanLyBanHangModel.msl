@@ -62,6 +62,7 @@
     <EntitySetMapping Name="KhuyenMais">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.KhuyenMai">
         <MappingFragment StoreEntitySet="KhuyenMai">
+          <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
           <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
           <ScalarProperty Name="TenKhuyenMai" ColumnName="TenKhuyenMai" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
