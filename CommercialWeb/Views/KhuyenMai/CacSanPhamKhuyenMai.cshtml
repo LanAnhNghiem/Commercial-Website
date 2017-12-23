@@ -34,6 +34,9 @@
         grid.Column("MaSP", "Mã SP"),
         grid.Column("TenSP", "Tên sản phẩm"),
         grid.Column("KhuyenMai.TenKhuyenMai", "Tên khuyến mãi"),
+        grid.Column("KhuyenMai.MoTa", "Giảm (%)"),
+        grid.Column("DonGia", "Giá gốc", format: p => p.DonGia.ToString("#,##")),
+        grid.Column("GiaBan", "Giá bán", format: p => (p.DonGia * (1 - Decimal.Parse(p.KhuyenMai.MoTa.ToString()) / 100)).ToString("#,##")),
         grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMai", new { MaSP = p.MaSP }, new { @class = "btn btn-danger"}))
     )
 )

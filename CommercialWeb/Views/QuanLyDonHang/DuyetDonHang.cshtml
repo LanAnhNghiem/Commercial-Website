@@ -30,7 +30,7 @@
                             <td>Mã đơn hàng: <b style="color:red;"> @Model.MaDonHang @Html.Hidden("MaDonHang", @Model.MaDonHang)</b></td>
                             <td>Tên khách hàng: <b style="color:red;"> @Model.KhachHang.HoTen</b></td>
                             <td>Số điện thoại: <b style="color:red;"> @Model.KhachHang.SoDienThoai</b></td>
-                            <td>Ngày đặt: @Model.NgayMua.ToString("dd/MM/yyyy")</td>
+                            <td>Ngày đặt: @Model.NgayMua.Value.ToString("dd/MM/yyyy")</td>
                         </tr>
                     </table>
                 </td>
