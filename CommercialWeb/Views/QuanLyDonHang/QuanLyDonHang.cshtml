@@ -16,7 +16,7 @@
     columns: grid.Columns(
         grid.Column("MaDonHang", "Mã đơn hàng"),
         grid.Column("KhachHang.HoTen", "Tên Khách Hàng"),
-        grid.Column("TongTien", "Tổng tiền", format: p => String.Format("{0:n0}",p.TongTien) + " VNĐ"),
+        grid.Column("TongTien", "Tổng tiền", format: p => String.Format("{0:n0}", p.TongTien) + " VNĐ"),
         grid.Column("TinhTrangDonHang.TenTinhTrang", "Tình trạng đơn hàng"),
         grid.Column(format: p => @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { MaDonHang = p.MaDonHang })),
         grid.Column(format: p => @Html.ActionLink("Xóa", "XoaDonHang", new { MaDonHang = p.MaDonHang }))
