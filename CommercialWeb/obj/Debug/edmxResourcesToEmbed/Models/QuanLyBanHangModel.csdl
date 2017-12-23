@@ -71,6 +71,7 @@
     <Property Name="MaKhuyenMai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenKhuyenMai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="Int32" />
+    <NavigationProperty Name="SanPhams" Relationship="QuanLyBanHangModel.FK_SanPham_KhuyenMai" FromRole="KhuyenMai" ToRole="SanPham" />
   </EntityType>
   <EntityType Name="LoaiSanPham">
     <Key>
@@ -110,6 +111,9 @@
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_ToTable" FromRole="SanPham" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSanPham" FromRole="SanPham" ToRole="LoaiSanPham" />
     <NavigationProperty Name="NhaSanXuat" Relationship="Self.FK_SanPham_NhaSanXuat" FromRole="SanPham" ToRole="NhaSanXuat" />
+    <Property Name="MaKhuyenMai" Type="Int32" />
+    <Property Name="GiaBan" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="KhuyenMai" Relationship="QuanLyBanHangModel.FK_SanPham_KhuyenMai" FromRole="SanPham" ToRole="KhuyenMai" />
   </EntityType>
   <EntityType Name="TinhTrangDonHang">
     <Key>
@@ -304,5 +308,21 @@
       <End Role="NhaSanXuat" EntitySet="NhaSanXuats" />
       <End Role="SanPham" EntitySet="SanPhams" />
     </AssociationSet>
+    <AssociationSet Name="FK_SanPham_KhuyenMai" Association="QuanLyBanHangModel.FK_SanPham_KhuyenMai">
+      <End Role="KhuyenMai" EntitySet="KhuyenMais" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_SanPham_KhuyenMai">
+    <End Type="QuanLyBanHangModel.KhuyenMai" Role="KhuyenMai" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuyenMai">
+        <PropertyRef Name="MaKhuyenMai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaKhuyenMai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

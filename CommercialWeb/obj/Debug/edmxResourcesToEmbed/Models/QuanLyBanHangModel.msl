@@ -88,6 +88,8 @@
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />

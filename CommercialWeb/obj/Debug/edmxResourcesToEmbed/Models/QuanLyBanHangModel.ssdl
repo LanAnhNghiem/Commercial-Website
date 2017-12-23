@@ -93,6 +93,8 @@
     <Property Name="SoLanMua" Type="int" />
     <Property Name="SoLuongTon" Type="int" />
     <Property Name="ThoiHanBaoHanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaKhuyenMai" Type="int" />
+    <Property Name="GiaBan" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="TinhTrangDonHang">
     <Key>
@@ -208,6 +210,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SanPham_KhuyenMai">
+    <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuyenMai">
+        <PropertyRef Name="MaKhuyenMai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaKhuyenMai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SanPham_LoaiSanPham">
     <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
@@ -275,6 +289,10 @@
     <AssociationSet Name="FK_KhachHang_ThanhVien" Association="Self.FK_KhachHang_ThanhVien">
       <End Role="ThanhVien" EntitySet="ThanhVien" />
       <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_KhuyenMai" Association="Self.FK_SanPham_KhuyenMai">
+      <End Role="KhuyenMai" EntitySet="KhuyenMai" />
+      <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
     <AssociationSet Name="FK_SanPham_LoaiSanPham" Association="Self.FK_SanPham_LoaiSanPham">
       <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
