@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "CacSanPhamKhuyenMai";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
-    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 12);
 }
 
 
@@ -22,7 +22,7 @@
 
 @*-----------------------Page cotent----------------------*@
 <div>
-    <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách chương trình khuyến mãi</h3>
+    <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách sản phẩm khuyến mãi</h3>
     <h3>@ViewBag.ThongBao</h3>
     @grid.GetHtml(
     tableStyle: "gridTable",
@@ -33,8 +33,8 @@
     columns: grid.Columns(
         grid.Column("MaSP", "Mã SP"),
         grid.Column("TenSP", "Tên sản phẩm"),
-        grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "ChinhSuaKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-success" })),
-        grid.Column(format: p => @Html.ActionLink("Hủy khuyến mãi", "HuyKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-danger"}))
+        grid.Column("KhuyenMai.TenKhuyenMai", "Tên khuyến mãi"),
+        grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMai", new { MaSP = p.MaSP }, new { @class = "btn btn-danger"}))
     )
 )
 </div>

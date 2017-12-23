@@ -8,7 +8,7 @@
 }
 
 @*-----------------Address Link------------------------*@
-<p class="home"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Trang chủ</a> > <strong> Thống kê</strong></p>
+<p class="home"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Trang chủ</a> > <strong> Khuyến mãi</strong></p>
 <br />
 @*-------------------------Page Name--------------------*@
 <h1 style="font-weight:bold; margin:5px; text-align:center">QUẢN LÝ CHƯƠNG TRÌNH KHUYẾN MÃI</h1>
@@ -22,7 +22,7 @@
 
 @*-----------------------Page cotent----------------------*@
 <div>
-    <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách sản phẩm đang khuyến mãi</h3>
+    <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách chương trình khuyến mãi</h3>
     <h3>@ViewBag.ThongBao</h3>
     @grid.GetHtml(
     tableStyle: "gridTable",
@@ -33,7 +33,6 @@
     columns: grid.Columns(
         grid.Column("MaKhuyenMai", "Mã khuyến mãi"),
         grid.Column("TenKhuyenMai", "Tên khuyến mãi"),
-        //grid.Column(format: p => p.KhuyenMai.TenKhuyenMai, header:"Tên khuyến mãi"),
         grid.Column("MoTa", "Mức giảm giá (%)", format: p => p.MoTa + " %"),
         grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "ChinhSuaKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-success" })),
         grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-danger" }))
