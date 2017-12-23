@@ -14,7 +14,7 @@ namespace CommercialWeb.Controllers
         //DANH SACH KHUYEN MAI
         public ActionResult DanhSachKhuyenMai()
         {
-            var lstKhuyenMai = db.KhuyenMais.Where(p=>p.MaKhuyenMai != 1);
+            var lstKhuyenMai = db.KhuyenMais.Where(p=>p.MaKhuyenMai != 1 && p.DaHuy == false);
             ViewBag.ThongBao = (lstKhuyenMai == null) ? "Không có chương trình khuyến mãi nào" : null;
             return View(lstKhuyenMai); 
         }
@@ -28,7 +28,8 @@ namespace CommercialWeb.Controllers
 
         public ActionResult KhuyenMaiDaHuy()
         {
-            return View();
+            var lstKMDaHuy = db.KhuyenMais.Where(n => n.DaHuy == true);
+            return View(lstKMDaHuy);
         }
 
         public ActionResult ChinhSuaKhuyenMai(int MaKhuyenMai)
