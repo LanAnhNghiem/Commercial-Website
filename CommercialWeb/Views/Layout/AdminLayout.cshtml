@@ -166,13 +166,7 @@ $(document).ready(function(c) {
             <div class="logo text-center">
                 <a href="@Url.Action("ChuaGiao", "QuanLyDonHang")"><img src="~/Content/AdminLayout/images/logo.png" alt="" /></a>
             </div>
-            <div class="navigation account">
-                <ul>
-                    <li><a href="#"><i class="men"></i></a></li>
-                    <li><a style="font-weight:bold" href="#">ADMIN</a></li>
-                </ul>
-            </div>
-            
+            @Html.Partial("~/Views/Layout/AccountPartial.cshtml")
             <div class="navigation">
                 <h3>Quản lý</h3>
                 <ul>
