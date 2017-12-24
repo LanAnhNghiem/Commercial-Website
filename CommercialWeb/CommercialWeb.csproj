@@ -768,6 +768,7 @@
     <Content Include="Views\KhuyenMai\CacSanPhamKhuyenMai.cshtml" />
     <Content Include="Views\KhuyenMai\KhuyenMaiDaHuy.cshtml" />
     <Content Include="Views\KhuyenMai\ThemMoiKhuyenMai.cshtml" />
+    <Content Include="Views\KhuyenMai\ChinhSuaKhuyenMai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\fonts\" />

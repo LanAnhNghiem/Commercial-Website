@@ -1,20 +1,22 @@
 ﻿@using CommercialWeb.Models
 @model KhuyenMai
 @{
-    ViewBag.Title = "ThemMoiKhuyenMai";
+    ViewBag.Title = "ChinhSuaKhuyenMai";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
 @{ 
     IEnumerable<SanPham> lstSanPham = ViewBag.lstSanPham as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstSanPhamBT = ViewBag.lstSanPhamBT as IEnumerable<SanPham>;
 }
+
 <p class="home"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Trang chủ</a> > <strong>Thêm chương trình khuyến mãi</strong></p>
 <h1 style="text-align:center; font-weight:bold; margin:1em">THÊM KHUYẾN MÃI MỚI</h1>
 <br />
 @if (ViewBag.ThongBao != null)
 {
-    <div id="thanhcong"class="alert alert-success alert-dismissible">
-        <strong>@ViewBag.ThongBao</strong> Chương trình khuyến mãi đã được áp dụng.
+    <div id="thanhcong" class="alert alert-success alert-dismissible">
+        <strong>@ViewBag.ThongBao</strong> Chương trình khuyến mãi đã được cập nhật. <b><a id="backLink" href="@Url.Action("DanhSachKhuyenMai")">Xem danh sách chương trình khuyến mãi</a></b>
     </div>
 }
 <div class="alert alert-danger alert-dismissible" id="thongbao" style="display:none">
@@ -27,7 +29,7 @@
     <div class="ThongtinPhieuNhap row">
         <label class="control-label col-md-3 tenct">Tên chương trình</label>
         <div class="col-md-5">
-            <input type="text" class="form-control" name="TenKhuyenMai" required/>
+            <input type="text" class="form-control" name="TenKhuyenMai" required value="@Model.TenKhuyenMai" />
         </div>
         <div class="col-md-5"></div>
     </div>
@@ -36,25 +38,25 @@
     <div class="row">
         <label class="control-label col-md-3 tenct">Mức khuyến mãi (%)</label>
         <div class="col-md-3">
-            <input id="txtMoTa" name="MoTa" type="number" class="form-control" required/>
+            <input id="txtMoTa" name="MoTa" type="number" class="form-control" required value="@Model.MoTa"/>
         </div>
         <div class="col-md-7"></div>
     </div>
     <div class="clearfix">  </div>
     <br /><br />
-    @*-----------------------------MẪU APPEND---------------------*@
     <table class="table tblChiTietKhuyenMai">
+        @*-----------------------------MẪU APPEND---------------------*@
         <tr class="trAppend" style="display:none;">
             <td>
                 <select class="ddlSanPham form-control" name="">
-                    @foreach (var item in lstSanPham)
+                    @foreach (var item in lstSanPhamBT)
                     {
                         <option value="@item.MaSP"> @item.TenSP </option>
                     }
                 </select>
             </td>
             <td>
-                <input class="btnDelete btn btn-danger"  value="-" />
+                <input class="btnDelete btn btn-danger" value="-" />
             </td>
         </tr>
         @*-----------------DANH SÁCH SẢN PHẨM KHUYẾN MÃI------------*@
@@ -62,13 +64,36 @@
             <td>Danh sách sản phẩm áp dụng</td>
             <td></td>
         </tr>
+        @*----------XUAT DANH SACH SAN DANG DC AP DUNG KHUYEN MAI----*@
+        @if (lstSanPham != null)
+        {
+            int count = 0;
+            foreach(var sp in lstSanPham)
+            {
+                <tr class="trAppended" data-id="@count">
+                    <td>
+                        <select class="ddlSanPham form-control" name="[@count].MaSP">
+                            <option value="@sp.MaSP" selected="selected"> @sp.TenSP </option>
+                            @foreach (var item in lstSanPhamBT)
+                            {
+                                <option value="@item.MaSP"> @item.TenSP </option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <input class="btnDelete btn btn-danger" value="-" />
+                    </td>
+                </tr>
+                count++;
+            }
+        }
     </table>
-    <input type="button" class="btn btn-success" value="+" id="btnAdd"/>
+    <input type="button" class="btn btn-success" value="+" id="btnAdd" />
     <br />
     <br />
     <a class="btn btn-primary" href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")" style="margin-left:8px">Quay về</a>
-    <input id="btnApDung" type="submit" class="btn btn-success" value="Áp dụng" style="margin-left:8px"/>
-    
+    <input id="btnApDung" type="submit" class="btn btn-success" value="Áp dụng" style="margin-left:8px" />
+
 }
 
 <style>
@@ -78,13 +103,20 @@
         height: 34px;
         text-align: center;
     }
-    #btnAdd{
+
+    #btnAdd {
         margin: 0px 8px;
     }
+
     .tenct {
         padding-top: 7px;
         padding-left: 24px;
         font-size: 16px;
+    }
+    
+    #backLink{
+        color:#3c763d;
+        text-decoration:underline;
     }
 </style>
 <script>
@@ -127,7 +159,7 @@
                 i++;
             });
     }
-
+    
     //Xử lý sự kiện xóa
     $("body").delegate(".btnDelete", "click", function () {
         //Xóa phần tử cha phía ngoài
