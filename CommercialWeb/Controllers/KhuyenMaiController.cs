@@ -68,5 +68,18 @@ namespace CommercialWeb.Controllers
             db.SaveChanges();
             return RedirectToAction("KhuyenMaiDaHuy");
         }
+        [HttpGet]
+        public ActionResult ThemMoiKhuyenMai()
+        {
+            ViewBag.lstSanPham = db.SanPhams.Where(n=>n.MaKhuyenMai == 1);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThemMoiKhuyenMai(KhuyenMai km, IEnumerable<SanPham> lstSP)
+        {
+            ViewBag.lstSanPham = db.SanPhams.Where(n => n.MaKhuyenMai == 1);
+            return View();
+        }
     }
 }

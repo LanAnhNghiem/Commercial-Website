@@ -16,7 +16,7 @@
     <li role="presentation" class="active"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
 </ul>
 @grid.GetHtml(
-    tableStyle: "gridTable",
+    tableStyle: "gridTable table-hover",
     headerStyle: "gridHead",
     footerStyle: "gridFooter",
     rowStyle: "gridRow",
@@ -26,7 +26,6 @@
         grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""),
         grid.Column("NgayMua", header: "Ngày mua"),
         grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
-        grid.Column("NgayGiao", header: "Ngày giao"),
         grid.Column("DaThanhToan", header: "Đã thanh toán"),
         grid.Column(format: p => @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { MaDonHang = p.MaDonHang }, new { @class = "btn btn-info" })),
         grid.Column(format: p => @Html.ActionLink("Hoàn tác", "HoanTacDonHang", new { id = p.MaDonHang }, new { @class = "btn btn-info" }))
