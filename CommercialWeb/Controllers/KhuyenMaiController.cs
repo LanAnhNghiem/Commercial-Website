@@ -47,8 +47,13 @@ namespace CommercialWeb.Controllers
 
         public ActionResult HuyKhuyenMai(int? MaKhuyenMai)
         {
-            KhuyenMai khupdate = db.KhuyenMais.SingleOrDefault(p => p.MaKhuyenMai == MaKhuyenMai);
-            khupdate.DaHuy = true;
+            KhuyenMai kmupdate = db.KhuyenMais.SingleOrDefault(p => p.MaKhuyenMai == MaKhuyenMai);
+            IEnumerable<SanPham> lstSP = db.SanPhams.Where(n => n.MaKhuyenMai == kmupdate.MaKhuyenMai);
+            foreach (var sp in lstSP)
+            {
+                sp.MaKhuyenMai = 1;
+            }
+            kmupdate.DaHuy = true;
             db.SaveChanges();
             return RedirectToAction("DanhSachKhuyenMai");
         }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using CommercialWeb.Models;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 
 namespace CommercialWeb.Controllers
 {
@@ -148,7 +149,22 @@ namespace CommercialWeb.Controllers
             string tinhTrangThanhToan = ddhUpdate.DaThanhToan ? "Đã thanh toán" : "Chưa thanh toán";
            
             string NoiDungMail = ddhUpdate.DaHuy? "<h2>Xin chào, " + ddhUpdate.KhachHang.HoTen + " </h2><h3>Đơn hàng của mã số " + ddhUpdate.MaDonHang + " bạn đã được hủy.</h3><h3>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</h3>" : "<h2>Xin chào, " + ddhUpdate.KhachHang.HoTen + " </h2><h3>Đơn hàng của mã số "+ddhUpdate.MaDonHang+" bạn đang được xử lý.</h3><p>Tình trạng thanh toán: "+ tinhTrangThanhToan + "</p><p>Tình trạng giao hàng: "+ ddhUpdate.TinhTrangDonHang.TenTinhTrang + "</p><h3>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</h3>";
-            GuiEmail("Xác đơn hàng mã số " + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "moonprince9x@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", NoiDungMail);
+            //----------------------------------------
+            StringBuilder MailContent = new StringBuilder();
+            MailContent.Append("<p>Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi, chúng tôi sẽ liên lạc lại cho quý khách trong thời gian sớm nhất:</p>");
+            MailContent.Append("<table>");
+            MailContent.Append("<tr><td colspan='2'><h3>Thông tin khách hàng</h3></td></tr>");
+            MailContent.Append("<tr><td>Họ và tên:</td><td style='color:blue; font-size:16px; font-weight:bold'>" + ddhUpdate.KhachHang.HoTen+ "</td></tr>");
+            MailContent.Append("<tr><td>Số điện thoại:</td><td>"+ddhUpdate.KhachHang.SoDienThoai+"</td></tr>");
+            MailContent.Append("<tr><td>Địa chỉ:</td><td>"+ddhUpdate.KhachHang.DiaChi+"</td></tr>");
+            MailContent.Append("<tr><td>Email:</td><td>"+ddhUpdate.KhachHang.Email+"</td></tr>");
+            MailContent.Append("<br/>");
+            MailContent.Append("<tr><td>Tình trạng thanh toán:</td><td style='color:blue; font-size:14px; font-weight:bold'>" + tinhTrangThanhToan + "</td></tr>");
+            MailContent.Append("<tr><td>Tình trạng đơn hàng:</td><td style='color:blue; font-size:14px; font-weight:bold'>" + ddhUpdate.TinhTrangDonHang.TenTinhTrang + "</td></tr>");
+            MailContent.Append("<tr><td>Liên hệ chúng tôi:</td><td>https://shopcom.com (+84)0123456267</td></tr>");
+            MailContent.Append("</table>");
+            //---------------------------------------------
+            GuiEmail("Xác đơn hàng mã số " + ddhUpdate.MaDonHang +" của hệ thống ShopCOM", "moonprince9x@gmail.com", "nguyenvietthanhchuong@gmail.com", "destiny123!@#", MailContent.ToString());
 
             ViewBag.Message = "Lưu thành công";
 
