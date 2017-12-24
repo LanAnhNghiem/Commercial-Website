@@ -52,7 +52,7 @@
                 </select>
             </td>
             <td>
-                <input class="btnDelete btn btn-danger" style="margin-left:60px; width:34px; height: 34px; text-align: center;" value="-" />
+                <input class="btnDelete btn btn-danger"  value="-" />
             </td>
         </tr>
         @*-----------------DANH SÁCH SẢN PHẨM KHUYẾN MÃI------------*@
@@ -61,11 +61,20 @@
             <td></td>
         </tr>
     </table>
-    <input type="button" class="btn btn-success" value="+" id="btnAdd"/>
+    <input type="button" class="btn btn-success" value="Thêm" id="btnAdd"/>
     <input type="submit" class="btn btn-primary" value="Áp dụng"/>
 }
 
 <style>
+    .btnDelete {
+        margin-left: 60px;
+        width: 34px;
+        height: 34px;
+        text-align: center;
+    }
+    #btnAdd{
+        margin: 0px 8px;
+    }
     .tenct {
         padding-top: 7px;
         padding-left: 24px;
@@ -94,12 +103,7 @@
                 //Lấy thuộc tính data-id của thẻ tr hiện
                 var id = $(this).attr("data-id");
                 var nameMaSanPham = "[" + id + "].MaSP"; //Tạo ra mã sản phẩm
-                var nameSoLuongNhap = "[" + id + "].SoLuongNhap"; //Tạo ra số lượng nhập
-                var nameDonGiaNhap = "[" + id + "].DonGiaNhap"; //Tạo ra đơn giá nhập
-                $(this).find(".ddlSanPham").attr("name", nameMaSanPham); //Gán name cho dropdownlist
-                $(this).find(".txtDonGia").attr("name", nameDonGiaNhap); //Gán name đơn giá nhập
-                $(this).find(".txtSoLuong").attr("name", nameSoLuongNhap); //Gán name số lượng nhập
-
+                $(this).find(".ddlSanPham").attr("name", nameMaSanPham); //Gán name cho giá trị được chọn  ởdropdownlist
             });
     };
 
