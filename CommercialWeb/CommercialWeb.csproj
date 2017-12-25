@@ -77,6 +77,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.16.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.16.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.3.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.3.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -204,6 +212,7 @@
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -579,6 +588,7 @@
     <Content Include="Content\LoginLayout\js\jquery-2.1.4.min.js" />
     <Content Include="Content\LoginLayout\js\jquery.magnific-popup.js" />
     <Content Include="Content\LoginLayout\w3layouts-License.txt" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\ProductImages\10024353.jpg" />
     <Content Include="Content\ProductImages\10028757.jpg" />
     <Content Include="Content\ProductImages\10029257_1.jpg" />
@@ -826,6 +836,7 @@
     <Content Include="Views\Layout\AccountPartial.cshtml" />
     <Content Include="Views\Layout\LoginLayout.cshtml" />
     <Content Include="Views\DangNhap\DangNhap.cshtml" />
+    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\" />

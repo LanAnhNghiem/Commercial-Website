@@ -30,7 +30,7 @@ namespace CommercialWeb.Controllers
         public ActionResult LayTuKhoaTimKim(String sTuKhoa)
         {
             //Goi ve ham get tim kiem
-            return RedirectToAction("KQTimKiem", new object { @sTuKhoa = sTuKhoa });
+            return RedirectToAction("KQTimKiem", new { @sTuKhoa = sTuKhoa });
         }
     }
 }
