@@ -1,11 +1,11 @@
 ﻿@using CommercialWeb.Models;
-@model IEnumerable<KhachHang>
+@model IEnumerable<SanPham>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
     //khởi tạo control webgrid
-    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 15);
 }
 
 
