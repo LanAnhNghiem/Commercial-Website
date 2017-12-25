@@ -21,6 +21,8 @@
 </ul>
 
 @*-----------------------Page cotent----------------------*@
+<h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách chương trình khuyến đang áp dụng</h3>
+
 <div>
     @grid.GetHtml(
     tableStyle: "gridTable table-hover",
@@ -33,10 +35,12 @@
         grid.Column("TenKhuyenMai", "Tên khuyến mãi"),
         grid.Column("MoTa", "Mức giảm giá (%)", format: p => p.MoTa + " %"),
         grid.Column("MaKhuyenMai", "Số sản phẩm áp dụng", format: p => p.SanPhams.Count),
-        grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "ChinhSuaKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-info" })),
+        grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "ChinhSuaKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-info", @target = "_blank"})),
         grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-danger" }))
     )
 )
+    <br />
+    <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> chương trình khuyến mãi đang áp dụng.</h4>
 
 </div>
 

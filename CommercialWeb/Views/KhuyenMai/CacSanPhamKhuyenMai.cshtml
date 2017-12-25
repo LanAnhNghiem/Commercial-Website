@@ -41,6 +41,8 @@
         grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMaiSP", new { MaSP = p.MaSP }, new { @class = "btn btn-danger"}))
     )
 )
+    <br />
+    <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> sản phẩm đang áp dụng khuyến mãi.</h4>
 </div>
 
 

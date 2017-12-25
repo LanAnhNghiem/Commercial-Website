@@ -36,6 +36,8 @@
         grid.Column(format: p => @Html.ActionLink("Tiếp tục áp dụng", "HoanTacKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-info" }))
     )
 )
+    <br />
+    <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> chương trình khuyến mãi đã bị hủy.</h4>
 </div>
 <style>
     .nav > li > a {
