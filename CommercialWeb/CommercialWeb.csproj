@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
@@ -824,6 +825,7 @@
     <Content Include="Views\KhuyenMai\ChinhSuaKhuyenMai.cshtml" />
     <Content Include="Views\Layout\AccountPartial.cshtml" />
     <Content Include="Views\Layout\LoginLayout.cshtml" />
+    <Content Include="Views\DangNhap\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\" />

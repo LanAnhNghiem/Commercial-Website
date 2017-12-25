@@ -27,28 +27,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <h1 id="webname">ShopCOM</h1>
     <div class="main-agileits">
         <!--form-stars-here-->
-        <div class="form-w3-agile">
-            <h2>LOGIN</h2>
-            <form action="#" method="post">
-                <div class="form-sub-w3">
-                    <input type="email" name="Username" placeholder="Email" required="" />
-                    <div class="icon-w3">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="form-sub-w3">
-                    <input type="password" name="Password" placeholder="Password" required="" />
-                    <div class="icon-w3">
-                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <p class="p-bottom-w3ls">Are you new to ShopCOM?<a class="w3_play_icon1" href="#small-dialog1">  Register here</a></p>
-
-                <div class="submit-w3l">
-                    <input type="submit" value="Login">
-                </div>
-            </form>
-        </div>
+        @RenderBody()
         <!--//form-ends-here-->
     </div>
     <div id="small-dialog1" class="mfp-hide">
@@ -80,7 +59,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                         </div>
                     </div>
-                    </form>
+                </form>
             </div>
             <div class="login-check">
                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><p>I Accept Terms & Conditions</p></label>
