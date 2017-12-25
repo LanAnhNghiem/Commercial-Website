@@ -19,7 +19,7 @@
                     <div class="col-xs-12">
                         <div class="product-item">
                             <div class="product-img">
-                                <a href="single-product.html">
+                                <a href="@Url.RouteUrl("XemChiTiet", new { @id = item.TenSP, @tensp=item.MaSP})">
                                     <img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP">
                                 </a>
                             </div>
