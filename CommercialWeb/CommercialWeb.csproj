@@ -822,6 +822,8 @@
     <Content Include="Views\KhuyenMai\KhuyenMaiDaHuy.cshtml" />
     <Content Include="Views\KhuyenMai\ThemMoiKhuyenMai.cshtml" />
     <Content Include="Views\KhuyenMai\ChinhSuaKhuyenMai.cshtml" />
+    <Content Include="Views\Layout\AccountPartial.cshtml" />
+    <Content Include="Views\Layout\LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\" />
