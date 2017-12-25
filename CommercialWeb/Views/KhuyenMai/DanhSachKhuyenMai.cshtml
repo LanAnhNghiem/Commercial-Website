@@ -39,8 +39,9 @@
         grid.Column(format: p => @Html.ActionLink("Hủy", "HuyKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-danger" }))
     )
 )
+    <a href="@Url.Action("ThemMoiKhuyenMai", "KhuyenMai")" class="btn btn-success" style="margin-top: 1em">Thêm mới</a>
     <br />
-    <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> chương trình khuyến mãi đang áp dụng.</h4>
+    <h4 style="padding:1em; background-color: white; margin-top: 1em;">Tổng cộng: <b style="color: red">@Model.Count()</b> chương trình khuyến mãi đang áp dụng.</h4>
 
 </div>
 
