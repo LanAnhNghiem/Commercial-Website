@@ -75,9 +75,9 @@ namespace CommercialWeb.Controllers
             {
                 return View(sp);
             }
-            sp.HinhAnh = HinhAnh[0].FileName;
-            sp.HinhAnh = HinhAnh[1].FileName;
-            sp.HinhAnh = HinhAnh[2].FileName; 
+            sp.HinhAnh1 = HinhAnh[0].FileName;
+            sp.HinhAnh2 = HinhAnh[1].FileName;
+            sp.HinhAnh3 = HinhAnh[2].FileName; 
             db.SanPhams.Add(sp);
             db.SaveChanges();
             return RedirectToAction("Index");

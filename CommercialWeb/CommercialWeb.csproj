@@ -209,7 +209,10 @@
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
+    <Compile Include="Controllers\Product_DetailController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
+    <Compile Include="Controllers\QuanLyKhachHangController.cs" />
+    <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
@@ -839,6 +842,56 @@
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\tinymce\js\tinymce\langs\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\advlist\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\anchor\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\autolink\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\autoresize\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\autosave\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\bbcode\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\charmap\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\code\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\colorpicker\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\contextmenu\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\directionality\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\emoticons\img\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\example\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\example_dependency\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\fullpage\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\fullscreen\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\hr\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\imagetools\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\image\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\importcss\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\insertdatetime\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\layer\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\legacyoutput\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\link\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\lists\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\media\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\nonbreaking\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\noneditable\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\pagebreak\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\paste\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\preview\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\print\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\save\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\searchreplace\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\spellchecker\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\tabfocus\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\table\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\template\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\textcolor\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\textpattern\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\visualblocks\css\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\visualchars\" />
+    <Folder Include="Content\tinymce\js\tinymce\plugins\wordcount\" />
+    <Folder Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\" />
+    <Folder Include="Content\tinymce\js\tinymce\skins\lightgray\img\" />
+    <Folder Include="Content\tinymce\js\tinymce\themes\modern\" />
+    <Folder Include="Views\Product_Detail\" />
+    <Folder Include="Views\QuanLyKhachHang\" />
+    <Folder Include="Views\QuanLySanPham\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
