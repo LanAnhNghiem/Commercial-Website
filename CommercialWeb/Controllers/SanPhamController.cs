@@ -51,12 +51,10 @@ namespace CommercialWeb.Controllers
         {
             return PartialView();
         }
-
-
         // xây dựng trang xem chi tiết
         public ActionResult XemChiTiet(int? id, string tensp)
         {
-            //Kiểm tra tham số truyền vào có rổng hay không
+            //Kiểm tra tham số truyền vào có rỗng hay không
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

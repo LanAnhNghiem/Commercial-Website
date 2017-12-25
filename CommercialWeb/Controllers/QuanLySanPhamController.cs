@@ -139,7 +139,7 @@ namespace CommercialWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Xoa(int id)
+        public ActionResult Xoa(int? id, FormCollection f)
         {
             if (id == null)
             {

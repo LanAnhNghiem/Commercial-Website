@@ -19,7 +19,7 @@
                     <!-- single-brand-product start -->
                     <div class="col-xs-12">
                         <div class="single-brand-product">
-                            <a href="@Url.RouteUrl("XemChiTiet", new { @id = item.TenSP, @tensp=item.MaSP})"><img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP"></a>
+                            <a href="@Url.RouteUrl("XemChiTiet", new { @id = item.MaSP, @tensp = item.TenSP})"><img src="@Url.Content("~/Content/ProductImages/" + item.HinhAnh1)" alt="@item.TenSP"></a>
                         </div>
                         <h5 class="brand-title text-gray" style="text-align:center; margin-top:10px">
                             <a href="#">@item.TenSP</a>
