@@ -341,6 +341,10 @@
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\css\style_1.css" />
     <Content Include="Content\css\textanimate.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\icomoon.svg" />
+    <Content Include="Content\fonts\icomoon_1.svg" />
     <Content Include="Content\images\01.jpg" />
     <Content Include="Content\images\02.jpg" />
     <Content Include="Content\images\03.jpg" />
@@ -562,6 +566,18 @@
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\woocommerce.min.js" />
     <Content Include="Content\js\wp-embed.min.js" />
+    <Content Include="Content\LoginLayout\web\css\font-awesome.min.css" />
+    <Content Include="Content\LoginLayout\web\css\popuo-box.css" />
+    <Content Include="Content\LoginLayout\web\css\style.css" />
+    <Content Include="Content\LoginLayout\web\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\LoginLayout\web\images\banner1.jpg" />
+    <Content Include="Content\LoginLayout\web\images\banner12.jpg" />
+    <Content Include="Content\LoginLayout\web\images\banner13.jpg" />
+    <Content Include="Content\LoginLayout\web\images\banner31.jpg" />
+    <Content Include="Content\LoginLayout\web\index.html" />
+    <Content Include="Content\LoginLayout\web\js\jquery-2.1.4.min.js" />
+    <Content Include="Content\LoginLayout\web\js\jquery.magnific-popup.js" />
+    <Content Include="Content\LoginLayout\web\w3layouts-License.txt" />
     <Content Include="Content\ProductImages\10024353.jpg" />
     <Content Include="Content\ProductImages\10028757.jpg" />
     <Content Include="Content\ProductImages\10029257_1.jpg" />
@@ -715,6 +731,43 @@
     <Content Include="Models\QuanLyBanHangModel.edmx.diagram">
       <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\6rYv84POalfstX0SkMI-EvesZW2xOQ-xsNqO47m55DA.ttf" />
+    <Content Include="Content\fonts\d-6IYplOFocCacKzxwXSOKCWcynf_cDxXwCLxiixG1c.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\fontawesome-webfont_1.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon.woff" />
+    <Content Include="Content\fonts\icomoon_1.eot" />
+    <Content Include="Content\fonts\icomoon_1.ttf" />
+    <Content Include="Content\fonts\icomoon_1.woff" />
+    <Content Include="Content\fonts\IQHow_FEYlDC4Gzy_m8fcvEr6Hm6RMS0v1dtXsGir4g.ttf" />
+    <Content Include="Content\fonts\JbtMzqLaYbbbCL9X6EvaIy3USBnSvpkopQaUR-2r7iU.ttf" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\fonts\Raleway-Light-vi.ttf" />
+    <Content Include="Content\fonts\Raleway-Medium-vi.ttf" />
+    <Content Include="Content\fonts\Raleway-Regular-vi.ttf" />
+    <Content Include="Content\fonts\RxZJdnzeo3R5zSexge8UUaCWcynf_cDxXwCLxiixG1c.ttf" />
+    <Content Include="Content\fonts\Vu9Dx8oyiuqEkuIyR3OPDQ.ttf" />
+    <Content Include="Content\fonts\xkvoNo9fC8O2RDydKj12by3USBnSvpkopQaUR-2r7iU.ttf" />
+    <Content Include="Content\fonts\ytp-regular.eot" />
+    <Content Include="Content\fonts\ytp-regular.ttf" />
+    <Content Include="Content\fonts\zhcz-_WihjSQC0oHJ9TCYC3USBnSvpkopQaUR-2r7iU.ttf" />
+    <Content Include="Content\fonts\zN7GBFwfMP4uA6AR0HCoLQ.ttf" />
+    <Content Include="Content\LoginLayout\web\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\LoginLayout\web\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\LoginLayout\web\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\LoginLayout\web\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\LoginLayout\web\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -771,7 +824,7 @@
     <Content Include="Views\KhuyenMai\ChinhSuaKhuyenMai.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\fonts\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
