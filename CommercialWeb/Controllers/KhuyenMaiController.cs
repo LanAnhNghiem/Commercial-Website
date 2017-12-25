@@ -134,7 +134,11 @@ namespace CommercialWeb.Controllers
             ViewBag.ThongBao = "Thành công !";
             return View();
         }
-
+        public ActionResult TimKiem(string sTuKhoa)
+        {
+            IEnumerable<SanPham> lstSP = db.SanPhams.Where(n => n.TenSP.Contains(sTuKhoa));
+            return View("CacSanPhamKhuyenMai", lstSP);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -23,6 +23,16 @@
 
 @*-----------------------Page cotent----------------------*@
 <div>
+    @using (Html.BeginForm("TimKiem", "KhuyenMai"))
+    {
+        <div class="input-group" style="margin-top:2em; width: 100%; text-align: center; padding: 0em 15em">
+            <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="sTuKhoa">
+            <div class="input-group-btn">
+                <input class="btn btn-default" type="submit" value="Tìm kiếm">
+            </div>
+        </div>
+    }
+    
     <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách sản phẩm khuyến mãi</h3>
     <h3>@ViewBag.ThongBao</h3>
     @grid.GetHtml(
