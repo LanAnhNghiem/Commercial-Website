@@ -1,0 +1,15 @@
+﻿@using CommercialWeb.Models
+@model IEnumerable<ItemDonHang>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.MaSP</td>
+        <td>@item.TenSP</td>
+        <td>@item.SoLuong</td>
+        <td>@item.ThoiHanBaoHanh</td>
+        <td>@item.DonGia</td>
+        <td data-toggle='tooltip' data-placement='right' title='"@item.TenKhuyenMai"'>@item.MoTa</td>
+        <td>@item.GiaBan</td>
+        <td><a class='btn btn-info' href='#'>Xóa</a></td>
+    </tr>
+}

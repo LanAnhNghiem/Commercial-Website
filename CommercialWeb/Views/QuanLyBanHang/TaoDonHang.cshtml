@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "TaoDonHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Tạo đơn hàng mới</strong></p>
+<br />
+<h1 style="font-weight:bold; margin:5px; text-align:center">TẠO ĐƠN HÀNG MỚI</h1>
+<br />
+<div class="ctdh-block">
+    <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff">Chi tiết đơn hàng</h3>
+    <div class="form-inline" style="margin-top:20px; margin-bottom:20px">
+        @*<input data-live-search="true" type="text" id="product-name" placeholder="Nhập tên sản phẩm" class="search-box" />*@
+        <select class="selectpicker" data-live-search="true" id="mySearch"></select>
+        <input type="number" placeholder="1" class="form-control" min="1" value="1" id="product-number"/>
+        <a class="btn btn-info" id="btn-add" href="#">Thêm sản phẩm</a>
+    </div>
+    <table class="gridTable table-hover" >
+        <thead style="color:#ffffff;font-weight:bold">
+            <tr>
+                <th class="gridHead">Mã SP</th>
+                <th class="gridHead">Tên SP</th>
+                <th class="gridHead">Số lượng</th>
+                <th class="gridHead">Bảo hành</th>
+                <th class="gridHead">Đơn giá</th>
+                <th class="gridHead">Khuyến mãi</th>
+                <th class="gridHead">Giá bán</th>
+                <th class="gridHead">Tác vụ</th>
+            </tr>
+        </thead>
+        <tbody class="gridRow">
+            <tr id="product-list">
+                <td>1</td>
+                <td>nghiem lan anh</td>
+                <td>2</td>
+                <td>05-02=1996</td>
+                <td>Tân bình</td>
+                <td>Tân bình</td>
+                <td>Tân bình</td>
+                <td><a class="btn btn-info" href="#">Xóa</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="ttkh-block">
+    <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff">Thông tin khách hàng</h3>
+    <p>Thông tin khách hàng</p>
+</div>
+
+<style type="text/css">
+    .ctdh-block{
+        width:100%;
+    }
+    .search-block{
+        width:100%;
+        height:20%;
+        background-color:none;
+        padding: 10px;
+        display: inline-block;
+    }
+    .search-box{
+        width:40%;
+        margin-right:10px;
+    }
+    .form-control{
+        width:10%;
+        margin-right:10px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: '@Url.Content("getProductList")',
+            success: function (result) {
+                populateStdDropdown(result, "mySearch");
+            }
+        })
+        //populateStdDropdown();
+    })
+    $("#mySearch").change(function () {
+        var id = $("#mySearch").val();
+       // alert(id);
+    })
+    $("#btn-add").click(function () {
+        var id = $("#mySearch").val();
+        var quantity = $("#product-number").val();
+        alert(id + " " + quantity);
+        $.ajax({
+            type: "POST",
+            data: { MaSP: id, SoLuong: quantity },
+            url:'@Url.Content("addNewProduct")',
+            success: function (result) {
+                alert(result);
+                alert("ahihihi");
+                //$.each(result, function (i, item) {
+                //    var html = "<td>" + item.MaSP + "</td><td>" + item.TenSP
+                //        + "</td><td>" + quantity + "</td><td>" + item.ThoiHanBaoHanh + "</td><td>"
+                //        + item.DonGia + "</td><td data-toggle='tooltip' data-placement='right' title='"
+                //        + item.TenKhuyenMai + "'>" + item.MoTa + "</td><td>" + item.GiaBan + "</td>"
+                //        + "<td><a class='btn btn-info' href='#'>Xóa</a></td>";
+                //    alert(html);
+                //})
+                $("#product-list").replaceWith(result);
+            }
+        })
+    })
+    // from a list item.Key & item.Value
+    function genDropdownOption(data) {
+        var rows = '';
+        $.each(data, function (i, item) {
+            rows += '<option value="' + item.Key + '">' + item.Value + '</option>';
+        });
+        return rows;
+    }
+
+    function populateStdDropdown(data, id) {
+        id = '#' + id;
+        var rows = '<option value="">Chọn sản phẩm</option>'
+            + genDropdownOption(data);
+
+        $(id).html(rows);
+        $(id).selectpicker('refresh');
+        
+    }
+ 
+</script>

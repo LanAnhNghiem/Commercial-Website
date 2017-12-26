@@ -210,6 +210,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\Product_DetailController.cs" />
+    <Compile Include="Controllers\QuanLyBanHangController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\QuanLyKhachHangController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Models\HinhThucGiaoHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemDonHang.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
     </Compile>
@@ -841,6 +843,8 @@
     <Content Include="Views\DangNhap\DangNhap.cshtml" />
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
     <Content Include="Views\SanPham\XemChiTiet.cshtml" />
+    <Content Include="Views\QuanLyBanHang\TaoDonHang.cshtml" />
+    <Content Include="Views\QuanLyBanHang\ListSanPhamPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\tinymce\js\tinymce\langs\" />
