@@ -26,9 +26,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body style="height:588px">
     <h1 id="webname">ShopCOM</h1>
     <div class="main-agileits">
-        <!--form-stars-here-->
-        @RenderBody()
-        <!--//form-ends-here-->
+       @RenderBody()
+       @Html.Partial("DangNhapPartial", "DangNhap")
     </div>
     <div id="small-dialog1" class="mfp-hide">
         <div class="contact-form1">
@@ -62,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </form>
             </div>
             <div class="login-check">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><p>I Accept Terms & Conditions</p></label>
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked="">I Accept Terms & Conditions</label>
             </div>
             <div class="submit-w3l">
                 <input type="submit" value="Register">
@@ -74,25 +73,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <p> © 2017 Credit Login / Register Form . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
     </div>
     <!-- //copyright -->
-    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/LoginLayout/js/jquery.magnific-popup.js"></script>
     <!-- pop-up-box -->
-    <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <script src="~/Content/LoginLayout/js/jquery-2.1.4.min.js"></script>
     <!--//pop-up-box -->
-    <script>
-		$(document).ready(function() {
-		$('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
-			type: 'inline',
-			fixedContentPos: false,
-			fixedBgPos: true,
-			overflowY: 'auto',
-			closeBtnInside: true,
-			preloader: false,
-			midClick: true,
-			removalDelay: 300,
-			mainClass: 'my-mfp-zoom-in'
-		});
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
 
-		});
+    <script>
+        $(document).ready(function () {
+            $('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
     </script>
 </body>
 </html>

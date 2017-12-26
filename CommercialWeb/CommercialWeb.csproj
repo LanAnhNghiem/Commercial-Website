@@ -314,6 +314,8 @@
     <Content Include="Content\AdminLayout\js\jquery.vmap.js" />
     <Content Include="Content\AdminLayout\js\jquery.vmap.sampledata.js" />
     <Content Include="Content\AdminLayout\js\jquery.vmap.world.js" />
+    <Content Include="Content\AdminLayout\js\jspdf.debug.js" />
+    <Content Include="Content\AdminLayout\js\jspdf.min.js" />
     <Content Include="Content\AdminLayout\js\main.js" />
     <Content Include="Content\AdminLayout\js\moment-2.2.1.js" />
     <Content Include="Content\AdminLayout\js\site.js" />
@@ -590,6 +592,7 @@
     <Content Include="Content\LoginLayout\index.html" />
     <Content Include="Content\LoginLayout\js\jquery-2.1.4.min.js" />
     <Content Include="Content\LoginLayout\js\jquery.magnific-popup.js" />
+    <Content Include="Content\LoginLayout\js\jquery.min.js" />
     <Content Include="Content\LoginLayout\w3layouts-License.txt" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\ProductImages\10024353.jpg" />
@@ -848,6 +851,7 @@
     <Content Include="Views\QuanLySanPham\TaoMoi.cshtml" />
     <Content Include="Views\QuanLySanPham\Xoa.cshtml" />
     <Content Include="Views\QuanLyKhachHang\ChinhSua.cshtml" />
+    <Content Include="Views\DangNhap\DangNhapPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\tinymce\js\tinymce\langs\" />

@@ -15,7 +15,6 @@ namespace CommercialWeb.Controllers
         /// Creator:Chương
         /// </summary>
         /// <returns>Trang đăng nhập</returns>
-        [HttpGet]
         public ActionResult DangNhap()
         {
             return View();
@@ -29,20 +28,25 @@ namespace CommercialWeb.Controllers
         /// <param name="password">Nhận vào password</param>
         /// <returns>Điều hướng tới trang đơn hàng chưa giao</returns>
         [HttpPost]
-        public ActionResult DangNhap(string email, string password)
+        public ActionResult XuLyDangNhap(string email, string password)
         {
             ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.Email == email && n.MatKhau == password);
-            if (true)
+            if (tv != null)
             {
                 Session["TaiKhoan"] = tv;
+                return JavaScript("window.location = '" + Url.Action("ChuaGiao", "QuanLyDonHang") + "'");
             }
-            return RedirectToAction("ChuaGiao", "QuanLyDonHang");
+            return Content("LOGIN FAILED !");
         }
-        
+        /// <summary>
+        /// Đăng xuất khỏi hệ thống trở về trang đăng nhập
+        /// Creator: Chương
+        /// </summary>
+        /// <returns></returns>
         public ActionResult DangXuat()
         {
             Session["TaiKhoan"] = null;
-            return View("DangNhap");
+            return RedirectToAction("DangNhap");
         }
     }
 }
