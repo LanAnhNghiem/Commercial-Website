@@ -12,7 +12,7 @@
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="up-comming-pro gray-bg clearfix">
                     <div class="up-comming-pro-img f-left">
-                        <a href="#">
+                        <a href="@Url.Action("XemChiTiet","SanPham", new { @id = item.MaSP, @tensp = item.TenSP})">
                             <img src="@Url.Content("~/Content/ProductImages/" + Model.ElementAt(0).HinhAnh1)" alt="@Model.ElementAt(0).TenSP">
                         </a>
                     </div>
