@@ -842,6 +842,7 @@
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
     <Content Include="Views\SanPham\XemChiTiet.cshtml" />
     <Content Include="Views\Layout\ProductLayout.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\tinymce\js\tinymce\langs\" />
@@ -892,7 +893,6 @@
     <Folder Include="Content\tinymce\js\tinymce\skins\lightgray\img\" />
     <Folder Include="Content\tinymce\js\tinymce\themes\modern\" />
     <Folder Include="Views\Product_Detail\" />
-    <Folder Include="Views\QuanLyKhachHang\" />
     <Folder Include="Views\QuanLySanPham\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
@@ -921,7 +921,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64908</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
