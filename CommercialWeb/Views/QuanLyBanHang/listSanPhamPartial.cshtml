@@ -8,8 +8,10 @@
         <td>@item.SoLuong</td>
         <td>@item.ThoiHanBaoHanh</td>
         <td>@item.DonGia</td>
-        <td data-toggle='tooltip' data-placement='right' title='"@item.TenKhuyenMai"'>@item.MoTa</td>
+        <td data-toggle='tooltip' data-placement='right' title='"@item.TenKhuyenMai"'>@item.MoTa %</td>
         <td>@item.GiaBan</td>
-        <td><a class='btn btn-info' href='#'>Xóa</a></td>
+        @*<td><a class='btn btn-info' href='#'>Xóa</a></td>*@
+        <td>@Html.ActionLink("Xóa", "XoaItemDonHang", new {@MaSP = item.MaSP }, new {@class = "btn btn-info"})</td>
     </tr>
 }
+@*<div>@ViewBag.TongTien.ToString("#,##") VND</div>*@

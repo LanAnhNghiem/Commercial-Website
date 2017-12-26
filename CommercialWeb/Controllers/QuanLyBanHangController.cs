@@ -15,12 +15,20 @@ namespace CommercialWeb.Controllers
         [HttpGet]
         public ActionResult TaoDonHang()
         {
-            return View();
+            return View(LayDonHang());
         }
+     
         [HttpPost]
         public ActionResult getProductList()
         {
             var dict = db.SanPhams.ToDictionary(s => s.MaSP, s => s.TenSP);
+            return Json(dict.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult getThanhVienList()
+        {
+            var dict = db.KhachHangs.Where(n=>n.MaThanhVien != null)
+                .ToDictionary(n => n.MaKH, n => n.HoTen+" "+n.SoDienThoai);
             return Json(dict.ToList(), JsonRequestBehavior.AllowGet);
         }
         public List<ItemDonHang> LayDonHang()
@@ -36,7 +44,7 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult addNewProduct(int MaSP, int SoLuong)
         {
-            //var sp = db.SanPhams.Where(n=>n.MaSP == MaSP).Select(n=> new {n.MaSP, n.TenSP, n.ThoiHanBaoHanh, n.DonGia, n.GiaBan});
+            var product = db.SanPhams.SingleOrDefault(n=>n.MaSP == MaSP);
             var sp = db.SanPhams.Where(n => n.MaSP == MaSP).Join(db.KhuyenMais, km => km.MaKhuyenMai, sanpham => sanpham.MaKhuyenMai,
                 (km, sanpham) => new {km.MaSP, km.TenSP, km.ThoiHanBaoHanh, km.DonGia, sanpham.MoTa,sanpham.TenKhuyenMai, km.GiaBan})
                 .Select(n=> new { n.MaSP, n.TenSP, n.ThoiHanBaoHanh, n.DonGia, n.MoTa, n.TenKhuyenMai, n.GiaBan});
@@ -49,15 +57,108 @@ namespace CommercialWeb.Controllers
             converted += ",\"SoLuong\":" + SoLuong + "}";
             var newItem = JsonConvert.DeserializeObject<ItemDonHang>(converted);
             List<ItemDonHang> lstDonHang = LayDonHang();
+            ItemDonHang spCheck = lstDonHang.SingleOrDefault(n => n.MaSP == newItem.MaSP);
+            if(spCheck != null)
+            {
+                if(product.SoLuongTon < SoLuong)
+                {
+                    return Content("alert");
+                }else
+                {
+                    spCheck.SoLuong += SoLuong;
+                    return PartialView("listSanPhamPartial", lstDonHang);
+                }
+            }
+            if(product.SoLuongTon < SoLuong)
+            {
+                return Content("alert");
+            }
             lstDonHang.Add(newItem);
             Session["DonHang"] = lstDonHang;
             //var listDH = JsonConvert.SerializeObject(lstDonHang, null, jsSettings);
             ViewBag.SoLuong = SoLuong;
-            return PartialView("listSanPhamPartial", LayDonHang());
+            ViewBag.TongTien = TinhTongTien();
+            return PartialView("listSanPhamPartial", lstDonHang);
+        }
+
+        [HttpPost]
+        public ActionResult DatHang(int MaKH, bool IsThanhToan, bool IsGiaoHang)
+        {
+            List<ItemDonHang> lstDonHang = LayDonHang();
+            if (lstDonHang == null || lstDonHang.Count == 0)
+            {
+                return Content("Giỏ hàng rỗng !!!");
+            }
+            DonHang dh = new DonHang();
+            dh.MaKH = MaKH;
+            dh.NgayMua = DateTime.Now;
+            dh.NgayGiao = DateTime.Now;
+            dh.TongTien = TinhTongTien();
+            if(IsThanhToan == true)
+            {
+                dh.DaThanhToan = true;
+            }else
+            {
+                dh.DaThanhToan = false;
+            }
+            if(IsGiaoHang == true)
+            {
+                dh.MaTinhTrang = 1;
+            }else
+            {
+                dh.MaTinhTrang = 2;
+            }
+            dh.MaHinhThuc = 1;
+            dh.DaXoa = false;
+            dh.DaHuy = false;
+            db.DonHangs.Add(dh);
+            db.SaveChanges();
+            //Thêm chi tiết đơn hàng
+            foreach (var item in lstDonHang)
+            {
+                ChiTietDonHang ctdh = new ChiTietDonHang();
+                ctdh.MaDonHang = dh.MaDonHang;
+                ctdh.MaSP = item.MaSP;
+                ctdh.SoLuong = item.SoLuong;
+                ctdh.DonGia = item.DonGia;
+                ctdh.DaXoa = false;
+                db.ChiTietDonHangs.Add(ctdh);
+            }
+            db.SaveChanges();
+            Session["DonHang"] = null;
+            return Content("Thêm đơn hàng thành công");
+        }
+        public decimal TinhTongTien()
+        {
+            //Get GioHang
+            List<ItemDonHang> lstGioHang = Session["DonHang"] as List<ItemDonHang>;
+            if (lstGioHang == null)
+            {
+                return 0;
+            }
+            decimal sum = 0;
+            foreach(var item in lstGioHang)
+            {
+                sum += (decimal)item.GiaBan * item.SoLuong;
+            }
+            return sum;
         }
         public ActionResult listSanPhamPartial()
         {
             return PartialView();
+        }
+        public ActionResult XoaItemDonHang(int MaSP)
+        {
+            List<ItemDonHang> lstDonHang = LayDonHang();
+            //Nếu sp đã có trong giỏ hàng
+            ItemDonHang spCheck = lstDonHang.SingleOrDefault(n => n.MaSP == MaSP);
+            if (spCheck == null)
+            {
+                return RedirectToAction("TaoDonHang", "QuanLyBanHang");
+            }
+            //Xóa sp
+            lstDonHang.Remove(spCheck);
+            return RedirectToAction("TaoDonHang");
         }
     }
 }
