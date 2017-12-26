@@ -843,6 +843,11 @@
     <Content Include="Views\SanPham\XemChiTiet.cshtml" />
     <Content Include="Views\Layout\ProductLayout.cshtml" />
     <Content Include="Views\QuanLyKhachHang\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLySanPham\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\TaoMoi.cshtml" />
+    <Content Include="Views\QuanLySanPham\Xoa.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\ChinhSua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\tinymce\js\tinymce\langs\" />
@@ -893,7 +898,6 @@
     <Folder Include="Content\tinymce\js\tinymce\skins\lightgray\img\" />
     <Folder Include="Content\tinymce\js\tinymce\themes\modern\" />
     <Folder Include="Views\Product_Detail\" />
-    <Folder Include="Views\QuanLySanPham\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

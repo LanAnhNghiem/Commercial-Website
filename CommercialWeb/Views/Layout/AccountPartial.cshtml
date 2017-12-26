@@ -1,8 +1,15 @@
 ﻿@using CommercialWeb.Models
 
-<div class="navigation account">
-    <ul>
-        <li><a href="#"><i class="men"></i></a></li>
-        <li><a style="font-weight:bold" href="#">ADMIN</a></li>
-    </ul>
-</div>
+@if (Session["TaiKhoan"] != null || Session["TaiKhoan"].ToString() != "")
+{
+    ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+    <div class="navigation account">
+        <ul>
+            <li><a href="#"><i class="men"></i></a></li>
+            <li><a style="font-weight:bold" href="#">@tv.HoTen</a></li>
+        </ul>
+        <ul>
+            <li><a href="@Url.Action("DangXuat", "DangNhap")" style="padding-left:76px">Đăng xuất</a></li>
+        </ul>
+    </div>
+}
