@@ -2,7 +2,7 @@
 
 <div class="form-w3-agile">
     <h2>LOGIN</h2>
-    @using (Ajax.BeginForm("XuLyDangNhap", "DangNhap", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+    @using (Ajax.BeginForm("XuLyDangNhap", "DangNhap", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao", LoadingElementId = "loading" }))
     {
         <div class="form-sub-w3">
             <input type="email" name="email" placeholder="Email" required="" />

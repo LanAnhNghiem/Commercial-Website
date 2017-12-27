@@ -34,6 +34,12 @@ namespace CommercialWeb.Controllers
             if (tv != null)
             {
                 Session["TaiKhoan"] = tv;
+                IEnumerable<LoaiThanhVien_Quyen> lstQuyen = db.LoaiThanhVien_Quyen.Where(n => n.MaLoaiTV == tv.MaLoaiTV);
+                string Quyen = "";
+                foreach(var item in lstQuyen)
+                {
+                    Quyen += item.MaQuyen;
+                }
                 return JavaScript("window.location = '" + Url.Action("ChuaGiao", "QuanLyDonHang") + "'");
             }
             return Content("LOGIN FAILED !");

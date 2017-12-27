@@ -852,6 +852,7 @@
     <Content Include="Views\QuanLySanPham\Xoa.cshtml" />
     <Content Include="Views\QuanLyKhachHang\ChinhSua.cshtml" />
     <Content Include="Views\DangNhap\DangNhapPartial.cshtml" />
+    <Content Include="Views\Admin\MenuQuanLy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\tinymce\js\tinymce\langs\" />
