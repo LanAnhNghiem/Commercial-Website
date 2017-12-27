@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CommercialWeb.Models;
+using System.Web.Security;
+
 namespace CommercialWeb.Controllers
 {
     public class AdminController : Controller
@@ -34,5 +36,7 @@ namespace CommercialWeb.Controllers
             }
             return PartialView();
         }
+
+       
     }
 }
