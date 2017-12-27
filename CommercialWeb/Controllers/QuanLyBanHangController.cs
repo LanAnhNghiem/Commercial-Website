@@ -28,7 +28,7 @@ namespace CommercialWeb.Controllers
         public ActionResult getThanhVienList()
         {
             var dict = db.KhachHangs.Where(n=>n.MaThanhVien != null)
-                .ToDictionary(n => n.MaKH, n => n.HoTen+" "+n.SoDienThoai);
+                .ToDictionary(n => n.MaKH, n => n.HoTen+" - "+n.SoDienThoai+" - "+n.Email+" - "+n.DiaChi);
             return Json(dict.ToList(), JsonRequestBehavior.AllowGet);
         }
         public List<ItemDonHang> LayDonHang()
@@ -126,7 +126,7 @@ namespace CommercialWeb.Controllers
             }
             db.SaveChanges();
             Session["DonHang"] = null;
-            return Content("Thêm đơn hàng thành công");
+            return Content("Thêm đơn hàng thành công. Tổng giá trị đơn hàng là: " + TinhTongTien().ToString("#,##"));
         }
         public decimal TinhTongTien()
         {
@@ -159,6 +159,64 @@ namespace CommercialWeb.Controllers
             //Xóa sp
             lstDonHang.Remove(spCheck);
             return RedirectToAction("TaoDonHang");
+        }
+        
+        [HttpPost]
+        public ActionResult DatHangMoi(string HoTen, string Email, string SDT, string DiaChi, bool IsThanhToan, bool IsGiaoHang)
+        {
+            KhachHang kh = new KhachHang();
+            kh.HoTen = HoTen;
+            kh.Email = Email;
+            kh.DiaChi = DiaChi;
+            kh.SoDienThoai = SDT;
+            db.KhachHangs.Add(kh);
+            db.SaveChanges();
+            List<ItemDonHang> lstDonHang = LayDonHang();
+            if (lstDonHang == null || lstDonHang.Count == 0)
+            {
+                return Content("Giỏ hàng rỗng !!!");
+            }
+            DonHang dh = new DonHang();
+            dh.MaKH = kh.MaKH;
+            dh.NgayMua = DateTime.Now;
+            dh.NgayGiao = DateTime.Now;
+            dh.TongTien = TinhTongTien();
+            if (IsThanhToan == true)
+            {
+                dh.DaThanhToan = true;
+            }
+            else
+            {
+                dh.DaThanhToan = false;
+            }
+            if (IsGiaoHang == true)
+            {
+                dh.MaTinhTrang = 1;
+            }
+            else
+            {
+                dh.MaTinhTrang = 2;
+            }
+            dh.MaHinhThuc = 1;
+            dh.DaXoa = false;
+            dh.DaHuy = false;
+            db.DonHangs.Add(dh);
+            db.SaveChanges();
+            //Thêm chi tiết đơn hàng
+            foreach (var item in lstDonHang)
+            {
+                ChiTietDonHang ctdh = new ChiTietDonHang();
+                ctdh.MaDonHang = dh.MaDonHang;
+                ctdh.MaSP = item.MaSP;
+                ctdh.SoLuong = item.SoLuong;
+                ctdh.DonGia = item.DonGia;
+                ctdh.DaXoa = false;
+                db.ChiTietDonHangs.Add(ctdh);
+            }
+            db.SaveChanges();
+            Session["DonHang"] = null;
+            return Content("Thêm đơn hàng thành công. Tổng giá trị đơn hàng là: "+TinhTongTien().ToString("#,##"));
+            //return RedirectToAction("TaoDonHang", "QuanLyBanHang");
         }
     }
 }
