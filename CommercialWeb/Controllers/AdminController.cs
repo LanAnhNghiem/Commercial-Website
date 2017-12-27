@@ -32,7 +32,7 @@ namespace CommercialWeb.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("DangNhap", "DangNhap");
             }
             return PartialView();
         }

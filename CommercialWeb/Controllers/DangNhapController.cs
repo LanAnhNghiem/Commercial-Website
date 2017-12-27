@@ -19,6 +19,10 @@ namespace CommercialWeb.Controllers
         /// <returns>Trang đăng nhập</returns>
         public ActionResult DangNhap()
         {
+            if (Session["TaiKhoan"] != null)
+            {
+                return RedirectToAction("ChuaGiao", "QuanLyDonHang");
+            }
             return View();
         }
 
@@ -32,6 +36,7 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult XuLyDangNhap(string email, string password)
         {
+            //Nếu đã đăng nhập thì chuyển thẳng tới
             ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.Email == email && n.MatKhau == password);
             if (tv != null)
             {

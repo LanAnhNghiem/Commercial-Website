@@ -9,6 +9,7 @@ using System.Net;
 
 namespace CommercialWeb.Controllers
 {
+    [Authorize(Roles = "QuanLySanPham")]
     public class QuanLySanPhamController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
