@@ -13,6 +13,7 @@ namespace CommercialWeb.Controllers
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: KhuyenMai
         //DANH SACH KHUYEN MAI
+       
         public ActionResult DanhSachKhuyenMai()
         {
             var lstKhuyenMai = db.KhuyenMais.Where(p=>p.MaKhuyenMai != 1 && p.DaHuy == false);
