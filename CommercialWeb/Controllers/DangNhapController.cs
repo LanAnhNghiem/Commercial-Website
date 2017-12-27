@@ -73,14 +73,19 @@ namespace CommercialWeb.Controllers
             if (ticket.IsPersistent) cookie.Expires = ticket.Expiration;
             Response.Cookies.Add(cookie);
         }
+        public ActionResult LoiPhanQuyen()
+        {
+            return View();
+        }
         /// <summary>
         /// Đăng xuất khỏi hệ thống trở về trang đăng nhập
         /// Creator: Chương
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Trả về trang đăng nhập</returns>
         public ActionResult DangXuat()
         {
             Session["TaiKhoan"] = null;
+            FormsAuthentication.SignOut();
             return RedirectToAction("DangNhap");
         }
     }
