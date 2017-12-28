@@ -856,6 +856,7 @@
     <Content Include="Views\Admin\MenuQuanLy.cshtml" />
     <Content Include="Views\DangNhap\LoiPhanQuyen.cshtml" />
     <Content Include="Views\PhanQuyen\Index.cshtml" />
+    <Content Include="Views\PhanQuyen\PhanQuyen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\tinymce\js\tinymce\langs\" />

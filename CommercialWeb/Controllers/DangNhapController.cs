@@ -18,7 +18,7 @@ namespace CommercialWeb.Controllers
         /// </summary>
         /// <returns>Trang đăng nhập</returns>
         public ActionResult DangNhap()
-        {
+         {
             if (Session["TaiKhoan"] != null)
             {
                 return RedirectToAction("ChuaGiao", "QuanLyDonHang");
