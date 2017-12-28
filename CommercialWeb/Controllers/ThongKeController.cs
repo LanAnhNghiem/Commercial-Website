@@ -7,7 +7,7 @@ using CommercialWeb.Models;
 
 namespace CommercialWeb.Controllers
 {
-    [Authorize(Roles = "ThongKe")]
+    [Authorize(Roles = "6_ThongKe")]
     public class ThongKeController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();

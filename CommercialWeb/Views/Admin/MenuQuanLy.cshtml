@@ -1,30 +1,76 @@
-﻿
+﻿@{ 
+    var lstQuyen = ViewBag.lstQuyen;
+}
 
 <div class="navigation">
     <h3>Quản lý</h3>
-    <ul>
-        <li><a href="#"><i class="chat"></i></a></li>
-        <li><a href="#">Charts</a></li>
-    </ul>
-    <ul>
-        <li><a href="#"><i class="art"></i></a></li>
-        <li><a href="#">Articals</a></li>
-    </ul>
-    <ul>
-        <li><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")"><i class="page"></i></a></li>
-        <li><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Quản lý đơn hàng</a></li>
-    </ul>
-    <ul>
-        <li><a href="@Url.Action("ThongKeTheoThang", "ThongKe")"><i class="dash"></i></a></li>
-        <li><a href="@Url.Action("ThongKeTheoThang", "ThongKe")">Thống kê</a></li>
-    </ul>
-    <ul>
-        <li><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")"><i class="fat"></i></a></li>
-        <li><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Quản lý khuyến mãi</a></li>
-    </ul>
-    <ul>
-        <li><a href="#"><i class="setting"></i></a></li>
-        <li><a href="#">Phân quyền</a></li>
-    </ul>
+    
+    
+    @if (Session["TaiKhoan"] != null)
+    {
+        foreach (String quyen in lstQuyen)
+        {
+            switch (quyen)
+            {
+                case "1_TaoDonHang":
+                    {
+                        <ul>
+                            <li><a href="#"><i class="art"></i></a></li>
+                            <li><a href="#">Tạo đơn hàng</a></li>
+                        </ul>
+                        break;
+                    }
+                case "3_QuanLyKhachHang":
+                    {
+                        <ul>
+                            <li><a href="#"><i class="chat"></i></a></li>
+                            <li><a href="#">Quản lý khách hàng</a></li>
+                        </ul>
+                        break;
+                    }
+                case "4_QuanLySanPham":
+                    {
+                        <ul>
+                            <li><a href="#"><i class="art"></i></a></li>
+                            <li><a href="#">Quản lý sản phẩm</a></li>
+                        </ul>
+                        break;
+                    }
+                case "2_QuanLyDonHang":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")"><i class="page"></i></a></li>
+                            <li><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Quản lý đơn hàng</a></li>
+                        </ul>
+                        break;
+                    }
+                case "6_ThongKe":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("ThongKeTheoThang", "ThongKe")"><i class="dash"></i></a></li>
+                            <li><a href="@Url.Action("ThongKeTheoThang", "ThongKe")">Thống kê</a></li>
+                        </ul>
+                        break;
+                    }
+                case "5_KhuyenMai":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")"><i class="fat"></i></a></li>
+                            <li><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Quản lý khuyến mãi</a></li>
+                        </ul>
+                        break;
+                    }
+                case "7_PhanQuyen":
+                    {
+                        <ul>
+                            <li><a href="#"><i class="setting"></i></a></li>
+                            <li><a href="#">Phân quyền</a></li>
+                        </ul>
+                        break;
+                    }
+            }
+        }
+    }
+    
 </div>
 

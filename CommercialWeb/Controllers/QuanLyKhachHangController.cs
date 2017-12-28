@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CommercialWeb.Controllers
 {
-    [Authorize(Roles = "QuanLyKhachHang")]
+    [Authorize(Roles = "3_QuanLyKhachHang")]
     public class QuanLyKhachHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace CommercialWeb.Controllers
 {
-    [Authorize(Roles = "QuanLyDonHang")]
+    [Authorize(Roles = "2_QuanLyDonHang")]
     public class QuanLyDonHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
