@@ -1,151 +1,318 @@
-﻿
-@model CommercialWeb.Models.SanPham
+﻿@model CommercialWeb.Models.SanPham
 
 @{
-    ViewBag.Title = "TaoMoi";
+    ViewBag.Title = "ChinhSua";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
-@*sử dụng control timepicker để chọn ngày tháng*@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
 
-@*sử dụng control editor tinymce*@
+@*bước 1 khi sử dụng control editor tinymce*@
 <script src="~/Content/tinymce/js/tinymce/tinymce.min.js"></script>
+
 <script type="text/javascript">
     tinymce.init({
         selector: ".textarea",
-        //plugins: [
-        //    "advlist autolink lists link image charmap print preview anchor",
-        //    "searchreplace visualblocks code fullscreen",
-        //    "insertdatetime media table contextmenu paste"
-        //],
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 </script>
 
-@*function để điều hướng thẻ html theo dạng control datepicker*@
-<script>
-    $(function () {
-        $(".date").datepicker();
-    });
-</script>
+<h2>Chỉnh sửa sản phẩm</h2>
 
-
-@using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>SanPham</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaSP);
-
-
+        @Html.HiddenFor(model => model.MaSP)
+        @Html.HiddenFor(model => model.GiaBan)
+        @Html.HiddenFor(model => model.MaKhuyenMai)
         <div class="form-group">
-            @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Tên sản phẩm</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                <span id="tbTenSP" style="color: red;"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <textarea name="MoTa" class="textarea"></textarea>
-                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaLoaiSP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaLoaiSP", null, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonGia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Đơn giá</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                <span id="tbDonGia" style="color: red;"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HinhAnh1, new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Mô tả</label>
             <div class="col-md-10">
-                <input name="HinhAnh1" type="file" />
-                <span style="color:red;">@ViewBag.upload </span>
+                <textarea name="MoTa" class="textarea" rows="10">@Model.MoTa</textarea>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HinhAnh2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input name="HinhAnh2" type="file" />
-                @Html.ValidationMessageFor(model => model.HinhAnh2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HinhAnh3, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input name="HinhAnh3" type="file" />
-                @Html.ValidationMessageFor(model => model.HinhAnh3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaNSX, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaNSX", null, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayNhap, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBox("NgayNhap", "", new { id = "datepicker", @class = "date" })
-                @Html.ValidationMessageFor(model => model.NgayNhap, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SoLanMua, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SoLanMua, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLanMua, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SoLuongTon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <label class="control-label col-md-2">Số lượng tồn</label>
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+                <span id="tbSoLuongTon" style="color: red;"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ThoiHanBaoHanh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Nhà sản xuất</label>
+            <div class="col-md-3">
+                @Html.DropDownList("MaNSX", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaNSX, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Loại sản phẩm</label>
+            <div class="col-md-3">
+                @Html.DropDownList("MaLoaiSP", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaLoaiSP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình ảnh 1</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ThoiHanBaoHanh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ThoiHanBaoHanh, "", new { @class = "text-danger" })
+                <div id="hinhanh1">
+                    <img width="100" height="100" src="~/Content/ProductImages/@Model.HinhAnh1">
+                    <br />
+                    <br />
+                </div>
+                <input type="file" name="HinhAnh" id="HinhAnh1" />
+                <span id="tbHinhAnh1" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình ảnh 2</label>
+            <div class="col-md-10">
+                <div id="hinhanh2">
+                    <img width="100" height="100" src="~/Content/ProductImages/@Model.HinhAnh2">
+                    <br />
+                    <br />
+                </div>
+                <input type="file" name="HinhAnh" id="HinhAnh2" />
+                <span id="tbHinhAnh2" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình ảnh 3</label>
+            <div class="col-md-10">
+                <div id="hinhanh3">
+                    <img width="100" height="100" src="~/Content/ProductImages/@Model.HinhAnh3">
+                    <br />
+                    <br />
+                </div>
+                <input type="file" name="HinhAnh" id="HinhAnh3" />
+                <span id="tbHinhAnh3" style="color:red"></span>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <a class="btn btn-info" href="@Url.Action("IndexQuanLySP", "QuanLySanPham")">Quay lại</a>
+                <input type="submit" value="Cập nhật" id="btnCapNhat" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
+@*Đoạn script validate dữ liệu*@
+<script>
+    $(document)
+        .ready(function () {
+            // validate khi click button thêm ý tưởng tạo 1 biến lỗi = 0, nếu lỗi xuất hiện thì lỗi ++ , Nếu lỗi khác 0 thì ngăn submit server
+            $('#btnCapNhat')
+                .click(function () {
+                    var loi = 0;
+                    // Xét xem các trường có bị rỗng hay không
+                    if ($('#TenSP').val() == "") {
+                        $('#tbTenSP').text("Tên sản phẩm không được bỏ trống");
+                        loi++;
+                    }
+                    else {
+                        $('#tbTenSP').text("");
+                    }
+                    if ($('#DonGia').val() == "") {
+                        $('#tbDonGia').text("Đơn giá không được bỏ trống");
+                        loi++;
+                    }
+                    else {
+                        $('#tbDonGia').text("");
+                    }
+                    if ($('#DonGia').val() == "") {
+                        $('#tbDonGia').text("Đơn giá không được bỏ trống");
+                        loi++;
+                    }
+                    else {
+                        $('#tbDonGia').text("");
+                    }
+                    if ($('#SoLuongTon').val() == "") {
+                        $('#tbSoLuongTon').text("Số lượng tồn không được bỏ trống");
+                        loi++;
+                    }
+                    else {
+                        $('#tbSoLuongTon').text("");
+                    }
+                    if ($('#CauHinh').val() == "") {
+                        $('#tbCauHinh').text("Cấu hình không được bỏ trống");
+                        loi++;
+                    }
+                    else {
+                        $('#tbCauHinh').text("");
+                    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                    if ($('#Moi').val() == "") {
+                        $('#tbMoi').text("Vui lòng chọn giá trị");
+                        loi++;
+                    }
+                    else {
+                        $('#tbMoi').text("");
+                    }
+                    if ($('#DaXoa').val() == "") {
+                        $('#tbDaXoa').text("Vui lòng chọn giá trị");
+                        loi++;
+                    }
+                    else {
+                        $('#tbDaXoa').text("");
+                    }
+
+                    if (loi != 0) {
+                        return false;
+                    }
+                });
+
+            // Sự kiện khi chọn file hình ảnh
+            $("#HinhAnh").change(function () {
+
+                var val = $(this).val();
+
+                switch (val.substring(val.lastIndexOf('.') + 1).toLowerCase()) {
+                    case 'gif': case 'jpg': case 'png':
+                        $('#tbHinhAnh').text("");
+                        break;
+                    default:
+                        $(this).val('');
+                        $('#tbHinhAnh').text("Hình ảnh không hợp lệ");
+                        return false;
+                }
+            });
+            $("#HinhAnh1").change(function () {
+
+                var val = $(this).val();
+
+                switch (val.substring(val.lastIndexOf('.') + 1).toLowerCase()) {
+                    case 'gif': case 'jpg': case 'png':
+                        $('#tbHinhAnh1').text("");
+                        break;
+                    default:
+                        $(this).val('');
+                        $('#tbHinhAnh1').text("Hình ảnh không hợp lệ");
+                        return false;
+                }
+            });
+            $("#HinhAnh2").change(function () {
+
+                var val = $(this).val();
+
+                switch (val.substring(val.lastIndexOf('.') + 1).toLowerCase()) {
+                    case 'gif': case 'jpg': case 'png':
+                        $('#tbHinhAnh2').text("");
+                        break;
+                    default:
+                        $(this).val('');
+                        $('#tbHinhAnh2').text("Hình ảnh không hợp lệ");
+                        return false;
+                }
+            });
+            $("#HinhAnh3").change(function () {
+
+                var val = $(this).val();
+
+                switch (val.substring(val.lastIndexOf('.') + 1).toLowerCase()) {
+                    case 'gif': case 'jpg': case 'png':
+                        $('#tbHinhAnh3').text("");
+                        break;
+                    default:
+                        $(this).val('');
+                        $('#tbHinhAnh3').text("Hình ảnh không hợp lệ");
+                        return false;
+                }
+            });
+
+            // Sự kiện khi thay đổi ký tự trong các trường dữ liệu
+            jQuery('#TenSP').on('input propertychange paste', function () {
+                if ($("#TenSP").val() != "") {
+                    $('#tbTenSP').text("");
+                } else {
+                    $('#tbTenSP').text("Cấu hình không được bỏ trống");
+                    return false;
+                }
+            });
+
+            jQuery('#CauHinh').on('input propertychange paste', function () {
+                if ($("#CauHinh").val() != "") {
+                    $('#tbCauHinh').text("");
+                } else {
+                    $('#tbCauHinh').text("Cấu hình không được bỏ trống");
+                    return false;
+                }
+            });
+
+            jQuery('#Moi').on('change', function () {
+                if ($("#Moi").val() != "") {
+                    $('#tbMoi').text("");
+                } else {
+                    $('#tbMoi').text("Vui lòng chọn giá trị");
+                    return false;
+                }
+            });
+            jQuery('#DaXoa').on('change', function () {
+                if ($("#DaXoa").val() != "") {
+                    $('#tbDaXoa').text("");
+                } else {
+                    $('#tbDaXoa').text("Vui lòng chọn giá trị");
+                    return false;
+                }
+            });
+            jQuery('#CauHinh').on('input propertychange paste', function () {
+                if ($("#CauHinh").val() != "") {
+                    $('#tbCauHinh').text("");
+                } else {
+                    $('#tbCauHinh').text("Cấu hình không được bỏ trống");
+                    return false;
+                }
+            });
+
+            // kiểm tra kiểu và giá trị của đơn giá và số lượng
+            $('#DonGia')
+                .keyup(function () {
+                    var DonGia = $("#DonGia").val();
+                    if (isNaN(DonGia) === true || DonGia < 0 || DonGia == "") {
+                        $('#tbDonGia').text("Đơn giá nhập vào không hợp lệ");
+                        return false;
+                    } else {
+                        $('#tbDonGia').text("");
+                    }
+                });
+            $('#SoLuongTon')
+                .keyup(function () {
+                    var SoLuongTon = $("#SoLuongTon").val();
+                    if (isNaN(SoLuongTon) === true || SoLuongTon < 0 || SoLuongTon == "") {
+                        $('#tbSoLuongTon').text("Số lượng tồn nhập vào không hợp lệ");
+                        return false;
+                    } else {
+                        $('#tbSoLuongTon').text("");
+                    }
+                });
+        });
+</script>
