@@ -138,7 +138,7 @@ namespace CommercialWeb.Controllers
         }
         public ActionResult TimKiem(string sTuKhoa)
         {
-            IEnumerable<SanPham> lstSP = db.SanPhams.Where(n => n.TenSP.Contains(sTuKhoa));
+            IEnumerable<SanPham> lstSP = db.SanPhams.Where(n => n.TenSP.Contains(sTuKhoa) || n.KhuyenMai.TenKhuyenMai.Contains(sTuKhoa));
             return View("CacSanPhamKhuyenMai", lstSP);
         }
         protected override void Dispose(bool disposing)

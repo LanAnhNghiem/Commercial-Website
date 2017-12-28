@@ -846,7 +846,7 @@
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
     <Content Include="Views\SanPham\XemChiTiet.cshtml" />
     <Content Include="Views\Layout\ProductLayout.cshtml" />
-    <Content Include="Views\QuanLyKhachHang\Index.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\IndexQuanLyKH.cshtml" />
     <Content Include="Views\QuanLySanPham\ChinhSua.cshtml" />
     <Content Include="Views\QuanLySanPham\Index.cshtml" />
     <Content Include="Views\QuanLySanPham\TaoMoi.cshtml" />

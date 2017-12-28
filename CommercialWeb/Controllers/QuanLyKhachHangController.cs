@@ -12,11 +12,16 @@ namespace CommercialWeb.Controllers
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: QuanLyKhachHang
-        public ActionResult Index()
+        public ActionResult IndexQuanLyKH()
         {
             return View(db.KhachHangs.OrderByDescending(n => n.MaKH));
         }
 
+        /// <summary>
+        /// Creator: Bửu
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult ChinhSua(int? id)
         {
@@ -36,17 +41,36 @@ namespace CommercialWeb.Controllers
             ViewBag.MaThanhVien = new SelectList(db.ThanhViens.OrderBy(n => n.HoTen), "MaThanhVien", "HoTen");
             return View(kh);
         }
-
+        /// <summary>
+        /// Creator: Bửu
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult ChinhSua(SanPham model)
+        public ActionResult ChinhSua(KhachHang model)
         {
-
-            ViewBag.MaThanhVien = new SelectList(db.ThanhViens.OrderBy(n => n.HoTen), "MaThanhVien", "HoTen");
             //Nếu dữ liệu đầu vào chắn chắn ok 
-            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            KhachHang kh = db.KhachHangs.SingleOrDefault(n => n.MaKH == model.MaKH);
+            kh.HoTen = model.HoTen;
+            kh.DiaChi = model.DiaChi;
+            kh.SoDienThoai = model.SoDienThoai;
+            kh.Email = model.Email;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.ThongBao = "Thành công !";
+            return View(kh);
+        }
+
+        /// <summary>
+        /// Tìm kiếm khách hàng bằng tên hoặc số đt
+        /// Creator: Chương
+        /// </summary>
+        /// <param name="sTuKhoa"></param>
+        /// <returns>Danh sách khách hàng</returns>
+        public ActionResult TimKiem(string sTuKhoa)
+        {
+            IEnumerable<KhachHang> lstKH = db.KhachHangs.Where(n => n.HoTen.Contains(sTuKhoa) || n.SoDienThoai.Contains(sTuKhoa) || n.Email.Contains(sTuKhoa) || n.DiaChi.Contains(sTuKhoa));
+            return View("IndexQuanLyKH", lstKH);
         }
     }
 }
