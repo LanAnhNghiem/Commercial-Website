@@ -167,7 +167,7 @@ $(document).ready(function(c) {
             <div class="logo text-center">
                 <a href="@Url.Action("ChuaGiao", "QuanLyDonHang")"><img src="~/Content/AdminLayout/images/logo.png" alt="" /></a>
             </div>
-            @Html.Partial("~/Views/Layout/AccountPartial.cshtml")
+            @Html.Action("AccountPartial", "Admin")
             @Html.Action("MenuQuanLy", "Admin")
             <div class="navigation">
                 <h3>Trợ giúp</h3>

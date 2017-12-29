@@ -1,0 +1,13 @@
+﻿@using CommercialWeb.Models
+@model ThanhVien
+
+    <div class="navigation account">
+        <ul>
+            <li><a href="#"><i class="men"></i></a></li>
+            <li><a style="font-weight:bold" href="#">@Model.HoTen</a></li>
+        </ul>
+        <ul>
+            <li><a href="@Url.Action("DangXuat", "DangNhap")">Đăng xuất</a></li>
+        </ul>
+    </div>
+

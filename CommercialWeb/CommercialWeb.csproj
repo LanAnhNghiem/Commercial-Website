@@ -924,7 +924,7 @@
     <Content Include="Views\KhuyenMai\KhuyenMaiDaHuy.cshtml" />
     <Content Include="Views\KhuyenMai\ThemMoiKhuyenMai.cshtml" />
     <Content Include="Views\KhuyenMai\ChinhSuaKhuyenMai.cshtml" />
-    <Content Include="Views\Layout\AccountPartial.cshtml" />
+    <Content Include="Views\Admin\AccountPartial.cshtml" />
     <Content Include="Views\Layout\LoginLayout.cshtml" />
     <Content Include="Views\DangNhap\DangNhap.cshtml" />
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />

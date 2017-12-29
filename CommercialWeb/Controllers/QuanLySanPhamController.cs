@@ -91,6 +91,8 @@ namespace CommercialWeb.Controllers
                     HinhAnh[i].SaveAs(path);
                 }
             }
+            sp.MaKhuyenMai = 1;
+            sp.GiaBan = sp.DonGia;
             sp.SoLuongTon = 0;
             db.SanPhams.Add(sp);
             db.SaveChanges();
@@ -211,5 +213,10 @@ namespace CommercialWeb.Controllers
             base.Dispose(disposing);
         }
 
+        public  ActionResult TimKiem(string sTuKhoa)
+        {
+            IEnumerable<SanPham> lstSP = db.SanPhams.Where(n => n.TenSP == sTuKhoa || n.NhaSanXuat.TenNSX == sTuKhoa);
+            return View("IndexQuanLySP", lstSP);
+        }
     }
 }
