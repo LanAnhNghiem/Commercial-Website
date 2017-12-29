@@ -1,0 +1,76 @@
+﻿@{ 
+    var lstQuyen = ViewBag.lstQuyen;
+}
+
+<div class="navigation">
+    <h3>Quản lý</h3>
+    
+    
+    @if (Session["TaiKhoan"] != null)
+    {
+        foreach (String quyen in lstQuyen)
+        {
+            switch (quyen)
+            {
+                case "1_TaoDonHang":
+                    {
+                        <ul>
+                            <li><a href="#"><i class="art"></i></a></li>
+                            <li><a href="#">Tạo đơn hàng</a></li>
+                        </ul>
+                        break;
+                    }
+                case "3_QuanLyKhachHang":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("IndexQuanLyKH", "QuanLyKhachHang")"><i class="user"></i></a></li>
+                            <li><a href="@Url.Action("IndexQuanLyKH", "QuanLyKhachHang")">Quản lý khách hàng</a></li>
+                        </ul>
+                        break;
+                    }
+                case "4_QuanLySanPham":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("IndexQuanLySP", "QuanLySanPham")"><i class="rev"></i></a></li>
+                            <li><a href="@Url.Action("IndexQuanLySP", "QuanLySanPham")">Quản lý sản phẩm</a></li>
+                        </ul>
+                        break;
+                    }
+                case "2_QuanLyDonHang":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")"><i class="page"></i></a></li>
+                            <li><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Quản lý đơn hàng</a></li>
+                        </ul>
+                        break;
+                    }
+                case "6_ThongKe":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("ThongKeTheoThang", "ThongKe")"><i class="dash"></i></a></li>
+                            <li><a href="@Url.Action("ThongKeTheoThang", "ThongKe")">Thống kê</a></li>
+                        </ul>
+                        break;
+                    }
+                case "5_KhuyenMai":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")"><i class="fat"></i></a></li>
+                            <li><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Quản lý khuyến mãi</a></li>
+                        </ul>
+                        break;
+                    }
+                case "7_PhanQuyen":
+                    {
+                        <ul>
+                            <li><a href="@Url.Action("Index", "PhanQuyen")"><i class="setting"></i></a></li>
+                            <li><a href="@Url.Action("Index", "PhanQuyen")">Phân quyền</a></li>
+                        </ul>
+                        break;
+                    }
+            }
+        }
+    }
+    
+</div>
+

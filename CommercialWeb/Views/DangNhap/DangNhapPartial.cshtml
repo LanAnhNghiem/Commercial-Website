@@ -1,0 +1,25 @@
+﻿
+
+<div class="form-w3-agile">
+    <h2>LOGIN</h2>
+    @using (Ajax.BeginForm("XuLyDangNhap", "DangNhap", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao", LoadingElementId = "loading" }))
+    {
+        <div class="form-sub-w3">
+            <input type="email" name="email" placeholder="Email" required="" />
+            <div class="icon-w3">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+        </div>
+            <div class="form-sub-w3">
+                <input type="password" name="password" placeholder="Password" required="" />
+                <div class="icon-w3">
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                </div>
+            </div>
+            <p class="p-bottom-w3ls"><a style="font-weight:bold; font-size: 15px" class="w3_play_icon1" href="#small-dialog1" id="ThongBao"></a></p>
+            <div class="submit-w3l">
+                <input type="submit" value="Login">
+            </div>
+    }
+</div>
+

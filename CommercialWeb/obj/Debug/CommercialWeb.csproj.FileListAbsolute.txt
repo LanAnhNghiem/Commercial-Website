@@ -285,6 +285,8 @@ D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Micr
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Web.Infrastructure.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Newtonsoft.Json.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Owin.dll
+D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\PagedList.dll
+D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\System.Web.Helpers.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\System.Web.Mvc.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\System.Web.Optimization.dll
@@ -299,6 +301,8 @@ D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Micr
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.AI.WindowsServer.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.ApplicationInsights.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\PagedList.xml
+D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\System.Web.Helpers.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\System.Web.Mvc.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\System.Web.Optimization.xml
@@ -322,6 +326,6 @@ D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Micr
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Google.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
+D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache

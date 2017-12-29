@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Duyệt đơn hàng</strong></p>
+
+<h2>Đang online: @ViewBag.Online</h2>
+<br />
+<h2>Số lượng người truy cập: @ViewBag.SoLuongTruyCap</h2>
+<br />
+<h2>Tổng số đơn hàng: @ViewBag.TongDonHang</h2>
+<br />
+@{
+    decimal Tong = decimal.Parse(ViewBag.TongDoanhThu.ToString());
+}
+<h2>Tổng doanh thu: @Tong.ToString("#,##") VNĐ</h2>
+

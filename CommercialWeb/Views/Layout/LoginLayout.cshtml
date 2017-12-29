@@ -1,0 +1,100 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHOPCOM MANAGER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Credit Login / Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="~/Content/LoginLayout/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/LoginLayout/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/LoginLayout/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/AdminLayout/images/xicon.png">
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- //web font -->
+</head>
+<body style="height:588px">
+    <h1 id="webname">ShopCOM</h1>
+    <div class="main-agileits">
+       @RenderBody()
+       @*@Html.Partial("DangNhapPartial", "DangNhap")*@
+    </div>
+    <div id="small-dialog1" class="mfp-hide">
+        <div class="contact-form1">
+            <div class="contact-w3-agileits">
+                <h3>Register Form</h3>
+                <form action="#" method="post">
+                    <div class="form-sub-w3ls">
+                        <input placeholder="User Name" type="text" required="">
+                        <div class="icon-agile">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="form-sub-w3ls">
+                        <input placeholder="Email" class="mail" type="email" required="">
+                        <div class="icon-agile">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="form-sub-w3ls">
+                        <input placeholder="Password" type="password" required="">
+                        <div class="icon-agile">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="form-sub-w3ls">
+                        <input placeholder="Confirm Password" type="password" required="">
+                        <div class="icon-agile">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="login-check">
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked="">I Accept Terms & Conditions</label>
+            </div>
+            <div class="submit-w3l">
+                <input type="submit" value="Register">
+            </div>
+        </div>
+    </div>
+    <!-- copyright -->
+    <div class="copyright w3-agile">
+        <p> © 2017 Credit Login / Register Form . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+    </div>
+    <!-- //copyright -->
+    <script src="~/Content/LoginLayout/js/jquery.magnific-popup.js"></script>
+    <!-- pop-up-box -->
+    <script src="~/Content/LoginLayout/js/jquery-2.1.4.min.js"></script>
+    <!--//pop-up-box -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,3 @@
 *.suo
-*.suo
-.vs/CommercialWeb/v14/.suo
-*.suo
-*.suo
+.vs/
+*.mdf

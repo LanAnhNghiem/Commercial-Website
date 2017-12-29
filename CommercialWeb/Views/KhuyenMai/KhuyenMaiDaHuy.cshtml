@@ -1,0 +1,46 @@
+﻿@using CommercialWeb.Models
+@model  IEnumerable<KhuyenMai>
+@{
+    ViewBag.Title = "KhuyenMaiDaHuy";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+
+@*-----------------Address Link------------------------*@
+<p class="home"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Trang chủ</a> > <strong> Khuyến mãi đã hủy</strong></p>
+<br />
+@*-------------------------Page Name--------------------*@
+<h1 style="font-weight:bold; margin:5px; text-align:center">QUẢN LÝ CHƯƠNG TRÌNH KHUYẾN MÃI</h1>
+<br />
+@*----------------------------Page Navigation bar-----------------*@
+<ul class="nav nav-tabs" style="align-content:center">
+    <li role="presentation"><a href="@Url.Action("DanhSachKhuyenMai", "KhuyenMai")">Đang áp dụng</a></li>
+    <li role="presentation"><a href="@Url.Action("CacSanPhamKhuyenMai", "KhuyenMai")">Danh sách sản phẩm khuyến mãi</a></li>
+    <li role="presentation" class="active"><a href="@Url.Action("KhuyenMaiDaHuy", "KhuyenMai")">Đã hủy</a></li>
+</ul>
+
+@*-----------------------Page cotent----------------------*@
+<div>
+    <h3 style="padding:1em 0em; font-weight:bold; text-align:center">Danh sách chương trình khuyến mãi đã hủy</h3>
+    <h3>@ViewBag.ThongBao</h3>
+    @grid.GetHtml(
+    tableStyle: "gridTable table-hover",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("MaKhuyenMai", "Mã khuyến mãi"),
+        grid.Column("TenKhuyenMai", "Tên khuyến mãi"),
+        grid.Column("MoTa", "Mức giảm giá (%)", format: p => p.MoTa + " %"),
+        grid.Column(format: p => @Html.ActionLink("Tiếp tục áp dụng", "HoanTacKhuyenMai", new { MaKhuyenMai = p.MaKhuyenMai }, new { @class = "btn btn-info" }))
+    )
+)
+    <br />
+    <h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> chương trình khuyến mãi đã bị hủy.</h4>
+</div>
+<style>
+    .nav > li > a {
+        padding: 7px 60px;
+    }
+</style>

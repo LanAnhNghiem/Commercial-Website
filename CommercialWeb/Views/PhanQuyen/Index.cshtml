@@ -1,0 +1,23 @@
+﻿@using CommercialWeb.Models
+@model IEnumerable<LoaiThanhVien>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+<p class="home"><a href="@Url.Action("Index", "PhanQuyen")">Trang chủ</a>><strong>Phân Quyền</strong></p>
+<h1 style="text-align:center; font-weight:bold; margin:1em">QUẢN LÝ PHÂN QUYỀN</h1>
+<br />
+@grid.GetHtml(
+        tableStyle: "gridTable table-hover",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+    grid.Column("MaLoaiTV", "Mã loại thành viên"),
+    grid.Column("TenLoai", "Loại thành viên"),
+        grid.Column(format: p => @Html.ActionLink("Phân quyền", "PhanQuyen", new { id = p.MaLoaiTV }, new { @class = "btn btn-success" }))
+
+    ))
+

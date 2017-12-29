@@ -1,0 +1,34 @@
+﻿@using CommercialWeb.Models;
+@model IEnumerable<DonHang>
+@{
+    ViewBag.Title = "DaHuy";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Đã hủy</strong></p>
+<br />
+<h1 style="font-weight:bold; margin:5px; text-align:center">QUẢN LÝ ĐƠN HÀNG</h1>  
+<br />
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & Đã thanh toán</a></li>
+    <li role="presentation"><a href="@Url.Action("ChuaThanhToan","QuanLyDonHang")">Chưa thanh toán</a></li>
+    <li role="presentation"><a href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao hàng</a></li>
+    <li role="presentation" class="active"><a href="@Url.Action("DaHuy", "QuanLyDonHang")">Đã hủy</a></li>
+</ul>
+@grid.GetHtml(
+    tableStyle: "gridTable table-hover",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+    grid.Column("MaDonHang", header: "Mã đơn hàng"),
+        grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.HoTen : ""),
+        grid.Column("NgayMua", header: "Ngày mua"),
+        grid.Column("TinhTrangDonHang.TenTinhTrang", header: "Tình trạng giao hàng"),
+        grid.Column("DaThanhToan", header: "Đã thanh toán"),
+        grid.Column(format: p => @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { MaDonHang = p.MaDonHang }, new { @class = "btn btn-info" })),
+        grid.Column(format: p => @Html.ActionLink("Hoàn tác", "HoanTacDonHang", new { id = p.MaDonHang }, new { @class = "btn btn-info" }))
+    ))
+<br />
+<h4 style="padding:1em; background-color: white">Tổng cộng: <b style="color: red">@Model.Count()</b> đơn hàng đã bị hủy.</h4>
