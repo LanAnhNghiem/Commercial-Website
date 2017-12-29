@@ -14,7 +14,7 @@ namespace CommercialWeb.Controllers
         // GET: QuanLyKhachHang
         public ActionResult IndexQuanLyKH()
         {
-            return View(db.KhachHangs.OrderByDescending(n => n.MaKH));
+            return View(db.KhachHangs);
         }
 
         /// <summary>
