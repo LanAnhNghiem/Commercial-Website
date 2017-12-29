@@ -30,6 +30,10 @@
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 </script>
+<p class="home"><a href="@Url.Action("IndexQuanLySP", "QuanLySanPham")">Trang chủ</a> > <strong> Thêm mới sản phẩm</strong></p>
+<br />
+@*-------------------------Page Name--------------------*@
+<h1 style="font-weight:bold; margin:5px; padding-bottom:1em; text-align:center">THÊM SẢN PHẨM MỚI <span style="color:blue"></span> </h1>
 
 @*Bước 1(thêm hình ảnh): thêm vào BeginForm @enctype = "multipart/form-data"*@
 @using (Html.BeginForm("TaoMoi", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -37,7 +41,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Thêm mới sản phẩm</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 

@@ -20,7 +20,11 @@
     });
 </script>
 
-<h2>Chỉnh sửa sản phẩm</h2>
+<p class="home"><a href="@Url.Action("IndexQuanLySP", "QuanLySanPham")">Trang chủ</a> > <strong> Sửa thông tin sản phẩm</strong></p>
+<br />
+@*-------------------------Page Name--------------------*@
+<h1 style="font-weight:bold; margin:5px; padding-bottom:1em; text-align:center">THÔNG TIN SẢN PHẨM <span style="color:blue">@Model.TenSP.ToUpper()</span> </h1>
+
 
 @using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
