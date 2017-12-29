@@ -18,7 +18,7 @@ namespace CommercialWeb.Controllers
         // GET: QuanLySanPham
         public ActionResult IndexQuanLySP()
         {
-            return View(db.SanPhams.OrderByDescending(n=>n.MaSP));
+            return View(db.SanPhams.OrderBy(n=>n.MaSP));
         }
         [HttpGet]
         public ActionResult TaoMoi()

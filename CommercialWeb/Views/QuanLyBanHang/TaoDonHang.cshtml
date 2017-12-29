@@ -1,0 +1,315 @@
+﻿
+@using CommercialWeb.Models
+@model IEnumerable<ItemDonHang>
+@{
+    ViewBag.Title = "TaoDonHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<p class="home"><a href="@Url.Action("ChuaGiao", "QuanLyDonhang")">Trang chủ</a> > <strong> Tạo đơn hàng mới</strong></p>
+<br />
+<h1 style="font-weight:bold; margin:5px; text-align:center">TẠO ĐƠN HÀNG MỚI</h1>
+<br />
+<div class="ctdh-block">
+    <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff">Chi tiết đơn hàng</h3>
+    <div class="form-inline" style="margin-top:20px; margin-bottom:20px">
+        @*<input data-live-search="true" type="text" id="product-name" placeholder="Nhập tên sản phẩm" class="search-box" />*@
+        <select class="selectpicker" data-live-search="true" id="mySearch"></select>
+        <input type="number" placeholder="1" class="form-control" min="1" value="1" id="product-number" />
+        <a class="btn btn-info" id="btn-add-product" href="#">Thêm sản phẩm</a>
+        <div style="float:right">
+            <label><input type="checkbox" name="check-box-tt" id="check-box-tt" checked="checked" />Đã thanh toán</label>
+            <label><input type="checkbox" name="check-box-gh" id="check-box-gh" checked="checked" />Đã giao</label>
+        </div>
+    </div>
+    <table class="gridTable table-hover">
+        <thead style="color:#ffffff;font-weight:bold">
+            <tr>
+                <th class="gridHead">Mã SP</th>
+                <th class="gridHead">Tên SP</th>
+                <th class="gridHead">Số lượng</th>
+                <th class="gridHead">Bảo hành</th>
+                <th class="gridHead">Đơn giá</th>
+                <th class="gridHead">Khuyến mãi</th>
+                <th class="gridHead">Giá bán</th>
+                <th class="gridHead">Tác vụ</th>
+            </tr>
+        </thead>
+        <tbody class="gridRow" id="row_holder">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.ThoiHanBaoHanh</td>
+                    <td>@item.DonGia</td>
+                    <td data-toggle='tooltip' data-placement='right' title='"@item.TenKhuyenMai"'>@item.MoTa %</td>
+                    <td>@item.GiaBan</td>
+                    @*<td><a class='btn btn-info' href='#'>Xóa</a></td>*@
+                    <td>@Html.ActionLink("Xóa", "XoaItemDonHang", new { @MaSP = item.MaSP }, new { @class = "btn btn-info" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<div class="tong-tien"></div>
+<div class="ttkh-block">
+    <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff">Thông tin khách hàng</h3>
+    <div style="margin-top:20px;font-weight:bold">
+        <h4 style="font-weight:bold;">Khách hàng thành viên</h4>
+        <div class="form-inline" style="margin-top:20px; margin-bottom:20px">
+            <select class="selectpicker" data-live-search="true" id="mySearch2" data-width="100%"></select>
+            <a class="btn btn-info" id="btn-add-1" href="#" style="margin-top:20px; float:right">Tạo đơn hàng</a>
+        </div>
+    </div>
+    <div>
+        <h4 style="font-weight:bold;  padding-top:50px">Khách hàng thường</h4><br />
+        <div class="form-kh">
+            <div class="form-group">
+                <label for="HoTen">Họ và tên</label>
+                <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Nhập họ tên" />
+                <p style="color:red" , hidden="hidden" class="hoten">Vui lần nhập vào họ tên!!!</p>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email" />
+                <p style="color:red" , hidden="hidden" class="email">Vui lần nhập vào email!!!</p>
+            </div>
+            <div class="form-group">
+                <label for="SDT">Số điện thoại</label>
+                <input type="text" class="form-control" name="sdt" id="sdt" maxlength="12" placeholder="Nhập số điện thoại" />
+                <p style="color:red" , hidden="hidden" class="sdt">Vui lần nhập vào số điện thoại!!!</p>
+            </div>
+            <div class="form-group">
+                <label for="DiaChi">Địa chỉ</label>
+                <input type="text" class="form-control" name="diachi" id="diachi" placeholder="Nhập địa chỉ" />
+                <p style="color:red" , hidden="hidden" class="diachi">Vui lần nhập vào địa chỉ!!!</p>
+            </div>
+            <a class="btn btn-info" id="btn-add-2" href="#" style="float:right">Tạo đơn hàng</a>
+        </div>
+    </div>
+
+</div>
+
+<style type="text/css">
+    .ctdh-block {
+        width: 100%;
+    }
+
+    .search-block {
+        width: 100%;
+        height: 20%;
+        background-color: none;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    .search-box {
+        width: 40%;
+        margin-right: 10px;
+    }
+
+    #check-box {
+        margin-right: 10px;
+    }
+
+    .form-control {
+        width: 10%;
+        margin-right: 10px;
+    }
+
+    .ttkh-block {
+        margin-top: 10px;
+    }
+
+    h5 {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+</style>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: '@Url.Content("getProductList")',
+            success: function (result) {
+                populateStdDropdown(result, "mySearch", "Chọn sản phẩm");
+                $.ajax({
+                    type:"POST",
+                    dataType:'json',
+                    url:'@Url.Content("getThanhVienList")',
+                    success: function (result) {
+                        populateStdDropdown(result, "mySearch2", "Chọn thành viên");
+                    }
+                })
+            }
+        })
+        //populateStdDropdown();
+        var thanhtoan = $("#check-box-tt").is(":checked");
+        var giaohang = $("#check-box-gh").is(":checked");
+        if (thanhtoan) {
+            $("#checkbox-tt").attr('checked', true);
+        } else {
+            $("#checkbox-tt").attr('checked', false);
+        }
+        if (giaohang) {
+            $("checkbox-gh").attr('checked', true);
+        } else {
+            $("checkbox-gh").attr('checked', false);
+        }
+    })
+    $("#check-box-tt").on('change', function () {
+        if (this.checked) {
+            $("#checkbox-tt").attr('checked', true);
+        } else {
+            $("#checkbox-tt").attr('checked', false);
+        }
+    })
+    $("#check-box-gh").on('change', function () {
+        if (this.checked) {
+            $("checkbox-gh").attr('checked', true);
+        } else {
+            $("checkbox-gh").attr('checked', false);
+        }
+    })
+    $("#btn-add-1").click(function () {
+        var id = $("#mySearch2").val();
+        var thanhtoan = $("#check-box-tt").is(":checked");
+        var giaohang = $("#check-box-gh").is(":checked");
+
+        if (id.toString().trim().length == 0) {
+            alert("Vui lòng chọn Khách hàng thành viên");
+        }
+        $.ajax({
+            type: "POST",
+            data: { MaKH: id, IsThanhToan: thanhtoan, IsGiaoHang: giaohang },
+            url:'@Url.Content("DatHang")',
+            success: function (result) {
+                alert(result);
+                location.reload();
+            }
+        })
+    })
+    function validateEmail(email) {@{string acong = "@"; }
+        //var emailReg = '/^([\w-\.]@(acong)([\w-]+\.)+[\w-]{2,4})?$/';
+        var emailReg1 = /^([\w-\.]+)@(acong)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        //emailReg1 = emailReg1.remove(emailReg1.lastIndexOf("")
+        if (!emailReg1.test(email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    $("#btn-add-2").click(function (e) {
+        e.preventDefault();
+        var id = $("#mySearch2").val();
+        var thanhtoan = $("#check-box-tt").is(":checked");
+        var giaohang = $("#check-box-gh").is(":checked");
+
+        if($("#hoten").val().toString().trim().length == 0)
+        {
+            $("p.hoten").show();
+        }
+        else{
+            $("p.hoten").hide();
+        }
+        if($("#email").val().toString().trim().length == 0)
+        {
+            $("p.email").show();
+        }else{
+            $("p.email").hide();
+        }
+        if($("#sdt").val().toString().trim().length == 0){
+            $("p.sdt").show();
+        }else{
+            $("p.sdt").hide();
+        }
+        if ($("#diachi").val().toString().trim().length == 0) {
+            $("p.diachi").show();
+        } else {
+            $("p.diachi").hide();
+        }
+        if(validateEmail($("#email").val().toString()) == false){
+            $("p.email").html("Địa chỉ email không hợp lệ!");
+            $("p.email").show();
+        }else{
+            $("p.email").hide();
+        }
+        //if(
+        var tmp = $("#hoten").val().toString().trim().length;
+        if(validateEmail($("#email").val().toString())== true &&
+            $("#hoten").val().toString().trim().length != 0 &&
+            $("#email").val().toString().trim().length != 0 &&
+            $("#sdt").val().toString().trim().length != 0 &&
+            $("#diachi").val().toString().trim().length != 0)
+        {
+            $.ajax({
+                type: "POST",
+                data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
+                url: '@Url.Content("DatHangMoi")',
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                },
+                error: function (err) {
+                    alert(err.responsiveText);
+                }
+            });
+        }
+    })
+    //$("#mySearch2").change(function () {
+    //    var id = $("#mySearch2").val();
+    //    //alert(id);
+    //})
+    $("#btn-add-product").click(function () {
+        var id = $("#mySearch").val();
+        var quantity = $("#product-number").val();
+
+        $.ajax({
+            type: "POST",
+            data: { MaSP: id, SoLuong: quantity },
+            url:'@Url.Content("addNewProduct")',
+            success: function (result) {
+                //alert(result);
+                if(result.includes("alert")){
+                    alert("Hết hàng. Không thể đặt thêm!!!");
+                }
+                else {
+                    //var tmp = result.substring(0, indexOf("<div>"));
+                    //alert(tmp);
+                    $("#row_holder").html(result);
+                }
+            },
+        })
+    })
+    // from a list item.Key & item.Value
+    function genDropdownOption(data) {
+        var rows = '';
+        $.each(data, function (i, item) {
+            rows += '<option value="' + item.Key + '">' + item.Value + '</option>';
+        });
+        return rows;
+    }
+
+    function populateStdDropdown(data, id, string) {
+        id = '#' + id;
+        var rows = '<option value="">'+string+'</option>'
+            + genDropdownOption(data);
+
+        $(id).html(rows);
+        $(id).selectpicker('refresh');
+
+    }
+
+</script>
