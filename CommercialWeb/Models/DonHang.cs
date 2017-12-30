@@ -37,5 +37,6 @@ namespace CommercialWeb.Models
         public virtual HinhThucGiaoHang HinhThucGiaoHang { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual TinhTrangDonHang TinhTrangDonHang { get; set; }
+        public virtual ThanhVien ThanhVien { get; set; }
     }
 }

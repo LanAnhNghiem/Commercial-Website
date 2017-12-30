@@ -243,6 +243,11 @@ D:\Document\OODA\Commercial-Website\Commercial-Website\CommercialWeb\bin\Microso
 D:\Document\OODA\Commercial-Website\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
 D:\Document\OODA\Commercial-Website\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 D:\Document\OODA\Commercial-Website\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.dll
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.dll
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.xml
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.xml
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\ApplicationInsights.config
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\roslyn\csc.exe
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -329,8 +334,3 @@ D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\Micr
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.dll
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.dll
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.xml
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.xml
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache

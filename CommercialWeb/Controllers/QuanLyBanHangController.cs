@@ -86,6 +86,7 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult DatHang(int MaKH, bool IsThanhToan, bool IsGiaoHang)
         {
+            ThanhVien tvSession = (ThanhVien)Session["TaiKhoan"];
             List<ItemDonHang> lstDonHang = LayDonHang();
             if (lstDonHang == null || lstDonHang.Count == 0)
             {
@@ -115,6 +116,7 @@ namespace CommercialWeb.Controllers
             dh.MaHinhThuc = 1;
             dh.DaXoa = false;
             dh.DaHuy = false;
+            dh.MaThanhVIen = tvSession.MaThanhVien;
             db.DonHangs.Add(dh);
             db.SaveChanges();
             //Thêm chi tiết đơn hàng
@@ -168,6 +170,7 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult DatHangMoi(string HoTen, string Email, string SDT, string DiaChi, bool IsThanhToan, bool IsGiaoHang)
         {
+            ThanhVien tvSession = (ThanhVien)Session["TaiKhoan"];
             KhachHang kh = new KhachHang();
             kh.HoTen = HoTen;
             kh.Email = Email;
@@ -204,6 +207,7 @@ namespace CommercialWeb.Controllers
             dh.MaHinhThuc = 1;
             dh.DaXoa = false;
             dh.DaHuy = false;
+            dh.MaThanhVIen = tvSession.MaThanhVien;
             db.DonHangs.Add(dh);
             db.SaveChanges();
             //Thêm chi tiết đơn hàng

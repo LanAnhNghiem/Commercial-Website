@@ -19,6 +19,7 @@ namespace CommercialWeb.Models
         {
             this.BinhLuans = new HashSet<BinhLuan>();
             this.KhachHangs = new HashSet<KhachHang>();
+            this.DonHangs = new HashSet<DonHang>();
         }
     
         public int MaThanhVien { get; set; }
@@ -35,5 +36,7 @@ namespace CommercialWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

@@ -43,6 +43,7 @@
     <NavigationProperty Name="KhachHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
     <NavigationProperty Name="TinhTrangDonHang" Relationship="Self.FK_DonHang_TrangThai" FromRole="DonHang" ToRole="TinhTrangDonHang" />
     <Property Name="MaThanhVIen" Type="Int32" />
+    <NavigationProperty Name="ThanhVien" Relationship="QuanLyBanHangModel.FK_DonHang_ThanhVien" FromRole="DonHang" ToRole="ThanhVien" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>
@@ -140,6 +141,7 @@
     <Property Name="MaLoaiTV" Type="Int32" />
     <Property Name="DaXoa" Type="Boolean" />
     <NavigationProperty Name="LoaiThanhVien" Relationship="QuanLyBanHangModel.FK_ThanhVien_LoaiThanhVien" FromRole="ThanhVien" ToRole="LoaiThanhVien" />
+    <NavigationProperty Name="DonHangs" Relationship="QuanLyBanHangModel.FK_DonHang_ThanhVien" FromRole="ThanhVien" ToRole="DonHang" />
   </EntityType>
   <Association Name="FK_BinhLuan_SanPham">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
@@ -332,6 +334,10 @@
       <End Role="Quyen" EntitySet="Quyens" />
       <End Role="LoaiThanhVien_Quyen" EntitySet="LoaiThanhVien_Quyen" />
     </AssociationSet>
+    <AssociationSet Name="FK_DonHang_ThanhVien" Association="QuanLyBanHangModel.FK_DonHang_ThanhVien">
+      <End Role="ThanhVien" EntitySet="ThanhViens" />
+      <End Role="DonHang" EntitySet="DonHangs" />
+    </AssociationSet>
   </EntityContainer>
   <Association Name="FK_SanPham_KhuyenMai">
     <End Type="QuanLyBanHangModel.KhuyenMai" Role="KhuyenMai" Multiplicity="0..1" />
@@ -406,6 +412,18 @@
       </Principal>
       <Dependent Role="LoaiThanhVien_Quyen">
         <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonHang_ThanhVien">
+    <End Type="QuanLyBanHangModel.ThanhVien" Role="ThanhVien" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.DonHang" Role="DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhVien">
+        <PropertyRef Name="MaThanhVien" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaThanhVIen" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

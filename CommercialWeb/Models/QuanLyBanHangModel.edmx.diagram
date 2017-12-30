@@ -33,6 +33,7 @@
         <EntityTypeShape EntityType="QuanLyBanHangModel.LoaiThanhVien_Quyen" Width="1.5" PointX="9.625" PointY="0.75" />
         <AssociationConnector Association="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_LoaiThanhVien" />
         <AssociationConnector Association="QuanLyBanHangModel.FK_LoaiThanhVien_Quyen_Quyen" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK_DonHang_ThanhVien" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
