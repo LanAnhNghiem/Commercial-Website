@@ -14,7 +14,12 @@ namespace CommercialWeb.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            if(Session["TaiKhoan"] != null)
+            {
+                ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                return View(tv);
+            }
+            return new HttpUnauthorizedResult();
         }
 
         /// <summary>

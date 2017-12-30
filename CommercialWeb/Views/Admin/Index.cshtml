@@ -1,7 +1,11 @@
-﻿@{
+﻿@using CommercialWeb.Models
+@model ThanhVien
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
-<h1>HELLO</h1>
+<p class="home"><strong><a href="@Url.Action("Index", "Admin")"></a> Quản trị</strong></p>
+<h1 style="text-align:center; font-weight:bold; margin:1em; color:#1f904f">Xin chào,<span style="color:#46b8da"> @Model.HoTen </span>!</h1>
+
 
