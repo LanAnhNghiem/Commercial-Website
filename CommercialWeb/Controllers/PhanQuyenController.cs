@@ -20,7 +20,7 @@ namespace CommercialWeb.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View(db.LoaiThanhViens.OrderBy(n=>n.TenLoai));
+            return View(db.LoaiThanhViens.Where(n=>n.MaLoaiTV != 4).OrderBy(n=>n.TenLoai));
         }
 
         /// <summary>

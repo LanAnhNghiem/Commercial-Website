@@ -21,7 +21,7 @@ namespace CommercialWeb.Controllers
          {
             if (Session["TaiKhoan"] != null)
             {
-                return RedirectToAction("ChuaGiao", "QuanLyDonHang");
+                return RedirectToAction("Index", "Admin");
             }
             return View();
         }
@@ -54,7 +54,7 @@ namespace CommercialWeb.Controllers
                     PhanQuyen(tv.Email.ToString(), Quyen);
                 }
                 Session["TaiKhoan"] = tv;
-                return JavaScript("window.location = '" + Url.Action("ChuaGiao", "QuanLyDonHang") + "'");
+                return JavaScript("window.location = '" + Url.Action("Index", "Admin") + "'");
             }
             return Content("LOGIN FAILED !");
         }

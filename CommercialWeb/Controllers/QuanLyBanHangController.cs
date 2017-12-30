@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace CommercialWeb.Controllers
 {
+    [Authorize(Roles = "1_TaoDonHang")]
     public class QuanLyBanHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
@@ -27,8 +28,8 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult getThanhVienList()
         {
-            var dict = db.KhachHangs.Where(n => n.MaThanhVien != null)
-                .ToDictionary(n => n.MaKH, n => n.HoTen + " - " + n.SoDienThoai + " - " + n.Email + " - " + n.DiaChi);
+            var dict = db.ThanhViens.Where(n => n.MaLoaiTV == 4)
+                .ToDictionary(n => n.MaThanhVien, n => n.HoTen + " - " + n.SoDienThoai + " - " + n.Email + " - " + n.DiaChi);
             return Json(dict.ToList(), JsonRequestBehavior.AllowGet);
         }
         public List<ItemDonHang> LayDonHang()
