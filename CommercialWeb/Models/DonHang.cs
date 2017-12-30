@@ -30,6 +30,7 @@ namespace CommercialWeb.Models
         public Nullable<bool> DaXoa { get; set; }
         public bool DaThanhToan { get; set; }
         public bool DaHuy { get; set; }
+        public Nullable<int> MaThanhVIen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }

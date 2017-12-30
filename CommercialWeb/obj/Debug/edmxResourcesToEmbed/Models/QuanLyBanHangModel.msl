@@ -26,6 +26,7 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="MaThanhVIen" ColumnName="MaThanhVIen" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />

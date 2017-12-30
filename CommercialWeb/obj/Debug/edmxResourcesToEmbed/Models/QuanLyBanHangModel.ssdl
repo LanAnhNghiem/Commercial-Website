@@ -34,6 +34,7 @@
     <Property Name="DaXoa" Type="bit" />
     <Property Name="DaThanhToan" Type="bit" Nullable="false" />
     <Property Name="DaHuy" Type="bit" Nullable="false" />
+    <Property Name="MaThanhVIen" Type="int" />
   </EntityType>
   <EntityType Name="HinhThucGiaoHang">
     <Key>
