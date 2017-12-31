@@ -13,7 +13,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MaSP)
+            Mã sản phẩm:
         </dt>
 
         <dd>
@@ -21,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenSP)
+            Tên sản phẩm:
         </dt>
 
         <dd>
@@ -29,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
+            Mô tả:
         </dt>
 
         <dd>
@@ -37,15 +37,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MaLoaiSP)
+            Loại sản phẩm:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaLoaiSP)
+            @Html.DisplayFor(model => model.LoaiSanPham.TenLoaiSP)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
+            Đơn giá:
         </dt>
 
         <dd>
@@ -53,7 +53,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh1)
+            Hình ảnh 1:
         </dt>
 
         <dd>
@@ -61,7 +61,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh2)
+            Hình ảnh 2:
         </dt>
 
         <dd>
@@ -69,7 +69,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh3)
+            Hình ảnh 3:
         </dt>
 
         <dd>
@@ -77,15 +77,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MaNSX)
+            Nhà sản xuất:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaNSX)
+            @Html.DisplayFor(model => model.NhaSanXuat.TenNSX)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayNhap)
+            Ngày nhập:
         </dt>
 
         <dd>
@@ -93,15 +93,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoLanMua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoLanMua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SoLuongTon)
+            Số lượng tồn:
         </dt>
 
         <dd>
@@ -109,7 +101,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ThoiHanBaoHanh)
+           Thời gian bảo hành:
         </dt>
 
         <dd>
@@ -123,7 +115,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Quay lại", "QuanLySanPham")
         </div>
     }
 </div>

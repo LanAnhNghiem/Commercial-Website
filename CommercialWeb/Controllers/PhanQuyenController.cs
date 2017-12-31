@@ -13,22 +13,12 @@ namespace CommercialWeb.Controllers
         
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();  
         // GET: PhanQuyen
-        /// <summary>
-        /// Load danh sách loại thành viên
-        /// Creator: Chương
-        /// </summary>
-        /// <returns></returns>
+        
         public ActionResult Index()
         {
             return View(db.LoaiThanhViens.Where(n=>n.MaLoaiTV != 4).OrderBy(n=>n.TenLoai));
         }
 
-        /// <summary>
-        /// Lấy danh sách quyền của loại thành viên đổ ra checkbox
-        /// Creator: Chương
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         [HttpGet]
         public ActionResult PhanQuyen(int? id)
         {
@@ -45,8 +35,6 @@ namespace CommercialWeb.Controllers
             }
             //Lấy ra danh sách quyền để load ra check box
             ViewBag.MaQuyen = db.Quyens;
-            //Lấy ra danh sách quyền của loại thành viên đó
-            //Bước 1: Lấy ra những quyền thuộc loại thành viên đó dựa vào bảng LoaiThanhVien_Quyen
             ViewBag.LoaiTVQuyen = db.LoaiThanhVien_Quyen.Where(n => n.MaLoaiTV == id);
             return View(ltv);
         }
@@ -79,8 +67,6 @@ namespace CommercialWeb.Controllers
             ViewBag.ThongBao = "Thành công !";
             //Lấy ra danh sách quyền để load ra check box
             ViewBag.MaQuyen = db.Quyens;
-            //Lấy ra danh sách quyền của loại thành viên đó
-            //Bước 1: Lấy ra những quyền thuộc loại thành viên đó dựa vào bảng LoaiThanhVien_Quyen
             ViewBag.LoaiTVQuyen = db.LoaiThanhVien_Quyen.Where(n => n.MaLoaiTV == MaLTV);
             LoaiThanhVien ltv = db.LoaiThanhViens.SingleOrDefault(n => n.MaLoaiTV == MaLTV);
             return View(ltv);

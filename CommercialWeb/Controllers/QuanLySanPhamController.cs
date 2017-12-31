@@ -196,7 +196,7 @@ namespace CommercialWeb.Controllers
             {
                 return HttpNotFound();
             }
-            db.Entry(sp).State = System.Data.Entity.EntityState.Modified;
+            db.SanPhams.Remove(sp);
             db.SaveChanges();
             ViewBag.ThongBao = "Xóa thành công";
 

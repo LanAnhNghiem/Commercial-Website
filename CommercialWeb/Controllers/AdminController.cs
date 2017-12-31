@@ -21,13 +21,6 @@ namespace CommercialWeb.Controllers
             }
             return new HttpUnauthorizedResult();
         }
-
-        /// <summary>
-        /// Render menu quản lý
-        /// Creator: Chương
-        /// </summary>
-        /// <returns>Partial view cho menu quản lý</returns>
-        /// [ChildActionOnly]
         public ActionResult MenuQuanLy()
         {
             if (Session["TaiKhoan"] != null)

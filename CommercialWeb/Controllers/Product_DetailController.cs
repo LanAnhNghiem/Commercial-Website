@@ -31,13 +31,5 @@ namespace CommercialWeb.Controllers
             }
             return View(sp);
         }
-
-        //public ActionResult Test()
-        //{
-        //    var bientam = from SP in db.SanPhams select SP.TenSP;
-        //    var tmp = db.SanPhams.Single(n => n.MaSP == 1);
-        //    ViewBag.BienTam = tmp.TenSP;
-        //    return View();
-        //}
 	}
 }
