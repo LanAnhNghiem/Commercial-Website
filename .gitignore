@@ -1,14 +1,4 @@
 *.suo
 *.suo
 .vs/CommercialWeb/v14/.suo
-*.suo
-*.suo
-*.suo
-*.suo
-.vs/CommercialWeb/v14/.suo
-CommercialWeb/App_Data/QuanLyBanHang.mdf
-*.mdf
-CommercialWeb/App_Data/QuanLyBanHang_log.ldf
-CommercialWeb/App_Data/QuanLyBanHang.mdf
-CommercialWeb/App_Data/QuanLyBanHang.mdf
-CommercialWeb/App_Data/QuanLyBanHang.mdf
+
