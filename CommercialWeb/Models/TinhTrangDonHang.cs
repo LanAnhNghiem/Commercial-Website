@@ -1,4 +1,4 @@
-namespace CommercialWeb
+namespace CommercialWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,20 +6,20 @@ namespace CommercialWeb
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("HinhThucGiaoHang")]
-    public partial class HinhThucGiaoHang
+    [Table("TinhTrangDonHang")]
+    public partial class TinhTrangDonHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HinhThucGiaoHang()
+        public TinhTrangDonHang()
         {
             DonHangs = new HashSet<DonHang>();
         }
 
         [Key]
-        public int MaHinhThuc { get; set; }
+        public int MaTinhTrang { get; set; }
 
         [StringLength(50)]
-        public string TenHinhThuc { get; set; }
+        public string TenTinhTrang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }

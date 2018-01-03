@@ -420,3 +420,4 @@ I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\bin\Microsoft.Owin.Security.Micro
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csproj.CoreCompileInputs.cache
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
+I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
