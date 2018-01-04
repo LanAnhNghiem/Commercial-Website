@@ -247,7 +247,6 @@ D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.dll
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.dll
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.xml
 D:\ProgramE\Github\Commercial-Website\CommercialWeb\bin\PagedList.Mvc.xml
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\ApplicationInsights.config
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\roslyn\csc.exe
 D:\Document\OODA\Website_QuanLyBanHang\Commercial-Website\CommercialWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -421,3 +420,4 @@ I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csproj.Co
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csproj.CoreCompileInputs.cache

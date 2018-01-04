@@ -8,7 +8,7 @@ namespace CommercialWeb.Models
     public partial class QuanLyBanHangEntities : DbContext
     {
         public QuanLyBanHangEntities()
-            : base("name=dientudb")
+            : base("name=QuanLyBanHang")
         {
         }
 
