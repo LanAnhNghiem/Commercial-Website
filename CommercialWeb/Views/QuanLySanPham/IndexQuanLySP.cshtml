@@ -40,6 +40,7 @@
     grid.Column("NhaSanXuat.TenNSX", "Nhà sản xuất"),
     grid.Column("SoLuongTon", "Số lượng tồn"),
     grid.Column("DonGia", "Đơn giá", format: p=> p.DonGia.ToString("#,##")),
+    grid.Column("DaXoa", "Đã xóa"),
     grid.Column(format:p => @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaSP }, new { @class = "btn btn-info" })),
     grid.Column(format: p => @Html.ActionLink("Xóa", "Xoa", new { id = p.MaSP }, new { @class = "btn btn-danger"}))
     ))

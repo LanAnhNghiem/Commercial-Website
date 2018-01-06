@@ -22,7 +22,7 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult getProductList()
         {
-            var dict = db.SanPhams.ToDictionary(s => s.MaSP, s => s.TenSP);
+            var dict = db.SanPhams.Where(n=> n.DaXoa == false).ToDictionary(s => s.MaSP, s => s.TenSP);
             return Json(dict.ToList(), JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -176,6 +176,11 @@ namespace CommercialWeb.Controllers
         public ActionResult DatHangMoi(string HoTen, string Email, string SDT, string DiaChi, bool IsThanhToan, bool IsGiaoHang)
         {
             ThanhVien tvSession = (ThanhVien)Session["TaiKhoan"];
+            List<ItemDonHang> lstDonHang = LayDonHang();
+            if (lstDonHang == null || lstDonHang.Count == 0)
+            {
+                return Content("Giỏ hàng rỗng !!!");
+            }
             KhachHang kh = new KhachHang();
             kh.HoTen = HoTen;
             kh.Email = Email;
@@ -183,11 +188,6 @@ namespace CommercialWeb.Controllers
             kh.SoDienThoai = SDT;
             db.KhachHangs.Add(kh);
             db.SaveChanges();
-            List<ItemDonHang> lstDonHang = LayDonHang();
-            if (lstDonHang == null || lstDonHang.Count == 0)
-            {
-                return Content("Giỏ hàng rỗng !!!");
-            }
             DonHang dh = new DonHang();
             dh.MaKH = kh.MaKH;
             dh.NgayMua = DateTime.Now;

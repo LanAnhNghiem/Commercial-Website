@@ -121,6 +121,16 @@
                 <span id="tbHinhAnh3" style="color:red"></span>
             </div>
         </div>
+        @if (Model.DaXoa == true)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">Đã xóa</label>
+                <div class="col-md-10">
+                    <input type="checkbox" name="da-xoa" id="da-xoa" checked="checked"/>
+                </div> 
+            </div>
+
+        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -319,4 +329,22 @@
                     }
                 });
         });
+    $("#da-xoa").on('change', function () {
+        if (this.checked) {
+            $("da-xoa").attr('checked', true);
+        } else {
+            $("da-xoa").attr('checked', false);
+        }
+    })
+    $("#btnCapNhat").click(function () {
+        var daxoa = $("#da-xoa").is(":checked");
+        $.ajax({
+            type: "POST",
+            data: { isRemove: daxoa },
+            url: '@Url.Content("CapNhatXoa")',
+            success: {
+                
+            }
+        })
+    })
 </script>

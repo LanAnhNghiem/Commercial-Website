@@ -70,19 +70,19 @@
         <h4 style="font-weight:bold;  padding-top:50px">Khách hàng thường</h4><br />
         <div class="form-kh">
             <div class="form-group">
-                <label for="HoTen">Họ và tên</label>
+                <label for="HoTen">Họ và tên (*)</label>
                 <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Nhập họ tên" />
                 <p style="color:red" , hidden="hidden" class="hoten">Vui lần nhập vào họ tên!!!</p>
+            </div>
+            <div class="form-group">
+                <label for="SDT">Số điện thoại (*)</label>
+                <input type="text" class="form-control" name="sdt" id="sdt" maxlength="12" placeholder="Nhập số điện thoại" />
+                <p style="color:red" , hidden="hidden" class="sdt">Vui lần nhập vào số điện thoại!!!</p>
             </div>
             <div class="form-group">
                 <label for="Email">Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email" />
                 <p style="color:red" , hidden="hidden" class="email">Vui lần nhập vào email!!!</p>
-            </div>
-            <div class="form-group">
-                <label for="SDT">Số điện thoại</label>
-                <input type="text" class="form-control" name="sdt" id="sdt" maxlength="12" placeholder="Nhập số điện thoại" />
-                <p style="color:red" , hidden="hidden" class="sdt">Vui lần nhập vào số điện thoại!!!</p>
             </div>
             <div class="form-group">
                 <label for="DiaChi">Địa chỉ</label>
@@ -271,7 +271,7 @@
         //    $("p.email").hide();
         //}
         var tmp = $("#hoten").val().toString().trim().length;
-        if($("#email").val().toString().trim().length == 0 || $("#diachi").val().toString().trim().length == 0){
+        if($("#email").val().toString().trim().length == 0 && $("#diachi").val().toString().trim().length == 0){
             if($("#hoten").val().toString().trim().length != 0 &&
             $("#sdt").val().toString().trim().length != 0)
             {
@@ -288,12 +288,10 @@
                     }
                 });
             }
-        }else{
-            if(validateEmail($("#email").val().toString())== true &&
-            $("#hoten").val().toString().trim().length != 0 &&
-            $("#sdt").val().toString().trim().length != 0 &&
-            $("#diachi").val().toString().trim().length != 0)
-            {
+        }
+        if($("#diachi").val().toString().trim().length == 0 && $("#hoten").val().toString().trim().length != 0 &&
+            $("#sdt").val().toString().trim().length != 0 && $("#email").val().toString().trim().length != 0){
+            if(validateEmail($("#email").val().toString())== true){
                 $.ajax({
                     type: "POST",
                     data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
@@ -306,6 +304,46 @@
                         alert(err.responsiveText);
                     }
                 });
+            }
+        }
+        if($("#email").val().toString().trim().length == 0 
+            && $("#diachi").val().toString().trim().length != 0 
+            && $("#hoten").val().toString().trim().length != 0 &&
+            $("#sdt").val().toString().trim().length != 0){
+            $.ajax({
+                type: "POST",
+                data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
+                url: '@Url.Content("DatHangMoi")',
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                },
+                error: function (err) {
+                    alert(err.responsiveText);
+                }
+            });
+        }
+        else{
+            if($("#email").val().toString().trim().length != 0 &&
+            $("#hoten").val().toString().trim().length != 0 &&
+            $("#sdt").val().toString().trim().length != 0 &&
+            $("#diachi").val().toString().trim().length != 0)
+            {
+                if(validateEmail($("#email").val().toString())== true){
+                    $.ajax({
+                        type: "POST",
+                        data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
+                        url: '@Url.Content("DatHangMoi")',
+                        success: function (result) {
+                            alert(result);
+                            location.reload();
+                        },
+                        error: function (err) {
+                            alert(err.responsiveText);
+                        }
+                    });
+                }
+                
             }
         }
         

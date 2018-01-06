@@ -94,6 +94,7 @@ namespace CommercialWeb.Controllers
             sp.MaKhuyenMai = 1;
             sp.GiaBan = sp.DonGia;
             sp.SoLuongTon = 0;
+            sp.DaXoa = false;
             db.SanPhams.Add(sp);
             db.SaveChanges();
             return RedirectToAction("IndexQuanLySP");
@@ -108,15 +109,17 @@ namespace CommercialWeb.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            Session["MaSP"] = id;
             SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == id);
             if (sp == null)
             {
                 return HttpNotFound();
             }
-
+            
             //Load dropdownlist nhà cung cấp và dropdownlist loại sp, mã nhà sản xuất
             ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPhams.OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP", sp.MaLoaiSP);
             ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.MaNSX), "MaNSX", "TenNSX", sp.MaNSX);
+
             return View(sp);
         }
         
@@ -196,11 +199,33 @@ namespace CommercialWeb.Controllers
             {
                 return HttpNotFound();
             }
-            db.SanPhams.Remove(sp);
+            sp.DaXoa = true;
+            //db.SanPhams.Remove(sp);
             db.SaveChanges();
             ViewBag.ThongBao = "Xóa thành công";
 
             return RedirectToAction("IndexQuanLySP");
+        }
+        public ActionResult CapNhatXoa(bool isRemove)
+        {
+            int id = Int32.Parse(Session["MaSP"].ToString());
+           
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == id);
+            if (sp == null)
+            {
+                return HttpNotFound();
+            }
+            if (isRemove == true)
+            {
+                sp.DaXoa = true;
+            }
+            else
+            {
+                sp.DaXoa = false;
+            }
+            db.SaveChanges();
+            Session["MaSP"] = null;
+            return Content("Đã cập nhật");
         }
         protected override void Dispose(bool disposing)
         {
