@@ -167,6 +167,11 @@ namespace CommercialWeb.Controllers
             return RedirectToAction("TaoDonHang");
         }
 
+        public ActionResult HienTongThanhTien()
+        {
+            return Content(TinhTongTien().ToString("#,##"));
+        }
+
         [HttpPost]
         public ActionResult DatHangMoi(string HoTen, string Email, string SDT, string DiaChi, bool IsThanhToan, bool IsGiaoHang)
         {
@@ -222,9 +227,8 @@ namespace CommercialWeb.Controllers
                 db.ChiTietDonHangs.Add(ctdh);
             }
             db.SaveChanges();
-            String tongtien = TinhTongTien().ToString("#,##");
             Session["DonHang"] = null;
-            return Content("Thêm đơn hàng thành công. Tổng giá trị đơn hàng là: " + tongtien+" VND");
+            return Content("Thêm đơn hàng thành công.");
         }
     }
 }

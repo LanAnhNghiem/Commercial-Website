@@ -47,17 +47,18 @@
                     <td data-toggle='tooltip' data-placement='right' title='"@item.TenKhuyenMai"'>@item.MoTa %</td>
                     <td>@item.GiaBan</td>
                     @*<td><a class='btn btn-info' href='#'>Xóa</a></td>*@
-                    <td>@Html.ActionLink("Xóa", "XoaItemDonHang", new { @MaSP = item.MaSP }, new { @class = "btn btn-info" })</td>
+                    <td id="remove-sp">@Html.ActionLink("Xóa", "XoaItemDonHang", new { @MaSP = item.MaSP }, new { @class = "btn btn-info"})</td>
                 </tr>
             }
         </tbody>
     </table>
 
-
 </div>
-<div class="tong-tien"></div>
+<div style="float:right; margin: 20px;font-size:large">
+    <strong id="tong-tien">Tổng thành tiền: 0 VND</strong>
+</div>
 <div class="ttkh-block">
-    <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff">Thông tin khách hàng</h3>
+    <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff;margin-top:50px">Thông tin khách hàng</h3>
     <div style="margin-top:20px;font-weight:bold">
         <h4 style="font-weight:bold;">Khách hàng thành viên</h4>
         <div class="form-inline" style="margin-top:20px; margin-bottom:20px">
@@ -155,6 +156,18 @@
                 })
             }
         })
+        $.ajax({
+            type:"POST",
+            url: '@Url.Content("HienTongThanhTien")',
+            success: function(result){
+                if(result == ""){
+                    $("#tong-tien").html("Tổng thành tiền: 0 VND");
+                }else{
+                    $("#tong-tien").html("Tổng thành tiền: "+ result+" VND");
+                }
+                
+            }
+        })
         //populateStdDropdown();
         var thanhtoan = $("#check-box-tt").is(":checked");
         var giaohang = $("#check-box-gh").is(":checked");
@@ -168,6 +181,16 @@
         } else {
             $("checkbox-gh").attr('checked', false);
         }
+    })
+    $("#remove-sp").click(function(){
+        alert("remove");
+        $.ajax({
+            type:"POST",
+            url: '@Url.Content("HienTongThanhTien")',
+            success: function(result){
+                $("#tong-tien").html("Tổng thành tiền: "+ result+" VND");
+            }
+        })
     })
     $("#check-box-tt").on('change', function () {
         if (this.checked) {
@@ -198,6 +221,7 @@
             success: function (result) {
                 alert(result);
                 location.reload();
+                
             }
         })
     })
@@ -224,49 +248,67 @@
         else{
             $("p.hoten").hide();
         }
-        if($("#email").val().toString().trim().length == 0)
-        {
-            $("p.email").show();
-        }else{
-            $("p.email").hide();
-        }
+        //if($("#email").val().toString().trim().length == 0)
+        //{
+        //    $("p.email").show();
+        //}else{
+        //    $("p.email").hide();
+        //}
         if($("#sdt").val().toString().trim().length == 0){
             $("p.sdt").show();
         }else{
             $("p.sdt").hide();
         }
-        if ($("#diachi").val().toString().trim().length == 0) {
-            $("p.diachi").show();
-        } else {
-            $("p.diachi").hide();
-        }
-        if(validateEmail($("#email").val().toString()) == false){
-            $("p.email").html("Địa chỉ email không hợp lệ!");
-            $("p.email").show();
-        }else{
-            $("p.email").hide();
-        }
-        //if(
+        //if ($("#diachi").val().toString().trim().length == 0) {
+        //    $("p.diachi").show();
+        //} else {
+        //    $("p.diachi").hide();
+        //}
+        //if(validateEmail($("#email").val().toString()) == false){
+        //    $("p.email").html("Địa chỉ email không hợp lệ!");
+        //    $("p.email").show();
+        //}else{
+        //    $("p.email").hide();
+        //}
         var tmp = $("#hoten").val().toString().trim().length;
-        if(validateEmail($("#email").val().toString())== true &&
+        if($("#email").val().toString().trim().length == 0 || $("#diachi").val().toString().trim().length == 0){
+            if($("#hoten").val().toString().trim().length != 0 &&
+            $("#sdt").val().toString().trim().length != 0)
+            {
+                $.ajax({
+                    type: "POST",
+                    data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
+                    url: '@Url.Content("DatHangMoi")',
+                    success: function (result) {
+                        alert(result);
+                        location.reload();
+                    },
+                    error: function (err) {
+                        alert(err.responsiveText);
+                    }
+                });
+            }
+        }else{
+            if(validateEmail($("#email").val().toString())== true &&
             $("#hoten").val().toString().trim().length != 0 &&
-            $("#email").val().toString().trim().length != 0 &&
             $("#sdt").val().toString().trim().length != 0 &&
             $("#diachi").val().toString().trim().length != 0)
-        {
-            $.ajax({
-                type: "POST",
-                data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
-                url: '@Url.Content("DatHangMoi")',
-                success: function (result) {
-                    alert(result);
-                    location.reload();
-                },
-                error: function (err) {
-                    alert(err.responsiveText);
-                }
-            });
+            {
+                $.ajax({
+                    type: "POST",
+                    data: {HoTen: $("#hoten").val(), Email: $("#email").val(), SDT: $("#sdt").val(), DiaChi: $("#diachi").val(), IsThanhToan: thanhtoan, IsGiaoHang: giaohang},
+                    url: '@Url.Content("DatHangMoi")',
+                    success: function (result) {
+                        alert(result);
+                        location.reload();
+                    },
+                    error: function (err) {
+                        alert(err.responsiveText);
+                    }
+                });
+            }
         }
+        
     })
     //$("#mySearch2").change(function () {
     //    var id = $("#mySearch2").val();
@@ -281,14 +323,18 @@
             data: { MaSP: id, SoLuong: quantity },
             url:'@Url.Content("addNewProduct")',
             success: function (result) {
-                //alert(result);
                 if(result.includes("alert")){
                     alert("Hết hàng. Không thể đặt thêm!!!");
                 }
                 else {
-                    //var tmp = result.substring(0, indexOf("<div>"));
-                    //alert(tmp);
                     $("#row_holder").html(result);
+                    $.ajax({
+                        type:"POST",
+                        url: '@Url.Content("HienTongThanhTien")',
+                        success: function(result){
+                            $("#tong-tien").html("Tổng thành tiền: "+ result+" VND");
+                        }
+                    })
                 }
             },
         })

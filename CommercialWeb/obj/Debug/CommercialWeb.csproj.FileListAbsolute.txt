@@ -420,4 +420,4 @@ I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csproj.Co
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.dll
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.pdb
 I:\ZZZ\VS2017\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
-D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csproj.CoreCompileInputs.cache
+D:\ProgramE\Github\Commercial-Website\CommercialWeb\obj\Debug\CommercialWeb.csprojResolveAssemblyReference.cache
