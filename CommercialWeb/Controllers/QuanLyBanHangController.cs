@@ -113,7 +113,7 @@ namespace CommercialWeb.Controllers
             {
                 dh.MaTinhTrang = 2;
             }
-            dh.MaHinhThuc = 1;
+            //dh.MaHinhThuc = 1;
             dh.DaXoa = false;
             dh.DaHuy = false;
             dh.MaThanhVIen = tvSession.MaThanhVien;
@@ -209,7 +209,7 @@ namespace CommercialWeb.Controllers
             {
                 dh.MaTinhTrang = 2;
             }
-            dh.MaHinhThuc = 1;
+            //dh.MaHinhThuc = 1;
             dh.DaXoa = false;
             dh.DaHuy = false;
             dh.MaThanhVIen = tvSession.MaThanhVien;

@@ -59,15 +59,15 @@
 </div>
 <div class="ttkh-block">
     <h3 style="font-weight:bold; background-color:#27ae60; padding:5px; color:#ffffff;margin-top:50px">Thông tin khách hàng</h3>
-    <div style="margin-top:20px;font-weight:bold">
+    @*<div style="margin-top:20px;font-weight:bold">
         <h4 style="font-weight:bold;">Khách hàng thành viên</h4>
         <div class="form-inline" style="margin-top:20px; margin-bottom:20px">
             <select class="selectpicker" data-live-search="true" id="mySearch2" data-width="100%"></select>
             <a class="btn btn-info" id="btn-add-1" href="#" style="margin-top:20px; float:right">Tạo đơn hàng</a>
         </div>
-    </div>
+    </div>*@
     <div>
-        <h4 style="font-weight:bold;  padding-top:50px">Khách hàng thường</h4><br />
+        <h4 style="font-weight:bold;  padding-top:30px">Khách hàng thường</h4><br />
         <div class="form-kh">
             <div class="form-group">
                 <label for="HoTen">Họ và tên (*)</label>
@@ -206,7 +206,7 @@
             $("checkbox-gh").attr('checked', false);
         }
     })
-    $("#btn-add-1").click(function () {
+    @*$("#btn-add-1").click(function () {
         var id = $("#mySearch2").val();
         var thanhtoan = $("#check-box-tt").is(":checked");
         var giaohang = $("#check-box-gh").is(":checked");
@@ -224,7 +224,7 @@
                 
             }
         })
-    })
+    })*@
     function validateEmail(email) {@{string acong = "@"; }
         //var emailReg = '/^([\w-\.]@(acong)([\w-]+\.)+[\w-]{2,4})?$/';
         var emailReg1 = /^([\w-\.]+)@(acong)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;

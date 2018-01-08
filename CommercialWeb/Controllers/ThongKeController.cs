@@ -34,8 +34,8 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult ThongKeTheoThang(int thang, int nam)
         {
-            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n=>n.ChiTietDonHangs.Sum(q=>(int?)q.SoLuong)) ?? 0;
-            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.TongTien) ?? 0;
+            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam).Sum(n=>n.ChiTietDonHangs.Sum(q=>(int?)q.SoLuong)) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam).Sum(n => n.TongTien) ?? 0;
             ViewBag.Thang = thang;
             ViewBag.Nam = nam;
             return View();
@@ -74,8 +74,8 @@ namespace CommercialWeb.Controllers
         [HttpPost]
         public ActionResult ThongKeTheoNam(int nam)
         {
-            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
-            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.TongTien) ?? 0;
+            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Year == nam).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Year == nam).Sum(n => n.TongTien) ?? 0;
             ViewBag.Nam = nam;
 
             return View();
@@ -96,8 +96,8 @@ namespace CommercialWeb.Controllers
         {
             //quý n có min = (n - 1) * 3 + 1;
             var minMonth = (quy - 1) * 3 + 1;
-            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.NgayGiao.Year == nam && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
-            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.HinhThucGiaoHang.MaHinhThuc == 1).Sum(n => n.TongTien) ?? 0;
+            ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.NgayGiao.Year == nam).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2)).Sum(n => n.TongTien) ?? 0;
             ViewBag.Nam = nam;
             ViewBag.Quy = quy;
 
