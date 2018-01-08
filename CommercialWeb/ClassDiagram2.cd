@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CommercialWeb.Models.ChiTietDonHang">
+    <Position X="5.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBAAAAAAAAAQAAAAQAAAAAAAAAAACAAIAAAAAggAAAA=</HashCode>
+      <FileName>Models\ChiTietDonHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.DonHang">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAgAAEAAAAIAQAAACAwAAAAgAAAAAAAAAAAEcAA=</HashCode>
+      <FileName>Models\DonHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.KhachHang">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAUAAABAAQEAAAAAAAAAAAAAAAAUAA=</HashCode>
+      <FileName>Models\KhachHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.KhuyenMai">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAwAAAAAAAAACABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\KhuyenMai.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.LoaiSanPham">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoaiSanPham.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.LoaiThanhVien">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAICEAAAAAAAAA=</HashCode>
+      <FileName>Models\LoaiThanhVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.LoaiThanhVien_Quyen">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAEAAAAAEAAA=</HashCode>
+      <FileName>Models\LoaiThanhVien_Quyen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.NhaSanXuat">
+    <Position X="3" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAYAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NhaSanXuat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.Quyen">
+    <Position X="7.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Quyen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.SanPham">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iBAAIAIAAIoIAAIBAgAAAgDAAAJACAAAIAAAAABAAAA=</HashCode>
+      <FileName>Models\SanPham.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.ThanhVien">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAABAACAAAAAUAAABAAQEAAAAAAAAAEAAAAAEAAA=</HashCode>
+      <FileName>Models\ThanhVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialWeb.Models.TinhTrangDonHang">
+    <Position X="7.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEIAA=</HashCode>
+      <FileName>Models\TinhTrangDonHang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -209,7 +209,6 @@
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\PhanQuyenController.cs" />
@@ -221,13 +220,11 @@
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\ThongTinController.cs" />
-    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Models\dientudb.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\HinhThucGiaoHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\KhuyenMai.cs" />
     <Compile Include="Models\LoaiSanPham.cs" />
@@ -620,6 +617,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Properties\PublishProfiles\cuahangdientuuit - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\shopdientu - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -647,7 +645,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Layout\HomeLayout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SanPham\SanPhamMoiPartial.cshtml" />
     <Content Include="Views\SanPham\LaptopNoiBatPartial.cshtml" />
     <Content Include="Views\SanPham\SanPhamKhuyenMaiPartial.cshtml" />
@@ -655,7 +652,6 @@
     <Content Include="Views\SanPham\MayTinhPartial.cshtml" />
     <Content Include="Views\SanPham\LinhKienPartial.cshtml" />
     <Content Include="Views\SanPham\SliderBannerPartial.cshtml" />
-    <Content Include="Views\Home\MenuPartial.cshtml" />
     <Content Include="Views\Layout\AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\QuanLyDonHang\QuanLyDonHang.cshtml" />
@@ -679,7 +675,6 @@
     <Content Include="Views\Admin\AccountPartial.cshtml" />
     <Content Include="Views\Layout\LoginLayout.cshtml" />
     <Content Include="Views\DangNhap\DangNhap.cshtml" />
-    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
     <Content Include="Views\SanPham\XemChiTiet.cshtml" />
     <Content Include="Views\Layout\ProductLayout.cshtml" />
     <Content Include="Views\QuanLyKhachHang\IndexQuanLyKH.cshtml" />
