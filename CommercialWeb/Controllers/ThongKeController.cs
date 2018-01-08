@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CommercialWeb.Models;
+using Newtonsoft.Json;
 
 namespace CommercialWeb.Controllers
 {
@@ -38,7 +39,18 @@ namespace CommercialWeb.Controllers
             ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam).Sum(n => n.TongTien) ?? 0;
             ViewBag.Thang = thang;
             ViewBag.Nam = nam;
-            return View();
+
+            var lstSanPham = db.DonHangs.Where(n => n.NgayGiao.Month == thang && n.NgayGiao.Year == nam)
+                .Join(db.ChiTietDonHangs, dh => dh.MaDonHang, ct => ct.MaDonHang, (dh, ct) => new { MaSP = ct.MaSP, SoLuong = ct.SoLuong })
+                .Join(db.SanPhams, n => n.MaSP, m => m.MaSP, (n, m) => new { MaSP = n.MaSP, TenSP = m.TenSP, SoLuong = n.SoLuong })
+                .Select(n => new { n.MaSP, n.TenSP, n.SoLuong });
+            //Thống kê danh sách các sp đã bán ra 
+            var result = lstSanPham.GroupBy(x => new { x.MaSP, x.TenSP }, (key, group) => new { MaSP = key.MaSP, TenSP = key.TenSP, SoLuong = group.Sum(p => p.SoLuong) });
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            string converted = JsonConvert.SerializeObject(result, null, jsSettings);
+            var newItem = JsonConvert.DeserializeObject<IEnumerable<SanPhamTK>>(converted).OrderByDescending(n => n.SoLuong);
+            return View(newItem);
         }
         //Thống kê đơn hàng
         public double ThongKeDonHang()
@@ -77,8 +89,18 @@ namespace CommercialWeb.Controllers
             ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Year == nam).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
             ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Year == nam).Sum(n => n.TongTien) ?? 0;
             ViewBag.Nam = nam;
-
-            return View();
+            
+            var lstSanPham = db.DonHangs.Where(n => n.NgayGiao.Year == nam)
+                .Join(db.ChiTietDonHangs, dh => dh.MaDonHang, ct => ct.MaDonHang, (dh, ct) => new { MaSP = ct.MaSP, SoLuong = ct.SoLuong })
+                .Join(db.SanPhams, n => n.MaSP, m => m.MaSP, (n, m) => new { MaSP = n.MaSP, TenSP = m.TenSP, SoLuong = n.SoLuong})
+                .Select(n=>new { n.MaSP, n.TenSP, n.SoLuong});
+            //Thống kê danh sách các sp đã bán ra 
+            var result= lstSanPham.GroupBy(x => new { x.MaSP, x.TenSP }, (key, group) => new  { MaSP = key.MaSP, TenSP = key.TenSP, SoLuong = group.Sum(p=>p.SoLuong)});
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            string converted = JsonConvert.SerializeObject(result, null, jsSettings);
+            var newItem = JsonConvert.DeserializeObject<IEnumerable<SanPhamTK>>(converted).OrderByDescending(n => n.SoLuong);
+            return View(newItem);
         }
         [HttpGet]
         public ActionResult ThongKeTheoQuy()
@@ -97,11 +119,21 @@ namespace CommercialWeb.Controllers
             //quý n có min = (n - 1) * 3 + 1;
             var minMonth = (quy - 1) * 3 + 1;
             ViewBag.TongSanPham = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.NgayGiao.Year == nam).Sum(n => n.ChiTietDonHangs.Sum(q => q.SoLuong)) ?? 0;
-            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2)).Sum(n => n.TongTien) ?? 0;
+            ViewBag.TongTien = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.NgayGiao.Year == nam).Sum(n => n.TongTien) ?? 0 ;
             ViewBag.Nam = nam;
             ViewBag.Quy = quy;
 
-            return View();
+            var lstSanPham = db.DonHangs.Where(n => n.NgayGiao.Month >= minMonth && n.NgayGiao.Month <= (minMonth + 2) && n.NgayGiao.Year == nam)
+                .Join(db.ChiTietDonHangs, dh => dh.MaDonHang, ct => ct.MaDonHang, (dh, ct) => new { MaSP = ct.MaSP, SoLuong = ct.SoLuong })
+                .Join(db.SanPhams, n => n.MaSP, m => m.MaSP, (n, m) => new { MaSP = n.MaSP, TenSP = m.TenSP, SoLuong = n.SoLuong })
+                .Select(n => new { n.MaSP, n.TenSP, n.SoLuong });
+            //Thống kê danh sách các sp đã bán ra 
+            var result = lstSanPham.GroupBy(x => new { x.MaSP, x.TenSP }, (key, group) => new { MaSP = key.MaSP, TenSP = key.TenSP, SoLuong = group.Sum(p => p.SoLuong) });
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            string converted = JsonConvert.SerializeObject(result, null, jsSettings);
+            var newItem = JsonConvert.DeserializeObject<IEnumerable<SanPhamTK>>(converted).OrderByDescending(n => n.SoLuong);
+            return View(newItem);
         }
 
         protected override void Dispose(bool disposing)

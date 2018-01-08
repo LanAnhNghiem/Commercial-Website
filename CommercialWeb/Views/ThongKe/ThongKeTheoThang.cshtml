@@ -1,4 +1,5 @@
-﻿
+﻿@using CommercialWeb.Models;
+@model IEnumerable<SanPhamTK>
 @{
     ViewBag.Title = "ThongKeTheoThang";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
@@ -14,7 +15,7 @@
     <li role="presentation"><a href="@Url.Action("ThongKeTheoQuy","ThongKe")">Thống kê theo quý</a></li>
     <li role="presentation"><a href="@Url.Action("ThongKeTheoNam", "ThongKe")">Thống kê theo năm</a></li>
 </ul>
-@using (Html.BeginForm("ThongKeTheoThang", "ThongKe",FormMethod.Post))
+@using (Html.BeginForm("ThongKeTheoThang", "ThongKe", FormMethod.Post))
 {
     <div class="option-item">
         <div style="display:inline">Tháng:</div>
@@ -33,7 +34,7 @@
             <option>12</option>
         </select>
         <div style="display:inline; margin-left:1em">Năm:</div>
-        <input placeholder="2016" required name="nam" class="form-control" type="text" style="display:inline; width: 100px; margin:1em"/>
+        <input placeholder="2016" required name="nam" class="form-control" type="text" style="display:inline; width: 100px; margin:1em" />
         <input type="submit" class="btn btn-info" value="Xem thống kê" style="display:inline; margin:1em">
     </div>
     <div style="padding: 1em; background-color:white">
@@ -43,6 +44,31 @@
     </div>
 
 }
+<br />
+<br />
+<table class="gridTable table-hover">
+    <thead style="color:#ffffff;font-weight:bold">
+        <tr>
+            <th class="gridHead">Mã SP</th>
+            <th class="gridHead">Tên SP</th>
+            <th class="gridHead">Số lượng</th>
+        </tr>
+    </thead>
+    <tbody class="gridRow" id="row_holder">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>@item.SoLuong</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
 
 <style>
     .option-item {

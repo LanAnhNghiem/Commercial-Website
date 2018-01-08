@@ -31,6 +31,7 @@
                             <td>Tên khách hàng: <b style="color:red;"> @Model.KhachHang.HoTen</b></td>
                             <td>Số điện thoại: <b style="color:red;"> @Model.KhachHang.SoDienThoai</b></td>
                             <td>Ngày đặt: @Model.NgayMua.Value.ToString("dd/MM/yyyy")</td>
+                            <td></td>
                         </tr>
                     </table>
                 </td>
@@ -39,6 +40,7 @@
                 <td class="DaGiao">Đã thanh toán: @Html.EditorFor(model => model.DaThanhToan)</td>
                 <td class="DaGiao">Đã giao: @Html.DropDownList("MaTinhTrang")</td>
                 <td class="DaGiao">Người tạo: @Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+             
             </tr>
             @*Thông tin chi tiết đơn hàng*@
 
@@ -46,6 +48,7 @@
             <tr>
                 <td><b>Sản phẩm</b></td>
                 <td><b>Số lượng đặt</b></td>
+                <td><b>Thời hạn bảo hành</b></td>
                 <td><b>Đơn giá đặt</b></td>
                 <td><b>Thành tiền</b></td>
             </tr>
@@ -56,18 +59,22 @@
         <tr>
             <td>@item.SanPham.TenSP</td>
             <td>@item.SoLuong</td>
+            <td>@item.SanPham.ThoiHanBaoHanh</td>
             <td>@item.DonGia</td>
             <td>@tong</td>
 
         </tr>
-}
+}           
             <tr>
+                <td></td>
                 <td align="right" colspan="4">Tổng số lượng: @Model.ChiTietDonHangs.Sum(n => n.SoLuong) sản phẩm</td>
             </tr>
             <tr>
+                <td></td>
                 <td align="right" colspan="4">Tổng tiền: <span style="color:red; font-weight:bold">@Model.ChiTietDonHangs.Sum(n => n.SanPham.DonGia).Value.ToString("#,##")</span>  đồng</td>
             </tr>
             <tr>
+                <td></td>
                 <td align="right" colspan="4">Tổng tiền (bằng chữ): <span style="color:red; font-weight:bold">@ViewBag.TienChu</span></td>
             </tr>
             <tr>
@@ -75,7 +82,7 @@
                 <td align="center" colspan="3" style="height: 150px">Người thực hiện</td>
             </tr>
             <tr><td align="center"colspan="2">@Model.KhachHang.HoTen</td>
-            <td align="center" colspan="2">@Html.DisplayFor(model => model.ThanhVien.HoTen)</td></tr>
+            <td align="center" colspan="3">@Html.DisplayFor(model => model.ThanhVien.HoTen)</td></tr>
         </table>
         <br /><br />
         <a class="btn btn-primary " href="@Url.Action("ChuaThanhToan", "QuanLyDonHang")">Quay lại</a>

@@ -195,17 +195,30 @@
     $("#check-box-tt").on('change', function () {
         if (this.checked) {
             $("#checkbox-tt").attr('checked', true);
+            $("#check-box-gh").prop('disabled', false);
         } else {
             $("#checkbox-tt").attr('checked', false);
+            $("#check-box-gh").prop('disabled', true);
         }
     })
     $("#check-box-gh").on('change', function () {
+        var thanhtoan = $("#check-box-tt").is(":checked");
         if (this.checked) {
             $("checkbox-gh").attr('checked', true);
+            
         } else {
             $("checkbox-gh").attr('checked', false);
         }
     })
+    //$("#check-box-gh").click(function () {
+    //    var thanhtoan = $("#check-box-tt").is(":checked");
+    //    if (thanhtoan == false) {
+    //        $("checkbox-gh").attr('disabled', true);
+    //    }
+    //    else {
+    //        $("checkbox-gh").attr('disabled', false);
+    //    }
+    //})
     @*$("#btn-add-1").click(function () {
         var id = $("#mySearch2").val();
         var thanhtoan = $("#check-box-tt").is(":checked");

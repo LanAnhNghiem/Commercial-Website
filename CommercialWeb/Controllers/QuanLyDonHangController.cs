@@ -40,6 +40,10 @@ namespace CommercialWeb.Controllers
                 return HttpNotFound();
             }
             ViewBag.ChiTietDonHang = DonHang.ChiTietDonHangs;
+            //Đổi tiền từ số qua chữ
+            double price = Convert.ToDouble(DonHang.ChiTietDonHangs.Sum(n => n.SanPham.DonGia).Value);
+            ViewBag.TienChu = ConvertMoney(price);
+           
             return View(DonHang);
         }
         [HttpPost]
@@ -127,6 +131,9 @@ namespace CommercialWeb.Controllers
             //Đổi tiền từ số qua chữ
             double price = Convert.ToDouble(model.ChiTietDonHangs.Sum(n => n.SanPham.DonGia).Value);
             ViewBag.TienChu = ConvertMoney(price);
+            //Thời hạn bảo hành
+            ViewBag.BaoHanh = lstChiTietDH.Join(db.SanPhams, n => n.MaSP, m => m.MaSP, (n, m) => new { ThoiHanBaoHanh = m.ThoiHanBaoHanh })
+                .Select(n => new { n.ThoiHanBaoHanh });
             return View(model);
         }
         [HttpPost]

@@ -1,4 +1,5 @@
-﻿
+﻿@using CommercialWeb.Models;
+@model IEnumerable<SanPhamTK>
 @{
     ViewBag.Title = "ThongKeTheoQuy";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
@@ -34,6 +35,32 @@
         <h3 style="padding-top:1em">Tổng sản phẩm bán ra: <span style="color:red; font-weight:bold">@ViewBag.TongSanPham </span><span style="color:blue">Sản phẩm</span></h3>
     </div>
 }
+
+<br />
+<br />
+<table class="gridTable table-hover">
+    <thead style="color:#ffffff;font-weight:bold">
+        <tr>
+            <th class="gridHead">Mã SP</th>
+            <th class="gridHead">Tên SP</th>
+            <th class="gridHead">Số lượng</th>
+        </tr>
+    </thead>
+    <tbody class="gridRow" id="row_holder">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>@item.SoLuong</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
 
 <style>
     .option-item {

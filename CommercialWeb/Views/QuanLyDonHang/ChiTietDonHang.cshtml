@@ -19,6 +19,7 @@
             <tr>
                 <td colspan="4">
                     <table style="width:100%;">
+                        <tr style="font-size:x-large; height:100px"><td align="center" colspan="12"><strong>Cửa hàng ShopCOM</strong></td></tr>
                         <tr>
                             <td>Mã đơn hàng: <b style="color:red;"> @Model.MaDonHang @Html.Hidden("MaDonHang", @Model.MaDonHang)</b></td>
                             <td>Tên khách hàng: <b style="color:red;"> @Model.KhachHang.HoTen</b></td>
@@ -40,26 +41,42 @@
             <tr>
                 <td><b>Sản phẩm</b></td>
                 <td><b>Số lượng đặt</b></td>
+                <td><b>Thời hạn bảo hành</b></td>
                 <td><b>Đơn giá đặt</b></td>
                 <td><b>Thành tiền</b></td>
             </tr>
-
             @foreach (var item in lstChiTietDH)
-            {
-                decimal? tong = item.SoLuong * item.DonGia;
-                <tr>
-                    <td>@item.SanPham.TenSP</td>
-                    <td>@item.SoLuong</td>
-                    <td>@item.DonGia</td>
-                    <td>@tong</td>
+    {
+        decimal? tong = item.SoLuong * item.DonGia;
+        <tr>
+            <td>@item.SanPham.TenSP</td>
+            <td>@item.SoLuong</td>
+            <td>@item.SanPham.ThoiHanBaoHanh</td>
+            <td>@item.DonGia</td>
+            <td>@tong</td>
 
-                </tr>
-            }
+        </tr>
+}
+
             <tr>
+                <td></td>
                 <td align="right" colspan="4">Tổng số lượng: @Model.ChiTietDonHangs.Sum(n => n.SoLuong) sản phẩm</td>
             </tr>
             <tr>
+                <td></td>
                 <td align="right" colspan="4">Tổng tiền: <span style="color:red; font-weight:bold">@Model.ChiTietDonHangs.Sum(n => n.SanPham.DonGia).Value.ToString("#,##")</span>  đồng</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="right" colspan="4">Tổng tiền (bằng chữ): <span style="color:red; font-weight:bold">@ViewBag.TienChu</span></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2" style="height:150px">Khách hàng</td>
+                <td align="center" colspan="3" style="height: 150px">Người thực hiện</td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">@Model.KhachHang.HoTen</td>
+                <td align="center" colspan="3">@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
             </tr>
         </table>
         <br /><br />
